@@ -19,6 +19,7 @@ gem 'unicorn'
 gem 'stripe'
 gem 'rails_admin'
 gem 'ransack'
+gem 'simplecov', :require => false, :group => :test
 
 group :development, :test do
   gem 'rspec-rails'
