@@ -1,0 +1,21 @@
+<div class="col-md-8 col-md-offset-2">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Item</td>
+        <th class="text-center">Quantity</td>
+        <th class="text-right">Price</td>
+      </tr>
+    </thead>
+    <tbody>
+      <% @cart_items.each do |item| %>
+        <tr>
+          <td><%= link_to item.title, item %></td>
+          <td class="text-center"><%= link_to "-", "#", :onclick => "removeItem(#{item.id})" %> <%= @cart.count_of(item) %> <%= link_to "+", "#", :onclick => "addItem(#{item.id})" %></td>
+          <td class="text-right"><%= "$#{sprintf("%0.2f",item.price)}" %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <%= link_to "Checkout", new_order_path, class: 'form-control btn btn-success item-price' %>
+</div>

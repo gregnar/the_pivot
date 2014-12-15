@@ -1,0 +1,42 @@
+<div class="col-md-8 col-md-offset-2">
+<table class="table">
+  <thead>
+    <td>Item</td>
+    <td>Quantity</td>
+    <td>Price</td>
+    <td>Total</td>
+  </thead>
+  <tbody>
+    <% @cart_items.each do |item| %>
+      <tr>
+        <td><%= link_to item.title, item %></td>
+        <td><%= @cart.count_of(item) %></td>
+        <td><%= @order.display(item.price) %></td>
+        <td><%= @order.display(@cart.line_total(item)) %></td>
+      </tr>
+    <% end %>
+      <tr>
+        <td></td>
+        <td></td>
+        <td>Total:</td>
+        <td><%= @order.display(@cart.cost_total) %></td>
+      </tr>
+  </tbody>
+</table>
+
+<%= form_for @order do |f| %>
+  <div class='form-group'>
+    <%= f.label :delivery %>
+    <%= f.check_box :delivery, id: "delivery" %>
+  </div>
+
+  <div class='form-group' id="address-form">
+    <%= f.label :address %>
+    <%= f.collection_select :address_id, current_user.addresses, :id, :street_name, {}, { class: "form-control" } %>
+  </div>
+
+  <div class="button">
+    <%= f.submit "Submit Order", class: "form-control btn btn-success" %>
+  </div>
+<% end %>
+</div>
