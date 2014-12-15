@@ -1,0 +1,887 @@
+
+
+Started GET "/" for 127.0.0.1 at 2014-12-15 13:35:07 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (26.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+
+ActiveRecord::PendingMigrationError (
+
+Migrations are pending. To resolve this issue, run:
+
+	bin/rake db:migrate RAILS_ENV=development
+
+):
+  activerecord (4.1.7) lib/active_record/migration.rb:389:in `check_pending!'
+  activerecord (4.1.7) lib/active_record/migration.rb:377:in `call'
+  actionpack (4.1.7) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.1.7) lib/active_support/callbacks.rb:82:in `run_callbacks'
+  actionpack (4.1.7) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.1.7) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.1.7) lib/action_dispatch/middleware/remote_ip.rb:76:in `call'
+  actionpack (4.1.7) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.1.7) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.7) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.7) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.7) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.7) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.7) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.7) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.7) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.7) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.1.7) lib/action_dispatch/middleware/static.rb:84:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.1.7) lib/rails/engine.rb:514:in `call'
+  railties (4.1.7) lib/rails/application.rb:144:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /Users/Greg/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /Users/Greg/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /Users/Greg/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/Greg/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.7/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.8ms)
+  Rendered /Users/Greg/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.7/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (0.9ms)
+  Rendered /Users/Greg/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.7/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /Users/Greg/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.7/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (24.3ms)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at 2014-12-15 13:35:07 -0700
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+
+ActiveRecord::PendingMigrationError (
+
+Migrations are pending. To resolve this issue, run:
+
+	bin/rake db:migrate RAILS_ENV=development
+
+):
+  activerecord (4.1.7) lib/active_record/migration.rb:389:in `check_pending!'
+  activerecord (4.1.7) lib/active_record/migration.rb:377:in `call'
+  actionpack (4.1.7) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.1.7) lib/active_support/callbacks.rb:82:in `run_callbacks'
+  actionpack (4.1.7) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.1.7) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.1.7) lib/action_dispatch/middleware/remote_ip.rb:76:in `call'
+  actionpack (4.1.7) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.1.7) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.7) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.7) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.7) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.7) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.7) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.7) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.7) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.7) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.1.7) lib/action_dispatch/middleware/static.rb:84:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.1.7) lib/rails/engine.rb:514:in `call'
+  railties (4.1.7) lib/rails/application.rb:144:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /Users/Greg/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /Users/Greg/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /Users/Greg/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/Greg/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.7/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.6ms)
+  Rendered /Users/Greg/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.7/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (0.9ms)
+  Rendered /Users/Greg/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.7/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered /Users/Greg/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.7/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (18.0ms)
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateItems (20141117185842)
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (23.7ms)[0m  [1mCREATE TABLE "items" ("id" serial primary key, "title" character varying(255), "description" character varying(255), "price" decimal, "created_at" timestamp, "updated_at" timestamp) [0m
+PG::DuplicateTable: ERROR:  relation "items" already exists
+: CREATE TABLE "items" ("id" serial primary key, "title" character varying(255), "description" character varying(255), "price" decimal, "created_at" timestamp, "updated_at" timestamp) 
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (115.2ms)[0m  [1mDROP DATABASE IF EXISTS "dinner_dash_development"[0m
+  [1m[35m (113.7ms)[0m  DROP DATABASE IF EXISTS "dinner_dash_test"
+  [1m[36m (344.3ms)[0m  [1mCREATE DATABASE "dinner_dash_development" ENCODING = 'unicode'[0m
+  [1m[35m (230.8ms)[0m  CREATE DATABASE "dinner_dash_test" ENCODING = 'unicode'
+  [1m[36mSQL (0.3ms)[0m  [1mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (5.6ms)[0m  CREATE TABLE "addresses" ("id" serial primary key, "street_name" character varying(255), "street_number" character varying(255), "city" character varying(255), "state" character varying(255), "zip_code" character varying(255), "created_at" timestamp, "updated_at" timestamp, "user_id" integer) 
+  [1m[36m (2.0ms)[0m  [1mCREATE TABLE "categories" ("id" serial primary key, "name" character varying(255), "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35m (0.8ms)[0m  CREATE TABLE "categories_items" ("category_id" integer NOT NULL, "item_id" integer NOT NULL) 
+  [1m[36m (1.1ms)[0m  [1mCREATE  INDEX  "index_categories_items_on_category_id_and_item_id" ON "categories_items" USING btree ("category_id", "item_id")[0m
+  [1m[35m (1.0ms)[0m  CREATE  INDEX  "index_categories_items_on_item_id_and_category_id" ON "categories_items" USING btree ("item_id", "category_id")
+  [1m[36m (20.8ms)[0m  [1mCREATE TABLE "items" ("id" serial primary key, "title" character varying(255), "description" character varying(255), "price" decimal, "created_at" timestamp, "updated_at" timestamp, "photo_file_name" character varying(255), "photo_content_type" character varying(255), "photo_file_size" integer, "photo_updated_at" timestamp, "active" boolean DEFAULT 't') [0m
+  [1m[35m (0.9ms)[0m  CREATE TABLE "items_orders" ("order_id" integer NOT NULL, "item_id" integer NOT NULL) 
+  [1m[36m (0.9ms)[0m  [1mCREATE  INDEX  "index_items_orders_on_item_id_and_order_id" ON "items_orders" USING btree ("item_id", "order_id")[0m
+  [1m[35m (0.9ms)[0m  CREATE  INDEX  "index_items_orders_on_order_id_and_item_id" ON "items_orders" USING btree ("order_id", "item_id")
+  [1m[36m (1.9ms)[0m  [1mCREATE TABLE "orders" ("id" serial primary key, "delivery" boolean, "created_at" timestamp, "updated_at" timestamp, "user_id" integer, "address_id" integer, "pending" boolean) [0m
+  [1m[35m (2.5ms)[0m  CREATE TABLE "users" ("id" serial primary key, "name" character varying(255), "email" character varying(255), "password_digest" character varying(255), "display_name" character varying(255), "admin" boolean DEFAULT 'f', "created_at" timestamp, "updated_at" timestamp) 
+  [1m[36m (1.7ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" character varying(255) NOT NULL) [0m
+  [1m[35m (2.0ms)[0m  CREATE UNIQUE INDEX  "unique_schema_migrations" ON "schema_migrations"  ("version")
+  [1m[36m (0.9ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (1.1ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20141201231100')
+  [1m[36m (0.9ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20141117185842')[0m
+  [1m[35m (0.4ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20141117185925')
+  [1m[36m (0.3ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20141118020250')[0m
+  [1m[35m (0.3ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20141118204530')
+  [1m[36m (0.3ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20141118204826')[0m
+  [1m[35m (0.3ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20141118221218')
+  [1m[36m (0.3ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20141120175707')[0m
+  [1m[35m (0.4ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20141120182244')
+  [1m[36m (0.3ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20141120220335')[0m
+  [1m[35m (0.7ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20141120222741')
+  [1m[36m (0.6ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20141120222904')[0m
+  [1m[35m (0.4ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20141120224452')
+  [1m[36m (0.3ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20141121121100')[0m
+  [1m[35m (0.3ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20141121121422')
+  [1m[36m (0.2ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20141121121827')[0m
+  [1m[35m (0.2ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20141121122039')
+  [1m[36m (0.2ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20141121122206')[0m
+  [1m[35m (0.2ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20141121163702')
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mUser Exists (0.6ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE LOWER("users"."email") = LOWER('demo+rachel@jumpstartlab.com') LIMIT 1[0m
+  [1m[35mSQL (6.1ms)[0m  INSERT INTO "users" ("created_at", "display_name", "email", "name", "password_digest", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["created_at", "2014-12-15 20:35:50.757613"], ["display_name", ""], ["email", "demo+rachel@jumpstartlab.com"], ["name", "Rachel Warbelow"], ["password_digest", "$2a$10$7IpPMDtpyj7gyB6G3DGhbexe2dYdkKIXyUDGaQleVT7F4PWFPbAuq"], ["updated_at", "2014-12-15 20:35:50.757613"]]
+  [1m[36m (6.0ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE LOWER("users"."email") = LOWER('demo+jeff@jumpstartlab.com') LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("created_at", "display_name", "email", "name", "password_digest", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["created_at", "2014-12-15 20:35:50.846295"], ["display_name", "j3"], ["email", "demo+jeff@jumpstartlab.com"], ["name", "Jeff"], ["password_digest", "$2a$10$W4YpqKLoBJZLPVuMeY8cQeHre1ZiV5VQK/PrzljNDLvbjD4jFGMGy"], ["updated_at", "2014-12-15 20:35:50.846295"]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE LOWER("users"."email") = LOWER('demo+jorge@jumpstartlab.com') LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("created_at", "display_name", "email", "name", "password_digest", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["created_at", "2014-12-15 20:35:50.920555"], ["display_name", "novohispano"], ["email", "demo+jorge@jumpstartlab.com"], ["name", "Jorge Tellez"], ["password_digest", "$2a$10$TRK5Tkm7W3ZMXFlbCAbEdOiAoTzZQl571YYFnG/uwt4P3n0iBCsE2"], ["updated_at", "2014-12-15 20:35:50.920555"]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE LOWER("users"."email") = LOWER('demo+josh@jumpstartlab.com') LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("admin", "created_at", "display_name", "email", "name", "password_digest", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["admin", "t"], ["created_at", "2014-12-15 20:35:50.997964"], ["display_name", "josh"], ["email", "demo+josh@jumpstartlab.com"], ["name", "Josh Cheek"], ["password_digest", "$2a$10$R/FTprnMHGyyZy.U4/O7jO1YuKGoY5NSv/l/4YIbSJ.mq/HvbEMXy"], ["updated_at", "2014-12-15 20:35:50.997964"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (5.3ms)[0m  [1mINSERT INTO "addresses" ("city", "created_at", "state", "street_name", "street_number", "updated_at", "user_id", "zip_code") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["city", "New Bethtown"], ["created_at", "2014-12-15 20:35:51.262014"], ["state", "MI"], ["street_name", "Pauline Drive"], ["street_number", "26274"], ["updated_at", "2014-12-15 20:35:51.262014"], ["user_id", 1], ["zip_code", "26613-3851"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "addresses" ("city", "created_at", "state", "street_name", "street_number", "updated_at", "user_id", "zip_code") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"  [["city", "Oceaneshire"], ["created_at", "2014-12-15 20:35:51.270026"], ["state", "TN"], ["street_name", "Stan Ports"], ["street_number", "531"], ["updated_at", "2014-12-15 20:35:51.270026"], ["user_id", 2], ["zip_code", "41912"]]
+  [1m[36m (0.2ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "addresses" ("city", "created_at", "state", "street_name", "street_number", "updated_at", "user_id", "zip_code") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["city", "Port Rosario"], ["created_at", "2014-12-15 20:35:51.272201"], ["state", "OH"], ["street_name", "Wehner Ferry"], ["street_number", "43673"], ["updated_at", "2014-12-15 20:35:51.272201"], ["user_id", 3], ["zip_code", "89910"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "addresses" ("city", "created_at", "state", "street_name", "street_number", "updated_at", "user_id", "zip_code") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"  [["city", "Effertzbury"], ["created_at", "2014-12-15 20:35:51.274399"], ["state", "TN"], ["street_name", "Fabiola Loop"], ["street_number", "5552"], ["updated_at", "2014-12-15 20:35:51.274399"], ["user_id", 4], ["zip_code", "44212"]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (6.2ms)[0m  [1mINSERT INTO "categories" ("created_at", "name", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["created_at", "2014-12-15 20:35:51.284217"], ["name", "drinks"], ["updated_at", "2014-12-15 20:35:51.284217"]]
+  [1m[35m (6.2ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "categories" ("created_at", "name", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["created_at", "2014-12-15 20:35:51.298262"], ["name", "eats"], ["updated_at", "2014-12-15 20:35:51.298262"]]
+  [1m[36m (4.8ms)[0m  [1mCOMMIT[0m
+  [1m[35mCategory Load (0.7ms)[0m  SELECT  "categories".* FROM "categories"   ORDER BY "categories"."id" ASC LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mItem Exists (0.4ms)[0m  SELECT  1 AS one FROM "items"  WHERE "items"."title" = 'Double Latte 1' LIMIT 1
+  [1m[36mSQL (6.3ms)[0m  [1mINSERT INTO "items" ("created_at", "description", "photo_content_type", "photo_file_size", "photo_updated_at", "price", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["created_at", "2014-12-15 20:35:51.356252"], ["description", "A classic coffee drink made with real craftsmanship"], ["photo_content_type", "image/png"], ["photo_file_size", 712], ["photo_updated_at", "2014-12-13 00:00:00.000000"], ["price", "40.44"], ["title", "Double Latte 1"], ["updated_at", "2014-12-15 20:35:51.356252"]]
+  [1m[35mSQL (12.3ms)[0m  INSERT INTO "categories_items" ("category_id", "item_id") VALUES ($1, $2)  [["category_id", 1], ["item_id", 1]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mItem Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "items"  WHERE "items"."title" = 'Decaf Latte 2' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "items" ("created_at", "description", "photo_content_type", "photo_file_size", "photo_updated_at", "price", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"  [["created_at", "2014-12-15 20:35:51.383625"], ["description", "A classic coffee drink made with real craftsmanship"], ["photo_content_type", "image/png"], ["photo_file_size", 56], ["photo_updated_at", "2014-12-10 00:00:00.000000"], ["price", "58.81"], ["title", "Decaf Latte 2"], ["updated_at", "2014-12-15 20:35:51.383625"]]
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "categories_items" ("category_id", "item_id") VALUES ($1, $2)[0m  [["category_id", 1], ["item_id", 2]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mItem Exists (0.2ms)[0m  SELECT  1 AS one FROM "items"  WHERE "items"."title" = 'Decaf Espresso 3' LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "items" ("created_at", "description", "photo_content_type", "photo_file_size", "photo_updated_at", "price", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["created_at", "2014-12-15 20:35:51.399511"], ["description", "A classic coffee drink made with real craftsmanship"], ["photo_content_type", "image/png"], ["photo_file_size", 155], ["photo_updated_at", "2014-12-12 00:00:00.000000"], ["price", "44.35"], ["title", "Decaf Espresso 3"], ["updated_at", "2014-12-15 20:35:51.399511"]]
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "categories_items" ("category_id", "item_id") VALUES ($1, $2)  [["category_id", 1], ["item_id", 3]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mItem Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "items"  WHERE "items"."title" = 'Decaf Latte 4' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "items" ("created_at", "description", "photo_content_type", "photo_file_size", "photo_updated_at", "price", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"  [["created_at", "2014-12-15 20:35:51.405090"], ["description", "A classic coffee drink made with real craftsmanship"], ["photo_content_type", "image/png"], ["photo_file_size", 134], ["photo_updated_at", "2014-12-10 00:00:00.000000"], ["price", "66.86"], ["title", "Decaf Latte 4"], ["updated_at", "2014-12-15 20:35:51.405090"]]
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "categories_items" ("category_id", "item_id") VALUES ($1, $2)[0m  [["category_id", 1], ["item_id", 4]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mItem Exists (0.2ms)[0m  SELECT  1 AS one FROM "items"  WHERE "items"."title" = 'Tea Americano 5' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "items" ("created_at", "description", "photo_content_type", "photo_file_size", "photo_updated_at", "price", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["created_at", "2014-12-15 20:35:51.410380"], ["description", "A classic coffee drink made with real craftsmanship"], ["photo_content_type", "image/png"], ["photo_file_size", 610], ["photo_updated_at", "2014-12-08 00:00:00.000000"], ["price", "62.47"], ["title", "Tea Americano 5"], ["updated_at", "2014-12-15 20:35:51.410380"]]
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "categories_items" ("category_id", "item_id") VALUES ($1, $2)  [["category_id", 1], ["item_id", 5]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35mCategory Load (0.8ms)[0m  SELECT  "categories".* FROM "categories"   ORDER BY "categories"."id" DESC LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mItem Exists (0.3ms)[0m  SELECT  1 AS one FROM "items"  WHERE "items"."title" = 'Vanilla Brulee 1' LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "items" ("created_at", "description", "photo_content_type", "photo_file_size", "photo_updated_at", "price", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["created_at", "2014-12-15 20:35:51.420235"], ["description", "A classic coffee drink made with real craftsmanship"], ["photo_content_type", "image/png"], ["photo_file_size", 353], ["photo_updated_at", "2014-12-08 00:00:00.000000"], ["price", "62.23"], ["title", "Vanilla Brulee 1"], ["updated_at", "2014-12-15 20:35:51.420235"]]
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "categories_items" ("category_id", "item_id") VALUES ($1, $2)  [["category_id", 2], ["item_id", 6]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mItem Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "items"  WHERE "items"."title" = 'Mocha Savarin 2' LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "items" ("created_at", "description", "photo_content_type", "photo_file_size", "photo_updated_at", "price", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"  [["created_at", "2014-12-15 20:35:51.427071"], ["description", "A classic coffee drink made with real craftsmanship"], ["photo_content_type", "image/png"], ["photo_file_size", 131], ["photo_updated_at", "2014-12-14 00:00:00.000000"], ["price", "13.49"], ["title", "Mocha Savarin 2"], ["updated_at", "2014-12-15 20:35:51.427071"]]
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "categories_items" ("category_id", "item_id") VALUES ($1, $2)[0m  [["category_id", 2], ["item_id", 7]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mItem Exists (0.2ms)[0m  SELECT  1 AS one FROM "items"  WHERE "items"."title" = 'Lemon Tarte 3' LIMIT 1
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "items" ("created_at", "description", "photo_content_type", "photo_file_size", "photo_updated_at", "price", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["created_at", "2014-12-15 20:35:51.433427"], ["description", "A classic coffee drink made with real craftsmanship"], ["photo_content_type", "image/png"], ["photo_file_size", 751], ["photo_updated_at", "2014-12-13 00:00:00.000000"], ["price", "46.3"], ["title", "Lemon Tarte 3"], ["updated_at", "2014-12-15 20:35:51.433427"]]
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "categories_items" ("category_id", "item_id") VALUES ($1, $2)  [["category_id", 2], ["item_id", 8]]
+  [1m[36m (0.7ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36mItem Exists (0.5ms)[0m  [1mSELECT  1 AS one FROM "items"  WHERE "items"."title" = 'Vanilla Tarte 4' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "items" ("created_at", "description", "photo_content_type", "photo_file_size", "photo_updated_at", "price", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"  [["created_at", "2014-12-15 20:35:51.446648"], ["description", "A classic coffee drink made with real craftsmanship"], ["photo_content_type", "image/png"], ["photo_file_size", 469], ["photo_updated_at", "2014-12-14 00:00:00.000000"], ["price", "57.86"], ["title", "Vanilla Tarte 4"], ["updated_at", "2014-12-15 20:35:51.446648"]]
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "categories_items" ("category_id", "item_id") VALUES ($1, $2)[0m  [["category_id", 2], ["item_id", 9]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mItem Exists (0.2ms)[0m  SELECT  1 AS one FROM "items"  WHERE "items"."title" = 'Lemon Crepe 5' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "items" ("created_at", "description", "photo_content_type", "photo_file_size", "photo_updated_at", "price", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["created_at", "2014-12-15 20:35:51.452281"], ["description", "A classic coffee drink made with real craftsmanship"], ["photo_content_type", "image/png"], ["photo_file_size", 66], ["photo_updated_at", "2014-12-11 00:00:00.000000"], ["price", "8.02"], ["title", "Lemon Crepe 5"], ["updated_at", "2014-12-15 20:35:51.452281"]]
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "categories_items" ("category_id", "item_id") VALUES ($1, $2)  [["category_id", 2], ["item_id", 10]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mAddress Load (0.2ms)[0m  [1mSELECT  "addresses".* FROM "addresses"  WHERE "addresses"."user_id" = $1  ORDER BY "addresses"."id" ASC LIMIT 1[0m  [["user_id", 1]]
+  [1m[35mItem Load (0.2ms)[0m  SELECT "items".* FROM "items"
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mItem Exists (0.3ms)[0m  SELECT  1 AS one FROM "items"  WHERE ("items"."title" = 'Tea Americano 5' AND "items"."id" != 5) LIMIT 1
+  [1m[36mCategory Load (0.3ms)[0m  [1mSELECT "categories".* FROM "categories" INNER JOIN "categories_items" ON "categories"."id" = "categories_items"."category_id" WHERE "categories_items"."item_id" = $1[0m  [["item_id", 5]]
+  [1m[35mItem Exists (0.6ms)[0m  SELECT  1 AS one FROM "items"  WHERE ("items"."title" = 'Decaf Latte 4' AND "items"."id" != 4) LIMIT 1
+  [1m[36mCategory Load (0.8ms)[0m  [1mSELECT "categories".* FROM "categories" INNER JOIN "categories_items" ON "categories"."id" = "categories_items"."category_id" WHERE "categories_items"."item_id" = $1[0m  [["item_id", 4]]
+  [1m[35mItem Exists (0.7ms)[0m  SELECT  1 AS one FROM "items"  WHERE ("items"."title" = 'Decaf Espresso 3' AND "items"."id" != 3) LIMIT 1
+  [1m[36mCategory Load (0.7ms)[0m  [1mSELECT "categories".* FROM "categories" INNER JOIN "categories_items" ON "categories"."id" = "categories_items"."category_id" WHERE "categories_items"."item_id" = $1[0m  [["item_id", 3]]
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO "orders" ("address_id", "created_at", "delivery", "pending", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["address_id", 1], ["created_at", "2014-12-15 20:35:51.495004"], ["delivery", "t"], ["pending", "t"], ["updated_at", "2014-12-15 20:35:51.495004"], ["user_id", 1]]
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "items_orders" ("item_id", "order_id") VALUES ($1, $2)[0m  [["item_id", 5], ["order_id", 1]]
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "items_orders" ("item_id", "order_id") VALUES ($1, $2)  [["item_id", 4], ["order_id", 1]]
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "items_orders" ("item_id", "order_id") VALUES ($1, $2)[0m  [["item_id", 3], ["order_id", 1]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mAddress Load (0.2ms)[0m  SELECT  "addresses".* FROM "addresses"  WHERE "addresses"."user_id" = $1  ORDER BY "addresses"."id" ASC LIMIT 1  [["user_id", 1]]
+  [1m[36mItem Load (0.2ms)[0m  [1mSELECT "items".* FROM "items"[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mItem Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "items"  WHERE ("items"."title" = 'Decaf Espresso 3' AND "items"."id" != 3) LIMIT 1[0m
+  [1m[35mCategory Load (0.3ms)[0m  SELECT "categories".* FROM "categories" INNER JOIN "categories_items" ON "categories"."id" = "categories_items"."category_id" WHERE "categories_items"."item_id" = $1  [["item_id", 3]]
+  [1m[36mItem Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "items"  WHERE ("items"."title" = 'Vanilla Tarte 4' AND "items"."id" != 9) LIMIT 1[0m
+  [1m[35mCategory Load (0.3ms)[0m  SELECT "categories".* FROM "categories" INNER JOIN "categories_items" ON "categories"."id" = "categories_items"."category_id" WHERE "categories_items"."item_id" = $1  [["item_id", 9]]
+  [1m[36mItem Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "items"  WHERE ("items"."title" = 'Double Latte 1' AND "items"."id" != 1) LIMIT 1[0m
+  [1m[35mCategory Load (0.2ms)[0m  SELECT "categories".* FROM "categories" INNER JOIN "categories_items" ON "categories"."id" = "categories_items"."category_id" WHERE "categories_items"."item_id" = $1  [["item_id", 1]]
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "orders" ("address_id", "created_at", "delivery", "pending", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["address_id", 1], ["created_at", "2014-12-15 20:35:51.513583"], ["delivery", "t"], ["pending", "t"], ["updated_at", "2014-12-15 20:35:51.513583"], ["user_id", 1]]
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "items_orders" ("item_id", "order_id") VALUES ($1, $2)  [["item_id", 3], ["order_id", 2]]
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "items_orders" ("item_id", "order_id") VALUES ($1, $2)[0m  [["item_id", 9], ["order_id", 2]]
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "items_orders" ("item_id", "order_id") VALUES ($1, $2)  [["item_id", 1], ["order_id", 2]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35mItem Load (0.2ms)[0m  SELECT "items".* FROM "items"
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mItem Exists (0.2ms)[0m  SELECT  1 AS one FROM "items"  WHERE ("items"."title" = 'Mocha Savarin 2' AND "items"."id" != 7) LIMIT 1
+  [1m[36mCategory Load (0.1ms)[0m  [1mSELECT "categories".* FROM "categories" INNER JOIN "categories_items" ON "categories"."id" = "categories_items"."category_id" WHERE "categories_items"."item_id" = $1[0m  [["item_id", 7]]
+  [1m[35mItem Exists (0.2ms)[0m  SELECT  1 AS one FROM "items"  WHERE ("items"."title" = 'Decaf Latte 4' AND "items"."id" != 4) LIMIT 1
+  [1m[36mCategory Load (0.1ms)[0m  [1mSELECT "categories".* FROM "categories" INNER JOIN "categories_items" ON "categories"."id" = "categories_items"."category_id" WHERE "categories_items"."item_id" = $1[0m  [["item_id", 4]]
+  [1m[35mItem Exists (0.2ms)[0m  SELECT  1 AS one FROM "items"  WHERE ("items"."title" = 'Tea Americano 5' AND "items"."id" != 5) LIMIT 1
+  [1m[36mCategory Load (0.3ms)[0m  [1mSELECT "categories".* FROM "categories" INNER JOIN "categories_items" ON "categories"."id" = "categories_items"."category_id" WHERE "categories_items"."item_id" = $1[0m  [["item_id", 5]]
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "orders" ("created_at", "delivery", "pending", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["created_at", "2014-12-15 20:35:51.527229"], ["delivery", "f"], ["pending", "t"], ["updated_at", "2014-12-15 20:35:51.527229"], ["user_id", 3]]
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "items_orders" ("item_id", "order_id") VALUES ($1, $2)[0m  [["item_id", 7], ["order_id", 3]]
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "items_orders" ("item_id", "order_id") VALUES ($1, $2)  [["item_id", 4], ["order_id", 3]]
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "items_orders" ("item_id", "order_id") VALUES ($1, $2)[0m  [["item_id", 5], ["order_id", 3]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 3]]
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mAddress Load (0.2ms)[0m  [1mSELECT  "addresses".* FROM "addresses"  WHERE "addresses"."user_id" = $1  ORDER BY "addresses"."id" ASC LIMIT 1[0m  [["user_id", 1]]
+  [1m[35mItem Load (0.5ms)[0m  SELECT "items".* FROM "items"
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mItem Exists (0.4ms)[0m  SELECT  1 AS one FROM "items"  WHERE ("items"."title" = 'Mocha Savarin 2' AND "items"."id" != 7) LIMIT 1
+  [1m[36mCategory Load (0.3ms)[0m  [1mSELECT "categories".* FROM "categories" INNER JOIN "categories_items" ON "categories"."id" = "categories_items"."category_id" WHERE "categories_items"."item_id" = $1[0m  [["item_id", 7]]
+  [1m[35mItem Exists (0.3ms)[0m  SELECT  1 AS one FROM "items"  WHERE ("items"."title" = 'Decaf Espresso 3' AND "items"."id" != 3) LIMIT 1
+  [1m[36mCategory Load (0.2ms)[0m  [1mSELECT "categories".* FROM "categories" INNER JOIN "categories_items" ON "categories"."id" = "categories_items"."category_id" WHERE "categories_items"."item_id" = $1[0m  [["item_id", 3]]
+  [1m[35mItem Exists (0.3ms)[0m  SELECT  1 AS one FROM "items"  WHERE ("items"."title" = 'Lemon Crepe 5' AND "items"."id" != 10) LIMIT 1
+  [1m[36mCategory Load (0.2ms)[0m  [1mSELECT "categories".* FROM "categories" INNER JOIN "categories_items" ON "categories"."id" = "categories_items"."category_id" WHERE "categories_items"."item_id" = $1[0m  [["item_id", 10]]
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "orders" ("address_id", "created_at", "delivery", "pending", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["address_id", 1], ["created_at", "2014-12-15 20:35:51.549978"], ["delivery", "t"], ["pending", "f"], ["updated_at", "2014-12-15 20:35:51.549978"], ["user_id", 1]]
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "items_orders" ("item_id", "order_id") VALUES ($1, $2)[0m  [["item_id", 7], ["order_id", 4]]
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "items_orders" ("item_id", "order_id") VALUES ($1, $2)  [["item_id", 3], ["order_id", 4]]
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "items_orders" ("item_id", "order_id") VALUES ($1, $2)[0m  [["item_id", 10], ["order_id", 4]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 4]]
+  [1m[35mAddress Load (0.3ms)[0m  SELECT  "addresses".* FROM "addresses"  WHERE "addresses"."user_id" = $1  ORDER BY "addresses"."id" ASC LIMIT 1  [["user_id", 4]]
+  [1m[36mItem Load (0.3ms)[0m  [1mSELECT "items".* FROM "items"[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mItem Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "items"  WHERE ("items"."title" = 'Vanilla Tarte 4' AND "items"."id" != 9) LIMIT 1[0m
+  [1m[35mCategory Load (0.1ms)[0m  SELECT "categories".* FROM "categories" INNER JOIN "categories_items" ON "categories"."id" = "categories_items"."category_id" WHERE "categories_items"."item_id" = $1  [["item_id", 9]]
+  [1m[36mItem Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "items"  WHERE ("items"."title" = 'Mocha Savarin 2' AND "items"."id" != 7) LIMIT 1[0m
+  [1m[35mCategory Load (0.1ms)[0m  SELECT "categories".* FROM "categories" INNER JOIN "categories_items" ON "categories"."id" = "categories_items"."category_id" WHERE "categories_items"."item_id" = $1  [["item_id", 7]]
+  [1m[36mItem Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "items"  WHERE ("items"."title" = 'Tea Americano 5' AND "items"."id" != 5) LIMIT 1[0m
+  [1m[35mCategory Load (0.1ms)[0m  SELECT "categories".* FROM "categories" INNER JOIN "categories_items" ON "categories"."id" = "categories_items"."category_id" WHERE "categories_items"."item_id" = $1  [["item_id", 5]]
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "orders" ("address_id", "created_at", "delivery", "pending", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["address_id", 4], ["created_at", "2014-12-15 20:35:51.574798"], ["delivery", "t"], ["pending", "t"], ["updated_at", "2014-12-15 20:35:51.574798"], ["user_id", 4]]
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "items_orders" ("item_id", "order_id") VALUES ($1, $2)  [["item_id", 9], ["order_id", 5]]
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "items_orders" ("item_id", "order_id") VALUES ($1, $2)[0m  [["item_id", 7], ["order_id", 5]]
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "items_orders" ("item_id", "order_id") VALUES ($1, $2)  [["item_id", 5], ["order_id", 5]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35mItem Load (0.3ms)[0m  SELECT "items".* FROM "items"
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mItem Exists (0.2ms)[0m  SELECT  1 AS one FROM "items"  WHERE ("items"."title" = 'Lemon Crepe 5' AND "items"."id" != 10) LIMIT 1
+  [1m[36mCategory Load (0.1ms)[0m  [1mSELECT "categories".* FROM "categories" INNER JOIN "categories_items" ON "categories"."id" = "categories_items"."category_id" WHERE "categories_items"."item_id" = $1[0m  [["item_id", 10]]
+  [1m[35mItem Exists (0.2ms)[0m  SELECT  1 AS one FROM "items"  WHERE ("items"."title" = 'Decaf Latte 2' AND "items"."id" != 2) LIMIT 1
+  [1m[36mCategory Load (0.1ms)[0m  [1mSELECT "categories".* FROM "categories" INNER JOIN "categories_items" ON "categories"."id" = "categories_items"."category_id" WHERE "categories_items"."item_id" = $1[0m  [["item_id", 2]]
+  [1m[35mItem Exists (0.2ms)[0m  SELECT  1 AS one FROM "items"  WHERE ("items"."title" = 'Vanilla Tarte 4' AND "items"."id" != 9) LIMIT 1
+  [1m[36mCategory Load (0.1ms)[0m  [1mSELECT "categories".* FROM "categories" INNER JOIN "categories_items" ON "categories"."id" = "categories_items"."category_id" WHERE "categories_items"."item_id" = $1[0m  [["item_id", 9]]
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "orders" ("created_at", "delivery", "pending", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["created_at", "2014-12-15 20:35:51.588020"], ["delivery", "f"], ["pending", "f"], ["updated_at", "2014-12-15 20:35:51.588020"], ["user_id", 3]]
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "items_orders" ("item_id", "order_id") VALUES ($1, $2)[0m  [["item_id", 10], ["order_id", 6]]
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "items_orders" ("item_id", "order_id") VALUES ($1, $2)  [["item_id", 2], ["order_id", 6]]
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "items_orders" ("item_id", "order_id") VALUES ($1, $2)[0m  [["item_id", 9], ["order_id", 6]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 3]]
+  [1m[35mItem Load (0.2ms)[0m  SELECT "items".* FROM "items"
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mItem Exists (0.5ms)[0m  SELECT  1 AS one FROM "items"  WHERE ("items"."title" = 'Mocha Savarin 2' AND "items"."id" != 7) LIMIT 1
+  [1m[36mCategory Load (0.2ms)[0m  [1mSELECT "categories".* FROM "categories" INNER JOIN "categories_items" ON "categories"."id" = "categories_items"."category_id" WHERE "categories_items"."item_id" = $1[0m  [["item_id", 7]]
+  [1m[35mItem Exists (0.4ms)[0m  SELECT  1 AS one FROM "items"  WHERE ("items"."title" = 'Decaf Espresso 3' AND "items"."id" != 3) LIMIT 1
+  [1m[36mCategory Load (0.2ms)[0m  [1mSELECT "categories".* FROM "categories" INNER JOIN "categories_items" ON "categories"."id" = "categories_items"."category_id" WHERE "categories_items"."item_id" = $1[0m  [["item_id", 3]]
+  [1m[35mItem Exists (0.3ms)[0m  SELECT  1 AS one FROM "items"  WHERE ("items"."title" = 'Vanilla Brulee 1' AND "items"."id" != 6) LIMIT 1
+  [1m[36mCategory Load (0.1ms)[0m  [1mSELECT "categories".* FROM "categories" INNER JOIN "categories_items" ON "categories"."id" = "categories_items"."category_id" WHERE "categories_items"."item_id" = $1[0m  [["item_id", 6]]
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "orders" ("created_at", "delivery", "pending", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["created_at", "2014-12-15 20:35:51.606677"], ["delivery", "f"], ["pending", "t"], ["updated_at", "2014-12-15 20:35:51.606677"], ["user_id", 3]]
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "items_orders" ("item_id", "order_id") VALUES ($1, $2)[0m  [["item_id", 7], ["order_id", 7]]
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "items_orders" ("item_id", "order_id") VALUES ($1, $2)  [["item_id", 3], ["order_id", 7]]
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "items_orders" ("item_id", "order_id") VALUES ($1, $2)[0m  [["item_id", 6], ["order_id", 7]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 3]]
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mAddress Load (0.2ms)[0m  [1mSELECT  "addresses".* FROM "addresses"  WHERE "addresses"."user_id" = $1  ORDER BY "addresses"."id" ASC LIMIT 1[0m  [["user_id", 1]]
+  [1m[35mItem Load (0.2ms)[0m  SELECT "items".* FROM "items"
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35mItem Exists (0.7ms)[0m  SELECT  1 AS one FROM "items"  WHERE ("items"."title" = 'Lemon Crepe 5' AND "items"."id" != 10) LIMIT 1
+  [1m[36mCategory Load (0.5ms)[0m  [1mSELECT "categories".* FROM "categories" INNER JOIN "categories_items" ON "categories"."id" = "categories_items"."category_id" WHERE "categories_items"."item_id" = $1[0m  [["item_id", 10]]
+  [1m[35mItem Exists (0.6ms)[0m  SELECT  1 AS one FROM "items"  WHERE ("items"."title" = 'Vanilla Brulee 1' AND "items"."id" != 6) LIMIT 1
+  [1m[36mCategory Load (0.5ms)[0m  [1mSELECT "categories".* FROM "categories" INNER JOIN "categories_items" ON "categories"."id" = "categories_items"."category_id" WHERE "categories_items"."item_id" = $1[0m  [["item_id", 6]]
+  [1m[35mItem Exists (0.3ms)[0m  SELECT  1 AS one FROM "items"  WHERE ("items"."title" = 'Decaf Latte 4' AND "items"."id" != 4) LIMIT 1
+  [1m[36mCategory Load (0.1ms)[0m  [1mSELECT "categories".* FROM "categories" INNER JOIN "categories_items" ON "categories"."id" = "categories_items"."category_id" WHERE "categories_items"."item_id" = $1[0m  [["item_id", 4]]
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "orders" ("address_id", "created_at", "delivery", "pending", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["address_id", 1], ["created_at", "2014-12-15 20:35:51.632551"], ["delivery", "t"], ["pending", "f"], ["updated_at", "2014-12-15 20:35:51.632551"], ["user_id", 1]]
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "items_orders" ("item_id", "order_id") VALUES ($1, $2)[0m  [["item_id", 10], ["order_id", 8]]
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "items_orders" ("item_id", "order_id") VALUES ($1, $2)  [["item_id", 6], ["order_id", 8]]
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "items_orders" ("item_id", "order_id") VALUES ($1, $2)[0m  [["item_id", 4], ["order_id", 8]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mAddress Load (0.3ms)[0m  SELECT  "addresses".* FROM "addresses"  WHERE "addresses"."user_id" = $1  ORDER BY "addresses"."id" ASC LIMIT 1  [["user_id", 1]]
+  [1m[36mItem Load (0.4ms)[0m  [1mSELECT "items".* FROM "items"[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mItem Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "items"  WHERE ("items"."title" = 'Tea Americano 5' AND "items"."id" != 5) LIMIT 1[0m
+  [1m[35mCategory Load (0.1ms)[0m  SELECT "categories".* FROM "categories" INNER JOIN "categories_items" ON "categories"."id" = "categories_items"."category_id" WHERE "categories_items"."item_id" = $1  [["item_id", 5]]
+  [1m[36mItem Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "items"  WHERE ("items"."title" = 'Vanilla Brulee 1' AND "items"."id" != 6) LIMIT 1[0m
+  [1m[35mCategory Load (0.3ms)[0m  SELECT "categories".* FROM "categories" INNER JOIN "categories_items" ON "categories"."id" = "categories_items"."category_id" WHERE "categories_items"."item_id" = $1  [["item_id", 6]]
+  [1m[36mItem Exists (0.5ms)[0m  [1mSELECT  1 AS one FROM "items"  WHERE ("items"."title" = 'Double Latte 1' AND "items"."id" != 1) LIMIT 1[0m
+  [1m[35mCategory Load (0.2ms)[0m  SELECT "categories".* FROM "categories" INNER JOIN "categories_items" ON "categories"."id" = "categories_items"."category_id" WHERE "categories_items"."item_id" = $1  [["item_id", 1]]
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "orders" ("address_id", "created_at", "delivery", "pending", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["address_id", 1], ["created_at", "2014-12-15 20:35:51.652008"], ["delivery", "t"], ["pending", "t"], ["updated_at", "2014-12-15 20:35:51.652008"], ["user_id", 1]]
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "items_orders" ("item_id", "order_id") VALUES ($1, $2)  [["item_id", 5], ["order_id", 9]]
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "items_orders" ("item_id", "order_id") VALUES ($1, $2)[0m  [["item_id", 6], ["order_id", 9]]
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "items_orders" ("item_id", "order_id") VALUES ($1, $2)  [["item_id", 1], ["order_id", 9]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35mItem Load (0.2ms)[0m  SELECT "items".* FROM "items"
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mItem Exists (0.2ms)[0m  SELECT  1 AS one FROM "items"  WHERE ("items"."title" = 'Vanilla Brulee 1' AND "items"."id" != 6) LIMIT 1
+  [1m[36mCategory Load (0.2ms)[0m  [1mSELECT "categories".* FROM "categories" INNER JOIN "categories_items" ON "categories"."id" = "categories_items"."category_id" WHERE "categories_items"."item_id" = $1[0m  [["item_id", 6]]
+  [1m[35mItem Exists (0.2ms)[0m  SELECT  1 AS one FROM "items"  WHERE ("items"."title" = 'Lemon Tarte 3' AND "items"."id" != 8) LIMIT 1
+  [1m[36mCategory Load (0.6ms)[0m  [1mSELECT "categories".* FROM "categories" INNER JOIN "categories_items" ON "categories"."id" = "categories_items"."category_id" WHERE "categories_items"."item_id" = $1[0m  [["item_id", 8]]
+  [1m[35mItem Exists (0.9ms)[0m  SELECT  1 AS one FROM "items"  WHERE ("items"."title" = 'Mocha Savarin 2' AND "items"."id" != 7) LIMIT 1
+  [1m[36mCategory Load (0.4ms)[0m  [1mSELECT "categories".* FROM "categories" INNER JOIN "categories_items" ON "categories"."id" = "categories_items"."category_id" WHERE "categories_items"."item_id" = $1[0m  [["item_id", 7]]
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "orders" ("created_at", "delivery", "pending", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["created_at", "2014-12-15 20:35:51.673900"], ["delivery", "f"], ["pending", "f"], ["updated_at", "2014-12-15 20:35:51.673900"], ["user_id", 2]]
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "items_orders" ("item_id", "order_id") VALUES ($1, $2)[0m  [["item_id", 6], ["order_id", 10]]
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "items_orders" ("item_id", "order_id") VALUES ($1, $2)  [["item_id", 8], ["order_id", 10]]
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "items_orders" ("item_id", "order_id") VALUES ($1, $2)[0m  [["item_id", 7], ["order_id", 10]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 2]]
+
+
+Started GET "/" for 127.0.0.1 at 2014-12-15 13:36:25 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by PagesController#index as HTML
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" IS NULL LIMIT 1
+  Rendered pages/index.html.erb within layouts/application (11.0ms)
+  Rendered layouts/_notices.html.erb (0.6ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" IS NULL LIMIT 1[0m
+  Rendered layouts/_header.html.erb (1.7ms)
+Completed 200 OK in 637ms (Views: 626.1ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/assets/bootstrap.min.css?body=1" for 127.0.0.1 at 2014-12-15 13:36:26 -0700
+
+
+Started GET "/assets/homepage.css?body=1" for 127.0.0.1 at 2014-12-15 13:36:26 -0700
+
+
+Started GET "/assets/items.css?body=1" for 127.0.0.1 at 2014-12-15 13:36:26 -0700
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-12-15 13:36:26 -0700
+
+
+Started GET "/assets/jquery.turbolinks.js?body=1" for 127.0.0.1 at 2014-12-15 13:36:26 -0700
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-12-15 13:36:26 -0700
+
+
+Started GET "/assets/orders.css?body=1" for 127.0.0.1 at 2014-12-15 13:36:26 -0700
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-12-15 13:36:26 -0700
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-12-15 13:36:26 -0700
+
+
+Started GET "/assets/address.js?body=1" for 127.0.0.1 at 2014-12-15 13:36:26 -0700
+
+
+Started GET "/assets/carts.js?body=1" for 127.0.0.1 at 2014-12-15 13:36:26 -0700
+
+
+Started GET "/assets/orders.js?body=1" for 127.0.0.1 at 2014-12-15 13:36:26 -0700
+
+
+Started GET "/assets/bootstrap.min.js?body=1" for 127.0.0.1 at 2014-12-15 13:36:26 -0700
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-12-15 13:36:26 -0700
+
+
+Started GET "/assets/allthecoffee.gif" for 127.0.0.1 at 2014-12-15 13:36:26 -0700
+
+
+Started GET "/assets/GeosansLight.ttf" for 127.0.0.1 at 2014-12-15 13:36:26 -0700
+
+
+Started GET "/assets/glyphicons-halflings-regular.ttf" for 127.0.0.1 at 2014-12-15 13:36:26 -0700
+
+
+Started GET "/assets/Channel.ttf" for 127.0.0.1 at 2014-12-15 13:36:26 -0700
+
+
+Started GET "/assets/favicon.ico" for 127.0.0.1 at 2014-12-15 13:36:26 -0700
+
+
+Started GET "/" for 127.0.0.1 at 2014-12-15 14:46:54 -0700
+Processing by PagesController#index as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" IS NULL LIMIT 1
+  Rendered pages/index.html.erb within layouts/application (1.3ms)
+  Rendered layouts/_notices.html.erb (0.1ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" IS NULL LIMIT 1[0m
+  Rendered layouts/_header.html.erb (0.7ms)
+Completed 200 OK in 120ms (Views: 119.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/bootstrap.min.css?body=1" for 127.0.0.1 at 2014-12-15 14:46:54 -0700
+
+
+Started GET "/assets/orders.css?body=1" for 127.0.0.1 at 2014-12-15 14:46:54 -0700
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-12-15 14:46:54 -0700
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-12-15 14:46:54 -0700
+
+
+Started GET "/assets/items.css?body=1" for 127.0.0.1 at 2014-12-15 14:46:54 -0700
+
+
+Started GET "/assets/homepage.css?body=1" for 127.0.0.1 at 2014-12-15 14:46:54 -0700
+
+
+Started GET "/assets/jquery.turbolinks.js?body=1" for 127.0.0.1 at 2014-12-15 14:46:54 -0700
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-12-15 14:46:54 -0700
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-12-15 14:46:54 -0700
+
+
+Started GET "/assets/address.js?body=1" for 127.0.0.1 at 2014-12-15 14:46:54 -0700
+
+
+Started GET "/assets/carts.js?body=1" for 127.0.0.1 at 2014-12-15 14:46:54 -0700
+
+
+Started GET "/assets/orders.js?body=1" for 127.0.0.1 at 2014-12-15 14:46:54 -0700
+
+
+Started GET "/assets/bootstrap.min.js?body=1" for 127.0.0.1 at 2014-12-15 14:46:54 -0700
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-12-15 14:46:54 -0700
+
+
+Started GET "/assets/allthecoffee.gif" for 127.0.0.1 at 2014-12-15 14:46:54 -0700
+
+
+Started GET "/assets/GeosansLight.ttf" for 127.0.0.1 at 2014-12-15 14:46:54 -0700
+
+
+Started GET "/assets/glyphicons-halflings-regular.ttf" for 127.0.0.1 at 2014-12-15 14:46:54 -0700
+
+
+Started GET "/assets/Channel.ttf" for 127.0.0.1 at 2014-12-15 14:46:54 -0700
+
+
+Started GET "/items" for 127.0.0.1 at 2014-12-15 14:47:06 -0700
+Processing by ItemsController#index as HTML
+  [1m[35mItem Load (2.2ms)[0m  SELECT "items".* FROM "items" INNER JOIN "categories_items" ON "categories_items"."item_id" = "items"."id" INNER JOIN "categories" ON "categories"."id" = "categories_items"."category_id" WHERE "items"."active" = 't' AND "categories"."name" = 'drinks'
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" IS NULL LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" IS NULL LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" IS NULL LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" IS NULL LIMIT 1
+  [1m[36mCACHE (0.1ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" IS NULL LIMIT 1[0m
+  Rendered items/_item.html.erb (13.1ms)
+  [1m[35mItem Load (0.6ms)[0m  SELECT "items".* FROM "items" INNER JOIN "categories_items" ON "categories_items"."item_id" = "items"."id" INNER JOIN "categories" ON "categories"."id" = "categories_items"."category_id" WHERE "items"."active" = 't' AND "categories"."name" = 'eats'
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" IS NULL LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" IS NULL LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" IS NULL LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" IS NULL LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" IS NULL LIMIT 1[0m
+  Rendered items/_item.html.erb (13.4ms)
+  Rendered items/index.html.erb within layouts/application (61.9ms)
+  Rendered layouts/_notices.html.erb (0.4ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" IS NULL LIMIT 1
+  Rendered layouts/_header.html.erb (1.2ms)
+Completed 200 OK in 202ms (Views: 181.0ms | ActiveRecord: 7.2ms)
+
+
+Started GET "/items" for 127.0.0.1 at 2014-12-15 14:47:19 -0700
+Processing by ItemsController#index as HTML
+  [1m[36mItem Load (0.5ms)[0m  [1mSELECT "items".* FROM "items" INNER JOIN "categories_items" ON "categories_items"."item_id" = "items"."id" INNER JOIN "categories" ON "categories"."id" = "categories_items"."category_id" WHERE "items"."active" = 't' AND "categories"."name" = 'drinks'[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" IS NULL LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" IS NULL LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" IS NULL LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" IS NULL LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" IS NULL LIMIT 1
+  Rendered items/_item.html.erb (9.2ms)
+  [1m[36mItem Load (0.7ms)[0m  [1mSELECT "items".* FROM "items" INNER JOIN "categories_items" ON "categories_items"."item_id" = "items"."id" INNER JOIN "categories" ON "categories"."id" = "categories_items"."category_id" WHERE "items"."active" = 't' AND "categories"."name" = 'eats'[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" IS NULL LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" IS NULL LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" IS NULL LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" IS NULL LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" IS NULL LIMIT 1
+  Rendered items/_item.html.erb (8.0ms)
+  Rendered items/index.html.erb within layouts/application (22.7ms)
+  Rendered layouts/_notices.html.erb (0.1ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" IS NULL LIMIT 1[0m
+  Rendered layouts/_header.html.erb (0.7ms)
+Completed 200 OK in 129ms (Views: 126.5ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/cart_items" for 127.0.0.1 at 2014-12-15 14:47:39 -0700
+Processing by CartItemsController#index as HTML
+  Rendered cart_items/index.html.erb within layouts/application (0.7ms)
+  Rendered layouts/_notices.html.erb (0.1ms)
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" IS NULL LIMIT 1
+  Rendered layouts/_header.html.erb (1.1ms)
+Completed 200 OK in 110ms (Views: 109.0ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/orders/new" for 127.0.0.1 at 2014-12-15 14:47:40 -0700
+Processing by OrdersController#new as HTML
+  [1m[36mUser Load (0.8ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" IS NULL LIMIT 1[0m
+Redirected to http://localhost:3000/login
+Completed 302 Found in 5ms (ActiveRecord: 0.8ms)
+
+
+Started GET "/login" for 127.0.0.1 at 2014-12-15 14:47:40 -0700
+Processing by SessionsController#new as HTML
+  Rendered sessions/new.html.erb within layouts/application (323.7ms)
+  Rendered layouts/_notices.html.erb (0.2ms)
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" IS NULL LIMIT 1
+  Rendered layouts/_header.html.erb (1.8ms)
+Completed 200 OK in 505ms (Views: 498.1ms | ActiveRecord: 3.7ms)
+
+
+Started POST "/cart_items?item_id=6" for 127.0.0.1 at 2014-12-15 14:47:58 -0700
+Processing by CartItemsController#create as HTML
+  Parameters: {"authenticity_token"=>"A+axvCCvZWlw/9VK+mNTcRk0jXUg9BHYDvnjj34h3sE=", "item_id"=>"6"}
+  [1m[36mItem Load (0.2ms)[0m  [1mSELECT  "items".* FROM "items"  WHERE "items"."id" = $1 LIMIT 1[0m  [["id", 6]]
+Redirected to http://localhost:3000/items
+Completed 302 Found in 3ms (ActiveRecord: 0.4ms)
+
+
+Started GET "/items" for 127.0.0.1 at 2014-12-15 14:47:58 -0700
+Processing by ItemsController#index as HTML
+  [1m[35mItem Load (0.6ms)[0m  SELECT "items".* FROM "items" INNER JOIN "categories_items" ON "categories_items"."item_id" = "items"."id" INNER JOIN "categories" ON "categories"."id" = "categories_items"."category_id" WHERE "items"."active" = 't' AND "categories"."name" = 'drinks'
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" IS NULL LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" IS NULL LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" IS NULL LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" IS NULL LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" IS NULL LIMIT 1[0m
+  Rendered items/_item.html.erb (10.5ms)
+  [1m[35mItem Load (0.6ms)[0m  SELECT "items".* FROM "items" INNER JOIN "categories_items" ON "categories_items"."item_id" = "items"."id" INNER JOIN "categories" ON "categories"."id" = "categories_items"."category_id" WHERE "items"."active" = 't' AND "categories"."name" = 'eats'
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" IS NULL LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" IS NULL LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" IS NULL LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" IS NULL LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" IS NULL LIMIT 1[0m
+  Rendered items/_item.html.erb (8.4ms)
+  Rendered items/index.html.erb within layouts/application (25.7ms)
+  Rendered layouts/_notices.html.erb (0.1ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" IS NULL LIMIT 1
+  Rendered layouts/_header.html.erb (0.8ms)
+Completed 200 OK in 136ms (Views: 133.3ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/assets/bootstrap.min.css?body=1" for 127.0.0.1 at 2014-12-15 14:47:59 -0700
+
+
+Started GET "/assets/orders.css?body=1" for 127.0.0.1 at 2014-12-15 14:47:59 -0700
+
+
+Started GET "/assets/homepage.css?body=1" for 127.0.0.1 at 2014-12-15 14:47:59 -0700
+
+
+Started GET "/assets/items.css?body=1" for 127.0.0.1 at 2014-12-15 14:47:59 -0700
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-12-15 14:47:59 -0700
+
+
+Started GET "/assets/jquery.turbolinks.js?body=1" for 127.0.0.1 at 2014-12-15 14:47:59 -0700
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-12-15 14:47:59 -0700
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-12-15 14:47:59 -0700
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-12-15 14:47:59 -0700
+
+
+Started GET "/assets/address.js?body=1" for 127.0.0.1 at 2014-12-15 14:47:59 -0700
+
+
+Started GET "/assets/carts.js?body=1" for 127.0.0.1 at 2014-12-15 14:47:59 -0700
+
+
+Started GET "/assets/orders.js?body=1" for 127.0.0.1 at 2014-12-15 14:47:59 -0700
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-12-15 14:47:59 -0700
+
+
+Started GET "/assets/bootstrap.min.js?body=1" for 127.0.0.1 at 2014-12-15 14:47:59 -0700
+
+
+Started GET "/assets/GeosansLight.ttf" for 127.0.0.1 at 2014-12-15 14:47:59 -0700
+
+
+Started GET "/assets/glyphicons-halflings-regular.ttf" for 127.0.0.1 at 2014-12-15 14:47:59 -0700
+
+
+Started GET "/assets/Channel.ttf" for 127.0.0.1 at 2014-12-15 14:47:59 -0700
+
+
+Started GET "/cart_items" for 127.0.0.1 at 2014-12-15 14:48:03 -0700
+Processing by CartItemsController#index as HTML
+  [1m[36mItem Load (0.4ms)[0m  [1mSELECT  "items".* FROM "items"  WHERE "items"."id" = $1 LIMIT 1[0m  [["id", 6]]
+  Rendered cart_items/index.html.erb within layouts/application (0.5ms)
+  Rendered layouts/_notices.html.erb (0.1ms)
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" IS NULL LIMIT 1
+  Rendered layouts/_header.html.erb (1.1ms)
+Completed 200 OK in 111ms (Views: 109.1ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/orders/new" for 127.0.0.1 at 2014-12-15 14:48:04 -0700
+Processing by OrdersController#new as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" IS NULL LIMIT 1[0m
+Redirected to http://localhost:3000/login
+Completed 302 Found in 5ms (ActiveRecord: 0.6ms)
+
+
+Started GET "/login" for 127.0.0.1 at 2014-12-15 14:48:04 -0700
+Processing by SessionsController#new as HTML
+  Rendered sessions/new.html.erb within layouts/application (1.9ms)
+  Rendered layouts/_notices.html.erb (0.1ms)
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" IS NULL LIMIT 1
+  Rendered layouts/_header.html.erb (1.0ms)
+Completed 200 OK in 182ms (Views: 180.2ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/login" for 127.0.0.1 at 2014-12-15 14:48:51 -0700
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"A+axvCCvZWlw/9VK+mNTcRk0jXUg9BHYDvnjj34h3sE=", "user"=>{"email"=>"demo+josh@jumpstartlab.com", "password"=>"[FILTERED]"}, "commit"=>"Login"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."email" = 'demo+josh@jumpstartlab.com' LIMIT 1[0m
+Redirected to http://localhost:3000/users/4
+Completed 302 Found in 77ms (ActiveRecord: 0.3ms)
+
+
+Started GET "/users/4" for 127.0.0.1 at 2014-12-15 14:48:51 -0700
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1  [["id", 4]]
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = 4 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1  [["id", "4"]]
+  Rendered users/_user_info.html.erb (0.5ms)
+  [1m[36mAddress Load (0.3ms)[0m  [1mSELECT "addresses".* FROM "addresses"  WHERE "addresses"."user_id" = $1[0m  [["user_id", 4]]
+  Rendered addresses/_address.html.erb (0.6ms)
+  Rendered addresses/_multiple.html.erb (10.4ms)
+  [1m[35mOrder Load (1.4ms)[0m  SELECT "orders".* FROM "orders"  WHERE "orders"."user_id" = $1  [["user_id", 4]]
+  [1m[36mAddress Load (0.2ms)[0m  [1mSELECT  "addresses".* FROM "addresses"  WHERE "addresses"."id" = $1 LIMIT 1[0m  [["id", 4]]
+  [1m[35mItem Load (0.4ms)[0m  SELECT "items".* FROM "items" INNER JOIN "items_orders" ON "items"."id" = "items_orders"."item_id" WHERE "items_orders"."order_id" = $1  [["order_id", 5]]
+  Rendered orders/_order.html.erb (11.6ms)
+  Rendered users/show.html.erb within layouts/application (52.6ms)
+  Rendered layouts/_notices.html.erb (0.1ms)
+  Rendered layouts/_header.html.erb (0.4ms)
+Completed 200 OK in 168ms (Views: 159.1ms | ActiveRecord: 6.8ms)
+
+
+Started GET "/assets/bootstrap.min.css?body=1" for 127.0.0.1 at 2014-12-15 14:48:51 -0700
+
+
+Started GET "/assets/orders.css?body=1" for 127.0.0.1 at 2014-12-15 14:48:51 -0700
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-12-15 14:48:51 -0700
+
+
+Started GET "/assets/jquery.turbolinks.js?body=1" for 127.0.0.1 at 2014-12-15 14:48:51 -0700
+
+
+Started GET "/assets/items.css?body=1" for 127.0.0.1 at 2014-12-15 14:48:51 -0700
+
+
+Started GET "/assets/homepage.css?body=1" for 127.0.0.1 at 2014-12-15 14:48:51 -0700
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-12-15 14:48:51 -0700
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-12-15 14:48:51 -0700
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-12-15 14:48:51 -0700
+
+
+Started GET "/assets/address.js?body=1" for 127.0.0.1 at 2014-12-15 14:48:51 -0700
+
+
+Started GET "/assets/carts.js?body=1" for 127.0.0.1 at 2014-12-15 14:48:51 -0700
+
+
+Started GET "/assets/orders.js?body=1" for 127.0.0.1 at 2014-12-15 14:48:51 -0700
+
+
+Started GET "/assets/bootstrap.min.js?body=1" for 127.0.0.1 at 2014-12-15 14:48:51 -0700
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-12-15 14:48:51 -0700
+
+
+Started GET "/assets/glyphicons-halflings-regular.ttf" for 127.0.0.1 at 2014-12-15 14:48:52 -0700
+
+
+Started GET "/assets/Channel.ttf" for 127.0.0.1 at 2014-12-15 14:48:52 -0700
+
+
+Started GET "/assets/GeosansLight.ttf" for 127.0.0.1 at 2014-12-15 14:48:52 -0700
+
+
+Started GET "/cart_items" for 127.0.0.1 at 2014-12-15 14:49:00 -0700
+Processing by CartItemsController#index as HTML
+  [1m[36mItem Load (0.3ms)[0m  [1mSELECT  "items".* FROM "items"  WHERE "items"."id" = $1 LIMIT 1[0m  [["id", 6]]
+  Rendered cart_items/index.html.erb within layouts/application (0.5ms)
+  Rendered layouts/_notices.html.erb (0.1ms)
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = 4 LIMIT 1
+  Rendered layouts/_header.html.erb (1.4ms)
+Completed 200 OK in 112ms (Views: 110.1ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/items/6" for 127.0.0.1 at 2014-12-15 14:49:02 -0700
+Processing by ItemsController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mItem Load (0.2ms)[0m  [1mSELECT  "items".* FROM "items"  WHERE "items"."id" = $1 LIMIT 1[0m  [["id", 6]]
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = 4 LIMIT 1
+  Rendered items/_item.html.erb (3.4ms)
+  Rendered items/show.html.erb within layouts/application (4.5ms)
+  Rendered layouts/_notices.html.erb (0.1ms)
+  Rendered layouts/_header.html.erb (0.5ms)
+Completed 200 OK in 125ms (Views: 123.6ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/orders/new" for 127.0.0.1 at 2014-12-15 14:49:06 -0700
+Processing by OrdersController#new as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = 4 LIMIT 1[0m
+  [1m[35mItem Load (0.7ms)[0m  SELECT  "items".* FROM "items"  WHERE "items"."id" = $1 LIMIT 1  [["id", 6]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "items".* FROM "items"  WHERE "items"."id" = $1 LIMIT 1[0m  [["id", "6"]]
+  [1m[35mAddress Load (0.3ms)[0m  SELECT "addresses".* FROM "addresses"  WHERE "addresses"."user_id" = $1  [["user_id", 4]]
+  Rendered orders/new.html.erb within layouts/application (10.2ms)
+  Rendered layouts/_notices.html.erb (0.1ms)
+  Rendered layouts/_header.html.erb (0.5ms)
+Completed 200 OK in 190ms (Views: 185.8ms | ActiveRecord: 1.4ms)
+
+
+Started POST "/orders" for 127.0.0.1 at 2014-12-15 14:49:18 -0700
+Processing by OrdersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"A+axvCCvZWlw/9VK+mNTcRk0jXUg9BHYDvnjj34h3sE=", "order"=>{"delivery"=>"0", "address_id"=>"4"}, "commit"=>"Submit Order"}
+  [1m[36mItem Load (0.4ms)[0m  [1mSELECT  "items".* FROM "items"  WHERE "items"."id" = $1 LIMIT 1[0m  [["id", 6]]
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mItem Exists (0.6ms)[0m  [1mSELECT  1 AS one FROM "items"  WHERE ("items"."title" = 'Vanilla Brulee 1' AND "items"."id" != 6) LIMIT 1[0m
+  [1m[35mCategory Load (0.7ms)[0m  SELECT "categories".* FROM "categories" INNER JOIN "categories_items" ON "categories"."id" = "categories_items"."category_id" WHERE "categories_items"."item_id" = $1  [["item_id", 6]]
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "orders" ("created_at", "delivery", "pending", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["created_at", "2014-12-15 21:49:18.536042"], ["delivery", "f"], ["pending", "t"], ["updated_at", "2014-12-15 21:49:18.536042"]]
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "items_orders" ("item_id", "order_id") VALUES ($1, $2)  [["item_id", 6], ["order_id", 11]]
+  [1m[36m (0.7ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/charges/new
+Completed 302 Found in 38ms (ActiveRecord: 7.6ms)
+
+
+Started GET "/charges/new" for 127.0.0.1 at 2014-12-15 14:49:18 -0700
+Processing by ChargesController#new as HTML
+  [1m[35mOrder Load (0.4ms)[0m  SELECT  "orders".* FROM "orders"  WHERE "orders"."id" = 11 LIMIT 1
+  [1m[36mItem Load (0.4ms)[0m  [1mSELECT "items".* FROM "items" INNER JOIN "items_orders" ON "items"."id" = "items_orders"."item_id" WHERE "items_orders"."order_id" = $1[0m  [["order_id", 11]]
+  Rendered charges/new.html.erb within layouts/application (6.1ms)
+  Rendered layouts/_notices.html.erb (0.1ms)
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = 4 LIMIT 1
+  Rendered layouts/_header.html.erb (1.7ms)
+Completed 200 OK in 184ms (Views: 178.8ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/assets/homepage.css?body=1" for 127.0.0.1 at 2014-12-15 14:49:18 -0700
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-12-15 14:49:18 -0700
+
+
+Started GET "/assets/bootstrap.min.css?body=1" for 127.0.0.1 at 2014-12-15 14:49:18 -0700
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-12-15 14:49:18 -0700
+
+
+Started GET "/assets/orders.css?body=1" for 127.0.0.1 at 2014-12-15 14:49:19 -0700
+
+
+Started GET "/assets/items.css?body=1" for 127.0.0.1 at 2014-12-15 14:49:19 -0700
+
+
+Started GET "/assets/jquery.turbolinks.js?body=1" for 127.0.0.1 at 2014-12-15 14:49:19 -0700
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-12-15 14:49:19 -0700
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-12-15 14:49:19 -0700
+
+
+Started GET "/assets/address.js?body=1" for 127.0.0.1 at 2014-12-15 14:49:19 -0700
+
+
+Started GET "/assets/carts.js?body=1" for 127.0.0.1 at 2014-12-15 14:49:19 -0700
+
+
+Started GET "/assets/orders.js?body=1" for 127.0.0.1 at 2014-12-15 14:49:19 -0700
+
+
+Started GET "/assets/bootstrap.min.js?body=1" for 127.0.0.1 at 2014-12-15 14:49:19 -0700
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-12-15 14:49:19 -0700
+
+
+Started GET "/assets/GeosansLight.ttf" for 127.0.0.1 at 2014-12-15 14:49:19 -0700
+
+
+Started GET "/assets/glyphicons-halflings-regular.ttf" for 127.0.0.1 at 2014-12-15 14:49:19 -0700
+
+
+Started GET "/assets/Channel.ttf" for 127.0.0.1 at 2014-12-15 14:49:19 -0700
+
+
+Started GET "/" for 127.0.0.1 at 2014-12-15 14:50:10 -0700
+Processing by PagesController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = 4 LIMIT 1[0m
+  Rendered pages/index.html.erb within layouts/application (1.9ms)
+  Rendered layouts/_notices.html.erb (0.1ms)
+  Rendered layouts/_header.html.erb (0.4ms)
+Completed 200 OK in 118ms (Views: 117.4ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/allthecoffee.gif" for 127.0.0.1 at 2014-12-15 14:50:10 -0700
