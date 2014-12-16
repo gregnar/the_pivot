@@ -885,3 +885,178 @@ Completed 200 OK in 118ms (Views: 117.4ms | ActiveRecord: 0.3ms)
 
 
 Started GET "/assets/allthecoffee.gif" for 127.0.0.1 at 2014-12-15 14:50:10 -0700
+  [1m[36m (10.2ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" character varying(255) NOT NULL) [0m
+  [1m[35m (3.5ms)[0m  CREATE UNIQUE INDEX  "unique_schema_migrations" ON "schema_migrations"  ("version")
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateItems (20141117185842)
+  [1m[35m (0.8ms)[0m  BEGIN
+  [1m[36m (9.1ms)[0m  [1mCREATE TABLE "items" ("id" serial primary key, "title" character varying(255), "description" character varying(255), "price" decimal, "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20141117185842"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+Migrating to CreateAddresses (20141117185925)
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (4.0ms)[0m  [1mCREATE TABLE "addresses" ("id" serial primary key, "street_name" character varying(255), "street_number" character varying(255), "city" character varying(255), "state" character varying(255), "zip_code" character varying(255), "order_id" integer, "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35mSQL (0.9ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20141117185925"]]
+  [1m[36m (0.8ms)[0m  [1mCOMMIT[0m
+Migrating to CreateUsers (20141118020250)
+  [1m[35m (0.4ms)[0m  BEGIN
+  [1m[36m (4.3ms)[0m  [1mCREATE TABLE "users" ("id" serial primary key, "name" character varying(255), "email" character varying(255), "password_digest" character varying(255), "display_name" character varying(255), "admin" boolean DEFAULT 'f', "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20141118020250"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+Migrating to CreateCategories (20141118204530)
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (2.3ms)[0m  [1mCREATE TABLE "categories" ("id" serial primary key, "name" character varying(255), "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20141118204530"]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+Migrating to CreateCategoryItemsJoinTable (20141118204826)
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (0.7ms)[0m  [1mCREATE TABLE "categories_items" ("category_id" integer NOT NULL, "item_id" integer NOT NULL) [0m
+  [1m[35m (0.9ms)[0m  CREATE  INDEX  "index_categories_items_on_category_id_and_item_id" ON "categories_items"  ("category_id", "item_id")
+  [1m[36m (0.8ms)[0m  [1mCREATE  INDEX  "index_categories_items_on_item_id_and_category_id" ON "categories_items"  ("item_id", "category_id")[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20141118204826"]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+Migrating to AddAttachmentPhotoToItems (20141118221218)
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (1.2ms)[0m  [1mALTER TABLE "items" ADD COLUMN "photo_file_name" character varying(255)[0m
+  [1m[35m (0.4ms)[0m  ALTER TABLE "items" ADD COLUMN "photo_content_type" character varying(255)
+  [1m[36m (0.2ms)[0m  [1mALTER TABLE "items" ADD COLUMN "photo_file_size" integer[0m
+  [1m[35m (0.2ms)[0m  ALTER TABLE "items" ADD COLUMN "photo_updated_at" timestamp
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ($1)[0m  [["version", "20141118221218"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+Migrating to CreateOrders (20141120175707)
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (2.8ms)[0m  CREATE TABLE "orders" ("id" serial primary key, "delivery" boolean, "created_at" timestamp, "updated_at" timestamp) 
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ($1)[0m  [["version", "20141120175707"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+Migrating to AddUserIdToOrders (20141120182244)
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.4ms)[0m  ALTER TABLE "orders" ADD COLUMN "user_id" integer
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ($1)[0m  [["version", "20141120182244"]]
+  [1m[35m (0.3ms)[0m  COMMIT
+Migrating to CreateAddressOrdersJoinTable (20141120220335)
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (1.1ms)[0m  CREATE TABLE "addresses_orders" ("address_id" integer NOT NULL, "order_id" integer NOT NULL) 
+  [1m[36m (1.1ms)[0m  [1mCREATE  INDEX  "index_addresses_orders_on_address_id_and_order_id" ON "addresses_orders"  ("address_id", "order_id")[0m
+  [1m[35m (0.9ms)[0m  CREATE  INDEX  "index_addresses_orders_on_order_id_and_address_id" ON "addresses_orders"  ("order_id", "address_id")
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ($1)[0m  [["version", "20141120220335"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+Migrating to RemoveOrderIdFromAddress (20141120222741)
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20141120222741"]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+Migrating to RemoveOrderIdFromAddresses (20141120222904)
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (1.3ms)[0m  [1mALTER TABLE "addresses" DROP "order_id"[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20141120222904"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+Migrating to AddUserIdToAddresses (20141120224452)
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.3ms)[0m  [1mALTER TABLE "addresses" ADD COLUMN "user_id" integer[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20141120224452"]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+Migrating to AddAddressIdToOrders (20141121121100)
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.3ms)[0m  [1mALTER TABLE "orders" ADD COLUMN "address_id" integer[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20141121121100"]]
+  [1m[36m (0.2ms)[0m  [1mCOMMIT[0m
+Migrating to DropAddressesOrders (20141121121422)
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (1.2ms)[0m  [1mDROP TABLE "addresses_orders"[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20141121121422"]]
+  [1m[36m (1.1ms)[0m  [1mCOMMIT[0m
+Migrating to CreateOrderItems (20141121121827)
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (2.7ms)[0m  [1mCREATE TABLE "order_items" ("id" serial primary key, "order_id" integer, "item_id" integer) [0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20141121121827"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+Migrating to DropOrderItems (20141121122039)
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (0.8ms)[0m  [1mDROP TABLE "order_items"[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20141121122039"]]
+  [1m[36m (0.7ms)[0m  [1mCOMMIT[0m
+Migrating to CreateOrderItemsJoinTable (20141121122206)
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.9ms)[0m  [1mCREATE TABLE "items_orders" ("order_id" integer NOT NULL, "item_id" integer NOT NULL) [0m
+  [1m[35m (1.1ms)[0m  CREATE  INDEX  "index_items_orders_on_order_id_and_item_id" ON "items_orders"  ("order_id", "item_id")
+  [1m[36m (1.3ms)[0m  [1mCREATE  INDEX  "index_items_orders_on_item_id_and_order_id" ON "items_orders"  ("item_id", "order_id")[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20141121122206"]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+Migrating to AddStatusToOrders (20141121163702)
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.3ms)[0m  [1mALTER TABLE "orders" ADD COLUMN "pending" boolean[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20141121163702"]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+Migrating to AddActiveToItems (20141201231100)
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (4.7ms)[0m  [1mALTER TABLE "items" ADD COLUMN "active" boolean DEFAULT 't'[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20141201231100"]]
+  [1m[36m (0.9ms)[0m  [1mCOMMIT[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateCoordinates (20141216184031)
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (11.5ms)[0m  [1mCREATE TABLE "coordinates" ("id" serial primary key, "latitude" character varying(255), "longitude" character varying(255), "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20141216184031"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+Migrating to AddSupplierToUsers (20141216184229)
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (0.5ms)[0m  [1mALTER TABLE "users" ADD COLUMN "supplier" boolean[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20141216184229"]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+Migrating to AddCoordinateIdToOrders (20141216184339)
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.4ms)[0m  [1mALTER TABLE "orders" ADD COLUMN "coordinate_id" integer[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20141216184339"]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+Migrating to RemoveAddressIdFromOrders (20141216184658)
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.5ms)[0m  [1mALTER TABLE "orders" DROP "address_id"[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20141216184658"]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+Migrating to AddQuantityToOrderItemsJoinTable (20141216185035)
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (1.5ms)[0m  [1mALTER TABLE "order_items_join_tables" ADD COLUMN "quantity" integer[0m
+PG::UndefinedTable: ERROR:  relation "order_items_join_tables" does not exist
+: ALTER TABLE "order_items_join_tables" ADD COLUMN "quantity" integer
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to AddQuantityToOrderItemsJoinTable (20141216185035)
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to AddQuantityToItemsOrders (20141216185735)
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (1.0ms)[0m  [1mALTER TABLE "items_orders" ADD COLUMN "quantity" integer[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20141216185735"]]
+  [1m[36m (2.0ms)[0m  [1mCOMMIT[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to AddSupplierIdToCategories (20141216185859)
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.9ms)[0m  [1mALTER TABLE "categories" ADD COLUMN "supplier_id" integer[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20141216185859"]]
+  [1m[36m (2.4ms)[0m  [1mCOMMIT[0m
+Migrating to AddSupplierIdToItems (20141216185914)
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (0.4ms)[0m  [1mALTER TABLE "items" ADD COLUMN "supplier_id" integer[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20141216185914"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+Migrating to CreateSuppliers (20141216190256)
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (5.0ms)[0m  [1mCREATE TABLE "suppliers" ("id" serial primary key, "name" character varying(255), "email" character varying(255), "phone" character varying(255), "fax" character varying(255), "description" character varying(255), "address_id" integer) [0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20141216190256"]]
+  [1m[36m (0.7ms)[0m  [1mCOMMIT[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.3ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+Migrating to CreateSuppliers (20141216190256)
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35m (1.7ms)[0m  DROP TABLE "suppliers"
+  [1m[36mSQL (0.8ms)[0m  [1mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = '20141216190256'[0m
+  [1m[35m (1.3ms)[0m  COMMIT
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateSuppliers (20141216190256)
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (7.8ms)[0m  [1mCREATE TABLE "suppliers" ("id" serial primary key, "name" character varying(255), "email" character varying(255), "phone" character varying(255), "fax" character varying(255), "description" character varying(255), "address_id" integer, "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20141216190256"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.3ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"

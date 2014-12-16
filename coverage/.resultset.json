@@ -1,7 +1,7 @@
 {
   "RSpec": {
     "coverage": {
-      "/Users/Greg/turing/the_pivot/app/models/user.rb": [
+      "/Users/chandracarney/turing/thirdmodule/projects/the_pivot/app/models/user.rb": [
         1,
         1,
         1,
@@ -23,19 +23,19 @@
         null,
         null
       ],
-      "/Users/Greg/turing/the_pivot/app/helpers/address_helper.rb": [
+      "/Users/chandracarney/turing/thirdmodule/projects/the_pivot/app/helpers/address_helper.rb": [
         1,
         null
       ],
-      "/Users/Greg/turing/the_pivot/app/helpers/application_helper.rb": [
+      "/Users/chandracarney/turing/thirdmodule/projects/the_pivot/app/helpers/application_helper.rb": [
         1,
         null
       ],
-      "/Users/Greg/turing/the_pivot/app/helpers/orders_helper.rb": [
+      "/Users/chandracarney/turing/thirdmodule/projects/the_pivot/app/helpers/orders_helper.rb": [
         1,
         null
       ],
-      "/Users/Greg/turing/the_pivot/app/helpers/sessions_helper.rb": [
+      "/Users/chandracarney/turing/thirdmodule/projects/the_pivot/app/helpers/sessions_helper.rb": [
         1,
         1,
         0,
@@ -46,7 +46,7 @@
         null,
         null
       ],
-      "/Users/Greg/turing/the_pivot/app/controllers/addresses_controller.rb": [
+      "/Users/chandracarney/turing/thirdmodule/projects/the_pivot/app/controllers/addresses_controller.rb": [
         1,
         1,
         1,
@@ -105,7 +105,7 @@
         null,
         null
       ],
-      "/Users/Greg/turing/the_pivot/app/controllers/application_controller.rb": [
+      "/Users/chandracarney/turing/thirdmodule/projects/the_pivot/app/controllers/application_controller.rb": [
         1,
         null,
         null,
@@ -152,7 +152,7 @@
         null,
         null
       ],
-      "/Users/Greg/turing/the_pivot/app/controllers/charges_controller.rb": [
+      "/Users/chandracarney/turing/thirdmodule/projects/the_pivot/app/controllers/charges_controller.rb": [
         1,
         1,
         1,
@@ -184,7 +184,7 @@
         null,
         null
       ],
-      "/Users/Greg/turing/the_pivot/app/controllers/orders_controller.rb": [
+      "/Users/chandracarney/turing/thirdmodule/projects/the_pivot/app/controllers/orders_controller.rb": [
         1,
         1,
         1,
@@ -241,7 +241,7 @@
         null,
         null
       ],
-      "/Users/Greg/turing/the_pivot/app/controllers/users_controller.rb": [
+      "/Users/chandracarney/turing/thirdmodule/projects/the_pivot/app/controllers/users_controller.rb": [
         1,
         1,
         1,
@@ -303,7 +303,7 @@
         null,
         null
       ],
-      "/Users/Greg/turing/the_pivot/app/models/address.rb": [
+      "/Users/chandracarney/turing/thirdmodule/projects/the_pivot/app/models/address.rb": [
         1,
         1,
         1,
@@ -322,13 +322,13 @@
         null,
         null
       ],
-      "/Users/Greg/turing/the_pivot/app/models/category.rb": [
+      "/Users/chandracarney/turing/thirdmodule/projects/the_pivot/app/models/category.rb": [
         1,
         1,
         1,
         null
       ],
-      "/Users/Greg/turing/the_pivot/app/models/item.rb": [
+      "/Users/chandracarney/turing/thirdmodule/projects/the_pivot/app/models/item.rb": [
         1,
         1,
         null,
@@ -363,7 +363,7 @@
         null,
         null
       ],
-      "/Users/Greg/turing/the_pivot/app/models/order.rb": [
+      "/Users/chandracarney/turing/thirdmodule/projects/the_pivot/app/models/order.rb": [
         1,
         1,
         1,
@@ -408,7 +408,7 @@
         null,
         null
       ],
-      "/Users/Greg/turing/the_pivot/app/models/cart.rb": [
+      "/Users/chandracarney/turing/thirdmodule/projects/the_pivot/app/models/cart.rb": [
         1,
         1,
         null,
@@ -450,11 +450,11 @@
         null,
         null
       ],
-      "/Users/Greg/turing/the_pivot/app/controllers/pages_controller.rb": [
+      "/Users/chandracarney/turing/thirdmodule/projects/the_pivot/app/controllers/pages_controller.rb": [
         1,
         null
       ],
-      "/Users/Greg/turing/the_pivot/app/controllers/sessions_controller.rb": [
+      "/Users/chandracarney/turing/thirdmodule/projects/the_pivot/app/controllers/sessions_controller.rb": [
         1,
         1,
         19,
@@ -484,7 +484,7 @@
         null,
         null
       ],
-      "/Users/Greg/turing/the_pivot/app/controllers/cart_items_controller.rb": [
+      "/Users/chandracarney/turing/thirdmodule/projects/the_pivot/app/controllers/cart_items_controller.rb": [
         1,
         1,
         0,
@@ -511,7 +511,7 @@
         null,
         null
       ],
-      "/Users/Greg/turing/the_pivot/app/controllers/items_controller.rb": [
+      "/Users/chandracarney/turing/thirdmodule/projects/the_pivot/app/controllers/items_controller.rb": [
         1,
         1,
         1,
@@ -563,6 +563,6 @@
         null
       ]
     },
-    "timestamp": 1418680528
+    "timestamp": 1418747457
   }
 }

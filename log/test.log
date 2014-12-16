@@ -3026,3 +3026,1534 @@ Completed 200 OK in 6ms (Views: 4.7ms | ActiveRecord: 1.1ms)
   [1m[35m (0.1ms)[0m  ROLLBACK
   [1m[36m (0.1ms)[0m  [1mBEGIN[0m
   [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36mSQL (1.3ms)[0m  [1mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (6.5ms)[0m  CREATE TABLE "addresses" ("id" serial primary key, "street_name" character varying(255), "street_number" character varying(255), "city" character varying(255), "state" character varying(255), "zip_code" character varying(255), "created_at" timestamp, "updated_at" timestamp, "user_id" integer) 
+  [1m[36m (2.7ms)[0m  [1mCREATE TABLE "categories" ("id" serial primary key, "name" character varying(255), "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35m (0.9ms)[0m  CREATE TABLE "categories_items" ("category_id" integer NOT NULL, "item_id" integer NOT NULL) 
+  [1m[36m (1.1ms)[0m  [1mCREATE  INDEX  "index_categories_items_on_category_id_and_item_id" ON "categories_items" USING btree ("category_id", "item_id")[0m
+  [1m[35m (1.1ms)[0m  CREATE  INDEX  "index_categories_items_on_item_id_and_category_id" ON "categories_items" USING btree ("item_id", "category_id")
+  [1m[36m (4.5ms)[0m  [1mCREATE TABLE "items" ("id" serial primary key, "title" character varying(255), "description" character varying(255), "price" decimal, "created_at" timestamp, "updated_at" timestamp, "photo_file_name" character varying(255), "photo_content_type" character varying(255), "photo_file_size" integer, "photo_updated_at" timestamp, "active" boolean DEFAULT 't') [0m
+  [1m[35m (1.0ms)[0m  CREATE TABLE "items_orders" ("order_id" integer NOT NULL, "item_id" integer NOT NULL) 
+  [1m[36m (1.1ms)[0m  [1mCREATE  INDEX  "index_items_orders_on_item_id_and_order_id" ON "items_orders" USING btree ("item_id", "order_id")[0m
+  [1m[35m (1.2ms)[0m  CREATE  INDEX  "index_items_orders_on_order_id_and_item_id" ON "items_orders" USING btree ("order_id", "item_id")
+  [1m[36m (2.8ms)[0m  [1mCREATE TABLE "orders" ("id" serial primary key, "delivery" boolean, "created_at" timestamp, "updated_at" timestamp, "user_id" integer, "address_id" integer, "pending" boolean) [0m
+  [1m[35m (3.9ms)[0m  CREATE TABLE "users" ("id" serial primary key, "name" character varying(255), "email" character varying(255), "password_digest" character varying(255), "display_name" character varying(255), "admin" boolean DEFAULT 'f', "created_at" timestamp, "updated_at" timestamp) 
+  [1m[36m (1.0ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" character varying(255) NOT NULL) [0m
+  [1m[35m (1.4ms)[0m  CREATE UNIQUE INDEX  "unique_schema_migrations" ON "schema_migrations"  ("version")
+  [1m[36m (0.4ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (0.5ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20141201231100')
+  [1m[36m (0.4ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20141117185842')[0m
+  [1m[35m (0.3ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20141117185925')
+  [1m[36m (0.3ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20141118020250')[0m
+  [1m[35m (0.3ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20141118204530')
+  [1m[36m (0.3ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20141118204826')[0m
+  [1m[35m (0.3ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20141118221218')
+  [1m[36m (0.3ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20141120175707')[0m
+  [1m[35m (0.3ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20141120182244')
+  [1m[36m (0.3ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20141120220335')[0m
+  [1m[35m (0.3ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20141120222741')
+  [1m[36m (0.3ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20141120222904')[0m
+  [1m[35m (0.3ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20141120224452')
+  [1m[36m (0.3ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20141121121100')[0m
+  [1m[35m (0.4ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20141121121422')
+  [1m[36m (0.3ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20141121121827')[0m
+  [1m[35m (0.3ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20141121122039')
+  [1m[36m (0.3ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20141121122206')[0m
+  [1m[35m (0.3ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20141121163702')
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.9ms)[0m  ALTER TABLE "addresses" DISABLE TRIGGER ALL;ALTER TABLE "categories" DISABLE TRIGGER ALL;ALTER TABLE "categories_items" DISABLE TRIGGER ALL;ALTER TABLE "items" DISABLE TRIGGER ALL;ALTER TABLE "items_orders" DISABLE TRIGGER ALL;ALTER TABLE "orders" DISABLE TRIGGER ALL;ALTER TABLE "users" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL
+  [1m[36m (2.5ms)[0m  [1mselect table_name from information_schema.views where table_schema = 'dinner_dash_test'[0m
+  [1m[35m (11.4ms)[0m  TRUNCATE TABLE "addresses", "categories", "categories_items", "items", "items_orders", "orders", "users" RESTART IDENTITY CASCADE;
+  [1m[36m (0.6ms)[0m  [1mALTER TABLE "addresses" ENABLE TRIGGER ALL;ALTER TABLE "items" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "categories" ENABLE TRIGGER ALL;ALTER TABLE "categories_items" ENABLE TRIGGER ALL;ALTER TABLE "items_orders" ENABLE TRIGGER ALL;ALTER TABLE "orders" ENABLE TRIGGER ALL;ALTER TABLE "users" ENABLE TRIGGER ALL[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (1.1ms)[0m  INSERT INTO "addresses" ("city", "created_at", "state", "street_name", "street_number", "updated_at", "zip_code") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["city", "Beverly Hills"], ["created_at", "2014-12-16 16:30:48.280046"], ["state", "CA"], ["street_name", "Bad Street"], ["street_number", "8000"], ["updated_at", "2014-12-16 16:30:48.280046"], ["zip_code", "90210"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Processing by AddressesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mAddress Load (0.5ms)[0m  SELECT  "addresses".* FROM "addresses"  WHERE "addresses"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" IS NULL LIMIT 1[0m
+  Rendered addresses/show.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 20ms (Views: 9.3ms | ActiveRecord: 1.1ms)
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+Processing by AddressesController#new as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" IS NULL LIMIT 1
+Completed 200 OK in 2ms (Views: 1.4ms | ActiveRecord: 0.3ms)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "addresses" ("city", "created_at", "state", "street_name", "street_number", "updated_at", "zip_code") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["city", "Beverly Hills"], ["created_at", "2014-12-16 16:30:48.316289"], ["state", "CA"], ["street_name", "Bad Street"], ["street_number", "8000"], ["updated_at", "2014-12-16 16:30:48.316289"], ["zip_code", "90210"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Processing by AddressesController#edit as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mAddress Load (0.3ms)[0m  SELECT  "addresses".* FROM "addresses"  WHERE "addresses"."id" = $1 LIMIT 1  [["id", 2]]
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" IS NULL LIMIT 1[0m
+Completed 200 OK in 3ms (Views: 1.3ms | ActiveRecord: 0.5ms)
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+Processing by AddressesController#create as HTML
+  Parameters: {"address"=>{"street_name"=>nil, "street_number"=>nil, "city"=>nil, "state"=>nil, "zip_code"=>nil}}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" IS NULL LIMIT 1
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" IS NULL LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36m (0.2ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_1[0m
+Completed 200 OK in 438ms (Views: 0.8ms | ActiveRecord: 0.9ms)
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+Processing by AddressesController#create as HTML
+  Parameters: {"address"=>{"street_name"=>nil, "street_number"=>nil, "city"=>nil, "state"=>nil, "zip_code"=>nil}}
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" IS NULL LIMIT 1
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" IS NULL LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_1[0m
+Completed 200 OK in 6ms (Views: 1.0ms | ActiveRecord: 0.9ms)
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "addresses" ("city", "created_at", "state", "street_name", "street_number", "updated_at", "zip_code") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["city", "Beverly Hills"], ["created_at", "2014-12-16 16:30:48.774680"], ["state", "CA"], ["street_name", "Bad Street"], ["street_number", "8000"], ["updated_at", "2014-12-16 16:30:48.774680"], ["zip_code", "90210"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Processing by AddressesController#update as HTML
+  Parameters: {"address"=>{"street_name"=>"Good Street", "street_number"=>"7000", "city"=>"Beverly Hills", "state"=>"CA", "zip_code"=>"90210", "order_id"=>"5"}, "id"=>"3"}
+  [1m[36mAddress Load (0.2ms)[0m  [1mSELECT  "addresses".* FROM "addresses"  WHERE "addresses"."id" = $1 LIMIT 1[0m  [["id", 3]]
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" IS NULL LIMIT 1
+Unpermitted parameters: order_id
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  UPDATE "addresses" SET "street_name" = $1, "street_number" = $2, "updated_at" = $3 WHERE "addresses"."id" = 3  [["street_name", "Good Street"], ["street_number", "7000"], ["updated_at", "2014-12-16 16:30:48.779835"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/addresses/3
+Completed 302 Found in 5ms (ActiveRecord: 1.0ms)
+  [1m[35mAddress Load (0.3ms)[0m  SELECT  "addresses".* FROM "addresses"  WHERE "addresses"."id" = $1 LIMIT 1  [["id", 3]]
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "addresses" ("city", "created_at", "state", "street_name", "street_number", "updated_at", "zip_code") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["city", "Beverly Hills"], ["created_at", "2014-12-16 16:30:48.785718"], ["state", "CA"], ["street_name", "Bad Street"], ["street_number", "8000"], ["updated_at", "2014-12-16 16:30:48.785718"], ["zip_code", "90210"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Processing by AddressesController#update as HTML
+  Parameters: {"address"=>{"street_name"=>"Bad Street", "street_number"=>"8000", "city"=>"Beverly Hills", "state"=>"CA", "zip_code"=>"90210"}, "id"=>"4"}
+  [1m[35mAddress Load (0.3ms)[0m  SELECT  "addresses".* FROM "addresses"  WHERE "addresses"."id" = $1 LIMIT 1  [["id", 4]]
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" IS NULL LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/addresses/4
+Completed 302 Found in 3ms (ActiveRecord: 0.7ms)
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "addresses" ("city", "created_at", "state", "street_name", "street_number", "updated_at", "zip_code") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["city", "Beverly Hills"], ["created_at", "2014-12-16 16:30:48.793087"], ["state", "CA"], ["street_name", "Bad Street"], ["street_number", "8000"], ["updated_at", "2014-12-16 16:30:48.793087"], ["zip_code", "90210"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Processing by AddressesController#update as HTML
+  Parameters: {"address"=>{"street_name"=>"Bad Street", "street_number"=>"8000", "city"=>"Beverly Hills", "state"=>"CA", "zip_code"=>"90210"}, "id"=>"5"}
+  [1m[36mAddress Load (0.3ms)[0m  [1mSELECT  "addresses".* FROM "addresses"  WHERE "addresses"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" IS NULL LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://test.host/addresses/5
+Completed 302 Found in 3ms (ActiveRecord: 0.7ms)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "addresses" ("city", "created_at", "state", "street_name", "street_number", "updated_at", "zip_code") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["city", "Beverly Hills"], ["created_at", "2014-12-16 16:30:48.800752"], ["state", "CA"], ["street_name", "Bad Street"], ["street_number", "8000"], ["updated_at", "2014-12-16 16:30:48.800752"], ["zip_code", "90210"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Processing by AddressesController#update as HTML
+  Parameters: {"address"=>{"street_name"=>nil, "street_number"=>nil, "city"=>nil, "state"=>nil, "zip_code"=>nil}, "id"=>"6"}
+  [1m[35mAddress Load (0.2ms)[0m  SELECT  "addresses".* FROM "addresses"  WHERE "addresses"."id" = $1 LIMIT 1  [["id", 6]]
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" IS NULL LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36m (0.2ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_1[0m
+Completed 200 OK in 6ms (Views: 0.9ms | ActiveRecord: 0.8ms)
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "addresses" ("city", "created_at", "state", "street_name", "street_number", "updated_at", "zip_code") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["city", "Beverly Hills"], ["created_at", "2014-12-16 16:30:48.811889"], ["state", "CA"], ["street_name", "Bad Street"], ["street_number", "8000"], ["updated_at", "2014-12-16 16:30:48.811889"], ["zip_code", "90210"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Processing by AddressesController#update as HTML
+  Parameters: {"address"=>{"street_name"=>nil, "street_number"=>nil, "city"=>nil, "state"=>nil, "zip_code"=>nil}, "id"=>"7"}
+  [1m[36mAddress Load (0.3ms)[0m  [1mSELECT  "addresses".* FROM "addresses"  WHERE "addresses"."id" = $1 LIMIT 1[0m  [["id", 7]]
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" IS NULL LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+Completed 200 OK in 6ms (Views: 0.8ms | ActiveRecord: 0.9ms)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "addresses" ("city", "created_at", "state", "street_name", "street_number", "updated_at", "zip_code") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["city", "Beverly Hills"], ["created_at", "2014-12-16 16:30:48.823279"], ["state", "CA"], ["street_name", "Bad Street"], ["street_number", "8000"], ["updated_at", "2014-12-16 16:30:48.823279"], ["zip_code", "90210"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM "addresses"
+Processing by AddressesController#destroy as HTML
+  Parameters: {"id"=>"8"}
+  [1m[36mAddress Load (0.2ms)[0m  [1mSELECT  "addresses".* FROM "addresses"  WHERE "addresses"."id" = $1 LIMIT 1[0m  [["id", 8]]
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mDELETE FROM "addresses" WHERE "addresses"."id" = $1[0m  [["id", 8]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://test.host/addresses
+Completed 302 Found in 2ms (ActiveRecord: 0.6ms)
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "addresses"[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "orders" ("created_at", "delivery", "pending", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["created_at", "2014-12-16 16:30:48.840924"], ["delivery", "f"], ["pending", "f"], ["updated_at", "2014-12-16 16:30:48.840924"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.6ms)[0m  SELECT  1 AS one FROM "users"  WHERE LOWER("users"."email") = LOWER('admin@aperturelabs.com') LIMIT 1
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "users" ("admin", "created_at", "email", "name", "password_digest", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["admin", "t"], ["created_at", "2014-12-16 16:30:48.858208"], ["email", "admin@aperturelabs.com"], ["name", "Admin User"], ["password_digest", "$2a$04$12.P3qrGytQnTdfOJCCXt.YVi5nuMzN/MdMPQF6qP0T3.NLR8DiYW"], ["updated_at", "2014-12-16 16:30:48.858208"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Processing by OrdersController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = 1 LIMIT 1[0m
+Completed 200 OK in 4ms (Views: 2.4ms | ActiveRecord: 0.4ms)
+  [1m[35mOrder Load (0.4ms)[0m  SELECT "orders".* FROM "orders"
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.4ms)[0m  SELECT  1 AS one FROM "users"  WHERE LOWER("users"."email") = LOWER('user@email.com') LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "users" ("admin", "created_at", "email", "name", "password_digest", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["admin", "t"], ["created_at", "2014-12-16 16:30:48.872264"], ["email", "user@email.com"], ["name", "username"], ["password_digest", "$2a$04$EHu4W9irzeve8EnRyK3Gy.ePovfAZuHRESZubLfbBBe.4B4btmFRG"], ["updated_at", "2014-12-16 16:30:48.872264"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = 2 LIMIT 1[0m
+Completed 200 OK in 4ms (Views: 2.6ms | ActiveRecord: 0.3ms)
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users"
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.4ms)[0m  SELECT  1 AS one FROM "users"  WHERE LOWER("users"."email") = LOWER('user@email.com') LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "users" ("created_at", "email", "name", "password_digest", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["created_at", "2014-12-16 16:30:48.885475"], ["email", "user@email.com"], ["name", "username"], ["password_digest", "$2a$04$CVi4i9SKB6.KQuHcZ.AXbe9RU1pnRzhYsSQlX1xRGgx3Ls9.6bghe"], ["updated_at", "2014-12-16 16:30:48.885475"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 3]]
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" IS NULL LIMIT 1
+Redirected to http://test.host/
+Filter chain halted as :correct_user rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.6ms)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+Processing by UsersController#new as HTML
+Completed 200 OK in 2ms (Views: 1.7ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.3ms)[0m  SELECT  1 AS one FROM "users"  WHERE LOWER("users"."email") = LOWER('user@email.com') LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "users" ("created_at", "email", "name", "password_digest", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["created_at", "2014-12-16 16:30:48.900982"], ["email", "user@email.com"], ["name", "username"], ["password_digest", "$2a$04$HQWE1yDBoZY9EP4HEqrPjezG.K/X5JrU4HeqDLJ8acGA6yKYtFk0C"], ["updated_at", "2014-12-16 16:30:48.900982"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Processing by UsersController#edit as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 4]]
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" IS NULL LIMIT 1
+Redirected to http://test.host/
+Filter chain halted as :correct_user rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.6ms)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "users"[0m
+Processing by UsersController#create as HTML
+  Parameters: {"user"=>{"name"=>"username", "email"=>"user@email.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE LOWER("users"."email") = LOWER('user@email.com') LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("created_at", "email", "name", "password_digest", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["created_at", "2014-12-16 16:30:48.911785"], ["email", "user@email.com"], ["name", "username"], ["password_digest", "$2a$04$R8WiPGphJN97EfoCmMj3Le7o2Zv.eKnph5qaDU3FSdW.dHaDng1oa"], ["updated_at", "2014-12-16 16:30:48.911785"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/
+Completed 302 Found in 4ms (ActiveRecord: 0.7ms)
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "users"
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+Processing by UsersController#create as HTML
+  Parameters: {"user"=>{"name"=>"username", "email"=>"user@email.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.3ms)[0m  SELECT  1 AS one FROM "users"  WHERE LOWER("users"."email") = LOWER('user@email.com') LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "users" ("created_at", "email", "name", "password_digest", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["created_at", "2014-12-16 16:30:48.919301"], ["email", "user@email.com"], ["name", "username"], ["password_digest", "$2a$04$b63O7hjMNaVARhb8JlHLBOVIow7J.mzJqHIHTk5Zhik3UgOiczo/2"], ["updated_at", "2014-12-16 16:30:48.919301"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://test.host/
+Completed 302 Found in 5ms (ActiveRecord: 0.8ms)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+Processing by UsersController#create as HTML
+  Parameters: {"user"=>{"name"=>"username", "email"=>"user@email.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.3ms)[0m  SELECT  1 AS one FROM "users"  WHERE LOWER("users"."email") = LOWER('user@email.com') LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "users" ("created_at", "email", "name", "password_digest", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["created_at", "2014-12-16 16:30:48.929495"], ["email", "user@email.com"], ["name", "username"], ["password_digest", "$2a$04$JxTc2Azdpb8EIJ.b.qRIMeKekFeeBCFJQXjnlWRUL6Ah7IZmlPLBO"], ["updated_at", "2014-12-16 16:30:48.929495"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://test.host/
+Completed 302 Found in 5ms (ActiveRecord: 0.8ms)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+Processing by UsersController#create as HTML
+  Parameters: {"user"=>{"name"=>nil, "email"=>nil, "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.3ms)[0m  SELECT  1 AS one FROM "users"  WHERE "users"."email" IS NULL LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_1[0m
+Completed 200 OK in 6ms (Views: 0.8ms | ActiveRecord: 0.6ms)
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+Processing by UsersController#create as HTML
+  Parameters: {"user"=>{"name"=>nil, "email"=>nil, "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE "users"."email" IS NULL LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+Completed 200 OK in 5ms (Views: 0.9ms | ActiveRecord: 0.6ms)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.3ms)[0m  SELECT  1 AS one FROM "users"  WHERE LOWER("users"."email") = LOWER('user@email.com') LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "users" ("admin", "created_at", "email", "name", "password_digest", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["admin", "t"], ["created_at", "2014-12-16 16:30:48.953421"], ["email", "user@email.com"], ["name", "username"], ["password_digest", "$2a$04$uO6o7ngzseCQNARGUS6IK.tfUDp8RAdPp.8m.GYidHkKHjjbcGcAS"], ["updated_at", "2014-12-16 16:30:48.953421"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Processing by UsersController#update as HTML
+  Parameters: {"user"=>{"name"=>"newusername", "email"=>"newuser@email.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "id"=>"8"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 8]]
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = 8 LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.4ms)[0m  SELECT  1 AS one FROM "users"  WHERE (LOWER("users"."email") = LOWER('newuser@email.com') AND "users"."id" != 8) LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mUPDATE "users" SET "email" = $1, "name" = $2, "password_digest" = $3, "updated_at" = $4 WHERE "users"."id" = 8[0m  [["email", "newuser@email.com"], ["name", "newusername"], ["password_digest", "$2a$04$TpJ61DAKd3QXV8h0gNCu5e2c9iUJN4eoHWW5jqcj6wdsNX3ElXPsy"], ["updated_at", "2014-12-16 16:30:48.961209"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://test.host/users/8
+Completed 302 Found in 8ms (ActiveRecord: 1.6ms)
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 8]]
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE LOWER("users"."email") = LOWER('user@email.com') LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("created_at", "email", "name", "password_digest", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["created_at", "2014-12-16 16:30:48.970004"], ["email", "user@email.com"], ["name", "username"], ["password_digest", "$2a$04$urna6xu6Km/Y/lLEHOZdXufvpTCxSIE4N0X7pXQS5ECJWJw1MesBS"], ["updated_at", "2014-12-16 16:30:48.970004"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Processing by UsersController#update as HTML
+  Parameters: {"user"=>{"name"=>"username", "email"=>"user@email.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "id"=>"9"}
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1  [["id", 9]]
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" IS NULL LIMIT 1[0m
+Redirected to http://test.host/
+Filter chain halted as :correct_user rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.7ms)
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE LOWER("users"."email") = LOWER('user@email.com') LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("created_at", "email", "name", "password_digest", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["created_at", "2014-12-16 16:30:48.979185"], ["email", "user@email.com"], ["name", "username"], ["password_digest", "$2a$04$fxlGMdemXIim7BHa4Cb3b.MCYgO8So9..xuSbu0qAWbk1uhp26Tgy"], ["updated_at", "2014-12-16 16:30:48.979185"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Processing by UsersController#update as HTML
+  Parameters: {"user"=>{"name"=>"username", "email"=>"user@email.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "id"=>"10"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1  [["id", 10]]
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" IS NULL LIMIT 1[0m
+Redirected to http://test.host/
+Filter chain halted as :correct_user rendered or redirected
+Completed 302 Found in 1ms (ActiveRecord: 0.5ms)
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE LOWER("users"."email") = LOWER('user@email.com') LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("created_at", "email", "name", "password_digest", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["created_at", "2014-12-16 16:30:48.987895"], ["email", "user@email.com"], ["name", "username"], ["password_digest", "$2a$04$rzjPa..iq2PRuuJBzRH9MuwTbKRo0OsMoAnbdn8oNjSQ2jdb/Ame."], ["updated_at", "2014-12-16 16:30:48.987895"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Processing by UsersController#update as HTML
+  Parameters: {"user"=>{"name"=>nil, "email"=>nil, "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "id"=>"11"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1  [["id", 11]]
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" IS NULL LIMIT 1[0m
+Redirected to http://test.host/
+Filter chain halted as :correct_user rendered or redirected
+Completed 302 Found in 1ms (ActiveRecord: 0.4ms)
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.4ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE LOWER("users"."email") = LOWER('user@email.com') LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("admin", "created_at", "email", "name", "password_digest", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["admin", "t"], ["created_at", "2014-12-16 16:30:48.996842"], ["email", "user@email.com"], ["name", "username"], ["password_digest", "$2a$04$3ibRuN/gHy9MwkhKoo6/qOL7aTW4Ac10V8Or9GbSKVOQmfswCglAe"], ["updated_at", "2014-12-16 16:30:48.996842"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Processing by UsersController#update as HTML
+  Parameters: {"user"=>{"name"=>nil, "email"=>nil, "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "id"=>"12"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1  [["id", 12]]
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = 12 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE ("users"."email" IS NULL AND "users"."id" != 12) LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+Completed 200 OK in 7ms (Views: 1.5ms | ActiveRecord: 1.1ms)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.3ms)[0m  SELECT  1 AS one FROM "users"  WHERE LOWER("users"."email") = LOWER('user@email.com') LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "users" ("admin", "created_at", "email", "name", "password_digest", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["admin", "t"], ["created_at", "2014-12-16 16:30:49.011427"], ["email", "user@email.com"], ["name", "username"], ["password_digest", "$2a$04$qLUVpscZCHFcHVDwT4tvneiwh0unRUHCzXOmrT523OyW.iPP6.W8W"], ["updated_at", "2014-12-16 16:30:49.011427"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "users"[0m
+Processing by UsersController#destroy as HTML
+  Parameters: {"id"=>"13"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1  [["id", 13]]
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = 13 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 13]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://test.host/users/13
+Completed 302 Found in 3ms (ActiveRecord: 0.8ms)
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "users"[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE LOWER("users"."email") = LOWER('user@email.com') LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("created_at", "email", "name", "password_digest", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["created_at", "2014-12-16 16:30:49.021547"], ["email", "user@email.com"], ["name", "username"], ["password_digest", "$2a$04$57w0u//2ZyOzE7sas6h0Pe3nvUVXZ3CfaARYjzFb3DoEmPiOtO75i"], ["updated_at", "2014-12-16 16:30:49.021547"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Processing by UsersController#destroy as HTML
+  Parameters: {"id"=>"14"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1  [["id", 14]]
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" IS NULL LIMIT 1[0m
+Redirected to http://test.host/
+Filter chain halted as :correct_user rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.5ms)
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+Started GET "/" for 127.0.0.1 at 2014-12-16 09:30:49 -0700
+Processing by PagesController#index as HTML
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" IS NULL LIMIT 1
+  Rendered layouts/_notices.html.erb (0.9ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" IS NULL LIMIT 1[0m
+  Rendered layouts/_header.html.erb (2.1ms)
+Completed 200 OK in 415ms (Views: 402.5ms | ActiveRecord: 0.5ms)
+Started GET "/login" for 127.0.0.1 at 2014-12-16 09:30:49 -0700
+Processing by SessionsController#new as HTML
+  Rendered layouts/_notices.html.erb (0.1ms)
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" IS NULL LIMIT 1
+  Rendered layouts/_header.html.erb (1.3ms)
+Completed 200 OK in 15ms (Views: 13.7ms | ActiveRecord: 0.4ms)
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.3ms)[0m  SELECT  1 AS one FROM "users"  WHERE LOWER("users"."email") = LOWER('admin@aperturelabs.com') LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "users" ("admin", "created_at", "email", "name", "password_digest", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["admin", "t"], ["created_at", "2014-12-16 16:30:49.497272"], ["email", "admin@aperturelabs.com"], ["name", "Admin User"], ["password_digest", "$2a$04$QHVUAxGr2QVZ2pVls2osFumUrTG9h8z6LwIaf57ZjJzqt9pu0klee"], ["updated_at", "2014-12-16 16:30:49.497272"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Started POST "/login" for 127.0.0.1 at 2014-12-16 09:30:49 -0700
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"email"=>"admin@aperturelabs.com", "password"=>"[FILTERED]"}, "commit"=>"Login"}
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."email" = 'admin@aperturelabs.com' LIMIT 1[0m
+Redirected to http://www.example.com/users/15
+Completed 302 Found in 4ms (ActiveRecord: 0.5ms)
+Started GET "/users/15" for 127.0.0.1 at 2014-12-16 09:30:49 -0700
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"15"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1  [["id", 15]]
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = 15 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1  [["id", "15"]]
+  Rendered users/_user_info.html.erb (0.6ms)
+  [1m[36mAddress Load (0.4ms)[0m  [1mSELECT "addresses".* FROM "addresses"  WHERE "addresses"."user_id" = $1[0m  [["user_id", 15]]
+  Rendered collection (0.0ms)
+  Rendered addresses/_multiple.html.erb (2.3ms)
+  [1m[35mOrder Load (0.4ms)[0m  SELECT "orders".* FROM "orders"  WHERE "orders"."user_id" = $1  [["user_id", 15]]
+  Rendered collection (0.0ms)
+  Rendered layouts/_notices.html.erb (0.1ms)
+  Rendered layouts/_header.html.erb (0.9ms)
+Completed 200 OK in 26ms (Views: 22.4ms | ActiveRecord: 1.4ms)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+Started GET "/" for 127.0.0.1 at 2014-12-16 09:30:49 -0700
+Processing by PagesController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" IS NULL LIMIT 1[0m
+  Rendered layouts/_notices.html.erb (0.1ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" IS NULL LIMIT 1
+  Rendered layouts/_header.html.erb (0.8ms)
+Completed 200 OK in 8ms (Views: 7.3ms | ActiveRecord: 0.4ms)
+Started GET "/login" for 127.0.0.1 at 2014-12-16 09:30:49 -0700
+Processing by SessionsController#new as HTML
+  Rendered layouts/_notices.html.erb (0.1ms)
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" IS NULL LIMIT 1[0m
+  Rendered layouts/_header.html.erb (1.0ms)
+Completed 200 OK in 6ms (Views: 4.9ms | ActiveRecord: 0.4ms)
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE LOWER("users"."email") = LOWER('admin@aperturelabs.com') LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("admin", "created_at", "email", "name", "password_digest", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["admin", "t"], ["created_at", "2014-12-16 16:30:49.567906"], ["email", "admin@aperturelabs.com"], ["name", "Admin User"], ["password_digest", "$2a$04$B21AULbpS4LxaFGuozUpfOCYWcpEEgu8izynM3Y7LG4fsXnNWb29m"], ["updated_at", "2014-12-16 16:30:49.567906"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Started POST "/login" for 127.0.0.1 at 2014-12-16 09:30:49 -0700
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"email"=>"admin@aperturelabs.com", "password"=>"[FILTERED]"}, "commit"=>"Login"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."email" = 'admin@aperturelabs.com' LIMIT 1
+Redirected to http://www.example.com/users/16
+Completed 302 Found in 3ms (ActiveRecord: 0.3ms)
+Started GET "/users/16" for 127.0.0.1 at 2014-12-16 09:30:49 -0700
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"16"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 16]]
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = 16 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1[0m  [["id", "16"]]
+  Rendered users/_user_info.html.erb (0.3ms)
+  [1m[35mAddress Load (0.3ms)[0m  SELECT "addresses".* FROM "addresses"  WHERE "addresses"."user_id" = $1  [["user_id", 16]]
+  Rendered collection (0.0ms)
+  Rendered addresses/_multiple.html.erb (1.0ms)
+  [1m[36mOrder Load (0.2ms)[0m  [1mSELECT "orders".* FROM "orders"  WHERE "orders"."user_id" = $1[0m  [["user_id", 16]]
+  Rendered collection (0.0ms)
+  Rendered layouts/_notices.html.erb (0.1ms)
+  Rendered layouts/_header.html.erb (0.7ms)
+Completed 200 OK in 10ms (Views: 7.3ms | ActiveRecord: 1.1ms)
+Started GET "/addresses/new" for 127.0.0.1 at 2014-12-16 09:30:49 -0700
+Processing by AddressesController#new as HTML
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = 16 LIMIT 1
+  Rendered addresses/_form.html.erb (7.1ms)
+  Rendered layouts/_notices.html.erb (0.1ms)
+  Rendered layouts/_header.html.erb (0.6ms)
+Completed 200 OK in 15ms (Views: 13.0ms | ActiveRecord: 0.5ms)
+Started POST "/addresses" for 127.0.0.1 at 2014-12-16 09:30:49 -0700
+Processing by AddressesController#create as HTML
+  Parameters: {"utf8"=>"✓", "address"=>{"street_number"=>"1000", "street_name"=>"Stupid Street", "city"=>"Philadelphia", "state"=>"PA", "zip_code"=>"19089"}, "commit"=>"Submit"}
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = 16 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "addresses" ("city", "created_at", "state", "street_name", "street_number", "updated_at", "user_id", "zip_code") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["city", "Philadelphia"], ["created_at", "2014-12-16 16:30:49.620889"], ["state", "PA"], ["street_name", "Stupid Street"], ["street_number", "1000"], ["updated_at", "2014-12-16 16:30:49.620889"], ["user_id", 16], ["zip_code", "19089"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://www.example.com/users/16
+Completed 302 Found in 5ms (ActiveRecord: 0.9ms)
+Started GET "/users/16" for 127.0.0.1 at 2014-12-16 09:30:49 -0700
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"16"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 16]]
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = 16 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1[0m  [["id", "16"]]
+  Rendered users/_user_info.html.erb (0.3ms)
+  [1m[35mAddress Load (0.5ms)[0m  SELECT "addresses".* FROM "addresses"  WHERE "addresses"."user_id" = $1  [["user_id", 16]]
+  Rendered addresses/_address.html.erb (0.8ms)
+  Rendered addresses/_multiple.html.erb (2.8ms)
+  [1m[36mOrder Load (0.3ms)[0m  [1mSELECT "orders".* FROM "orders"  WHERE "orders"."user_id" = $1[0m  [["user_id", 16]]
+  Rendered collection (0.0ms)
+  Rendered layouts/_notices.html.erb (0.1ms)
+  Rendered layouts/_header.html.erb (0.5ms)
+Completed 200 OK in 11ms (Views: 7.9ms | ActiveRecord: 1.2ms)
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+Started GET "/" for 127.0.0.1 at 2014-12-16 09:30:49 -0700
+Processing by PagesController#index as HTML
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" IS NULL LIMIT 1
+  Rendered layouts/_notices.html.erb (0.1ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" IS NULL LIMIT 1[0m
+  Rendered layouts/_header.html.erb (0.6ms)
+Completed 200 OK in 6ms (Views: 5.5ms | ActiveRecord: 0.4ms)
+Started GET "/login" for 127.0.0.1 at 2014-12-16 09:30:49 -0700
+Processing by SessionsController#new as HTML
+  Rendered layouts/_notices.html.erb (0.1ms)
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" IS NULL LIMIT 1
+  Rendered layouts/_header.html.erb (1.1ms)
+Completed 200 OK in 6ms (Views: 4.8ms | ActiveRecord: 0.4ms)
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.3ms)[0m  SELECT  1 AS one FROM "users"  WHERE LOWER("users"."email") = LOWER('admin@aperturelabs.com') LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "users" ("admin", "created_at", "email", "name", "password_digest", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["admin", "t"], ["created_at", "2014-12-16 16:30:49.659778"], ["email", "admin@aperturelabs.com"], ["name", "Admin User"], ["password_digest", "$2a$04$ImtDDI.6NQUce5fpjLkREe2nVkerHVcmLKsebBHG8ZzJawFPXIFSK"], ["updated_at", "2014-12-16 16:30:49.659778"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Started POST "/login" for 127.0.0.1 at 2014-12-16 09:30:49 -0700
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"email"=>"admin@aperturelabs.com", "password"=>"[FILTERED]"}, "commit"=>"Login"}
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."email" = 'admin@aperturelabs.com' LIMIT 1[0m
+Redirected to http://www.example.com/users/17
+Completed 302 Found in 55ms (ActiveRecord: 0.4ms)
+Started GET "/users/17" for 127.0.0.1 at 2014-12-16 09:30:49 -0700
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"17"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1  [["id", 17]]
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = 17 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1  [["id", "17"]]
+  Rendered users/_user_info.html.erb (0.3ms)
+  [1m[36mAddress Load (0.3ms)[0m  [1mSELECT "addresses".* FROM "addresses"  WHERE "addresses"."user_id" = $1[0m  [["user_id", 17]]
+  Rendered collection (0.0ms)
+  Rendered addresses/_multiple.html.erb (1.1ms)
+  [1m[35mOrder Load (0.2ms)[0m  SELECT "orders".* FROM "orders"  WHERE "orders"."user_id" = $1  [["user_id", 17]]
+  Rendered collection (0.0ms)
+  Rendered layouts/_notices.html.erb (0.1ms)
+  Rendered layouts/_header.html.erb (0.5ms)
+Completed 200 OK in 9ms (Views: 6.7ms | ActiveRecord: 1.1ms)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+Started GET "/" for 127.0.0.1 at 2014-12-16 09:30:49 -0700
+Processing by PagesController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" IS NULL LIMIT 1[0m
+  Rendered layouts/_notices.html.erb (0.1ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" IS NULL LIMIT 1
+  Rendered layouts/_header.html.erb (0.7ms)
+Completed 200 OK in 9ms (Views: 7.9ms | ActiveRecord: 0.5ms)
+Started GET "/login" for 127.0.0.1 at 2014-12-16 09:30:49 -0700
+Processing by SessionsController#new as HTML
+  Rendered layouts/_notices.html.erb (0.1ms)
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" IS NULL LIMIT 1[0m
+  Rendered layouts/_header.html.erb (1.2ms)
+Completed 200 OK in 6ms (Views: 4.8ms | ActiveRecord: 0.4ms)
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE LOWER("users"."email") = LOWER('admin@aperturelabs.com') LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("admin", "created_at", "email", "name", "password_digest", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["admin", "t"], ["created_at", "2014-12-16 16:30:49.758752"], ["email", "admin@aperturelabs.com"], ["name", "Admin User"], ["password_digest", "$2a$04$AsgfKhSdOcMqa8anAOstGO8c94sPvvvB49M1SSZtBPto33Pdd5RyO"], ["updated_at", "2014-12-16 16:30:49.758752"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Started POST "/login" for 127.0.0.1 at 2014-12-16 09:30:49 -0700
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"email"=>"admin@aperturelabs.com", "password"=>"[FILTERED]"}, "commit"=>"Login"}
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."email" = 'admin@aperturelabs.com' LIMIT 1
+Redirected to http://www.example.com/users/18
+Completed 302 Found in 3ms (ActiveRecord: 0.4ms)
+Started GET "/users/18" for 127.0.0.1 at 2014-12-16 09:30:49 -0700
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"18"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 18]]
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = 18 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1[0m  [["id", "18"]]
+  Rendered users/_user_info.html.erb (0.3ms)
+  [1m[35mAddress Load (0.5ms)[0m  SELECT "addresses".* FROM "addresses"  WHERE "addresses"."user_id" = $1  [["user_id", 18]]
+  Rendered collection (0.0ms)
+  Rendered addresses/_multiple.html.erb (1.3ms)
+  [1m[36mOrder Load (0.2ms)[0m  [1mSELECT "orders".* FROM "orders"  WHERE "orders"."user_id" = $1[0m  [["user_id", 18]]
+  Rendered collection (0.0ms)
+  Rendered layouts/_notices.html.erb (0.1ms)
+  Rendered layouts/_header.html.erb (0.5ms)
+Completed 200 OK in 10ms (Views: 6.8ms | ActiveRecord: 1.4ms)
+Started GET "/admin" for 127.0.0.1 at 2014-12-16 09:30:49 -0700
+Processing by RailsAdmin::MainController#dashboard as HTML
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = 18 LIMIT 1
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "addresses"[0m
+  [1m[35mAddress Load (0.8ms)[0m  SELECT  "addresses".* FROM "addresses"   ORDER BY addresses.updated_at desc LIMIT 1
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "categories"[0m
+  [1m[35mCategory Load (0.3ms)[0m  SELECT  "categories".* FROM "categories"   ORDER BY categories.updated_at desc LIMIT 1
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM "items"[0m
+  [1m[35mItem Load (0.3ms)[0m  SELECT  "items".* FROM "items"   ORDER BY items.updated_at desc LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "orders"[0m
+  [1m[35mOrder Load (0.3ms)[0m  SELECT  "orders".* FROM "orders"   ORDER BY orders.updated_at desc LIMIT 1
+  Rendered /Users/chandracarney/.rvm/gems/ruby-2.1.2/gems/rails_admin-0.6.5/app/views/layouts/rails_admin/_secondary_navigation.html.haml (5.0ms)
+  Rendered /Users/chandracarney/.rvm/gems/ruby-2.1.2/gems/rails_admin-0.6.5/app/views/layouts/rails_admin/_navigation.html.haml (8.7ms)
+Completed 200 OK in 6258ms (Views: 6141.4ms | ActiveRecord: 7.4ms)
+  [1m[36m (0.3ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+Started GET "/" for 127.0.0.1 at 2014-12-16 09:30:56 -0700
+Processing by PagesController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" IS NULL LIMIT 1[0m
+  Rendered layouts/_notices.html.erb (0.1ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" IS NULL LIMIT 1
+  Rendered layouts/_header.html.erb (0.6ms)
+Completed 200 OK in 7ms (Views: 6.1ms | ActiveRecord: 0.4ms)
+Started GET "/login" for 127.0.0.1 at 2014-12-16 09:30:56 -0700
+Processing by SessionsController#new as HTML
+  Rendered layouts/_notices.html.erb (0.1ms)
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" IS NULL LIMIT 1[0m
+  Rendered layouts/_header.html.erb (1.2ms)
+Completed 200 OK in 7ms (Views: 5.9ms | ActiveRecord: 0.4ms)
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.4ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE LOWER("users"."email") = LOWER('admin@aperturelabs.com') LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("admin", "created_at", "email", "name", "password_digest", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["admin", "t"], ["created_at", "2014-12-16 16:30:56.101581"], ["email", "admin@aperturelabs.com"], ["name", "Admin User"], ["password_digest", "$2a$04$9MLRLiTOR.QPRea..WlbOu/Z/JaYJWt5mzPzalf6ivwNFQ89IgGO2"], ["updated_at", "2014-12-16 16:30:56.101581"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Started POST "/login" for 127.0.0.1 at 2014-12-16 09:30:56 -0700
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"email"=>"admin@aperturelabs.com", "password"=>"[FILTERED]"}, "commit"=>"Login"}
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."email" = 'admin@aperturelabs.com' LIMIT 1
+Redirected to http://www.example.com/users/19
+Completed 302 Found in 4ms (ActiveRecord: 0.4ms)
+Started GET "/users/19" for 127.0.0.1 at 2014-12-16 09:30:56 -0700
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"19"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 19]]
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = 19 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1[0m  [["id", "19"]]
+  Rendered users/_user_info.html.erb (0.2ms)
+  [1m[35mAddress Load (0.2ms)[0m  SELECT "addresses".* FROM "addresses"  WHERE "addresses"."user_id" = $1  [["user_id", 19]]
+  Rendered collection (0.0ms)
+  Rendered addresses/_multiple.html.erb (0.7ms)
+  [1m[36mOrder Load (0.2ms)[0m  [1mSELECT "orders".* FROM "orders"  WHERE "orders"."user_id" = $1[0m  [["user_id", 19]]
+  Rendered collection (0.0ms)
+  Rendered layouts/_notices.html.erb (0.1ms)
+  Rendered layouts/_header.html.erb (0.4ms)
+Completed 200 OK in 8ms (Views: 5.1ms | ActiveRecord: 1.0ms)
+Started GET "/admin" for 127.0.0.1 at 2014-12-16 09:30:56 -0700
+Processing by RailsAdmin::MainController#dashboard as HTML
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = 19 LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "addresses"[0m
+  [1m[35mAddress Load (0.3ms)[0m  SELECT  "addresses".* FROM "addresses"   ORDER BY addresses.updated_at desc LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "categories"[0m
+  [1m[35mCategory Load (0.3ms)[0m  SELECT  "categories".* FROM "categories"   ORDER BY categories.updated_at desc LIMIT 1
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "items"[0m
+  [1m[35mItem Load (0.4ms)[0m  SELECT  "items".* FROM "items"   ORDER BY items.updated_at desc LIMIT 1
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "orders"[0m
+  [1m[35mOrder Load (0.3ms)[0m  SELECT  "orders".* FROM "orders"   ORDER BY orders.updated_at desc LIMIT 1
+  Rendered /Users/chandracarney/.rvm/gems/ruby-2.1.2/gems/rails_admin-0.6.5/app/views/layouts/rails_admin/_secondary_navigation.html.haml (0.7ms)
+  Rendered /Users/chandracarney/.rvm/gems/ruby-2.1.2/gems/rails_admin-0.6.5/app/views/layouts/rails_admin/_navigation.html.haml (1.1ms)
+Completed 200 OK in 26ms (Views: 17.4ms | ActiveRecord: 2.8ms)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+Started GET "/" for 127.0.0.1 at 2014-12-16 09:30:56 -0700
+Processing by PagesController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" IS NULL LIMIT 1[0m
+  Rendered layouts/_notices.html.erb (0.1ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" IS NULL LIMIT 1
+  Rendered layouts/_header.html.erb (0.8ms)
+Completed 200 OK in 8ms (Views: 7.2ms | ActiveRecord: 0.4ms)
+Started GET "/login" for 127.0.0.1 at 2014-12-16 09:30:56 -0700
+Processing by SessionsController#new as HTML
+  Rendered layouts/_notices.html.erb (0.1ms)
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" IS NULL LIMIT 1[0m
+  Rendered layouts/_header.html.erb (1.1ms)
+Completed 200 OK in 6ms (Views: 4.9ms | ActiveRecord: 0.4ms)
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE LOWER("users"."email") = LOWER('admin@aperturelabs.com') LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("admin", "created_at", "email", "name", "password_digest", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["admin", "t"], ["created_at", "2014-12-16 16:30:56.255747"], ["email", "admin@aperturelabs.com"], ["name", "Admin User"], ["password_digest", "$2a$04$q2xDhbWWaUSlaocuana76uu.iCUB1KjyYZ9Oj7kiHwjeVi6QToj/y"], ["updated_at", "2014-12-16 16:30:56.255747"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Started POST "/login" for 127.0.0.1 at 2014-12-16 09:30:56 -0700
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"email"=>"admin@aperturelabs.com", "password"=>"[FILTERED]"}, "commit"=>"Login"}
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."email" = 'admin@aperturelabs.com' LIMIT 1
+Redirected to http://www.example.com/users/20
+Completed 302 Found in 3ms (ActiveRecord: 0.4ms)
+Started GET "/users/20" for 127.0.0.1 at 2014-12-16 09:30:56 -0700
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"20"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 20]]
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = 20 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1[0m  [["id", "20"]]
+  Rendered users/_user_info.html.erb (0.3ms)
+  [1m[35mAddress Load (0.2ms)[0m  SELECT "addresses".* FROM "addresses"  WHERE "addresses"."user_id" = $1  [["user_id", 20]]
+  Rendered collection (0.0ms)
+  Rendered addresses/_multiple.html.erb (0.9ms)
+  [1m[36mOrder Load (0.2ms)[0m  [1mSELECT "orders".* FROM "orders"  WHERE "orders"."user_id" = $1[0m  [["user_id", 20]]
+  Rendered collection (0.0ms)
+  Rendered layouts/_notices.html.erb (0.1ms)
+  Rendered layouts/_header.html.erb (0.6ms)
+Completed 200 OK in 10ms (Views: 6.9ms | ActiveRecord: 1.0ms)
+Started GET "/admin" for 127.0.0.1 at 2014-12-16 09:30:56 -0700
+Processing by RailsAdmin::MainController#dashboard as HTML
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = 20 LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "addresses"[0m
+  [1m[35mAddress Load (0.4ms)[0m  SELECT  "addresses".* FROM "addresses"   ORDER BY addresses.updated_at desc LIMIT 1
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "categories"[0m
+  [1m[35mCategory Load (0.3ms)[0m  SELECT  "categories".* FROM "categories"   ORDER BY categories.updated_at desc LIMIT 1
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "items"[0m
+  [1m[35mItem Load (0.3ms)[0m  SELECT  "items".* FROM "items"   ORDER BY items.updated_at desc LIMIT 1
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "orders"[0m
+  [1m[35mOrder Load (0.3ms)[0m  SELECT  "orders".* FROM "orders"   ORDER BY orders.updated_at desc LIMIT 1
+  Rendered /Users/chandracarney/.rvm/gems/ruby-2.1.2/gems/rails_admin-0.6.5/app/views/layouts/rails_admin/_secondary_navigation.html.haml (0.7ms)
+  Rendered /Users/chandracarney/.rvm/gems/ruby-2.1.2/gems/rails_admin-0.6.5/app/views/layouts/rails_admin/_navigation.html.haml (1.0ms)
+Completed 200 OK in 27ms (Views: 17.1ms | ActiveRecord: 3.0ms)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+Started GET "/" for 127.0.0.1 at 2014-12-16 09:30:56 -0700
+Processing by PagesController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" IS NULL LIMIT 1[0m
+  Rendered layouts/_notices.html.erb (0.1ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" IS NULL LIMIT 1
+  Rendered layouts/_header.html.erb (0.5ms)
+Completed 200 OK in 6ms (Views: 5.3ms | ActiveRecord: 0.4ms)
+Started GET "/login" for 127.0.0.1 at 2014-12-16 09:30:56 -0700
+Processing by SessionsController#new as HTML
+  Rendered layouts/_notices.html.erb (0.1ms)
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" IS NULL LIMIT 1[0m
+  Rendered layouts/_header.html.erb (1.0ms)
+Completed 200 OK in 5ms (Views: 4.6ms | ActiveRecord: 0.4ms)
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE LOWER("users"."email") = LOWER('admin@aperturelabs.com') LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("admin", "created_at", "email", "name", "password_digest", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["admin", "t"], ["created_at", "2014-12-16 16:30:56.329658"], ["email", "admin@aperturelabs.com"], ["name", "Admin User"], ["password_digest", "$2a$04$c2yiF1sKM9N0Ik63/KYkLu70op048UtU2Ne6HdicPYIak60H6j146"], ["updated_at", "2014-12-16 16:30:56.329658"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Started POST "/login" for 127.0.0.1 at 2014-12-16 09:30:56 -0700
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"email"=>"admin@aperturelabs.com", "password"=>"[FILTERED]"}, "commit"=>"Login"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."email" = 'admin@aperturelabs.com' LIMIT 1
+Redirected to http://www.example.com/users/21
+Completed 302 Found in 3ms (ActiveRecord: 0.3ms)
+Started GET "/users/21" for 127.0.0.1 at 2014-12-16 09:30:56 -0700
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"21"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 21]]
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = 21 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1[0m  [["id", "21"]]
+  Rendered users/_user_info.html.erb (0.2ms)
+  [1m[35mAddress Load (0.3ms)[0m  SELECT "addresses".* FROM "addresses"  WHERE "addresses"."user_id" = $1  [["user_id", 21]]
+  Rendered collection (0.0ms)
+  Rendered addresses/_multiple.html.erb (0.9ms)
+  [1m[36mOrder Load (0.2ms)[0m  [1mSELECT "orders".* FROM "orders"  WHERE "orders"."user_id" = $1[0m  [["user_id", 21]]
+  Rendered collection (0.0ms)
+  Rendered layouts/_notices.html.erb (0.1ms)
+  Rendered layouts/_header.html.erb (0.5ms)
+Completed 200 OK in 8ms (Views: 5.7ms | ActiveRecord: 1.1ms)
+Started GET "/admin" for 127.0.0.1 at 2014-12-16 09:30:56 -0700
+Processing by RailsAdmin::MainController#dashboard as HTML
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = 21 LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "addresses"[0m
+  [1m[35mAddress Load (0.3ms)[0m  SELECT  "addresses".* FROM "addresses"   ORDER BY addresses.updated_at desc LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "categories"[0m
+  [1m[35mCategory Load (0.2ms)[0m  SELECT  "categories".* FROM "categories"   ORDER BY categories.updated_at desc LIMIT 1
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "items"[0m
+  [1m[35mItem Load (0.4ms)[0m  SELECT  "items".* FROM "items"   ORDER BY items.updated_at desc LIMIT 1
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "orders"[0m
+  [1m[35mOrder Load (0.3ms)[0m  SELECT  "orders".* FROM "orders"   ORDER BY orders.updated_at desc LIMIT 1
+  Rendered /Users/chandracarney/.rvm/gems/ruby-2.1.2/gems/rails_admin-0.6.5/app/views/layouts/rails_admin/_secondary_navigation.html.haml (0.7ms)
+  Rendered /Users/chandracarney/.rvm/gems/ruby-2.1.2/gems/rails_admin-0.6.5/app/views/layouts/rails_admin/_navigation.html.haml (1.0ms)
+Completed 200 OK in 24ms (Views: 15.9ms | ActiveRecord: 2.5ms)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+Started GET "/" for 127.0.0.1 at 2014-12-16 09:30:56 -0700
+Processing by PagesController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" IS NULL LIMIT 1[0m
+  Rendered layouts/_notices.html.erb (0.1ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" IS NULL LIMIT 1
+  Rendered layouts/_header.html.erb (0.8ms)
+Completed 200 OK in 9ms (Views: 8.5ms | ActiveRecord: 0.5ms)
+Started GET "/users/new" for 127.0.0.1 at 2014-12-16 09:30:56 -0700
+Processing by UsersController#new as HTML
+  Rendered users/_form.html.erb (4.0ms)
+  Rendered layouts/_notices.html.erb (0.1ms)
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" IS NULL LIMIT 1[0m
+  Rendered layouts/_header.html.erb (1.1ms)
+Completed 200 OK in 10ms (Views: 8.6ms | ActiveRecord: 0.4ms)
+Started POST "/users" for 127.0.0.1 at 2014-12-16 09:30:56 -0700
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"name"=>"Name", "display_name"=>"", "email"=>"email@email.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Submit"}
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.4ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE LOWER("users"."email") = LOWER('email@email.com') LIMIT 1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "users" ("created_at", "display_name", "email", "name", "password_digest", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["created_at", "2014-12-16 16:30:56.417765"], ["display_name", ""], ["email", "email@email.com"], ["name", "Name"], ["password_digest", "$2a$04$ANmmHtABnDFTTpE/aqIlpedSspMQMzPf9lrgaYMNnEJkOJlBhcN4i"], ["updated_at", "2014-12-16 16:30:56.417765"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/
+Completed 302 Found in 8ms (ActiveRecord: 1.0ms)
+Started GET "/" for 127.0.0.1 at 2014-12-16 09:30:56 -0700
+Processing by PagesController#index as HTML
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = 22 LIMIT 1
+  Rendered layouts/_notices.html.erb (0.1ms)
+  Rendered layouts/_header.html.erb (0.4ms)
+Completed 200 OK in 6ms (Views: 5.3ms | ActiveRecord: 0.4ms)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+Started GET "/" for 127.0.0.1 at 2014-12-16 09:30:56 -0700
+Processing by PagesController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" IS NULL LIMIT 1[0m
+  Rendered layouts/_notices.html.erb (0.1ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" IS NULL LIMIT 1
+  Rendered layouts/_header.html.erb (0.5ms)
+Completed 200 OK in 6ms (Views: 5.0ms | ActiveRecord: 0.4ms)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+Started GET "/" for 127.0.0.1 at 2014-12-16 09:30:56 -0700
+Processing by PagesController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" IS NULL LIMIT 1[0m
+  Rendered layouts/_notices.html.erb (0.1ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" IS NULL LIMIT 1
+  Rendered layouts/_header.html.erb (0.7ms)
+Completed 200 OK in 7ms (Views: 6.7ms | ActiveRecord: 0.4ms)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+Started GET "/" for 127.0.0.1 at 2014-12-16 09:30:56 -0700
+Processing by PagesController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" IS NULL LIMIT 1[0m
+  Rendered layouts/_notices.html.erb (0.1ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" IS NULL LIMIT 1
+  Rendered layouts/_header.html.erb (0.5ms)
+Completed 200 OK in 6ms (Views: 5.0ms | ActiveRecord: 0.3ms)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.4ms)[0m  SELECT  1 AS one FROM "users"  WHERE LOWER("users"."email") = LOWER('cave@aperturelabs.com') LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "users" ("created_at", "email", "name", "password_digest", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["created_at", "2014-12-16 16:30:56.468054"], ["email", "cave@aperturelabs.com"], ["name", "Cave Johnson"], ["password_digest", "$2a$04$aHHQGG0e3TPuSBOQu19kpOIHVCgn7p603.tpw9LWB7W74KElGwX8S"], ["updated_at", "2014-12-16 16:30:56.468054"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Started GET "/login" for 127.0.0.1 at 2014-12-16 09:30:56 -0700
+Processing by SessionsController#new as HTML
+  Rendered layouts/_notices.html.erb (0.1ms)
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" IS NULL LIMIT 1[0m
+  Rendered layouts/_header.html.erb (1.2ms)
+Completed 200 OK in 7ms (Views: 6.3ms | ActiveRecord: 0.4ms)
+Started POST "/login" for 127.0.0.1 at 2014-12-16 09:30:56 -0700
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"email"=>"cave@aperturelabs.com", "password"=>"[FILTERED]"}, "commit"=>"Login"}
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."email" = 'cave@aperturelabs.com' LIMIT 1
+Redirected to http://www.example.com/users/23
+Completed 302 Found in 3ms (ActiveRecord: 0.4ms)
+Started GET "/users/23" for 127.0.0.1 at 2014-12-16 09:30:56 -0700
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"23"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 23]]
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = 23 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1[0m  [["id", "23"]]
+  Rendered users/_user_info.html.erb (0.2ms)
+  [1m[35mAddress Load (0.1ms)[0m  SELECT "addresses".* FROM "addresses"  WHERE "addresses"."user_id" = $1  [["user_id", 23]]
+  Rendered collection (0.0ms)
+  Rendered addresses/_multiple.html.erb (0.6ms)
+  [1m[36mOrder Load (0.1ms)[0m  [1mSELECT "orders".* FROM "orders"  WHERE "orders"."user_id" = $1[0m  [["user_id", 23]]
+  Rendered collection (0.0ms)
+  Rendered layouts/_notices.html.erb (0.1ms)
+  Rendered layouts/_header.html.erb (0.4ms)
+Completed 200 OK in 7ms (Views: 5.0ms | ActiveRecord: 0.8ms)
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+Started GET "/" for 127.0.0.1 at 2014-12-16 09:30:56 -0700
+Processing by PagesController#index as HTML
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" IS NULL LIMIT 1
+  Rendered layouts/_notices.html.erb (0.1ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" IS NULL LIMIT 1[0m
+  Rendered layouts/_header.html.erb (0.6ms)
+Completed 200 OK in 8ms (Views: 6.7ms | ActiveRecord: 0.4ms)
+Started GET "/users" for 127.0.0.1 at 2014-12-16 09:30:56 -0700
+Processing by UsersController#index as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" IS NULL LIMIT 1
+Redirected to http://www.example.com/
+Filter chain halted as :require_admin rendered or redirected
+Completed 302 Found in 1ms (ActiveRecord: 0.3ms)
+Started GET "/" for 127.0.0.1 at 2014-12-16 09:30:56 -0700
+Processing by PagesController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" IS NULL LIMIT 1[0m
+  Rendered layouts/_notices.html.erb (0.1ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" IS NULL LIMIT 1
+  Rendered layouts/_header.html.erb (0.5ms)
+Completed 200 OK in 5ms (Views: 4.9ms | ActiveRecord: 0.3ms)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+Started GET "/" for 127.0.0.1 at 2014-12-16 09:30:56 -0700
+Processing by PagesController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" IS NULL LIMIT 1[0m
+  Rendered layouts/_notices.html.erb (0.1ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" IS NULL LIMIT 1
+  Rendered layouts/_header.html.erb (0.8ms)
+Completed 200 OK in 8ms (Views: 6.9ms | ActiveRecord: 0.5ms)
+Started GET "/cart_items" for 127.0.0.1 at 2014-12-16 09:30:56 -0700
+Processing by CartItemsController#index as HTML
+  Rendered layouts/_notices.html.erb (0.1ms)
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" IS NULL LIMIT 1[0m
+  Rendered layouts/_header.html.erb (1.4ms)
+Completed 200 OK in 7ms (Views: 6.5ms | ActiveRecord: 0.5ms)
+Started GET "/orders/new" for 127.0.0.1 at 2014-12-16 09:30:56 -0700
+Processing by OrdersController#new as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" IS NULL LIMIT 1
+Redirected to http://www.example.com/login
+Completed 302 Found in 1ms (ActiveRecord: 0.3ms)
+Started GET "/login" for 127.0.0.1 at 2014-12-16 09:30:56 -0700
+Processing by SessionsController#new as HTML
+  Rendered layouts/_notices.html.erb (0.1ms)
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" IS NULL LIMIT 1[0m
+  Rendered layouts/_header.html.erb (1.0ms)
+Completed 200 OK in 6ms (Views: 4.8ms | ActiveRecord: 0.4ms)
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+Started GET "/login" for 127.0.0.1 at 2014-12-16 09:30:56 -0700
+Processing by SessionsController#new as HTML
+  Rendered layouts/_notices.html.erb (0.1ms)
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" IS NULL LIMIT 1
+  Rendered layouts/_header.html.erb (1.3ms)
+Completed 200 OK in 7ms (Views: 6.2ms | ActiveRecord: 0.4ms)
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.3ms)[0m  SELECT  1 AS one FROM "users"  WHERE LOWER("users"."email") = LOWER('cave@aperturelabs.com') LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "users" ("created_at", "email", "name", "password_digest", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["created_at", "2014-12-16 16:30:56.576158"], ["email", "cave@aperturelabs.com"], ["name", "Cave Johnson"], ["password_digest", "$2a$04$0PfAMwXnbrdwwiBdHYYbeuc9Z0SlbL/Bs3.1EBhNUum3Emih49zzq"], ["updated_at", "2014-12-16 16:30:56.576158"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Started POST "/login" for 127.0.0.1 at 2014-12-16 09:30:56 -0700
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"email"=>"cave@aperturelabs.com", "password"=>"[FILTERED]"}, "commit"=>"Login"}
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."email" = 'cave@aperturelabs.com' LIMIT 1[0m
+Redirected to http://www.example.com/users/24
+Completed 302 Found in 3ms (ActiveRecord: 0.4ms)
+Started GET "/users/24" for 127.0.0.1 at 2014-12-16 09:30:56 -0700
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"24"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1  [["id", 24]]
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = 24 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1  [["id", "24"]]
+  Rendered users/_user_info.html.erb (0.2ms)
+  [1m[36mAddress Load (0.2ms)[0m  [1mSELECT "addresses".* FROM "addresses"  WHERE "addresses"."user_id" = $1[0m  [["user_id", 24]]
+  Rendered collection (0.0ms)
+  Rendered addresses/_multiple.html.erb (0.9ms)
+  [1m[35mOrder Load (0.2ms)[0m  SELECT "orders".* FROM "orders"  WHERE "orders"."user_id" = $1  [["user_id", 24]]
+  Rendered collection (0.0ms)
+  Rendered layouts/_notices.html.erb (0.1ms)
+  Rendered layouts/_header.html.erb (0.7ms)
+Completed 200 OK in 8ms (Views: 6.0ms | ActiveRecord: 0.9ms)
+Started GET "/users/24" for 127.0.0.1 at 2014-12-16 09:30:56 -0700
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"24"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 24]]
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = 24 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1[0m  [["id", "24"]]
+  Rendered users/_user_info.html.erb (0.2ms)
+  [1m[35mAddress Load (0.2ms)[0m  SELECT "addresses".* FROM "addresses"  WHERE "addresses"."user_id" = $1  [["user_id", 24]]
+  Rendered collection (0.0ms)
+  Rendered addresses/_multiple.html.erb (0.6ms)
+  [1m[36mOrder Load (0.1ms)[0m  [1mSELECT "orders".* FROM "orders"  WHERE "orders"."user_id" = $1[0m  [["user_id", 24]]
+  Rendered collection (0.0ms)
+  Rendered layouts/_notices.html.erb (0.1ms)
+  Rendered layouts/_header.html.erb (0.4ms)
+Completed 200 OK in 7ms (Views: 4.7ms | ActiveRecord: 0.9ms)
+  [1m[35m (0.3ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+Started GET "/login" for 127.0.0.1 at 2014-12-16 09:30:56 -0700
+Processing by SessionsController#new as HTML
+  Rendered layouts/_notices.html.erb (0.1ms)
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" IS NULL LIMIT 1
+  Rendered layouts/_header.html.erb (1.5ms)
+Completed 200 OK in 8ms (Views: 6.7ms | ActiveRecord: 0.5ms)
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.3ms)[0m  SELECT  1 AS one FROM "users"  WHERE LOWER("users"."email") = LOWER('cave@aperturelabs.com') LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "users" ("created_at", "email", "name", "password_digest", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["created_at", "2014-12-16 16:30:56.623448"], ["email", "cave@aperturelabs.com"], ["name", "Cave Johnson"], ["password_digest", "$2a$04$flbFdlAQMVre/RvpT0bxBeQh4mFEIDQZ3uOukM9sqox7dYOCJqk3W"], ["updated_at", "2014-12-16 16:30:56.623448"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Started POST "/login" for 127.0.0.1 at 2014-12-16 09:30:56 -0700
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"email"=>"cave@aperturelabs.com", "password"=>"[FILTERED]"}, "commit"=>"Login"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."email" = 'cave@aperturelabs.com' LIMIT 1[0m
+Redirected to http://www.example.com/users/25
+Completed 302 Found in 3ms (ActiveRecord: 0.3ms)
+Started GET "/users/25" for 127.0.0.1 at 2014-12-16 09:30:56 -0700
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"25"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1  [["id", 25]]
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = 25 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1  [["id", "25"]]
+  Rendered users/_user_info.html.erb (0.2ms)
+  [1m[36mAddress Load (0.1ms)[0m  [1mSELECT "addresses".* FROM "addresses"  WHERE "addresses"."user_id" = $1[0m  [["user_id", 25]]
+  Rendered collection (0.0ms)
+  Rendered addresses/_multiple.html.erb (0.6ms)
+  [1m[35mOrder Load (0.1ms)[0m  SELECT "orders".* FROM "orders"  WHERE "orders"."user_id" = $1  [["user_id", 25]]
+  Rendered collection (0.0ms)
+  Rendered layouts/_notices.html.erb (0.1ms)
+  Rendered layouts/_header.html.erb (0.4ms)
+Completed 200 OK in 7ms (Views: 5.1ms | ActiveRecord: 0.8ms)
+Started GET "/cart_items" for 127.0.0.1 at 2014-12-16 09:30:56 -0700
+Processing by CartItemsController#index as HTML
+  Rendered layouts/_notices.html.erb (0.1ms)
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = 25 LIMIT 1[0m
+  Rendered layouts/_header.html.erb (1.5ms)
+Completed 200 OK in 5ms (Views: 4.1ms | ActiveRecord: 0.4ms)
+Started GET "/orders/new" for 127.0.0.1 at 2014-12-16 09:30:56 -0700
+Processing by OrdersController#new as HTML
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = 25 LIMIT 1
+  [1m[36mAddress Load (0.3ms)[0m  [1mSELECT "addresses".* FROM "addresses"  WHERE "addresses"."user_id" = $1[0m  [["user_id", 25]]
+  Rendered layouts/_notices.html.erb (0.1ms)
+  Rendered layouts/_header.html.erb (0.5ms)
+Completed 200 OK in 16ms (Views: 14.0ms | ActiveRecord: 0.7ms)
+Started POST "/orders" for 127.0.0.1 at 2014-12-16 09:30:56 -0700
+Processing by OrdersController#create as HTML
+  Parameters: {"utf8"=>"✓", "order"=>{"delivery"=>"0"}, "commit"=>"Submit Order"}
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "orders" ("created_at", "delivery", "pending", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["created_at", "2014-12-16 16:30:56.680288"], ["delivery", "f"], ["pending", "t"], ["updated_at", "2014-12-16 16:30:56.680288"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://www.example.com/charges/new
+Completed 302 Found in 11ms (ActiveRecord: 0.6ms)
+Started GET "/charges/new" for 127.0.0.1 at 2014-12-16 09:30:56 -0700
+Processing by ChargesController#new as HTML
+  [1m[36mOrder Load (0.4ms)[0m  [1mSELECT  "orders".* FROM "orders"  WHERE "orders"."id" = 2 LIMIT 1[0m
+  [1m[35mItem Load (0.6ms)[0m  SELECT "items".* FROM "items" INNER JOIN "items_orders" ON "items"."id" = "items_orders"."item_id" WHERE "items_orders"."order_id" = $1  [["order_id", 2]]
+  Rendered layouts/_notices.html.erb (0.1ms)
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = 25 LIMIT 1[0m
+  Rendered layouts/_header.html.erb (1.3ms)
+Completed 200 OK in 15ms (Views: 11.7ms | ActiveRecord: 2.2ms)
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+Started GET "/login" for 127.0.0.1 at 2014-12-16 09:30:56 -0700
+Processing by SessionsController#new as HTML
+  Rendered layouts/_notices.html.erb (0.1ms)
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" IS NULL LIMIT 1
+  Rendered layouts/_header.html.erb (1.1ms)
+Completed 200 OK in 6ms (Views: 5.1ms | ActiveRecord: 0.4ms)
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.4ms)[0m  SELECT  1 AS one FROM "users"  WHERE LOWER("users"."email") = LOWER('cave@aperturelabs.com') LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "users" ("created_at", "email", "name", "password_digest", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["created_at", "2014-12-16 16:30:56.715251"], ["email", "cave@aperturelabs.com"], ["name", "Cave Johnson"], ["password_digest", "$2a$04$DpWjzmuUEzM2vDGNXlpoSOrVIWz/0nAYeGOBmSQxf52ojHy1WVf4a"], ["updated_at", "2014-12-16 16:30:56.715251"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Started POST "/login" for 127.0.0.1 at 2014-12-16 09:30:56 -0700
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"email"=>"cave@aperturelabs.com", "password"=>"[FILTERED]"}, "commit"=>"Login"}
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."email" = 'cave@aperturelabs.com' LIMIT 1[0m
+Redirected to http://www.example.com/users/26
+Completed 302 Found in 4ms (ActiveRecord: 0.4ms)
+Started GET "/users/26" for 127.0.0.1 at 2014-12-16 09:30:56 -0700
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"26"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1  [["id", 26]]
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = 26 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1  [["id", "26"]]
+  Rendered users/_user_info.html.erb (0.2ms)
+  [1m[36mAddress Load (0.2ms)[0m  [1mSELECT "addresses".* FROM "addresses"  WHERE "addresses"."user_id" = $1[0m  [["user_id", 26]]
+  Rendered collection (0.0ms)
+  Rendered addresses/_multiple.html.erb (0.6ms)
+  [1m[35mOrder Load (0.2ms)[0m  SELECT "orders".* FROM "orders"  WHERE "orders"."user_id" = $1  [["user_id", 26]]
+  Rendered collection (0.0ms)
+  Rendered layouts/_notices.html.erb (0.1ms)
+  Rendered layouts/_header.html.erb (0.4ms)
+Completed 200 OK in 7ms (Views: 4.9ms | ActiveRecord: 0.8ms)
+Started GET "/admin" for 127.0.0.1 at 2014-12-16 09:30:56 -0700
+Processing by RailsAdmin::MainController#dashboard as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = 26 LIMIT 1[0m
+Redirected to http://www.example.com/
+Filter chain halted as :_authorize! rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.4ms)
+Started GET "/" for 127.0.0.1 at 2014-12-16 09:30:56 -0700
+Processing by PagesController#index as HTML
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = 26 LIMIT 1
+  Rendered layouts/_notices.html.erb (0.1ms)
+  Rendered layouts/_header.html.erb (0.6ms)
+Completed 200 OK in 7ms (Views: 6.1ms | ActiveRecord: 0.4ms)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+Started GET "/login" for 127.0.0.1 at 2014-12-16 09:30:56 -0700
+Processing by SessionsController#new as HTML
+  Rendered layouts/_notices.html.erb (0.1ms)
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" IS NULL LIMIT 1[0m
+  Rendered layouts/_header.html.erb (1.4ms)
+Completed 200 OK in 7ms (Views: 6.5ms | ActiveRecord: 0.4ms)
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE LOWER("users"."email") = LOWER('cave@aperturelabs.com') LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("created_at", "email", "name", "password_digest", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["created_at", "2014-12-16 16:30:56.764346"], ["email", "cave@aperturelabs.com"], ["name", "Cave Johnson"], ["password_digest", "$2a$04$Jaw2pBVWHnVpkJ7HT4N30OMz6FPU6MsbWD8oL4lZCrh8Z7pyCkVdK"], ["updated_at", "2014-12-16 16:30:56.764346"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Started POST "/login" for 127.0.0.1 at 2014-12-16 09:30:56 -0700
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"email"=>"cave@aperturelabs.com", "password"=>"[FILTERED]"}, "commit"=>"Login"}
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."email" = 'cave@aperturelabs.com' LIMIT 1
+Redirected to http://www.example.com/users/27
+Completed 302 Found in 3ms (ActiveRecord: 0.4ms)
+Started GET "/users/27" for 127.0.0.1 at 2014-12-16 09:30:56 -0700
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"27"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 27]]
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = 27 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1[0m  [["id", "27"]]
+  Rendered users/_user_info.html.erb (0.2ms)
+  [1m[35mAddress Load (0.2ms)[0m  SELECT "addresses".* FROM "addresses"  WHERE "addresses"."user_id" = $1  [["user_id", 27]]
+  Rendered collection (0.0ms)
+  Rendered addresses/_multiple.html.erb (0.7ms)
+  [1m[36mOrder Load (0.2ms)[0m  [1mSELECT "orders".* FROM "orders"  WHERE "orders"."user_id" = $1[0m  [["user_id", 27]]
+  Rendered collection (0.0ms)
+  Rendered layouts/_notices.html.erb (0.1ms)
+  Rendered layouts/_header.html.erb (0.4ms)
+Completed 200 OK in 8ms (Views: 5.7ms | ActiveRecord: 0.9ms)
+Started GET "/users" for 127.0.0.1 at 2014-12-16 09:30:56 -0700
+Processing by UsersController#index as HTML
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = 27 LIMIT 1
+Redirected to http://www.example.com/
+Filter chain halted as :require_admin rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.5ms)
+Started GET "/" for 127.0.0.1 at 2014-12-16 09:30:56 -0700
+Processing by PagesController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = 27 LIMIT 1[0m
+  Rendered layouts/_notices.html.erb (0.1ms)
+  Rendered layouts/_header.html.erb (0.4ms)
+Completed 200 OK in 6ms (Views: 5.0ms | ActiveRecord: 0.4ms)
+  [1m[35m (0.3ms)[0m  ROLLBACK
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+Started GET "/login" for 127.0.0.1 at 2014-12-16 09:30:56 -0700
+Processing by SessionsController#new as HTML
+  Rendered layouts/_notices.html.erb (0.1ms)
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" IS NULL LIMIT 1
+  Rendered layouts/_header.html.erb (1.3ms)
+Completed 200 OK in 7ms (Views: 6.2ms | ActiveRecord: 0.5ms)
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.3ms)[0m  SELECT  1 AS one FROM "users"  WHERE LOWER("users"."email") = LOWER('cave@aperturelabs.com') LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "users" ("created_at", "email", "name", "password_digest", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["created_at", "2014-12-16 16:30:56.811137"], ["email", "cave@aperturelabs.com"], ["name", "Cave Johnson"], ["password_digest", "$2a$04$KnTldb0GGrrLS1.GB5xI9.sCMnJgBlJifOiQeqTmzUieYLhZ40hyG"], ["updated_at", "2014-12-16 16:30:56.811137"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Started POST "/login" for 127.0.0.1 at 2014-12-16 09:30:56 -0700
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"email"=>"cave@aperturelabs.com", "password"=>"[FILTERED]"}, "commit"=>"Login"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."email" = 'cave@aperturelabs.com' LIMIT 1[0m
+Redirected to http://www.example.com/users/28
+Completed 302 Found in 3ms (ActiveRecord: 0.3ms)
+Started GET "/users/28" for 127.0.0.1 at 2014-12-16 09:30:56 -0700
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"28"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1  [["id", 28]]
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = 28 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1  [["id", "28"]]
+  Rendered users/_user_info.html.erb (0.2ms)
+  [1m[36mAddress Load (0.1ms)[0m  [1mSELECT "addresses".* FROM "addresses"  WHERE "addresses"."user_id" = $1[0m  [["user_id", 28]]
+  Rendered collection (0.0ms)
+  Rendered addresses/_multiple.html.erb (0.6ms)
+  [1m[35mOrder Load (0.1ms)[0m  SELECT "orders".* FROM "orders"  WHERE "orders"."user_id" = $1  [["user_id", 28]]
+  Rendered collection (0.0ms)
+  Rendered layouts/_notices.html.erb (0.1ms)
+  Rendered layouts/_header.html.erb (0.4ms)
+Completed 200 OK in 7ms (Views: 4.8ms | ActiveRecord: 0.8ms)
+Started GET "/addresses" for 127.0.0.1 at 2014-12-16 09:30:56 -0700
+Processing by AddressesController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = 28 LIMIT 1[0m
+Redirected to http://www.example.com/
+Filter chain halted as :require_admin rendered or redirected
+Completed 302 Found in 1ms (ActiveRecord: 0.4ms)
+Started GET "/" for 127.0.0.1 at 2014-12-16 09:30:56 -0700
+Processing by PagesController#index as HTML
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = 28 LIMIT 1
+  Rendered layouts/_notices.html.erb (0.1ms)
+  Rendered layouts/_header.html.erb (0.4ms)
+Completed 200 OK in 6ms (Views: 5.3ms | ActiveRecord: 0.4ms)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+Started GET "/login" for 127.0.0.1 at 2014-12-16 09:30:56 -0700
+Processing by SessionsController#new as HTML
+  Rendered layouts/_notices.html.erb (0.1ms)
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" IS NULL LIMIT 1[0m
+  Rendered layouts/_header.html.erb (1.5ms)
+Completed 200 OK in 8ms (Views: 6.8ms | ActiveRecord: 0.5ms)
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE LOWER("users"."email") = LOWER('cave@aperturelabs.com') LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("created_at", "email", "name", "password_digest", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["created_at", "2014-12-16 16:30:56.856751"], ["email", "cave@aperturelabs.com"], ["name", "Cave Johnson"], ["password_digest", "$2a$04$GEZplzwP5hMgCblKlc47HuU10YlU0tPb37w55.F5F7djpQIkoKNti"], ["updated_at", "2014-12-16 16:30:56.856751"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Started POST "/login" for 127.0.0.1 at 2014-12-16 09:30:56 -0700
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"email"=>"cave@aperturelabs.com", "password"=>"[FILTERED]"}, "commit"=>"Login"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."email" = 'cave@aperturelabs.com' LIMIT 1
+Redirected to http://www.example.com/users/29
+Completed 302 Found in 3ms (ActiveRecord: 0.3ms)
+Started GET "/users/29" for 127.0.0.1 at 2014-12-16 09:30:56 -0700
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"29"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 29]]
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = 29 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1[0m  [["id", "29"]]
+  Rendered users/_user_info.html.erb (0.2ms)
+  [1m[35mAddress Load (0.1ms)[0m  SELECT "addresses".* FROM "addresses"  WHERE "addresses"."user_id" = $1  [["user_id", 29]]
+  Rendered collection (0.0ms)
+  Rendered addresses/_multiple.html.erb (0.6ms)
+  [1m[36mOrder Load (0.1ms)[0m  [1mSELECT "orders".* FROM "orders"  WHERE "orders"."user_id" = $1[0m  [["user_id", 29]]
+  Rendered collection (0.0ms)
+  Rendered layouts/_notices.html.erb (0.1ms)
+  Rendered layouts/_header.html.erb (0.4ms)
+Completed 200 OK in 7ms (Views: 4.9ms | ActiveRecord: 0.8ms)
+Started GET "/orders" for 127.0.0.1 at 2014-12-16 09:30:56 -0700
+Processing by OrdersController#index as HTML
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = 29 LIMIT 1
+Redirected to http://www.example.com/
+Filter chain halted as :require_admin rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.5ms)
+Started GET "/" for 127.0.0.1 at 2014-12-16 09:30:56 -0700
+Processing by PagesController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = 29 LIMIT 1[0m
+  Rendered layouts/_notices.html.erb (0.1ms)
+  Rendered layouts/_header.html.erb (0.4ms)
+Completed 200 OK in 6ms (Views: 5.6ms | ActiveRecord: 0.4ms)
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.4ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE LOWER("users"."email") = LOWER('admin@aperturelabs.com') LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("admin", "created_at", "email", "name", "password_digest", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["admin", "t"], ["created_at", "2014-12-16 16:30:56.897466"], ["email", "admin@aperturelabs.com"], ["name", "Admin User"], ["password_digest", "$2a$04$sIWfPIY8m1IyHDhBia0wz.eM0lJg4S2fDIm0cOed.BHiWd4K..uW2"], ["updated_at", "2014-12-16 16:30:56.897466"]]
+  [1m[36m (0.3ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/login" for 127.0.0.1 at 2014-12-16 09:30:56 -0700
+Processing by SessionsController#new as HTML
+  Rendered layouts/_notices.html.erb (0.1ms)
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" IS NULL LIMIT 1
+  Rendered layouts/_header.html.erb (1.1ms)
+Completed 200 OK in 6ms (Views: 4.8ms | ActiveRecord: 0.4ms)
+Started POST "/login" for 127.0.0.1 at 2014-12-16 09:30:56 -0700
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"email"=>"admin@aperturelabs.com", "password"=>"[FILTERED]"}, "commit"=>"Login"}
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."email" = 'admin@aperturelabs.com' LIMIT 1[0m
+Redirected to http://www.example.com/users/30
+Completed 302 Found in 3ms (ActiveRecord: 0.4ms)
+Started GET "/users/30" for 127.0.0.1 at 2014-12-16 09:30:56 -0700
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"30"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1  [["id", 30]]
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = 30 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1  [["id", "30"]]
+  Rendered users/_user_info.html.erb (0.2ms)
+  [1m[36mAddress Load (0.1ms)[0m  [1mSELECT "addresses".* FROM "addresses"  WHERE "addresses"."user_id" = $1[0m  [["user_id", 30]]
+  Rendered collection (0.0ms)
+  Rendered addresses/_multiple.html.erb (0.6ms)
+  [1m[35mOrder Load (0.1ms)[0m  SELECT "orders".* FROM "orders"  WHERE "orders"."user_id" = $1  [["user_id", 30]]
+  Rendered collection (0.0ms)
+  Rendered layouts/_notices.html.erb (0.1ms)
+  Rendered layouts/_header.html.erb (0.5ms)
+Completed 200 OK in 8ms (Views: 5.1ms | ActiveRecord: 1.1ms)
+Started GET "/users" for 127.0.0.1 at 2014-12-16 09:30:56 -0700
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = 30 LIMIT 1[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users"
+  Rendered layouts/_notices.html.erb (0.1ms)
+  Rendered layouts/_header.html.erb (0.5ms)
+Completed 200 OK in 6ms (Views: 4.4ms | ActiveRecord: 0.6ms)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+Started GET "/login" for 127.0.0.1 at 2014-12-16 09:30:56 -0700
+Processing by SessionsController#new as HTML
+  Rendered layouts/_notices.html.erb (0.1ms)
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" IS NULL LIMIT 1[0m
+  Rendered layouts/_header.html.erb (1.3ms)
+Completed 200 OK in 7ms (Views: 6.4ms | ActiveRecord: 0.4ms)
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.5ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE LOWER("users"."email") = LOWER('cave@aperturelabs.com') LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("created_at", "email", "name", "password_digest", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["created_at", "2014-12-16 16:30:56.948586"], ["email", "cave@aperturelabs.com"], ["name", "Cave Johnson"], ["password_digest", "$2a$04$jegAmXSF9o5pYEGtLuiSi.nAMqtl8ikkrYQZYSrRpZ0lxFXSvdHX."], ["updated_at", "2014-12-16 16:30:56.948586"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Started POST "/login" for 127.0.0.1 at 2014-12-16 09:30:56 -0700
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"email"=>"cave@aperturelabs.com", "password"=>"[FILTERED]"}, "commit"=>"Login"}
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."email" = 'cave@aperturelabs.com' LIMIT 1
+Redirected to http://www.example.com/users/31
+Completed 302 Found in 3ms (ActiveRecord: 0.4ms)
+Started GET "/users/31" for 127.0.0.1 at 2014-12-16 09:30:56 -0700
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"31"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 31]]
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = 31 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1[0m  [["id", "31"]]
+  Rendered users/_user_info.html.erb (0.2ms)
+  [1m[35mAddress Load (0.1ms)[0m  SELECT "addresses".* FROM "addresses"  WHERE "addresses"."user_id" = $1  [["user_id", 31]]
+  Rendered collection (0.0ms)
+  Rendered addresses/_multiple.html.erb (0.6ms)
+  [1m[36mOrder Load (0.1ms)[0m  [1mSELECT "orders".* FROM "orders"  WHERE "orders"."user_id" = $1[0m  [["user_id", 31]]
+  Rendered collection (0.0ms)
+  Rendered layouts/_notices.html.erb (0.1ms)
+  Rendered layouts/_header.html.erb (0.4ms)
+Completed 200 OK in 9ms (Views: 6.6ms | ActiveRecord: 1.0ms)
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE LOWER("users"."email") = LOWER('wrong@example.com') LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("created_at", "email", "name", "password_digest", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["created_at", "2014-12-16 16:30:56.972971"], ["email", "wrong@example.com"], ["name", "Cave Johnson"], ["password_digest", "$2a$04$w0HU6bmzjwtU8OXuduL9Dui2Dfni/yClRlhxJ5M/VdhfiCDrRTxZy"], ["updated_at", "2014-12-16 16:30:56.972971"]]
+  [1m[36m (0.2ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/users.32" for 127.0.0.1 at 2014-12-16 09:30:56 -0700
+Processing by UsersController#index as 
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = 31 LIMIT 1
+Redirected to http://www.example.com/
+Filter chain halted as :require_admin rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.3ms)
+Started GET "/" for 127.0.0.1 at 2014-12-16 09:30:56 -0700
+Processing by PagesController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = 31 LIMIT 1[0m
+  Rendered layouts/_notices.html.erb (0.1ms)
+  Rendered layouts/_header.html.erb (0.5ms)
+Completed 200 OK in 9ms (Views: 7.4ms | ActiveRecord: 0.6ms)
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+Started GET "/login" for 127.0.0.1 at 2014-12-16 09:30:56 -0700
+Processing by SessionsController#new as HTML
+  Rendered layouts/_notices.html.erb (0.1ms)
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" IS NULL LIMIT 1[0m
+  Rendered layouts/_header.html.erb (1.2ms)
+Completed 200 OK in 6ms (Views: 5.6ms | ActiveRecord: 0.4ms)
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_2
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE LOWER("users"."email") = LOWER('admin@aperturelabs.com') LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("admin", "created_at", "email", "name", "password_digest", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["admin", "t"], ["created_at", "2014-12-16 16:30:57.004878"], ["email", "admin@aperturelabs.com"], ["name", "Admin User"], ["password_digest", "$2a$04$CTMgcN1DGmDtfAOpsv50Oe/qDqejgJ7JEfR8ppPDNcFmezogRnoTO"], ["updated_at", "2014-12-16 16:30:57.004878"]]
+  [1m[36m (0.2ms)[0m  [1mRELEASE SAVEPOINT active_record_2[0m
+Started POST "/login" for 127.0.0.1 at 2014-12-16 09:30:57 -0700
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"email"=>"admin@aperturelabs.com", "password"=>"[FILTERED]"}, "commit"=>"Login"}
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."email" = 'admin@aperturelabs.com' LIMIT 1
+Redirected to http://www.example.com/users/33
+Completed 302 Found in 4ms (ActiveRecord: 0.4ms)
+Started GET "/users/33" for 127.0.0.1 at 2014-12-16 09:30:57 -0700
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"33"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 33]]
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = 33 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1[0m  [["id", "33"]]
+  Rendered users/_user_info.html.erb (0.2ms)
+  [1m[35mAddress Load (0.1ms)[0m  SELECT "addresses".* FROM "addresses"  WHERE "addresses"."user_id" = $1  [["user_id", 33]]
+  Rendered collection (0.0ms)
+  Rendered addresses/_multiple.html.erb (0.6ms)
+  [1m[36mOrder Load (0.1ms)[0m  [1mSELECT "orders".* FROM "orders"  WHERE "orders"."user_id" = $1[0m  [["user_id", 33]]
+  Rendered collection (0.0ms)
+  Rendered layouts/_notices.html.erb (0.1ms)
+  Rendered layouts/_header.html.erb (0.4ms)
+Completed 200 OK in 8ms (Views: 5.9ms | ActiveRecord: 0.8ms)
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_2
+  [1m[36mSQL (1.5ms)[0m  [1mINSERT INTO "categories" ("created_at", "name", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["created_at", "2014-12-16 16:30:57.030988"], ["name", "drinks"], ["updated_at", "2014-12-16 16:30:57.030988"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_2
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_2[0m
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_2
+Started GET "/items/new" for 127.0.0.1 at 2014-12-16 09:30:57 -0700
+Processing by ItemsController#new as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = 33 LIMIT 1[0m
+  [1m[35mCategory Load (0.3ms)[0m  SELECT "categories".* FROM "categories"
+  Rendered items/_form.html.erb (16.4ms)
+  Rendered layouts/_notices.html.erb (0.1ms)
+  Rendered layouts/_header.html.erb (0.7ms)
+Completed 200 OK in 27ms (Views: 23.1ms | ActiveRecord: 1.8ms)
+Started POST "/items" for 127.0.0.1 at 2014-12-16 09:30:57 -0700
+Processing by ItemsController#create as HTML
+  Parameters: {"utf8"=>"✓", "item"=>{"title"=>"Coffee", "description"=>"Black gold", "price"=>"2.99", "category_ids"=>["", "1"]}, "commit"=>"Submit"}
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = 33 LIMIT 1[0m
+  [1m[35mCategory Load (0.2ms)[0m  SELECT  "categories".* FROM "categories"  WHERE "categories"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_2[0m
+  [1m[35mItem Exists (0.5ms)[0m  SELECT  1 AS one FROM "items"  WHERE "items"."title" = 'Coffee' LIMIT 1
+  [1m[36mSQL (2.2ms)[0m  [1mINSERT INTO "items" ("created_at", "description", "price", "title", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["created_at", "2014-12-16 16:30:57.093563"], ["description", "Black gold"], ["price", "2.99"], ["title", "Coffee"], ["updated_at", "2014-12-16 16:30:57.093563"]]
+  [1m[35mSQL (2.9ms)[0m  INSERT INTO "categories_items" ("category_id", "item_id") VALUES ($1, $2)  [["category_id", 1], ["item_id", 1]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_2[0m
+Redirected to http://www.example.com/items
+Completed 302 Found in 23ms (ActiveRecord: 8.5ms)
+Started GET "/items" for 127.0.0.1 at 2014-12-16 09:30:57 -0700
+Processing by ItemsController#index as HTML
+  [1m[35mItem Load (1.2ms)[0m  SELECT "items".* FROM "items" INNER JOIN "categories_items" ON "categories_items"."item_id" = "items"."id" INNER JOIN "categories" ON "categories"."id" = "categories_items"."category_id" WHERE "items"."active" = 't' AND "categories"."name" = 'drinks'
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = 33 LIMIT 1[0m
+  Rendered items/_item.html.erb (2.7ms)
+  [1m[35mItem Load (0.7ms)[0m  SELECT "items".* FROM "items" INNER JOIN "categories_items" ON "categories_items"."item_id" = "items"."id" INNER JOIN "categories" ON "categories"."id" = "categories_items"."category_id" WHERE "items"."active" = 't' AND "categories"."name" = 'eats'
+  Rendered collection (0.0ms)
+  Rendered layouts/_notices.html.erb (0.1ms)
+  Rendered layouts/_header.html.erb (0.5ms)
+Completed 200 OK in 15ms (Views: 12.2ms | ActiveRecord: 2.2ms)
+  [1m[36m (0.3ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+Started GET "/login" for 127.0.0.1 at 2014-12-16 09:30:57 -0700
+Processing by SessionsController#new as HTML
+  Rendered layouts/_notices.html.erb (0.1ms)
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" IS NULL LIMIT 1[0m
+  Rendered layouts/_header.html.erb (1.4ms)
+Completed 200 OK in 8ms (Views: 6.6ms | ActiveRecord: 0.4ms)
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_2
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE LOWER("users"."email") = LOWER('admin@aperturelabs.com') LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("admin", "created_at", "email", "name", "password_digest", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["admin", "t"], ["created_at", "2014-12-16 16:30:57.139993"], ["email", "admin@aperturelabs.com"], ["name", "Admin User"], ["password_digest", "$2a$04$zs41Qs8.nndWLeEUdSChKuGoiOwTIMluTxtaaLrle/j19FKWK8oOe"], ["updated_at", "2014-12-16 16:30:57.139993"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_2[0m
+Started POST "/login" for 127.0.0.1 at 2014-12-16 09:30:57 -0700
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"email"=>"admin@aperturelabs.com", "password"=>"[FILTERED]"}, "commit"=>"Login"}
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."email" = 'admin@aperturelabs.com' LIMIT 1
+Redirected to http://www.example.com/users/34
+Completed 302 Found in 3ms (ActiveRecord: 0.4ms)
+Started GET "/users/34" for 127.0.0.1 at 2014-12-16 09:30:57 -0700
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"34"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 34]]
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = 34 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1[0m  [["id", "34"]]
+  Rendered users/_user_info.html.erb (0.2ms)
+  [1m[35mAddress Load (0.2ms)[0m  SELECT "addresses".* FROM "addresses"  WHERE "addresses"."user_id" = $1  [["user_id", 34]]
+  Rendered collection (0.0ms)
+  Rendered addresses/_multiple.html.erb (0.6ms)
+  [1m[36mOrder Load (0.1ms)[0m  [1mSELECT "orders".* FROM "orders"  WHERE "orders"."user_id" = $1[0m  [["user_id", 34]]
+  Rendered collection (0.0ms)
+  Rendered layouts/_notices.html.erb (0.1ms)
+  Rendered layouts/_header.html.erb (0.5ms)
+Completed 200 OK in 7ms (Views: 5.0ms | ActiveRecord: 0.8ms)
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_2
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "categories" ("created_at", "name", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["created_at", "2014-12-16 16:30:57.161930"], ["name", "drinks"], ["updated_at", "2014-12-16 16:30:57.161930"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_2
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_2[0m
+  [1m[35mItem Exists (0.7ms)[0m  SELECT  1 AS one FROM "items"  WHERE "items"."title" = 'Espresso' LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "items" ("created_at", "description", "price", "title", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["created_at", "2014-12-16 16:30:57.166730"], ["description", "Coffee that has been forcefully brewed with hot water and lots of pressure"], ["price", "2.99"], ["title", "Espresso"], ["updated_at", "2014-12-16 16:30:57.166730"]]
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "categories_items" ("category_id", "item_id") VALUES ($1, $2)  [["category_id", 2], ["item_id", 2]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_2[0m
+Started GET "/items" for 127.0.0.1 at 2014-12-16 09:30:57 -0700
+Processing by ItemsController#index as HTML
+  [1m[35mItem Load (1.0ms)[0m  SELECT "items".* FROM "items" INNER JOIN "categories_items" ON "categories_items"."item_id" = "items"."id" INNER JOIN "categories" ON "categories"."id" = "categories_items"."category_id" WHERE "items"."active" = 't' AND "categories"."name" = 'drinks'
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = 34 LIMIT 1[0m
+  Rendered items/_item.html.erb (2.1ms)
+  [1m[35mItem Load (0.8ms)[0m  SELECT "items".* FROM "items" INNER JOIN "categories_items" ON "categories_items"."item_id" = "items"."id" INNER JOIN "categories" ON "categories"."id" = "categories_items"."category_id" WHERE "items"."active" = 't' AND "categories"."name" = 'eats'
+  Rendered collection (0.0ms)
+  Rendered layouts/_notices.html.erb (0.1ms)
+  Rendered layouts/_header.html.erb (0.5ms)
+Completed 200 OK in 12ms (Views: 8.8ms | ActiveRecord: 2.1ms)
+Started GET "/items/2/edit" for 127.0.0.1 at 2014-12-16 09:30:57 -0700
+Processing by ItemsController#edit as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mItem Load (0.3ms)[0m  [1mSELECT  "items".* FROM "items"  WHERE "items"."id" = $1 LIMIT 1[0m  [["id", 2]]
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = 34 LIMIT 1
+  [1m[36m (0.6ms)[0m  [1mSELECT "categories".id FROM "categories" INNER JOIN "categories_items" ON "categories"."id" = "categories_items"."category_id" WHERE "categories_items"."item_id" = $1[0m  [["item_id", 2]]
+  [1m[35mCategory Load (0.2ms)[0m  SELECT "categories".* FROM "categories"
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "categories".id FROM "categories" INNER JOIN "categories_items" ON "categories"."id" = "categories_items"."category_id" WHERE "categories_items"."item_id" = $1[0m  [["item_id", 2]]
+  Rendered items/_form.html.erb (6.3ms)
+  Rendered layouts/_notices.html.erb (0.1ms)
+  Rendered layouts/_header.html.erb (0.5ms)
+Completed 200 OK in 14ms (Views: 10.2ms | ActiveRecord: 1.5ms)
+  [1m[35m (0.2ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+Started GET "/items" for 127.0.0.1 at 2014-12-16 09:30:57 -0700
+Processing by ItemsController#index as HTML
+  [1m[36mItem Load (1.0ms)[0m  [1mSELECT "items".* FROM "items" INNER JOIN "categories_items" ON "categories_items"."item_id" = "items"."id" INNER JOIN "categories" ON "categories"."id" = "categories_items"."category_id" WHERE "items"."active" = 't' AND "categories"."name" = 'drinks'[0m
+  Rendered collection (0.0ms)
+  [1m[35mItem Load (0.9ms)[0m  SELECT "items".* FROM "items" INNER JOIN "categories_items" ON "categories_items"."item_id" = "items"."id" INNER JOIN "categories" ON "categories"."id" = "categories_items"."category_id" WHERE "items"."active" = 't' AND "categories"."name" = 'eats'
+  Rendered collection (0.0ms)
+  Rendered layouts/_notices.html.erb (0.1ms)
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" IS NULL LIMIT 1[0m
+  Rendered layouts/_header.html.erb (1.4ms)
+Completed 200 OK in 11ms (Views: 8.3ms | ActiveRecord: 2.3ms)
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mItem Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "items"  WHERE "items"."title" = 'a' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "items" ("created_at", "description", "price", "title", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["created_at", "2014-12-16 16:30:57.234246"], ["description", "aa"], ["price", "1.99"], ["title", "a"], ["updated_at", "2014-12-16 16:30:57.234246"]]
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "categories" ("created_at", "name", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["created_at", "2014-12-16 16:30:57.235451"], ["name", "lunch"], ["updated_at", "2014-12-16 16:30:57.235451"]]
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "categories_items" ("category_id", "item_id") VALUES ($1, $2)  [["category_id", 3], ["item_id", 3]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.5ms)[0m  SELECT COUNT(*) FROM "items" INNER JOIN "categories_items" ON "items"."id" = "categories_items"."item_id" WHERE "categories_items"."category_id" = $1  [["category_id", 3]]
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mItem Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "items"  WHERE "items"."title" = 'coffee' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mItem Exists (0.6ms)[0m  SELECT  1 AS one FROM "items"  WHERE "items"."title" IS NULL LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mItem Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "items"  WHERE "items"."title" = 'coffee' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mItem Exists (0.3ms)[0m  SELECT  1 AS one FROM "items"  WHERE "items"."title" = 'coffee' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mItem Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "items"  WHERE "items"."title" = 'coffee' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mItem Exists (0.3ms)[0m  SELECT  1 AS one FROM "items"  WHERE "items"."title" = '' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mItem Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "items"  WHERE "items"."title" = 'coffee' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mItem Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "items"  WHERE "items"."title" = 'coffee' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "items" ("created_at", "description", "price", "title", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["created_at", "2014-12-16 16:30:57.277779"], ["description", "legal stimulants for cheap"], ["price", "2.99"], ["title", "coffee"], ["updated_at", "2014-12-16 16:30:57.277779"]]
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "categories" ("created_at", "name", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["created_at", "2014-12-16 16:30:57.278976"], ["name", "breakfast"], ["updated_at", "2014-12-16 16:30:57.278976"]]
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "categories_items" ("category_id", "item_id") VALUES ($1, $2)  [["category_id", 4], ["item_id", 4]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mItem Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "items"  WHERE "items"."title" = 'coffee' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  [1m[36mItem Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "items"  WHERE "items"."title" = 'coffee' LIMIT 1[0m
+  [1m[35mItem Exists (0.2ms)[0m  SELECT  1 AS one FROM "items"  WHERE "items"."title" = 'espresso' LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mItem Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "items"  WHERE "items"."title" = 'coffee' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mItem Exists (0.3ms)[0m  SELECT  1 AS one FROM "items"  WHERE "items"."title" = 'coffee' LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE LOWER("users"."email") = LOWER('user@user.com') LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mUser Exists (0.3ms)[0m  SELECT  1 AS one FROM "users"  WHERE LOWER("users"."email") = LOWER('user@user.com') LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE LOWER("users"."email") = LOWER('user@user.com') LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mUser Exists (0.4ms)[0m  SELECT  1 AS one FROM "users"  WHERE LOWER("users"."email") = LOWER('user@user.com') LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE LOWER("users"."email") = LOWER('user@user.com') LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mUser Exists (0.3ms)[0m  SELECT  1 AS one FROM "users"  WHERE "users"."email" IS NULL LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE LOWER("users"."email") = LOWER('user@foo,com') LIMIT 1[0m
+  [1m[35mUser Exists (0.3ms)[0m  SELECT  1 AS one FROM "users"  WHERE LOWER("users"."email") = LOWER('user_at_foo.org') LIMIT 1
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE LOWER("users"."email") = LOWER('example.user@foo.') LIMIT 1[0m
+  [1m[35mUser Exists (0.3ms)[0m  SELECT  1 AS one FROM "users"  WHERE LOWER("users"."email") = LOWER('foo@bar_baz.com') LIMIT 1
+  [1m[36mUser Exists (0.5ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE LOWER("users"."email") = LOWER('foo@bar_baz.com') LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE LOWER("users"."email") = LOWER('user@user.com') LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("created_at", "display_name", "email", "name", "password_digest", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["created_at", "2014-12-16 16:30:57.421499"], ["display_name", "user"], ["email", "user@user.com"], ["name", "User"], ["password_digest", "$2a$04$YfprLwcHxS4dYz8BwEspx.2tRvZfKxuhqJEUMFqYXxuDiEMSaKqAK"], ["updated_at", "2014-12-16 16:30:57.421499"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE LOWER("users"."email") = LOWER('USER@USER.COM') LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE LOWER("users"."email") = LOWER('user@user.com') LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mUser Exists (0.3ms)[0m  SELECT  1 AS one FROM "users"  WHERE LOWER("users"."email") = LOWER('user@user.com') LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE LOWER("users"."email") = LOWER('user@user.com') LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
