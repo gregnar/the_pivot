@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141201231100) do
+ActiveRecord::Schema.define(version: 20141216190256) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(version: 20141201231100) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "supplier_id"
   end
 
   create_table "categories_items", id: false, force: true do |t|
@@ -40,6 +41,13 @@ ActiveRecord::Schema.define(version: 20141201231100) do
 
   add_index "categories_items", ["category_id", "item_id"], name: "index_categories_items_on_category_id_and_item_id", using: :btree
   add_index "categories_items", ["item_id", "category_id"], name: "index_categories_items_on_item_id_and_category_id", using: :btree
+
+  create_table "coordinates", force: true do |t|
+    t.string   "latitude"
+    t.string   "longitude"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "items", force: true do |t|
     t.string   "title"
@@ -52,11 +60,13 @@ ActiveRecord::Schema.define(version: 20141201231100) do
     t.integer  "photo_file_size"
     t.datetime "photo_updated_at"
     t.boolean  "active",             default: true
+    t.integer  "supplier_id"
   end
 
   create_table "items_orders", id: false, force: true do |t|
     t.integer "order_id", null: false
     t.integer "item_id",  null: false
+    t.integer "quantity"
   end
 
   add_index "items_orders", ["item_id", "order_id"], name: "index_items_orders_on_item_id_and_order_id", using: :btree
@@ -67,8 +77,19 @@ ActiveRecord::Schema.define(version: 20141201231100) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
-    t.integer  "address_id"
     t.boolean  "pending"
+    t.integer  "coordinate_id"
+  end
+
+  create_table "suppliers", force: true do |t|
+    t.string   "name"
+    t.string   "email"
+    t.string   "phone"
+    t.string   "fax"
+    t.string   "description"
+    t.integer  "address_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "users", force: true do |t|
@@ -79,6 +100,7 @@ ActiveRecord::Schema.define(version: 20141201231100) do
     t.boolean  "admin",           default: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "supplier"
   end
 
 end
