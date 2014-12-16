@@ -1,6 +1,15 @@
 Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
+  resources :suppliers
+
+  namespace :suppliers, as: :supplier, path: '/:slug' do 
+    resources :orders
+    resources :items
+    resources :addresses
+    resources :charges
+  end
+
   resources :orders
 
   resources :addresses
