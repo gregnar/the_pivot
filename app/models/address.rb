@@ -1,5 +1,6 @@
 class Address < ActiveRecord::Base
-  belongs_to :user, :supplier
+  belongs_to :user
+  belongs_to :supplier
 
   validates :street_name, presence: true
   validates :street_number, presence: true
