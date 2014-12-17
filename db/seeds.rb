@@ -1,10 +1,10 @@
 class Seed
   def initialize
+    generate_addresses
     generate_users
-    # generate_addresses
+    generate_suppliers
     generate_categories
-    generate_items('drink')
-    generate_items('eat')
+    generate_items
     generate_orders
   end
 
@@ -40,9 +40,12 @@ class Seed
   end
 
   def generate_categories
-    puts "Adding categories: ['drinks', 'eats']"
-    Category.create(name: 'drinks')
-    Category.create(name: 'eats')
+    5.times do |i|
+      Category.create!(
+        name: Faker::Commerce.department,
+        supplier_id: (i + 1)
+        )
+    end
   end
 
   def generate_addresses
@@ -59,48 +62,51 @@ class Seed
     end
   end
 
-  def generate_items(type)
-    drink1 = %w(Single Double Triple Decaf Tea)
-    drink2 = %w(Latte Cappuccino Latte Macchiato Americano Espresso)
-    eat1   = %w(Vanilla Strawberry Mocha Amaretto Lemon)
-    eat2   = %w(Crepe Souffle Tarte Savarin Brulee Croissant)
-
-    if type == 'drink'
-      item1 = drink1
-      item2 = drink2
-      category = Category.first
-    elsif type == 'eat'
-      item1 = eat1
-      item2 = eat2
-      category = Category.last
-    end
-
-    5.times do |i|
-      Item.create!(
-        title: "#{item1.sample} #{item2.sample} #{i + 1}",
-        description: 'A classic coffee drink made with real craftsmanship',
-        price: Faker::Commerce.price,
-        photo_file_name: nil,
-        photo_content_type: 'image/png',
-        photo_file_size: Faker::Number.number(3),
-        photo_updated_at: Faker::Date.between(1.week.ago, Date.today),
-        categories: [category]
-        )
-      puts "Added order #{type} item #{i + 1}"
+  def generate_items
+    suppliers = Supplier.all
+    suppliers.each do |supplier|
+      20.times do |i|
+        generated_item = Item.create!(
+          title: Faker::Commerce.product_name,
+          description: 'A worthless thing that does not even work',
+          price: Faker::Commerce.price,
+          photo_file_name: nil,
+          photo_content_type: 'image/png',
+          photo_file_size: Faker::Number.number(3),
+          photo_updated_at: Faker::Date.between(1.week.ago, Date.today),
+          categories: [Category.all.sample]
+          )
+        supplier.items << generated_item
+      end
     end
   end
 
   def generate_orders
     10.times do |i|
       order = Order.new(user_id: rand(1..4))
-      order.delivery = [true, false].sample
-      # order.address = order.user.addresses.first if order.delivery
+      order.delivery = false
       order.items = Item.all.sample(3)
       order.pending = [true, false].sample
       order.save!
       puts "Added #{order.id} for #{order.user.name}"
     end
   end
+
+  def generate_suppliers
+    10.times do |i|
+      Supplier.create!(
+        name: Faker::Name.name,
+        email: Faker::Internet.email,
+        phone: Faker::PhoneNumber.phone_number,
+        fax: Faker::PhoneNumber.phone_number,
+        description: "This is the greatest business to ever exist.  We help people!
+                      We help people!  No more secrets and no more lies!",
+        slug: Faker::Company.name,
+        address_id: (i + 1)
+        )
+    end
+  end
+
 end
 
 Seed.new
