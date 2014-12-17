@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Suppliers::OrdersController, :type => :controller do
+RSpec.describe OrdersController, :type => :controller do
   let(:valid_attributes) {
     { delivery: false, pending: false }
   }
@@ -16,7 +16,7 @@ RSpec.describe Suppliers::OrdersController, :type => :controller do
       order = Order.create! valid_attributes
       user = FactoryGirl.create(:admin)
       session[:user_id] = user.id
-      get :index, {:slug => 'herbert'}, valid_session
+      get :index, {}, valid_session
       expect(assigns(:orders)).to eq([order])
     end
   end
