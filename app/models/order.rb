@@ -9,6 +9,7 @@ class Order < ActiveRecord::Base
 
   validates_presence_of :coordinate, if: :delivery?
 
+
   def status
     pending ? 'Pending' : 'Paid'
   end
