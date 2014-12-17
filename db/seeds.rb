@@ -40,6 +40,7 @@ class Seed
   end
 
   def generate_categories
+    puts "Generating 5 categories..."
     5.times do |i|
       Category.create!(
         name: Faker::Commerce.department,
@@ -63,6 +64,7 @@ class Seed
   end
 
   def generate_items
+    puts "Generating 20 items per business..."
     suppliers = Supplier.all
     suppliers.each do |supplier|
       20.times do |i|
@@ -83,10 +85,11 @@ class Seed
 
   def generate_orders
     10.times do |i|
-      order = Order.new(user_id: rand(1..4))
+      order = Order.new(user_id: rand(4))
       order.delivery = false
-      order.items = Item.all.sample(3)
+      order.items = Item.all.sample(rand(10))
       order.pending = [true, false].sample
+      # order.user_id = User.all.map(&:id).sample  #uncomment when there are seeded users
       order.save!
       puts "Added #{order.id} for #{order.user.name}"
     end
