@@ -1,4 +1,4 @@
-class ItemsController < ApplicationController
+class Suppliers::ItemsController < ApplicationController
   before_action :set_item, only: [:show, :edit, :update, :destroy]
   before_action :require_admin, only: [:edit, :new, :create, :destroy]
 
