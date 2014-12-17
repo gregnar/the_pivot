@@ -5,8 +5,6 @@ class Suppliers::ItemsController < ApplicationController
   def index
     @search = current_supplier.items.search(params[:q])
     @items = @search.result
-    # @search = Item.search(params[:q])
-    # @items = @search.result
   end
 
   def show
