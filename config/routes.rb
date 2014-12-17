@@ -8,6 +8,8 @@ Rails.application.routes.draw do
     resources :items
   end
 
+  get '/:slug', to: 'suppliers/items#index'
+
   resources :orders
 
   resources :addresses
