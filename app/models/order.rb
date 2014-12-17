@@ -1,13 +1,14 @@
 class Order < ActiveRecord::Base
   belongs_to :user
-  belongs_to :address
+  belongs_to :coordinate
 
   has_and_belongs_to_many :items
 
   validates_inclusion_of :delivery, in: [true, false]
   validates_inclusion_of :pending, in: [true, false]
 
-  validates_presence_of :address, if: :delivery?
+  validates_presence_of :coordinate, if: :delivery?
+
 
   def status
     pending ? 'Pending' : 'Paid'

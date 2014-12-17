@@ -69,12 +69,12 @@ RSpec.describe User, type: :model do
     expect(user.admin).to be false
   end
 
-  it 'responds to #is_admin?' do
-    expect(user).to respond_to(:is_admin?)
+  it 'responds to #admin?' do
+    expect(user).to respond_to(:admin?)
   end
 
   it 'can make a user an admin' do
     user.admin = true
-    expect(user.is_admin?).to be true
+    expect(user.admin?).to be true
   end
 end

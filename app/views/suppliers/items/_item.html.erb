@@ -2,7 +2,7 @@
   <div class='panel-heading'>
     <h3 class='panel-title'>
       <%= link_to item.title, item %>
-      <% if current_user && current_user.is_admin? %>
+      <% if current_user && current_user.admin? %>
         <%= link_to 'Edit', edit_item_path(item) %>
       <% end %>
       <span class='item-price'>$<%= "#{sprintf("%0.2f",item.price)}" %></span>

@@ -5,7 +5,7 @@
         <li role="presentation"><%=link_to 'Menu', supplier_items_path(slug: params[:slug]) %></li>
       <% end %>
       <% if current_user %>
-        <% if current_user.is_admin? %>
+        <% if current_user.admin? %>
           <li role="presentation"><%= link_to 'Admin', rails_admin_path, id: 'admin' %></li>
         <% end %>
         <li role="presentation"><%= link_to 'User', user_path(current_user) %></li>

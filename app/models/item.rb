@@ -1,5 +1,6 @@
 class Item < ActiveRecord::Base
   has_and_belongs_to_many :categories
+  belongs_to :supplier
 
   # validates :title, presence: true, uniqueness: true
   validates :description, :categories, presence: true
