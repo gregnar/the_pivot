@@ -8,7 +8,6 @@ Rails.application.routes.draw do
     resources :items, path: "/supplies"
   end
 
-  get '/:slug', to: 'suppliers/items#index'
 
   resources :orders
 
@@ -30,4 +29,5 @@ Rails.application.routes.draw do
 
   resources :charges
 
+  get '/:slug', to: 'suppliers/items#index'
 end

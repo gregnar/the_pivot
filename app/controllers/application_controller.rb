@@ -17,6 +17,10 @@ class ApplicationController < ActionController::Base
     @current_user ||= User.find_by(id: session[:user_id])
   end
 
+  def current_supplier
+    @current_supplier ||= Supplier.find_by(slug: params[:slug])
+  end
+
   def require_admin
     unless current_user && current_user.admin?
       redirect_to root_path, notice: 'Not authorized.'
