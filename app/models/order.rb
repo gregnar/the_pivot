@@ -7,7 +7,7 @@ class Order < ActiveRecord::Base
   validates_inclusion_of :delivery, in: [true, false]
   validates_inclusion_of :pending, in: [true, false]
 
-  validates_presence_of :address, if: :delivery?
+  # validates_presence_of :address, if: :delivery?
 
   def status
     pending ? 'Pending' : 'Paid'

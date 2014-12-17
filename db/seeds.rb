@@ -1,7 +1,7 @@
 class Seed
   def initialize
     generate_users
-    generate_addresses
+    # generate_addresses
     generate_categories
     generate_items('drink')
     generate_items('eat')
@@ -94,7 +94,7 @@ class Seed
     10.times do |i|
       order = Order.new(user_id: rand(1..4))
       order.delivery = [true, false].sample
-      order.address = order.user.addresses.first if order.delivery
+      # order.address = order.user.addresses.first if order.delivery
       order.items = Item.all.sample(3)
       order.pending = [true, false].sample
       order.save!

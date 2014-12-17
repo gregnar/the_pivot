@@ -1,7 +1,9 @@
 <div class="header">
   <nav>
     <ul class="nav nav-pills pull-right">
-      <li role="presentation"><%=link_to 'Menu', items_path %></li>
+      <% if params[:slug] %>
+        <li role="presentation"><%=link_to 'Menu', supplier_items_path(slug: params[:slug]) %></li>
+      <% end %>
       <% if current_user %>
         <% if current_user.is_admin? %>
           <li role="presentation"><%= link_to 'Admin', rails_admin_path, id: 'admin' %></li>
@@ -17,8 +19,5 @@
       </a></li>
     </ul>
   </nav>
-  <h3 class="text-muted"><%= link_to 'EspressGo', root_path, id: 'logo' %></h3>
+  <h3 class="text-muted"><%= link_to 'EspressGo', suppliers_path, id: 'logo' %></h3>
 </div>
-
-
-

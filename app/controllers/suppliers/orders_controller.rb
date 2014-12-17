@@ -1,4 +1,4 @@
-class OrdersController < ApplicationController
+class Suppliers::OrdersController < ApplicationController
   before_action :correct_user, only: [:show, :edit, :update, :destroy]
   before_action :require_admin, only: [:index, :destroy]
   before_action :current_user, only: [:show, :edit, :update]
