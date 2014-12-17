@@ -1,6 +1,5 @@
 class Address < ActiveRecord::Base
-  belongs_to :user
-  has_many :orders
+  belongs_to :user, :supplier
 
   validates :street_name, presence: true
   validates :street_number, presence: true
@@ -13,5 +12,4 @@ class Address < ActiveRecord::Base
       label 'Orders'
     end
   end
-
 end
