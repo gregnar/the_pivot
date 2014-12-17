@@ -5,14 +5,12 @@ Rails.application.routes.draw do
 
   namespace :suppliers, as: :supplier, path: '/:slug' do
     resources :orders
-    resources :items
+    resources :items, path: "/supplies"
   end
 
   get '/:slug', to: 'suppliers/items#index'
 
   resources :orders
-
-  resources :suppliers
 
   resources :addresses
 
