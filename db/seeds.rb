@@ -77,9 +77,10 @@ class Seed
           photo_content_type: 'image/png',
           photo_file_size: Faker::Number.number(3),
           photo_updated_at: Faker::Date.between(1.week.ago, Date.today),
-          categories: [Category.all.sample]
+          categories: [Category.all.sample],
+          supplier_id: supplier.id,
+          active: true
           )
-        supplier.items << generated_item
       end
     end
   end
@@ -90,7 +91,7 @@ class Seed
       order.delivery = false
       order.items = Item.all.sample(rand(10))
       order.pending = [true, false].sample
-      # order.user_id = User.all.map(&:id).sample  #uncomment when there are seeded users
+      order.user_id = User.all.map(&:id).sample
       order.save!
       puts "Added #{order.id} for #{order.user.name}"
     end
