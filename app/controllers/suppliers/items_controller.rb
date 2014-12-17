@@ -1,10 +1,12 @@
-class ItemsController < ApplicationController
+class Suppliers::ItemsController < ApplicationController
   before_action :set_item, only: [:show, :edit, :update, :destroy]
   before_action :require_admin, only: [:edit, :new, :create, :destroy]
 
   def index
     @search = Item.search(params[:q])
-    @items = @search.result
+    @items = Supplier.find_by(slug: params[:slug]).items
+    # @search = Item.search(params[:q])
+    # @items = @search.result
   end
 
   def show

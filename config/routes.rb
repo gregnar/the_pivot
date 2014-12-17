@@ -3,14 +3,16 @@ Rails.application.routes.draw do
 
   resources :suppliers
 
-  namespace :suppliers, as: :supplier, path: '/:slug' do 
+  namespace :suppliers, as: :supplier, path: '/:slug' do
     resources :orders
     resources :items
-    resources :addresses
-    resources :charges
   end
 
+  get '/:slug', to: 'suppliers/items#index'
+
   resources :orders
+
+  resources :suppliers
 
   resources :addresses
 
