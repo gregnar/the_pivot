@@ -6,6 +6,7 @@ class Seed
     generate_categories
     generate_items
     generate_orders
+    generate_customers
   end
 
   def generate_users
@@ -106,6 +107,18 @@ class Seed
         )
     end
   end
+
+  # def generate_customers
+  #   100.times do |i|
+  #     User.create!(name: Faker::Name.name,
+  #                 email: Faker::Name.email,
+  #                 password: 'password',
+  #                 password_confirmation: 'password',
+  #                 display_name: '',
+  #                 admin: false
+  #               )
+  #   end
+  # end
 
 end
 
