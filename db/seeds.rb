@@ -107,7 +107,7 @@ class Seed
         description: "This is the greatest business to ever exist.  We help people!
                       We help people!  No more secrets and no more lies!",
         slug: Faker::Company.name,
-        address_id: (i + 1)
+        address_id: (i + 1d)
         )
     end
   end
