@@ -2,19 +2,23 @@ class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
-  
+
   before_filter :reload_rails_admin, if: :rails_admin_path?
 
   include SessionsHelper
 
   helper_method :current_user, :require_admin
-  
+
   before_action :load_cart
-  
+
   include ActionView::Helpers::TextHelper
 
   def current_user
     @current_user ||= User.find_by(id: session[:user_id])
+  end
+
+  def current_supplier
+    @current_supplier ||= Supplier.find_by(slug: params[:slug])
   end
 
   def require_admin
