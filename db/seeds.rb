@@ -93,7 +93,7 @@ class Seed
       order.pending = [true, false].sample
       order.user_id = User.all.map(&:id).sample
       order.save!
-      puts "Added #{order.id} for #{order.user.namr}"
+      puts "Added #{order.id} for #{order.user.name}"
     end
   end
 
