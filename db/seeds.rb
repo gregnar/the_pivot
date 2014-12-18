@@ -30,7 +30,7 @@ class Seed
                 password: 'password',
                 password_confirmation: 'password',
                 display_name: 'novohispano',
-                admin: false)
+                admin: true)
 
     User.create(name: 'Josh Cheek',
                 email: 'demo+josh@jumpstartlab.com',
