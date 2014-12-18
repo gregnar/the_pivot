@@ -20,6 +20,7 @@ gem 'stripe'
 gem 'rails_admin'
 gem 'ransack'
 gem 'simplecov', :require => false, :group => :test
+gem 'faker'
 
 group :development, :test do
   gem 'rspec-rails'
@@ -28,7 +29,6 @@ group :development, :test do
   gem 'selenium-webdriver', '~> 2.44.0'
   gem 'launchy'
   gem 'pry'
-  gem 'faker'
   gem 'database_cleaner'
 end
 
