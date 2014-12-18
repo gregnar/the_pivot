@@ -1,5 +1,4 @@
 class SuppliersController < ApplicationController
-
   def index
     @suppliers = Supplier.all
   end
@@ -10,10 +9,12 @@ class SuppliersController < ApplicationController
 
   def create
     @supplier = Supplier.new(supplier_params)
-    if @supplier.save
-      redirect_to new_user_path(supplier: @supplier), notice: "You're not finished!"
-    else
+    if @supplier.save!
+      @supplier.users << current_user
       redirect_to root_path
+    else
+      flash.now[:notice] = "Supplier could not be created."
+      render :new
     end
   end
 
