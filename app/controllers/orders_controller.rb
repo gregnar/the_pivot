@@ -10,7 +10,7 @@ class OrdersController < ApplicationController
   end
 
   def show
-    @order = Order.find(params[:id])
+    @order = current_user.orders.find(params[:id])
   end
 
   def new
@@ -27,11 +27,12 @@ class OrdersController < ApplicationController
   end
 
   def create
+
     @order = Order.new(order_params)
     @order.user = @current_user
     @order.pending = true
     @order.items = @cart.order_items
-    @order.address = nil unless @order.delivery
+    @order.coordinate = nil unless @order.delivery
     if @order.save
       session[:cart] = nil
       session[:order] = @order.id
@@ -50,6 +51,6 @@ class OrdersController < ApplicationController
   end
 
   def order_params
-    params.require(:order).permit(:delivery, :user, :address_id)
+    params.require(:order).permit(:delivery, :user, :coordinate_id)
   end
 end
