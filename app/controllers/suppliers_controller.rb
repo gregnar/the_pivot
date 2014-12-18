@@ -5,6 +5,6 @@ class SuppliersController < ApplicationController
   end
 
   def new
-    
+    @supplier = Supplier.new
   end
 end
