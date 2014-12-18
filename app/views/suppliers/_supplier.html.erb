@@ -1,2 +1,3 @@
 <h1><%= link_to supplier.name, supplier_items_path(slug: supplier.slug) %></h1>
 <h2><%= supplier.description %></h2>
+<p><%= image_tag supplier.items.sample.photo.url(:small) %></p>

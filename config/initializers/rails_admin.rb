@@ -1,6 +1,6 @@
 RailsAdmin.config do |config|
 
-  config.main_app_name = ['EspressGo', 'Admin']
+  config.main_app_name = ['AIRLIFT', 'Admin']
 
   config.authorize_with do
     redirect_to main_app.root_path unless current_user.try(:admin?)
