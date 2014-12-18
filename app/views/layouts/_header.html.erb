@@ -1,6 +1,7 @@
 <div class="header">
   <nav>
     <ul class="nav nav-pills pull-right">
+      <li id="suppliers-index" role="presentation"><%=link_to 'Suppliers', suppliers_path, id: 'suppliers-index' %></li>
       <% if params[:slug] %>
         <li role="presentation"><%=link_to 'Menu', supplier_items_path(slug: params[:slug]) %></li>
       <% end %>
@@ -18,6 +19,8 @@
         <span class="badge"><%= @cart.count_total %></span>
       </a></li>
     </ul>
+    <ul class="nav nav-pills pull-left">
+    </ul>
   </nav>
-  <h3 class="text-muted"><%= link_to 'EspressGo', suppliers_path, id: 'logo' %></h3>
+  <h3 class="text-muted"><%= link_to 'AIRLIFT', root_path, id: 'logo' %></h3>
 </div>
