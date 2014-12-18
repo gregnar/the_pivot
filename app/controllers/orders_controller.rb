@@ -10,7 +10,7 @@ class OrdersController < ApplicationController
   end
 
   def show
-    @order = Order.find(params[:id])
+    @order = current_user.orders.find(params[:id])
   end
 
   def new
@@ -28,11 +28,11 @@ class OrdersController < ApplicationController
 
   def create
     @order = Order.new(order_params)
-    @order.user = @current_user
+    @order.user_id = current_user.id
     @order.pending = true
     @order.items = @cart.order_items
-    @order.address = nil unless @order.delivery
-    if @order.save
+    @order.coordinate = nil unless @order.delivery
+    if @order.save!
       session[:cart] = nil
       session[:order] = @order.id
       redirect_to new_charge_path
@@ -45,11 +45,11 @@ class OrdersController < ApplicationController
   private
 
   def correct_user
-    @user = User.find(params[:id])
-    redirect_to(root_url) unless current_user?(@user)
+    order = Order.find(params[:id])
+    redirect_to(root_url) unless current_user.orders.include?(order)
   end
 
   def order_params
-    params.require(:order).permit(:delivery, :user, :address_id)
+    params.require(:order).permit(:delivery, :coordinate_id)
   end
 end

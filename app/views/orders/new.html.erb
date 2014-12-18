@@ -1,4 +1,5 @@
 <div class="col-md-8 col-md-offset-2">
+  <h3>Review Order</h3>
 <table class="table">
   <thead>
     <td>Item</td>
@@ -28,11 +29,6 @@
   <div class='form-group'>
     <%= f.label :delivery %>
     <%= f.check_box :delivery, id: "delivery" %>
-  </div>
-
-  <div class='form-group' id="address-form">
-    <%= f.label :address %>
-    <%= f.collection_select :address_id, current_user.addresses, :id, :street_name, {}, { class: "form-control" } %>
   </div>
 
   <div class="button">
