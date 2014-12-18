@@ -19,6 +19,12 @@ class User < ActiveRecord::Base
 
   def self.authenticate_user(email, password)
     user = find_by_email(email)
-    (user.email_confirmed ? user : nil) if user && user.authenticate(password)
+    (user.email_confirmed? ? user : nil) if user && user.authenticate(password)
+  end
+
+  def send_confirmation
+    self.update(password_reset_token: SecureRandom.urlsafe_base64)
+    self.update(password_sent_at: Time.zone.now)
+    UserMailer.confirmation_email(self).deliver
   end
 end

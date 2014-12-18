@@ -7,6 +7,16 @@ class UsersController < ApplicationController
     @users = User.all
   end
 
+  def account_confirmation
+    @user = User.find_by_password_reset_token(params[:token])
+    if(@user)
+      @user.update(email_confirmed: true, password_reset_token: nil)
+      redirect_to user_path(@user), :notice => "Account confirmed"
+    else
+      redirect_to login_path, :notice => "Account could not be confirmed"
+    end
+  end
+
   def new_supplier_user
     @user = User.new
     flash[:notice] = 'Please start by entering your personal information.'
@@ -30,6 +40,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
+      @user.send_confirmation
       session[:user_id] = @user.id
       redirect_to root_path, notice: 'User created.'
     else
