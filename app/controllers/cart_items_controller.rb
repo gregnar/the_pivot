@@ -1,4 +1,10 @@
 class CartItemsController < ApplicationController
+
+  def cart_status
+    @cart.add_item(OpenStruct.new(:id => 5))
+    render :text => "#{session[:cart].inspect} ; #{@cart.data.object_id} ; #{session[:cart].object_id}"
+  end
+
   def create
     item = Item.find(params[:item_id])
     @cart.add_item(item)
