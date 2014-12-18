@@ -16,4 +16,9 @@ class User < ActiveRecord::Base
                     uniqueness: { case_sensitive: false }
   validates :display_name, allow_blank: true, length: { in: 2..32 }
   validates :password, length: { minimum: 6 }, allow_blank: true
+
+  def self.authenticate_user(email, password)
+    user = find_by_email(email)
+    (user.email_confirmed ? user : nil) if user && user.authenticate(password)
+  end
 end
