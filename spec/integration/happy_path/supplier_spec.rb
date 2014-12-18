@@ -3,16 +3,17 @@ require 'capybara/rails'
 require 'capybara/rspec'
 
 
-feature "menu_items things" do
-  let :user do
-    User.create name: 'Supplying Things', email: 'supplier@example.com', password: 'p4ssw0rd', password_confirmation: 'p4ssw0rd', supplier: true
-  end
+  feature "menu_items things" do
+    let :user do
+      User.create name: 'Supplying Things', email: 'supplier@example.com', password: 'p4ssw0rd', password_confirmation: 'p4ssw0rd', supplier: true
+    end
 
-  before(:each) do
-    visit '/login'
-    fill_in 'Email', with: user.email
-    fill_in 'Password', with: user.password
-    click_button 'Login'
+    before(:each) do
+      visit '/login'
+      fill_in 'Email', with: user.email
+      fill_in 'Password', with: user.password
+      click_button 'Login'
+    end
   end
 
 describe 'Unauthenticated visitor happy path', type: :feature do
