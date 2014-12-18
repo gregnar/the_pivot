@@ -14,7 +14,9 @@ describe 'Unauthenticated visitor happy path', type: :feature do
                             They raise morale and promote Jorge's happiness!"
       )
     end
-
+  end
+  
+  it "" do
     visit suppliers_path
     expect(page).to have_content("Torta's Supplies")
 
