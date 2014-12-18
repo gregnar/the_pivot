@@ -1,3 +1,5 @@
+@import url(http://fonts.googleapis.com/css?family=Poller+One|Ubuntu:700,400);
+
 @font-face {
   font-family: 'Channel';
   src: font-url('Channel.ttf') format('truetype');
@@ -89,11 +91,17 @@ a:hover {
 
 #logo {
   color: #7B3B3B;
-  font-family: 'Channel';
+  font-family: 'Ubuntu';
+  font-size: 40px;
  }
 
 #logo:hover {
   text-decoration: none;
+}
+
+#suppliers-index {
+  right: 250px;
+  font-size: 25px;
 }
 
 .btn-success:hover {
@@ -134,3 +142,8 @@ a:hover {
   @extend .btn-success;
 }
 
+h1 {
+  font-family: 'Ubuntu';
+  font-weight: 400;
+  font-size: 45px;
+}
