@@ -1,4 +1,4 @@
-class SuppliersUser < ActiveRecord::Base
+class SupplierUser < ActiveRecord::Base
   belongs_to :supplier
   belongs_to :user
 end
