@@ -18,6 +18,7 @@ Rails.application.routes.draw do
 
   resources :users
 
+  resources :password_resets
 
   get '/new_supplier_user', to: "users#new_supplier_user"
   post '/new_supplier_user', to: "users#create_supplier_user"

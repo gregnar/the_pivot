@@ -11,7 +11,7 @@ class UsersController < ApplicationController
     @user = User.find_by_password_reset_token(params[:token])
     if(@user)
       @user.update(email_confirmed: true, password_reset_token: nil)
-      redirect_to user_path(@user), :notice => "Account confirmed"
+      redirect_to login_path, :notice => "Account confirmed"
     else
       redirect_to login_path, :notice => "Account could not be confirmed"
     end
