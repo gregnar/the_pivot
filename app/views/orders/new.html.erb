@@ -35,7 +35,7 @@
     <%= f.fields_for :coordinate do |coordinate| %>
       <%= render 'coordinate_fields', :f => coordinate %>
     <% end %>
-    <%= link_to_add_association 'Click to enter coordinates (delivery only)', f, :coordinate %>
+    <%= link_to_add_association 'Click to enter coordinates (delivery only)', f, :coordinate, class: "enter-coordinates" %>
   </div>
 
   <div class="button">
