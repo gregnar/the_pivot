@@ -22,6 +22,7 @@ gem 'ransack'
 gem 'simplecov', :require => false, :group => :test
 gem 'faker'
 gem 'cocoon'
+gem 'bootstrap-sass'
 
 group :development, :test do
   gem 'rspec-rails'
