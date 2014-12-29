@@ -14,7 +14,7 @@ describe 'Item Manipulation', type: :feature do
     let(:category) { FactoryGirl.create(:category) }
     let(:supplier) { FactoryGirl.create(:supplier) }
 
-    it 'can view a single item' do
+    xit 'can view a single item' do
       visit root_path
       # click_link 'Suppliers'
       # save_and_open_page
