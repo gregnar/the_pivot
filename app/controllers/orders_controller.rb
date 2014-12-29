@@ -32,14 +32,7 @@ class OrdersController < ApplicationController
     @order.pending = true
     @order.items = @cart.order_items
     @order.coordinate = nil unless @order.delivery
-    if @order.save!
-      session[:cart] = nil
-      session[:order] = @order.id
-      redirect_to new_charge_path
-    else
-      flash[:notice] = 'Order could not be created. Try checking out again.'
-      redirect_to cart_items_path
-    end
+    attempt_create_order
   end
 
   private
@@ -50,6 +43,17 @@ class OrdersController < ApplicationController
   end
 
   def order_params
-    params.require(:order).permit(:delivery, :coordinate_id)
+    params.require(:order).permit(:delivery, :coordinate_id, coordinate_attributes: [:id, :latitude, :longitude, :_destroy])
+  end
+
+  def attempt_create_order
+    if @order.save!
+      session[:cart] = nil
+      session[:order] = @order.id
+      redirect_to new_charge_path
+    else
+      flash[:notice] = 'Order could not be completed. Try checking out again.'
+      redirect_to cart_items_path
+    end
   end
 end

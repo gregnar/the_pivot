@@ -27,12 +27,21 @@ FactoryGirl.define do  factory :order do
   end
 
   factory :category do
-    name 'drinks'
+    name 'food'
   end
 
   factory :item do
-    title 'Espresso'
-    description 'Coffee that has been forcefully brewed with hot water and lots of pressure'
+    title 'Sand Bags'
+    description 'Sand bags for all your flood needs'
     price 2.99
+    association :category, factory: :category
+    association :supplier, factory: :supplier
+  end
+
+  factory :supplier do
+    name 'Red Cross'
+    description 'Providing relief to people since 1934.'
+    email 'redcross@redcross.org'
+    phone '1234567890'
   end
 end

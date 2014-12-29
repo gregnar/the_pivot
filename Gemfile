@@ -21,6 +21,7 @@ gem 'rails_admin'
 gem 'ransack'
 gem 'simplecov', :require => false, :group => :test
 gem 'faker'
+gem 'cocoon'
 
 group :development, :test do
   gem 'rspec-rails'
