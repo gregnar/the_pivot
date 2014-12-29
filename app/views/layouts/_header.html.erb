@@ -1,9 +1,10 @@
 <div class="header">
   <nav>
     <ul class="nav nav-pills pull-right">
-      <li id="suppliers-index" role="presentation"><%=link_to 'Suppliers', suppliers_path, id: 'suppliers-index' %></li>
       <% if params[:slug] %>
-        <li role="presentation"><%=link_to 'Menu', supplier_items_path(slug: params[:slug]) %></li>
+        <li role="presentation"><%=link_to 'All Items', supplier_items_path(slug: params[:slug]) %></li>
+        <% else %>
+        <li id="suppliers-index" role="presentation"><%=link_to 'All Suppliers', suppliers_path, id: 'suppliers-index' %></li>
       <% end %>
       <% if current_user %>
         <% if current_user.admin? %>
@@ -24,5 +25,7 @@
     <ul class="nav nav-pills pull-left">
     </ul>
   </nav>
-  <h3 class="text-muted"><%= link_to 'AIRLIFT', root_path, id: 'logo' %></h3>
+  <div class ="logo">
+    <h3><%= link_to 'AIRLIFT', root_path, id: 'logo-title' %></h3>
+  </div>
 </div>
