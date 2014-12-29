@@ -1,12 +1,20 @@
 class Seed
   def initialize
+    User.destroy_all
+    Category.destroy_all
+    Supplier.destroy_all
+    Item.destroy_all
+    Order.destroy_all
+    Address.destroy_all
+
+    generate_customers
     generate_addresses
     generate_users
     generate_suppliers
     generate_categories
     generate_items
     generate_orders
-    generate_customers
+  
   end
 
   def generate_users
@@ -16,13 +24,17 @@ class Seed
                 password: 'password',
                 password_confirmation: 'password',
                 display_name: '',
-                admin: false)
+                supplier_admin: true,
+                admin: false,
+                id: 1)
 
     User.create(name: 'Jeff',
                 email: 'demo+jeff@jumpstartlab.com',
                 password: 'password',
                 password_confirmation: 'password',
                 display_name: 'j3',
+                id: 2,
+                supplier_admin: true,
                 admin: false)
 
     User.create(name: 'Jorge Tellez',
@@ -30,6 +42,8 @@ class Seed
                 password: 'password',
                 password_confirmation: 'password',
                 display_name: 'novohispano',
+                id: 3,
+                supplier_admin: true,
                 admin: true)
 
     User.create(name: 'Josh Cheek',
@@ -37,6 +51,8 @@ class Seed
                 password: 'password',
                 password_confirmation: 'password',
                 display_name: 'josh',
+                id: 4,
+                supplier_admin: true,
                 admin: true)
   end
 
@@ -69,6 +85,7 @@ class Seed
     suppliers = Supplier.all
     suppliers.each do |supplier|
       20.times do |i|
+        puts "Generating item #{i}..."
         generated_item = Item.create!(
           title: Faker::Commerce.product_name,
           description: 'A worthless thing that does not even work',
@@ -88,6 +105,7 @@ class Seed
   def generate_orders
     10.times do |i|
       order = Order.new(user_id: rand(4))
+      order.id = i
       order.delivery = false
       order.items = Item.all.sample(rand(10))
       order.pending = [true, false].sample
@@ -99,7 +117,7 @@ class Seed
 
   def generate_suppliers
     10.times do |i|
-      Supplier.create!(
+      s = Supplier.create!(
         name: Faker::Name.name,
         email: Faker::Internet.email,
         phone: Faker::PhoneNumber.phone_number,
@@ -109,6 +127,16 @@ class Seed
         slug: Faker::Company.name,
         address_id: (i + 1)
         )
+      users = User.all
+      possible_admins = []
+
+      users.each do |user|
+        if user.supplier_admin == true
+          possible_admins << user
+        end
+      end
+
+      s.users << users.sample
     end
   end
 
@@ -119,10 +147,12 @@ class Seed
                   password: 'password',
                   password_confirmation: 'password',
                   display_name: '',
-                  admin: false
+                  admin: false,
                 )
     end
   end
+
+
 
 end
 
