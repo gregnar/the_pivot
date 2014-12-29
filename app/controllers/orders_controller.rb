@@ -50,7 +50,7 @@ class OrdersController < ApplicationController
     if @order.save!
       session[:cart] = nil
       session[:order] = @order.id
-      redirect_to new_charge_path
+      redirect_to new_charge_pagcth
     else
       flash[:notice] = 'Order could not be completed. Try checking out again.'
       redirect_to cart_items_path
