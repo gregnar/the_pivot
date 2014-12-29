@@ -31,9 +31,13 @@
     <%= f.label :delivery, 'This order will be airlifted.' %>
   </div>
 
-  <%= f.fields_for :coordinate do |coordinate| %>
-    <%= render 'coordinate_fields', :f => coordinate %>
-  <% end %>
+  <div class='form-group'>
+    <%= f.fields_for :coordinate do |coordinate| %>
+      <%= render 'coordinate_fields', :f => coordinate %>
+    <% end %>
+    <%= link_to_add_association 'Click to enter coordinates (delivery only)', f, :coordinate %>
+  </div>
+
   <div class="button">
     <%= f.submit "Submit Order", class: "form-control btn btn-success" %>
   </div>
