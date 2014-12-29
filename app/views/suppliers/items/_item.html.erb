@@ -1,7 +1,7 @@
 <div class='panel panel-default'>
   <div class='panel-heading'>
     <h3 class='panel-title'>
-      <%= link_to item.title, supplier_item_path %>
+      <%= link_to item.title, supplier_item_path(id: item) %>
       <% if current_user && current_user.admin? %>
         <%= link_to 'Edit', edit_item_path(item) %>
       <% end %>
