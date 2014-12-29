@@ -2,11 +2,28 @@ require 'rails_helper'
 require 'capybara/rails'
 require 'capybara/rspec'
 
-describe 'Item creation', type: :feature do
+describe 'Item Manipulation', type: :feature do
   around(:each) do |example|
     DatabaseCleaner.start
     example.run
     DatabaseCleaner.clean
+  end
+
+  context 'as an unauthenticated user' do
+    let(:item) { FactoryGirl.create(:item) }
+    let(:category) { FactoryGirl.create(:category) }
+    let(:supplier) { FactoryGirl.create(:supplier) }
+
+    xit 'can view a single item' do
+      visit root_path
+      # click_link 'Suppliers'
+      # save_and_open_page
+      # visit supplier_items_path(slug: supplier.slug)
+      # click_link item.title
+      # expect(page).to have_content 'Sand Bags'
+      # expect(page).to have_content '2.99'
+    end
+
   end
 
   context 'when logged in as an admin' do
@@ -42,4 +59,3 @@ describe 'Item creation', type: :feature do
     end
   end
 end
-

@@ -4625,10 +4625,10 @@ a.badge:focus {
   color: inherit;
   background-color: #eee;
 }
-.jumbotron h1,
+/*.jumbotron h1,
 .jumbotron .h1 {
   color: inherit;
-}
+}*/
 .jumbotron p {
   margin-bottom: 15px;
   font-size: 21px;
@@ -4653,10 +4653,10 @@ a.badge:focus {
     padding-right: 60px;
     padding-left: 60px;
   }
-  .jumbotron h1,
+  /*.jumbotron h1,
   .jumbotron .h1 {
-    font-size: 63px;
-  }
+    font-size: 40px;
+  }*/
 }
 .thumbnail {
   display: block;

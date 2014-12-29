@@ -1,7 +1,8 @@
 class Supplier < ActiveRecord::Base
-  has_one :address
+  has_one  :address
   has_many :items
-  has_many :users, through: :suppliers_users
+  has_many :supplier_users
+  has_many :users, through: :supplier_users
 
   before_save :generate_slug
 

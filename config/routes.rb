@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+  root 'pages#index'
 
   resources :suppliers
 
@@ -8,26 +9,28 @@ Rails.application.routes.draw do
     resources :items, path: "/supplies"
   end
 
-
   resources :orders
 
   resources :addresses
 
-  root 'pages#index'
-
-  resources :items
+  resources :items, path: "/supplies"
 
   resources :users
+
+
+  get '/new_supplier_user', to: "users#new_supplier_user"
+  post '/new_supplier_user', to: "users#create_supplier_user"
 
   get    '/login',  to: "sessions#new"
   post   '/login',  to: "sessions#create"
   delete '/logout', to: "sessions#destroy"
 
-  resources :cart_items
+  resources :cart_items, path: "/cart"
   post '/cart_items/plus', to: "cart_items#plus"
   post '/cart_items/minus', to: "cart_items#minus"
 
   resources :charges
 
   get '/:slug', to: 'suppliers/items#index'
+
 end
