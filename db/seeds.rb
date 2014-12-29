@@ -25,15 +25,14 @@ class Seed
                 password_confirmation: 'password',
                 display_name: '',
                 supplier_admin: true,
-                admin: false,
-                id: 1)
+                admin: false
+                )
 
     User.create(name: 'Jeff',
                 email: 'demo+jeff@jumpstartlab.com',
                 password: 'password',
                 password_confirmation: 'password',
                 display_name: 'j3',
-                id: 2,
                 supplier_admin: true,
                 admin: false)
 
@@ -42,7 +41,6 @@ class Seed
                 password: 'password',
                 password_confirmation: 'password',
                 display_name: 'novohispano',
-                id: 3,
                 supplier_admin: true,
                 admin: true)
 
@@ -51,7 +49,6 @@ class Seed
                 password: 'password',
                 password_confirmation: 'password',
                 display_name: 'josh',
-                id: 4,
                 supplier_admin: true,
                 admin: true)
   end
@@ -136,7 +133,7 @@ class Seed
         end
       end
 
-      s.users << users.sample
+      s.users << possible_admins.sample
     end
   end
 
