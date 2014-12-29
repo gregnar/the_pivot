@@ -32,7 +32,7 @@ class OrdersController < ApplicationController
     @order.pending = true
     @order.items = @cart.order_items
     @order.coordinate = nil unless @order.delivery
-    @order.delivery? ?   : attempt_create_order
+    attempt_create_order
   end
 
   private

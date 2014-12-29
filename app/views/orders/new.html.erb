@@ -27,8 +27,12 @@
 
 <%= form_for @order do |f| %>
   <div class='form-group'>
-    <%= f.label :delivery %>
     <%= f.check_box :delivery, id: "delivery" %>
+    <%= f.label :delivery, 'This order will be airlifted.' %>
+  </div>
+
+  <div class='form-group'>
+    <%= f.input : %>
   </div>
 
   <div class="button">

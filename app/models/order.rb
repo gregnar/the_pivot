@@ -2,12 +2,16 @@ class Order < ActiveRecord::Base
   belongs_to :user
   belongs_to :coordinate
 
+
   has_and_belongs_to_many :items
+
+  accepts_nested_attributes_for :coordinate, reject_if: :any_blank
 
   validates_inclusion_of :delivery, in: [true, false]
   validates_inclusion_of :pending, in: [true, false]
 
   validates_presence_of :coordinate, if: :delivery?
+
 
 
   def status
