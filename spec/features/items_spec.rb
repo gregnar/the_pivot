@@ -21,8 +21,6 @@ describe 'Item Manipulation', type: :feature do
     end
 
     it 'can view a single item' do
-      visit root_path
-      click_link 'Suppliers'
       visit supplier_items_path(slug: supplier.slug)
       click_link item.title
       expect(page).to have_content 'Sand Bags'
@@ -35,17 +33,22 @@ describe 'Item Manipulation', type: :feature do
     let(:admin) { FactoryGirl.create(:admin) }
     let(:item)  { FactoryGirl.build(:item) }
     let(:category) { FactoryGirl.create(:category) }
+    let(:supplier) { FactoryGirl.create(:supplier) }
+    let(:user) {FactoryGirl.create(:user)}
 
     before(:each) do
+      user.supplier = supplier
+      supplier.users << user
+
       visit login_path
-      fill_in 'Email', with: admin.email
-      fill_in 'Password', with: admin.password
+      fill_in 'Email', with: user.email
+      fill_in 'Password', with: user.password
       click_button 'Login'
     end
 
     it 'can add a new item' do
-      category.save
-      visit new_item_path
+      visit new_supplier_item_path(slug: supplier.slug)
+      save_and_open_page
       fill_in 'Title', with: 'Coffee'
       fill_in 'Description', with: 'Black gold'
       fill_in 'Price', with: 2.99

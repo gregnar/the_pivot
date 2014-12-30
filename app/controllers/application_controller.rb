@@ -27,6 +27,12 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def require_supplier_admin
+    unless current_supplier.users.include?(current_user)
+      redirect_to root_path, notice: 'Not authorized.'
+    end
+  end
+
   def load_cart
     @cart = Cart.new(session[:cart])
   end

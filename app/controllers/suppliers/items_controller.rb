@@ -1,6 +1,6 @@
 class Suppliers::ItemsController < ApplicationController
   before_action :set_item, only: [:show, :edit, :update, :destroy]
-  before_action :require_admin, only: [:edit, :new, :create, :destroy]
+  before_action :require_supplier_admin, only: [:edit, :new, :create, :destroy]
 
   def index
     @search = current_supplier.items.search(params[:q])

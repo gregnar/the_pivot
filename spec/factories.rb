@@ -28,16 +28,6 @@ FactoryGirl.define do  factory :order do
 
   factory :category do
     name 'food'
-
-    # factory :category_with_items do
-    #   transient do
-    #     items_count 2
-    #   end
-    #
-    #   before(:create) do |category, evaluator|
-    #     create_list(:item, evaluator.items_count, category: category)
-    #   end
-    # end
   end
 
   factory :item do
@@ -46,15 +36,6 @@ FactoryGirl.define do  factory :order do
     price 2.99
     association :supplier, factory: :supplier
 
-    # factory :item_with_categories do
-    #   transient do
-    #     categories_count 2
-    #   end
-    #
-    #   before(:create) do |item, evaluator|
-    #     create_list(:category, evaluator.categories_count , item: item)
-    #   end
-    # end
   end
 
   factory :supplier do
@@ -63,4 +44,5 @@ FactoryGirl.define do  factory :order do
     email { Faker::Internet.email }
     phone '1234567890'
   end
+
 end
