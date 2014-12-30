@@ -15,6 +15,7 @@ class Suppliers::ItemsController < ApplicationController
 
   def new
     @item = Item.new
+    @categories = current_supplier.categories
   end
 
   def create

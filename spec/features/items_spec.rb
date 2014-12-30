@@ -39,6 +39,7 @@ describe 'Item Manipulation', type: :feature do
     before(:each) do
       user.supplier = supplier
       supplier.users << user
+      supplier.categories <<  category
 
       visit login_path
       fill_in 'Email', with: user.email
@@ -52,7 +53,7 @@ describe 'Item Manipulation', type: :feature do
       fill_in 'Title', with: 'Coffee'
       fill_in 'Description', with: 'Black gold'
       fill_in 'Price', with: 2.99
-      select('drinks', :from => 'category-select')
+      select(category.name, :from => 'category-select')
       click_button 'Submit'
 
       expect(page).to have_content('Item successfully created!')
