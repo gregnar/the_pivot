@@ -61,7 +61,9 @@ describe 'Item Manipulation', type: :feature do
     it 'can edit an existing item' do
       item.categories << category
       item.save
-      visit items_path
+      supplier.items << item
+      visit supplier_items_path(slug: supplier.slug)
+      save_and_open_page
       click_link 'Edit'
       expect(current_path).to eq(edit_item_path(item))
     end
