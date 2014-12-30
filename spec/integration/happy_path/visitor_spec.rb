@@ -13,6 +13,7 @@ describe 'Unauthenticated visitor happy path', type: :feature do
               description:  "We are a super-special service for airdropped mexican sandwiches.
                             They raise morale and promote Jorge's happiness!")
     end
+  end
 
     it "has list of all suppliers" do
       visit suppliers_path
@@ -24,7 +25,6 @@ describe 'Unauthenticated visitor happy path', type: :feature do
       expect(current_path).to eq(torta_path.slug)
       expect(page).to have_content("Torta's Supplies")
     end
-  end
 
   context "when visitor shops" do
     before(:all) do
