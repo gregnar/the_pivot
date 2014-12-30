@@ -10,7 +10,6 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- *= require bootstrap.min
  *= require_tree .
  *= require_self
  */
@@ -18,77 +17,78 @@
 @import url(https://fonts.googleapis.com/css?family=Poller+One|Ubuntu:700,400);
 
 @font-face {
- font-family: 'Channel';
- src: font-url('Channel.ttf') format('truetype');
+  font-family: 'Channel';
+  src: font-url('Channel.ttf') format('truetype');
 }
 
 @font-face {
- font-family: 'GeoSans';
- src: font-url('GeosansLight.ttf') format('truetype');
+  font-family: 'GeoSans';
+  src: font-url('GeosansLight.ttf') format('truetype');
 }
 
 @font-face {
- font-family: 'Glyphicons Halflings';
- src: font-url('glyphicons-halflings-regular.ttf');
+  font-family: 'Glyphicons Halflings';
+  src: font-url('glyphicons-halflings-regular.ttf');
 }
 
 body {
- padding-top: 20px;
- padding-bottom: 20px;
- font-family: 'GeoSans';
- background-color: #F4F2EB;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  font-family: 'GeoSans';
+  background-color: #F4F2EB;
 }
 
-.header,
-.marketing,
-.footer {
- padding-right: 15px;
- padding-left: 15px;
+.header, .marketing, .footer {
+  padding-right: 15px;
+  padding-left: 15px;
 }
 
 a {
- color: #493736;
- font-size: 18px;
+  color: #493736;
+  font-size: 18px;
 }
 
 a:hover {
- text-decoration: none;
+  text-decoration: none;
 }
 
 .header {
- border-bottom: 1px solid #e5e5e5;
+  border-bottom: 1px solid #e5e5e5;
 }
+
 .header h3 {
- padding-bottom: 19px;
- margin-top: 0;
- margin-bottom: 0;
- line-height: 40px;
+  padding-bottom: 19px;
+  margin-top: 0;
+  margin-bottom: 0;
+  line-height: 40px;
 }
+
 .footer {
- padding-top: 19px;
- color: #777;
- border-top: 1px solid #e5e5e5;
+  padding-top: 19px;
+  color: #777;
+  border-top: 1px solid #e5e5e5;
 }
 
 .container-narrow > hr {
- margin: 30px 0;
+  margin: 30px 0;
 }
 
 .jumbotron {
- text-align: center;
- border-bottom: 1px solid #e5e5e5;
- font-family: 'GeoSans';
+  text-align: center;
+  border-bottom: 1px solid #e5e5e5;
+  font-family: 'GeoSans';
 }
+
 .jumbotron .btn {
- padding: 14px 24px;
- font-size: 21px;
+  padding: 14px 24px;
+  font-size: 21px;
 }
 
 .marketing {
- margin: 40px 0;
+  margin: 40px 0;
 }
 .marketing p + h4 {
- margin-top: 28px;
+  margin-top: 28px;
 }
 
 @media screen and (min-width: 768px) {
