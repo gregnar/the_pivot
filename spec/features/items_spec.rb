@@ -49,7 +49,6 @@ describe 'Item Manipulation', type: :feature do
 
     it 'can add a new item' do
       visit new_supplier_item_path(slug: supplier.slug)
-      save_and_open_page
       fill_in 'Title', with: 'Coffee'
       fill_in 'Description', with: 'Black gold'
       fill_in 'Price', with: 2.99
@@ -59,7 +58,7 @@ describe 'Item Manipulation', type: :feature do
       expect(page).to have_content('Item successfully created!')
     end
 
-    xit 'can edit an existing item' do
+    it 'can edit an existing item' do
       item.categories << category
       item.save
       visit items_path

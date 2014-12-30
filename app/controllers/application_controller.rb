@@ -7,7 +7,10 @@ class ApplicationController < ActionController::Base
 
   include SessionsHelper
 
-  helper_method :current_user, :require_admin
+  helper_method :current_user, 
+                :require_admin,
+                :current_supplier,
+                :current_supplier_admin?
 
   before_action :load_cart
 
@@ -21,6 +24,10 @@ class ApplicationController < ActionController::Base
     @current_supplier ||= Supplier.find_by(slug: params[:slug])
   end
 
+  def current_supplier_admin?
+    current_supplier.users.include?(current_user)
+  end
+
   def require_admin
     unless current_user && current_user.admin?
       redirect_to root_path, notice: 'Not authorized.'
@@ -28,7 +35,7 @@ class ApplicationController < ActionController::Base
   end
 
   def require_supplier_admin
-    unless current_supplier.users.include?(current_user)
+    unless current_supplier_admin?
       redirect_to root_path, notice: 'Not authorized.'
     end
   end
