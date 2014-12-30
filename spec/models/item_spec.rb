@@ -1,14 +1,17 @@
 require 'rails_helper'
 
 RSpec.describe Item, :type => :model do
-  let(:category) { Category.new(name: 'breakfast') }
-  let(:item) { Item.new(valid_attributes) }
-  let(:valid_attributes) { {
-    title: 'coffee',
-    description: 'legal stimulants for cheap',
-    price: 2.99,
-    categories: [category]
-  } }
+  let(:category) { FactoryGirl.build(:category) }
+  let(:item) { FactoryGirl.build(:item) }
+  let(:item2) { FactoryGirl.build(:item2) }
+
+  before(:each) do
+    category.save!(validation: false)
+    item.categories << category
+    item.save!
+    item2.categories << category
+    item2.save!
+  end
 
   it 'is valid' do
     expect(item).to be_valid
@@ -35,7 +38,7 @@ RSpec.describe Item, :type => :model do
   end
 
   it 'should connect to categories' do
-    expect(item.categories.first.name).to eq('breakfast')
+    expect(item.categories.first.name).to eq('food')
   end
 
   it 'is not valid if title is an empty' do
@@ -49,11 +52,11 @@ RSpec.describe Item, :type => :model do
   end
 
   it 'must have a unique title' do
-    item.save
-    item2 = Item.create(valid_attributes)
+
+    item2.title = 'Sand Bags'
     expect(item2).to be_invalid
 
-    item2.title = 'espresso'
+    item2.title = 'straps'
     expect(item2).to be_valid
   end
 

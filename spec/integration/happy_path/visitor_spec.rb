@@ -15,12 +15,12 @@ describe 'Unauthenticated visitor happy path', type: :feature do
     end
   end
 
-    it "has list of all suppliers" do
+    xit "has list of all suppliers" do
       visit suppliers_path
       expect(page).to have_content("Torta's Supplies")
     end
 
-    it "goes to the correct page" do
+    xit "goes to the correct page" do
       click_link_or_button "Torta's Supplies"
       expect(current_path).to eq(torta_path.slug)
       expect(page).to have_content("Torta's Supplies")
@@ -70,7 +70,7 @@ describe 'Unauthenticated visitor happy path', type: :feature do
       end
     end
 
-    it "adds supplies from various suppliers into shared cart" do
+    xit "adds supplies from various suppliers into shared cart" do
       visit supplier_item_path(hoop)
       click_link_or_button "Add To Cart"
       visit supplier_item_path(lechuga)
@@ -83,7 +83,7 @@ describe 'Unauthenticated visitor happy path', type: :feature do
       expect(page).to have_content(nba_cares.name)
     end
 
-    it "can browse all supplies from all suppliers" do
+    xit "can browse all supplies from all suppliers" do
       visit root_path
       click_link_or_button "Browse Supplies"
 
