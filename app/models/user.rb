@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
   has_one :supplier_user
   has_one :supplier, through: :supplier_user
 
+
   has_secure_password
 
   before_save { |user| user.email = email.downcase }

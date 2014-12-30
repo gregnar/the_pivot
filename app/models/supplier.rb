@@ -3,6 +3,8 @@ class Supplier < ActiveRecord::Base
   has_many :items
   has_many :supplier_users
   has_many :users, through: :supplier_users
+  has_many :categories
+
 
   before_save :generate_slug
 

@@ -1,6 +1,6 @@
 class Suppliers::ItemsController < ApplicationController
   before_action :set_item, only: [:show, :edit, :update, :destroy]
-  before_action :require_admin, only: [:edit, :new, :create, :destroy]
+  before_action :require_supplier_admin, only: [:edit, :new, :create, :destroy]
 
   def index
     @search = current_supplier.items.search(params[:q])
@@ -11,16 +11,19 @@ class Suppliers::ItemsController < ApplicationController
   end
 
   def edit
+    # @item = Item.find(params[:id])
   end
 
   def new
     @item = Item.new
+    @categories = current_supplier.categories
+    @slug = params[:slug]
   end
 
   def create
     @item = Item.new(item_params)
-    if @item.save
-      redirect_to items_url, notice: 'Item successfully created!'
+    if @item.save!
+      redirect_to supplier_items_path, notice: 'Item successfully created!'
     else
       flash.now[:notice] = 'Item could not be created, try again.'
       render :new

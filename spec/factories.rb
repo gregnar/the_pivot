@@ -4,14 +4,14 @@ FactoryGirl.define do  factory :order do
 
   factory :user do
     name 'Cave Johnson'
-    email 'cave@aperturelabs.com'
+    email { Faker::Internet.email }
     password 'foobar'
     password_confirmation 'foobar'
   end
 
   factory :admin, class: User do
     name 'Admin User'
-    email 'admin@aperturelabs.com'
+    email { Faker::Internet.email }
     password 'foobar'
     password_confirmation 'foobar'
     admin true
@@ -34,14 +34,15 @@ FactoryGirl.define do  factory :order do
     title 'Sand Bags'
     description 'Sand bags for all your flood needs'
     price 2.99
-    association :category, factory: :category
     association :supplier, factory: :supplier
+
   end
 
   factory :supplier do
     name 'Red Cross'
     description 'Providing relief to people since 1934.'
-    email 'redcross@redcross.org'
+    email { Faker::Internet.email }
     phone '1234567890'
   end
+
 end
