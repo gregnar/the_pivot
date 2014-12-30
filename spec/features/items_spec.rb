@@ -10,18 +10,21 @@ describe 'Item Manipulation', type: :feature do
   end
 
   context 'as an unauthenticated user' do
-    let(:item) { FactoryGirl.create(:item) }
-    let(:category) { FactoryGirl.create(:category) }
+    let(:item) { FactoryGirl.build(:item) }
+    let(:category) { FactoryGirl.build(:category) }
     let(:supplier) { FactoryGirl.create(:supplier) }
 
-    xit 'can view a single item' do
-      visit root_path
-      # click_link 'Suppliers'
-      # save_and_open_page
-      # visit supplier_items_path(slug: supplier.slug)
-      # click_link item.title
-      # expect(page).to have_content 'Sand Bags'
-      # expect(page).to have_content '2.99'
+    before do
+      category.save!(validate: false)
+      item.categories << category
+      item.save!
+    end
+
+    it 'can view a single item' do
+      visit supplier_items_path(slug: supplier.slug)
+      click_link item.title
+      expect(page).to have_content 'Sand Bags'
+      expect(page).to have_content '2.99'
     end
 
   end
@@ -30,21 +33,26 @@ describe 'Item Manipulation', type: :feature do
     let(:admin) { FactoryGirl.create(:admin) }
     let(:item)  { FactoryGirl.build(:item) }
     let(:category) { FactoryGirl.create(:category) }
+    let(:supplier) { FactoryGirl.create(:supplier) }
+    let(:user) {FactoryGirl.create(:user)}
 
     before(:each) do
+      user.supplier = supplier
+      supplier.users << user
+      supplier.categories <<  category
+
       visit login_path
-      fill_in 'Email', with: admin.email
-      fill_in 'Password', with: admin.password
+      fill_in 'Email', with: user.email
+      fill_in 'Password', with: user.password
       click_button 'Login'
     end
 
     it 'can add a new item' do
-      category.save
-      visit new_item_path
+      visit new_supplier_item_path(slug: supplier.slug)
       fill_in 'Title', with: 'Coffee'
       fill_in 'Description', with: 'Black gold'
       fill_in 'Price', with: 2.99
-      select('drinks', :from => 'category-select')
+      select(category.name, :from => 'category-select')
       click_button 'Submit'
 
       expect(page).to have_content('Item successfully created!')
@@ -53,9 +61,10 @@ describe 'Item Manipulation', type: :feature do
     it 'can edit an existing item' do
       item.categories << category
       item.save
-      visit items_path
+      supplier.items << item
+      visit supplier_items_path(slug: supplier.slug)
       click_link 'Edit'
-      expect(current_path).to eq(edit_item_path(item))
+      expect(current_path).to eq(edit_supplier_item_path(id: item, slug: supplier.slug))
     end
   end
 end
