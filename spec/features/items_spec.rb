@@ -23,7 +23,6 @@ describe 'Item Manipulation', type: :feature do
     it 'can view a single item' do
       visit root_path
       click_link 'Suppliers'
-      # save_and_open_page
       visit supplier_items_path(slug: supplier.slug)
       click_link item.title
       expect(page).to have_content 'Sand Bags'
@@ -44,7 +43,7 @@ describe 'Item Manipulation', type: :feature do
       click_button 'Login'
     end
 
-    xit 'can add a new item' do
+    it 'can add a new item' do
       category.save
       visit new_item_path
       fill_in 'Title', with: 'Coffee'
