@@ -63,9 +63,8 @@ describe 'Item Manipulation', type: :feature do
       item.save
       supplier.items << item
       visit supplier_items_path(slug: supplier.slug)
-      save_and_open_page
       click_link 'Edit'
-      expect(current_path).to eq(edit_item_path(item))
+      expect(current_path).to eq(edit_supplier_item_path(id: item, slug: supplier.slug))
     end
   end
 end
