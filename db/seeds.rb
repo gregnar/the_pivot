@@ -33,7 +33,7 @@ class Seed
                 password: 'password',
                 password_confirmation: 'password',
                 display_name: 'j3',
-                supplier_admin: true,
+                supplier_admin: false,
                 admin: false)
 
     User.create(name: 'Jorge Tellez',
