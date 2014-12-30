@@ -4,9 +4,10 @@ require 'capybara/rspec'
 
 describe 'Search Extensions', type: :feature do
 
-  context 'when viewing the menu page' do
+  context 'when viewing a supplier items page' do
+    let(:supplier) { FactoryGirl.create(:supplier) }
     before(:each) do
-      visit items_path
+      visit supplier_items_path(slug: supplier.slug)
     end
 
     it 'has a search button' do
