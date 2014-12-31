@@ -11,4 +11,3 @@ function addItem(item) {
       item: item
     })
   }
-
