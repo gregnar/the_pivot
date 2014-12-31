@@ -2,8 +2,12 @@ class Item < ActiveRecord::Base
   has_and_belongs_to_many :categories
   belongs_to :supplier
 
-  validates :title, presence: true, uniqueness: true
+  validates :title, presence:   true,
+                    uniqueness: { scope: :supplier_id,
+                                  message: "must be unique for supplier."
+                                  }
   validates :description, :categories, presence: true
+  validates :supplier_id, presence: true
 
   validates :price, presence: true,
                     numericality: { greater_than_or_equal_to: 0 },
@@ -23,18 +27,5 @@ class Item < ActiveRecord::Base
       label 'Categories'
     end
   end
-  
-  def title_must_be_unique_for_supplier
-    if supplier.items.include?(title)
-      errors.add(:title, "must be unique for supplier")
-    end
-  end
 
-  def self.drinks
-    Item.joins(:categories).where(categories: { name: 'drinks' })
-  end
-
-  def self.eats
-    Item.joins(:categories).where(categories: { name: 'eats' })
-  end
 end
