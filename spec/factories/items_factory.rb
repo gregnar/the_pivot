@@ -191,7 +191,7 @@ FactoryGirl.define do
     price 17.99
   end
 
-  factory :Generator class: Item do
+  factory :Generator, class: Item do
     title "Generator"
     description 'Use this so you will have electricity.'
     price 349.99

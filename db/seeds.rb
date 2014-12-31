@@ -12,7 +12,7 @@ class Seed
     generate_users
     generate_suppliers
     # generate_categories
-    generate_items
+    # generate_items
     generate_orders
 
   end
@@ -140,7 +140,6 @@ class Seed
       users = User.all
       possible_admins = []
       users.each { |user| possible_admins << user if user.supplier_admin == true }
-    end
 
       s.users << possible_admins.sample
       #give supplier all categories
@@ -160,8 +159,6 @@ class Seed
                 )
     end
   end
-
-
 
 end
 

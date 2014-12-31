@@ -20,18 +20,16 @@ FactoryGirl.define do
     name 'Clothing'
   end
 
-  factory :flood_relief, class Category do
+  factory :flood_relief, class: Category do
     name 'Flood Relief'
   end
 
-  factory :tools, class Category do
+  factory :tools, class: Category do
     name 'Tools'
   end
 
-  factory :shelter_bedding, class Category do
+  factory :shelter_bedding, class: Category do
     name 'Shelter and Bedding'
   end
-
-  all_categories = [:medical, :food_and_water, :energy_and_heat, :childcare, :clothing, :flood_relief, :tools, :shelter_bedding]
 
 end
