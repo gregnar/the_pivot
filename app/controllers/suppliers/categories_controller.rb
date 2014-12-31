@@ -1,4 +1,4 @@
-class Admin::CategoriesController < AdminController
+class Suppliers::CategoriesController < ApplicationController
 
   def index
   end
@@ -7,6 +7,7 @@ class Admin::CategoriesController < AdminController
   end
 
   def new
+    @category = Category.new
   end
 
   def edit

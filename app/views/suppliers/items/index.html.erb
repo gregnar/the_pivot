@@ -1,4 +1,7 @@
 <h1 class= "text-center">Supplies by <%= current_supplier.name %></h1>
+<h2>Phone: <%= current_supplier.phone %> </h2>
+<h2>Email: <%= current_supplier.email %> </h2>
+<h2>Address: <%= current_supplier.address %> </h2>
 <div class='text-center'>
   <%= search_form_for @search do |f| %>
     <%= hidden_field_tag :title_cont, "Title contains" %>
