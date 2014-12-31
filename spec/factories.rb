@@ -57,6 +57,302 @@ FactoryGirl.define do  factory :order do
     association :supplier, factory: :supplier
   end
 
+  factory :item2, class: Item do
+    title "Needles"
+    description 'Shot shots shot shots shots'
+    price 3.10
+    association :supplier, factory: :supplier
+  end
+
+  factory :item2, class: Item do
+    title "Needles"
+    description 'Shot shots shot shots shots'
+    price 3.10
+    association :supplier, factory: :supplier
+  end
+
+  factory :item2, class: Item do
+    title "Needles"
+    description 'Shot shots shot shots shots'
+    price 3.10
+    association :supplier, factory: :supplier
+  end
+
+  factory :item2, class: Item do
+    title "Needles"
+    description 'Shot shots shot shots shots'
+    price 3.10
+    association :supplier, factory: :supplier
+  end
+
+  factory :item2, class: Item do
+    title "Needles"
+    description 'Shot shots shot shots shots'
+    price 3.10
+    association :supplier, factory: :supplier
+  end
+
+  factory :item2, class: Item do
+    title "Needles"
+    description 'Shot shots shot shots shots'
+    price 3.10
+    association :supplier, factory: :supplier
+  end
+
+  factory :item2, class: Item do
+    title "Needles"
+    description 'Shot shots shot shots shots'
+    price 3.10
+    association :supplier, factory: :supplier
+  end
+
+  factory :item2, class: Item do
+    title "Needles"
+    description 'Shot shots shot shots shots'
+    price 3.10
+    association :supplier, factory: :supplier
+  end
+
+  factory :item2, class: Item do
+    title "Needles"
+    description 'Shot shots shot shots shots'
+    price 3.10
+    association :supplier, factory: :supplier
+  end
+
+  factory :item2, class: Item do
+    title "Needles"
+    description 'Shot shots shot shots shots'
+    price 3.10
+    association :supplier, factory: :supplier
+  end
+
+  factory :item2, class: Item do
+    title "Needles"
+    description 'Shot shots shot shots shots'
+    price 3.10
+    association :supplier, factory: :supplier
+  end
+
+  factory :item2, class: Item do
+    title "Needles"
+    description 'Shot shots shot shots shots'
+    price 3.10
+    association :supplier, factory: :supplier
+  end
+
+  factory :item2, class: Item do
+    title "Needles"
+    description 'Shot shots shot shots shots'
+    price 3.10
+    association :supplier, factory: :supplier
+  end
+
+  factory :item2, class: Item do
+    title "Needles"
+    description 'Shot shots shot shots shots'
+    price 3.10
+    association :supplier, factory: :supplier
+  end
+
+  factory :item2, class: Item do
+    title "Needles"
+    description 'Shot shots shot shots shots'
+    price 3.10
+    association :supplier, factory: :supplier
+  end
+
+  factory :item2, class: Item do
+    title "Needles"
+    description 'Shot shots shot shots shots'
+    price 3.10
+    association :supplier, factory: :supplier
+  end
+
+  factory :item2, class: Item do
+    title "Needles"
+    description 'Shot shots shot shots shots'
+    price 3.10
+    association :supplier, factory: :supplier
+  end
+
+  factory :item2, class: Item do
+    title "Needles"
+    description 'Shot shots shot shots shots'
+    price 3.10
+    association :supplier, factory: :supplier
+  end
+
+  factory :item2, class: Item do
+    title "Needles"
+    description 'Shot shots shot shots shots'
+    price 3.10
+    association :supplier, factory: :supplier
+  end
+
+  factory :item2, class: Item do
+    title "Needles"
+    description 'Shot shots shot shots shots'
+    price 3.10
+    association :supplier, factory: :supplier
+  end
+
+  factory :item2, class: Item do
+    title "Needles"
+    description 'Shot shots shot shots shots'
+    price 3.10
+    association :supplier, factory: :supplier
+  end
+
+  factory :item2, class: Item do
+    title "Needles"
+    description 'Shot shots shot shots shots'
+    price 3.10
+    association :supplier, factory: :supplier
+  end
+
+  factory :item2, class: Item do
+    title "Needles"
+    description 'Shot shots shot shots shots'
+    price 3.10
+    association :supplier, factory: :supplier
+  end
+
+  factory :item2, class: Item do
+    title "Needles"
+    description 'Shot shots shot shots shots'
+    price 3.10
+    association :supplier, factory: :supplier
+  end
+
+  factory :item2, class: Item do
+    title "Needles"
+    description 'Shot shots shot shots shots'
+    price 3.10
+    association :supplier, factory: :supplier
+  end
+
+  factory :item2, class: Item do
+    title "Needles"
+    description 'Shot shots shot shots shots'
+    price 3.10
+    association :supplier, factory: :supplier
+  end
+
+  factory :item2, class: Item do
+    title "Needles"
+    description 'Shot shots shot shots shots'
+    price 3.10
+    association :supplier, factory: :supplier
+  end
+
+  factory :item2, class: Item do
+    title "Needles"
+    description 'Shot shots shot shots shots'
+    price 3.10
+    association :supplier, factory: :supplier
+  end
+
+  factory :item2, class: Item do
+    title "Needles"
+    description 'Shot shots shot shots shots'
+    price 3.10
+    association :supplier, factory: :supplier
+  end
+
+  factory :item2, class: Item do
+    title "Needles"
+    description 'Shot shots shot shots shots'
+    price 3.10
+    association :supplier, factory: :supplier
+  end
+
+    factory :item2, class: Item do
+    title "Needles"
+    description 'Shot shots shot shots shots'
+    price 3.10
+    association :supplier, factory: :supplier
+  end
+
+  factory :item2, class: Item do
+    title "Needles"
+    description 'Shot shots shot shots shots'
+    price 3.10
+    association :supplier, factory: :supplier
+  end
+
+  factory :item2, class: Item do
+    title "Needles"
+    description 'Shot shots shot shots shots'
+    price 3.10
+    association :supplier, factory: :supplier
+  end
+
+  factory :item2, class: Item do
+    title "Needles"
+    description 'Shot shots shot shots shots'
+    price 3.10
+    association :supplier, factory: :supplier
+  end
+
+  factory :item2, class: Item do
+    title "Needles"
+    description 'Shot shots shot shots shots'
+    price 3.10
+    association :supplier, factory: :supplier
+  end
+
+  factory :item2, class: Item do
+    title "Needles"
+    description 'Shot shots shot shots shots'
+    price 3.10
+    association :supplier, factory: :supplier
+  end
+
+  factory :item2, class: Item do
+    title "Needles"
+    description 'Shot shots shot shots shots'
+    price 3.10
+    association :supplier, factory: :supplier
+  end
+
+  factory :item2, class: Item do
+    title "Needles"
+    description 'Shot shots shot shots shots'
+    price 3.10
+    association :supplier, factory: :supplier
+  end
+
+  factory :item2, class: Item do
+    title "Needles"
+    description 'Shot shots shot shots shots'
+    price 3.10
+    association :supplier, factory: :supplier
+  end
+
+  factory :item2, class: Item do
+    title "Needles"
+    description 'Shot shots shot shots shots'
+    price 3.10
+    association :supplier, factory: :supplier
+  end
+
+  factory :item2, class: Item do
+    title "Needles"
+    description 'Shot shots shot shots shots'
+    price 3.10
+    association :supplier, factory: :supplier
+  end
+
+  factory :item2, class: Item do
+    title "Needles"
+    description 'Shot shots shot shots shots'
+    price 3.10
+    association :supplier, factory: :supplier
+  end
+
+
+
   factory :supplier do
     name 'Red Cross'
     description 'Providing relief to people since 1934.'
