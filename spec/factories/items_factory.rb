@@ -1,9 +1,5 @@
 FactoryGirl.define do
 
-  factory :order do
-    delivery false
-  end
-
 
   factory :potable_water, class: Item do
     title 'Potable water'
@@ -53,7 +49,7 @@ FactoryGirl.define do
     price 68.04
   end
 
-  factory :baby_formula do
+  factory :baby_formula, class: Item do
     title 'Baby Formula'
     description 'Powdered formula. 5 lbs.'
     price 42.38
@@ -226,7 +222,5 @@ FactoryGirl.define do
     description 'Keep your hands clean.'
     price 24.99
   end
-
-
 
 end

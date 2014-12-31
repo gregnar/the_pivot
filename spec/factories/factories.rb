@@ -1,4 +1,8 @@
 FactoryGirl.define do
+  
+  factory :order do
+    delivery false
+  end
 
   factory :user do
     name 'Cave Johnson'

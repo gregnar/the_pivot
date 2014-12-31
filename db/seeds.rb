@@ -11,10 +11,8 @@ class Seed
     generate_addresses
     generate_users
     generate_suppliers
-    # generate_categories
-    # generate_items
+    generate_items
     generate_orders
-
   end
 
   def generate_users
@@ -53,16 +51,6 @@ class Seed
                 admin: true)
   end
 
-  # def generate_categories
-  #   puts "Generating 5 categories..."
-  #   5.times do |i|
-  #     Category.create!(
-  #       name: Faker::Commerce.department,
-  #       supplier_id: (i + 1)
-  #       )
-  #   end
-  # end
-
   def generate_addresses
     4.times do |i|
       Address.create!(
@@ -77,38 +65,30 @@ class Seed
     end
   end
 
-
-  def all_categories
-    [:medical,
-     :food_and_water,
-     :energy_and_heat,
-     :childcare,
-     :clothing,
-     :flood_relief,
-     :tools,
-     :shelter_bedding
-     ]
-  end
-
   def generate_items
     puts "Generating 20 items per business..."
     suppliers = Supplier.all
     suppliers.each do |supplier|
-      titles = item_titles.dup.shuffle
+      items = all_items.dup.shuffle
       20.times do |i|
-        puts "Generating item #{i}..."
-        generated_item = Item.create!(
-          title: titles.pop,
-          description: 'A worthless thing that does not even work',
-          price: Faker::Commerce.price,
-          photo_file_name: nil,
-          photo_content_type: 'image/png',
-          photo_file_size: Faker::Number.number(3),
-          photo_updated_at: Faker::Date.between(1.week.ago, Date.today),
-          categories: [Category.all.sample],
-          supplier_id: supplier.id,
-          active: true
-          )
+        puts "Generating item #{i} for supplier #{supplier.id}..."
+        title_alias     = items.pop
+        item            = FactoryGirl.build(title_alias)
+        item.categories << Category.find_by(name: items_with_categories(title_alias))
+        item.supplier   = supplier
+        item.save!
+        # generated_item = Item.create!(
+        #   title: FactoryGirl.titles.pop,
+        #   description: 'A worthless thing that does not even work',
+        #   price: Faker::Commerce.price,
+        #   photo_file_name: nil,
+        #   photo_content_type: 'image/png',
+        #   photo_file_size: Faker::Number.number(3),
+        #   photo_updated_at: Faker::Date.between(1.week.ago, Date.today),
+        #   categories: [Category.all.sample],
+        #   supplier_id: supplier.id,
+        #   active: true
+        #   )
       end
     end
   end
@@ -150,15 +130,118 @@ class Seed
 
   def generate_customers
     100.times do |i|
-      User.create!(name: Faker::Name.name,
-                  email: Faker::Internet.email,
-                  password: 'password',
-                  password_confirmation: 'password',
-                  display_name: '',
-                  admin: false,
-                )
+      User.create!( name: Faker::Name.name,
+                    email: Faker::Internet.email,
+                    password: 'password',
+                    password_confirmation: 'password',
+                    display_name: '',
+                    admin: false,
+                  )
     end
   end
+
+  private
+
+  def all_categories
+    [:medical,
+     :food_and_water,
+     :energy_and_heat,
+     :childcare,
+     :clothing,
+     :flood_relief,
+     :tools,
+     :shelter_bedding
+     ]
+  end
+
+  def all_items
+    [ :potable_water,
+      :sand_bags,
+      :emergency_meals,
+      :bulk_rice,
+      :flashlight,
+      :penicillin,
+      :birthing_kit,
+      :bedding_kit,
+      :baby_formula,
+      :UtilityKnife,
+      :Diapers,
+      :FireStarterKit,
+      :WaterFiltration,
+      :WaterStorageTank,
+      :Hatchet,
+      :Batteries,
+      :PowderedMilk,
+      :BulkSalt,
+      :BulkSugar,
+      :BulkFlour,
+      :BulkCannedBeans,
+      :Boots,
+      :Iodine,
+      :DisasterTent,
+      :SleepingBag,
+      :DuctTape,
+      :Gauze,
+      :PortableHeater,
+      :PropaneTank,
+      :Poncho,
+      :WorkGloves,
+      :Generator,
+      :InflatableRaft,
+      :TetanusShots,
+      :FirstAidKit,
+      :SchoolKit,
+      :HandSanitizer
+    ]
+  end
+
+  def items_with_categories(item)
+    { potable_water: 'Food and Water',
+      WaterStorageTank: 'Food and Water',
+      bulk_rice: 'Food and Water',
+      emergency_meals: 'Food and Water',
+      sand_bags: 'Flood Relief',
+      flashlight: 'Tools',
+      penicillin: 'Medical and Hygiene',
+      birthing_kit: 'Childcare',
+      bedding_kit: 'Shelter and Bedding',
+      baby_formula: 'Childcare',
+      UtilityKnife: 'Tools',
+      Diapers: 'Childcare',
+      FireStarterKit: 'Energy and Heat',
+      WaterFiltration: 'Medical and Hygiene',
+      Hatchet: 'Tools',
+      Batteries: 'Energy and Heat',
+      PowderedMilk: 'Food and Water',
+      BulkSalt: 'Food and Water',
+      BulkSugar: 'Food and Water',
+      BulkFlour: 'Food and Water',
+      BulkCannedBeans: 'Food and Water',
+      Boots: 'Clothing',
+      Iodine: 'Medical and Hygiene',
+      DisasterTent: 'Shelter and Bedding',
+      SleepingBag: 'Shelter and Bedding',
+      DuctTape: 'Tools',
+      Gauze: 'Medical and Hygiene',
+      PortableHeater: 'Energy and Heat',
+      PropaneTank: 'Energy and Heat',
+      Poncho: 'Clothing',
+      WorkGloves: 'Clothing',
+      Generator: 'Energy and Heat',
+      InflatableRaft: 'Flood Relief',
+      TetanusShots: 'Medical and Hygiene',
+      FirstAidKit: 'Medical and Hygiene',
+      SchoolKit: 'Childcare',
+      HandSanitizer: 'Medical and Hygiene'
+    }.fetch(item)
+  end
+
+
+
+
+
+
+
 
 end
 
