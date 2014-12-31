@@ -11,7 +11,7 @@ class Seed
     generate_addresses
     generate_users
     generate_suppliers
-    generate_categories
+    # generate_categories
     generate_items
     generate_orders
 
@@ -53,15 +53,15 @@ class Seed
                 admin: true)
   end
 
-  def generate_categories
-    puts "Generating 5 categories..."
-    5.times do |i|
-      Category.create!(
-        name: Faker::Commerce.department,
-        supplier_id: (i + 1)
-        )
-    end
-  end
+  # def generate_categories
+  #   puts "Generating 5 categories..."
+  #   5.times do |i|
+  #     Category.create!(
+  #       name: Faker::Commerce.department,
+  #       supplier_id: (i + 1)
+  #       )
+  #   end
+  # end
 
   def generate_addresses
     4.times do |i|
@@ -77,47 +77,17 @@ class Seed
     end
   end
 
-  # Names for real items.
-  def item_titles
-    [ 'Potable Water',
-      'Sand Bags',
-      'Emergency Meals',
-      'Rice Bags',
-      'Flashlights',
-      'Penicillin',
-      'Birthing Kit',
-      'Bedding Kit',
-      'Cleaning Bucket',
-      'Hand Sanitizer',
-      'School Kit',
-      'First Aid Kit',
-      'Tetanus Shots',
-      'Inflatable Raft',
-      'Generator',
-      'Work Gloves',
-      'Poncho',
-      'Propane Tank',
-      'Portable Heater',
-      'Gauze',
-      'Duct Tape',
-      'Sleeping Bag',
-      'Disaster Tent',
-      'Iodine',
-      'Boots',
-      'Bulk Canned Beans',
-      'Bulk Flour',
-      'Bulk Sugar',
-      'Bulk Salt',
-      'Powdered Milk',
-      'Batteries',
-      'Hatchet',
-      'Water Storage Tank',
-      'Water Filtration',
-      'Fire Starter Kit',
-      'Diapers',
-      'Utility Knife'
-      ]
 
+  def all_categories
+    [:medical,
+     :food_and_water,
+     :energy_and_heat,
+     :childcare,
+     :clothing,
+     :flood_relief,
+     :tools,
+     :shelter_bedding
+     ]
   end
 
   def generate_items
@@ -158,26 +128,24 @@ class Seed
 
   def generate_suppliers
     10.times do |i|
-      s = Supplier.create!(
-        name: Faker::Name.name,
-        email: Faker::Internet.email,
-        phone: Faker::PhoneNumber.phone_number,
-        fax: Faker::PhoneNumber.phone_number,
-        description: "This is the greatest business to ever exist.  We help people!
-                      We help people!  No more secrets and no more lies!",
-        slug: Faker::Company.name,
-        address_id: (i + 1)
-        )
+      s = Supplier.create!( name: Faker::Name.name,
+                            email: Faker::Internet.email,
+                            phone: Faker::PhoneNumber.phone_number,
+                            fax: Faker::PhoneNumber.phone_number,
+                            description: "This is the greatest business to ever exist.  We help people!
+                                          We help people!  No more secrets and no more lies!",
+                            slug: Faker::Company.name,
+                            address_id: (i + 1)
+                          )
       users = User.all
       possible_admins = []
-
-      users.each do |user|
-        if user.supplier_admin == true
-          possible_admins << user
-        end
-      end
+      users.each { |user| possible_admins << user if user.supplier_admin == true }
+    end
 
       s.users << possible_admins.sample
+      #give supplier all categories
+      all_categories.map { |category| s.categories << FactoryGirl.create(category) }
+      s.save!
     end
   end
 
