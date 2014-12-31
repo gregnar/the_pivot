@@ -75,7 +75,7 @@ class Seed
         puts "Generating item #{i} for supplier #{supplier.id}..."
         title_alias     = items.pop
         item            = FactoryGirl.build(title_alias)
-        item.categories << Category.find_by(name: items_with_categories(title_alias))
+        item.categories << Category.find_by(name: items_with_categories(title_alias), supplier_id: supplier.id)
         item.supplier   = supplier
         item.save!
         # generated_item = Item.create!(
