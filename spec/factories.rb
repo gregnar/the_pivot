@@ -3,6 +3,15 @@ FactoryGirl.define do  factory :order do
   end
 
   factory :user do
+    name 'Good User'
+    email { Faker::Internet.email }
+    password 'password'
+    password_confirmation 'password'
+    display_name ''
+    admin false
+  end
+
+  factory :user_supplier, class: User do
     name 'Bad User'
     email { Faker::Internet.email }
     password 'password'
