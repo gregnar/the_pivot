@@ -77,7 +77,7 @@ class Seed
     end
   end
 
-  # For use later. Names for real items.
+  # Names for real items.
   def item_titles
     [ 'Potable Water',
       'Sand Bags',
