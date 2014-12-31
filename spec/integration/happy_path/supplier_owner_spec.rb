@@ -19,12 +19,12 @@ feature "menu_items things" do
     click_button 'Login'
   end
 
-  scenario "allows suppliers to view their page" do
+  xscenario "allows suppliers to view their page" do
     visit "/torta-s-supplies"
     expect(page).to have_content("Torta's Supplies")
   end
 
-  scenario "User creates a new category" do
+  xscenario "User creates a new category" do
     visit "/torta-s-supplies/categories"
     new_category = "I created a category"
     expect(page.body).not_to include new_category
@@ -34,7 +34,7 @@ feature "menu_items things" do
     expect(page.body).to include new_category
   end
 
-  scenario "supplier creates a new item" do
+  xscenario "supplier creates a new item" do
     visit "/torta-s-supplies/items"
     new_item = {title: "SANDwich Bags", description: "Full of sand", price: 10000}
     expect(page.body).not_to include new_item[:title]
@@ -48,7 +48,7 @@ feature "menu_items things" do
     expect(page.body).to include new_item[:title]
   end
 
-  scenario "Supplier can delete a category" do
+  xscenario "Supplier can delete a category" do
     new_category = "I created a category"
     Category.create(title: new_category)
 
@@ -60,7 +60,7 @@ feature "menu_items things" do
     expect(page.body).not_to include new_category
   end
 
-  scenario "Supplier can edit a category" do
+  xscenario "Supplier can edit a category" do
     new_category = "I created a category"
     Category.create(title: new_category)
 

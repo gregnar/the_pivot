@@ -14,7 +14,7 @@ class Seed
     generate_categories
     generate_items
     generate_orders
-  
+
   end
 
   def generate_users
@@ -77,14 +77,58 @@ class Seed
     end
   end
 
+  # For use later. Names for real items.
+  def item_titles
+    [ 'Potable Water',
+      'Sand Bags',
+      'Emergency Meals',
+      'Rice Bags',
+      'Flashlights',
+      'Penicillin',
+      'Birthing Kit',
+      'Bedding Kit',
+      'Cleaning Bucket',
+      'Hand Sanitizer',
+      'School Kit',
+      'First Aid Kit',
+      'Tetanus Shots',
+      'Inflatable Raft',
+      'Generator',
+      'Work Gloves',
+      'Poncho',
+      'Propane Tank',
+      'Portable Heater',
+      'Gauze',
+      'Duct Tape',
+      'Sleeping Bag',
+      'Disaster Tent',
+      'Iodine',
+      'Boots',
+      'Bulk Canned Beans',
+      'Bulk Flour',
+      'Bulk Sugar',
+      'Bulk Salt',
+      'Powdered Milk',
+      'Batteries',
+      'Hatchet',
+      'Water Storage Tank',
+      'Water Filtration',
+      'Fire Starter Kit',
+      'Diapers',
+      'Utility Knife'
+      ]
+
+  end
+
   def generate_items
     puts "Generating 20 items per business..."
     suppliers = Supplier.all
     suppliers.each do |supplier|
+      titles = item_titles.dup.shuffle
       20.times do |i|
         puts "Generating item #{i}..."
         generated_item = Item.create!(
-          title: Faker::Commerce.product_name,
+          title: titles.pop,
           description: 'A worthless thing that does not even work',
           price: Faker::Commerce.price,
           photo_file_name: nil,
