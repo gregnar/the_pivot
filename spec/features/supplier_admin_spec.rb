@@ -11,16 +11,18 @@ describe 'Supplier admin path', type: :feature do
   end
 
   context 'when logged in as supplier_admin' do
-    let(:supplier_admin) { FactoryGirl.create(:supplier_admin) }
-    let(:supplier) { FactoryGirl.create(:supplier) }
+    let(:supplier_admin) { FactoryGirl.build(:supplier_admin) }
+    let(:supplier) { FactoryGirl.build(:supplier) }
     let(:item)  { FactoryGirl.build(:item) }
-    let(:category) { FactoryGirl.create(:category) }
+    let(:category) { FactoryGirl.build(:category) }
     let(:user) {FactoryGirl.create(:user)}
 
     before(:each) do
-      user.supplier = supplier
+      supplier_admin.supplier = supplier
       supplier.users << user
       supplier.categories << category
+      supplier.save!
+      supplier_admin.save!
 
       visit '/login'
       fill_in 'Email', with: user.email
@@ -33,10 +35,11 @@ describe 'Supplier admin path', type: :feature do
       expect(page).to have_content("Red Cross")
     end
 
-    xit "allows supplier_admins to create new categories" do
+    it "allows supplier_admins to create new categories" do
       visit new_supplier_category_path(slug: supplier.slug)
       new_category = "I created a category"
       expect(page.body).not_to include new_category
+      save_and_open_page
       click_link_or_button "New"
       fill_in "category[title]", with: new_category
       click_link_or_button "Create Category"
