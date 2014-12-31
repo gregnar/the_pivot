@@ -192,7 +192,7 @@ FactoryGirl.define do
   factory :HandSanitizer, class: Item do
     title "Hand Sanitizer"
     description 'Keep your hands clean'
-    price 24.99
+    price 24.99ind
     association :supplier, factory: :supplier
   end
 
