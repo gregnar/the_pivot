@@ -29,14 +29,14 @@ describe 'Unauthenticated visitor happy path', type: :feature do
   context "when visitor visits a business" do
 
     it "has list of all suppliers" do
-      binding.pry
       visit suppliers_path
       expect(page).to have_content("Torta's Supplies")
     end
 
     xit "goes to the correct page" do
+      visit suppliers_path
       click_link_or_button "Torta's Supplies"
-      expect(current_path).to eq(torta_path.slug)
+      expect(current_path).to eq(supplier_path(slug: torta_shop.slug))
       expect(page).to have_content("Torta's Supplies")
     end
   end
