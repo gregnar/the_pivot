@@ -11,33 +11,7 @@ class Suppliers::OrdersController < ApplicationController
     @order = Order.find(params[:id])
   end
 
-  def new
-    if current_user
-      @order = Order.new
-      @cart_items = @cart.items
-    else
-      flash[:notice] = 'You need to be logged in to checkout.'
-      redirect_to login_path
-    end
-  end
-
   def edit
-  end
-
-  def create
-    @order = Order.new(order_params)
-    @order.user = @current_user
-    @order.pending = true
-    @order.items = @cart.order_items
-    @order.address = nil unless @order.delivery
-    if @order.save
-      session[:cart] = nil
-      session[:order] = @order.id
-      redirect_to new_charge_path
-    else
-      flash[:notice] = 'Order could not be created. Try checking out again.'
-      redirect_to cart_items_path
-    end
   end
 
   private

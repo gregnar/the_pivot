@@ -34,6 +34,10 @@ class UsersController < ApplicationController
   end
 
   def new
+    @supplier = !!params[:supplier]
+    if params[:supplier]
+      session[:supplier] = true
+    end
     @user = User.new
   end
 
@@ -42,7 +46,12 @@ class UsersController < ApplicationController
     if @user.save
       @user.send_confirmation
       session[:user_id] = @user.id
-      redirect_to root_path, notice: "Almost done! Check #{@user.email} to confirm your email!"
+      if session[:supplier]#user_params["make_me_a_supplier"]
+        #send them to supplier creation
+        #clear session[:supplier]
+      else
+        redirect_to root_path, notice: "Almost done! Check #{@user.email} to confirm your email!"
+      end
     else
       flash.now[:notice] = 'User could not be created.'
       render :new

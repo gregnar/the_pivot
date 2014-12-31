@@ -1,6 +1,7 @@
 class Suppliers::ItemsController < ApplicationController
   before_action :set_item, only: [:show, :edit, :update, :destroy]
   before_action :require_supplier_admin, only: [:edit, :new, :create, :destroy]
+  #require item being viewed belongs to current supplier -- :edit, :update, :destroy
 
   def index
     @search = current_supplier.items.search(params[:q])
@@ -47,6 +48,6 @@ class Suppliers::ItemsController < ApplicationController
   end
 
   def set_item
-    @item = Item.find(params[:id])
+    @item = current_supplier.items.find(params[:id])
   end
 end

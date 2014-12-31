@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
 
   include SessionsHelper
 
-  helper_method :current_user, 
+  helper_method :current_user,
                 :require_admin,
                 :current_supplier,
                 :current_supplier_admin?

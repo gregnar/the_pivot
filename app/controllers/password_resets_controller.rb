@@ -25,7 +25,7 @@ class PasswordResetsController < ApplicationController
       @user.update(password_reset_token: nil)
       redirect_to login_path, notice: "Password has been reset."
     else
-      redirect_to root_path, notice: "THe programmer who made this is flawed and stupid. Sorry!"
+      redirect_to root_path, notice: "The programmer who made this is flawed and stupid. Sorry!"
     end
   end
 
@@ -33,4 +33,5 @@ class PasswordResetsController < ApplicationController
 
   def reset_params
     params.require(:user).permit(:password, :password_confirmation)
+  end
 end
