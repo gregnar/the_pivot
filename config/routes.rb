@@ -16,8 +16,11 @@ Rails.application.routes.draw do
 
   resources :items, path: "/supplies"
 
+  get 'register', to: 'users#new'
   resources :users
+  get '/account_confirmation', to: 'users#account_confirmation'
 
+  resources :password_resets
 
   get '/new_supplier_user', to: "users#new_supplier_user"
   post '/new_supplier_user', to: "users#create_supplier_user"
