@@ -14,7 +14,7 @@ class Seed
     generate_categories
     generate_items
     generate_orders
-  
+
   end
 
   def generate_users

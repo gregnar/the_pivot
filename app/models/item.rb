@@ -23,6 +23,12 @@ class Item < ActiveRecord::Base
       label 'Categories'
     end
   end
+  
+  def title_must_be_unique_for_supplier
+    if supplier.items.include?(title)
+      errors.add(:title, "must be unique for supplier")
+    end
+  end
 
   def self.drinks
     Item.joins(:categories).where(categories: { name: 'drinks' })
