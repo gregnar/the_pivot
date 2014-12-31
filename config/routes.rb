@@ -16,7 +16,9 @@ Rails.application.routes.draw do
 
   resources :items, path: "/supplies"
 
+  match 'register' => 'users#new'
   resources :users
+  get '/account_confirmation', to: 'users#account_confirmation'
 
   resources :password_resets
 
