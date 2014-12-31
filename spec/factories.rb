@@ -57,63 +57,63 @@ FactoryGirl.define do  factory :order do
     association :supplier, factory: :supplier
   end
 
-  factory :item2, class: Item do
+  factory :UtilityKnife, class: Item do
+    title "Utility Knife"
+    description 'Shot shots shot shots shots'
+    price 3.10
+    association :supplier, factory: :supplier
+  end
+
+  factory :Diapers, class: Item do
+    title "Diapers"
+    description 'Shot shots shot shots shots'
+    price 3.10
+    association :supplier, factory: :supplier
+  end
+
+  factory :FireStarterKit, class: Item do
+    title "Fire Starter Kit"
+    description 'Shot shots shot shots shots'
+    price 3.10
+    association :supplier, factory: :supplier
+  end
+
+  factory :WaterFiltration, class: Item do
+    title "Water Filtration"
+    description 'Shot shots shot shots shots'
+    price 3.10
+    association :supplier, factory: :supplier
+  end
+
+  factory :WaterStorageTank, class: Item do
+    title "Water Storage Tank"
+    description 'Shot shots shot shots shots'
+    price 3.10
+    association :supplier, factory: :supplier
+  end
+
+  factory :Hatchet, class: Item do
     title "Needles"
     description 'Shot shots shot shots shots'
     price 3.10
     association :supplier, factory: :supplier
   end
 
-  factory :item2, class: Item do
+  factory :Batteries, class: Item do
     title "Needles"
     description 'Shot shots shot shots shots'
     price 3.10
     association :supplier, factory: :supplier
   end
 
-  factory :item2, class: Item do
+  factory :PowderedMilk, class: Item do
     title "Needles"
     description 'Shot shots shot shots shots'
     price 3.10
     association :supplier, factory: :supplier
   end
 
-  factory :item2, class: Item do
-    title "Needles"
-    description 'Shot shots shot shots shots'
-    price 3.10
-    association :supplier, factory: :supplier
-  end
-
-  factory :item2, class: Item do
-    title "Needles"
-    description 'Shot shots shot shots shots'
-    price 3.10
-    association :supplier, factory: :supplier
-  end
-
-  factory :item2, class: Item do
-    title "Needles"
-    description 'Shot shots shot shots shots'
-    price 3.10
-    association :supplier, factory: :supplier
-  end
-
-  factory :item2, class: Item do
-    title "Needles"
-    description 'Shot shots shot shots shots'
-    price 3.10
-    association :supplier, factory: :supplier
-  end
-
-  factory :item2, class: Item do
-    title "Needles"
-    description 'Shot shots shot shots shots'
-    price 3.10
-    association :supplier, factory: :supplier
-  end
-
-  factory :item2, class: Item do
+  factory :BulkSalt, class: Item do
     title "Needles"
     description 'Shot shots shot shots shots'
     price 3.10
