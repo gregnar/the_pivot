@@ -21,8 +21,8 @@ class User < ActiveRecord::Base
   end
 
   def self.authenticate_user(email, password)
-    user = find_by_email(email)
-    (user.email_confirmed? ? user : nil) if user && user.authenticate(password)
+    user = find(email: email)
+    (user.email_confirmed? ? user : nil) if valid_user?
   end
 
   def send_confirmation
