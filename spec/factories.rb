@@ -3,10 +3,14 @@ FactoryGirl.define do  factory :order do
   end
 
   factory :user do
-    name 'Cave Johnson'
+    name 'Bad User'
     email { Faker::Internet.email }
-    password 'foobar'
-    password_confirmation 'foobar'
+    password 'password'
+    password_confirmation 'password'
+    display_name ''
+    supplier_admin true
+    admin false
+    association :supplier, factory: :supplier
   end
 
   factory :admin, class: User do
