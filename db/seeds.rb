@@ -59,7 +59,8 @@ class Seed
         city: Faker::Address.city,
         state: Faker::Address.state_abbr,
         zip_code: Faker::Address.zip,
-        user_id: i + 1
+        user_id: i + 1,
+        supplier_id: i + 1
         )
       puts "Added address for user #{i + 1}"
     end
@@ -74,7 +75,7 @@ class Seed
         puts "Generating item #{i} for supplier #{supplier.id}..."
         title_alias     = items.pop
         item            = FactoryGirl.build(title_alias)
-        item.categories << Category.find_by(name: items_with_categories(title_alias))
+        item.categories << Category.find_by(name: items_with_categories(title_alias), supplier_id: supplier.id)
         item.supplier   = supplier
         item.save!
         # generated_item = Item.create!(

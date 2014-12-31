@@ -1,0 +1,3 @@
+<% if current_user && current_supplier_admin? %>
+  <%= link_to 'New', new_supplier_category_path(id: category, slug: params[:slug]) %>
+<% end %>
