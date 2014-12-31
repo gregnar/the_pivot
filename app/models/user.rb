@@ -4,7 +4,6 @@ class User < ActiveRecord::Base
   has_one :supplier_user
   has_one :supplier, through: :supplier_user
 
-
   has_secure_password
 
   before_save { |user| user.email = email.downcase }
@@ -24,7 +23,7 @@ class User < ActiveRecord::Base
 
   def send_confirmation
     self.update(password_reset_token: SecureRandom.urlsafe_base64)
-    self.update(password_sent_at: Time.zone.now)
+    self.update(password_reset_sent_at: Time.zone.now)
     UserMailer.confirmation_email(self).deliver
   end
 end

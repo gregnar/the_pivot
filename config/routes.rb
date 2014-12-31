@@ -16,7 +16,7 @@ Rails.application.routes.draw do
 
   resources :items, path: "/supplies"
 
-  match 'register' => 'users#new'
+  get 'register', to: 'users#new'
   resources :users
   get '/account_confirmation', to: 'users#account_confirmation'
 

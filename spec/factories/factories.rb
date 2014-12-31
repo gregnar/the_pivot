@@ -1,5 +1,5 @@
 FactoryGirl.define do
-
+  
   factory :order do
     delivery false
   end

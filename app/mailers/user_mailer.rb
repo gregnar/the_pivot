@@ -1,11 +1,14 @@
 class UserMailer < ActionMailer::Base
-  default from: "from@example.com"
+  default from: "reliefbot@airlift.com"
 
   def confirmation_email(user)
-    mail(to: user.email, subject: 'Verify your Airlift account')
+    @user = user
+    mail(to: user.email, subject: 'Verify your Airlift account', content_type: "text/html")
+    puts "sent dat shit yo."
   end
 
   def welcome_email(user)
-    mail(to: user.email, subject: 'Welcome to Airlift!')
+    @user = user
+    mail(to: user.email, subject: 'Welcome to Airlift!', content_type: "text/html")
   end
 end
