@@ -17,6 +17,15 @@ FactoryGirl.define do  factory :order do
     admin true
   end
 
+  factory :supplier_admin, class: User do
+    name 'Supplier Admin User'
+    email { Faker::Internet.email }
+    password 'foobar'
+    password_confirmation 'foobar'
+    admin false
+    supplier_admin true
+  end
+
   factory :address do
     street_number { Faker::Address.building_number }
     street_name { Faker::Address.street_name }

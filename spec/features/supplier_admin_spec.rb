@@ -3,75 +3,85 @@ require 'capybara/rails'
 require 'capybara/rspec'
 
 
-feature "menu_items things" do
-  let :supplier do
-    User.create(name: 'Hamburgler', email: 'hamburgler@example.com',
-    password: 'p4ssw0rd', password_confirmation: 'p4ssw0rd',
-    supplier_admin: true)
-    # Supplier.create(name: "Torta's Supplies", email: "tortaville@mexicana.net",
-    #                 phone: "303-333-3333", description: "We have a description")
+describe 'Supplier admin path', type: :feature do
+  around(:each) do |example|
+    DatabaseCleaner.start
+    example.run
+    DatabaseCleaner.clean
   end
 
-  before(:each) do
-    visit '/login'
-    fill_in 'Email', with: supplier.email
-    fill_in 'Password', with: supplier.password
-    click_button 'Login'
-  end
+  context 'when logged in as supplier_admin' do
+    let(:supplier_admin) { FactoryGirl.create(:supplier_admin) }
+    let(:supplier) { FactoryGirl.create(:supplier) }
+    let(:item)  { FactoryGirl.build(:item) }
+    let(:category) { FactoryGirl.create(:category) }
+    let(:user) {FactoryGirl.create(:user)}
 
-  xscenario "allows suppliers to view their page" do
-    visit "/torta-s-supplies"
-    expect(page).to have_content("Torta's Supplies")
-  end
+    before(:each) do
+      user.supplier = supplier
+      supplier.users << user
+      supplier.categories << category
 
-  xscenario "User creates a new category" do
-    visit "/torta-s-supplies/categories"
-    new_category = "I created a category"
-    expect(page.body).not_to include new_category
-    click_link_or_button "New"
-    fill_in "category[title]", with: new_category
-    click_link_or_button "Create Category"
-    expect(page.body).to include new_category
-  end
+      visit '/login'
+      fill_in 'Email', with: user.email
+      fill_in 'Password', with: user.password
+      click_button 'Login'
+    end
 
-  xscenario "supplier creates a new item" do
-    visit "/torta-s-supplies/items"
-    new_item = {title: "SANDwich Bags", description: "Full of sand", price: 10000}
-    expect(page.body).not_to include new_item[:title]
-    click_link_or_button "New"
-    fill_in "Title", with: new_item[:title]
-    fill_in "Description", with: new_item[:description]
-    fill_in "Price", with: new_item[:price]
-    select('Flood Supplies', :from => 'category-select')
-    click_link_or_button "Create Item"
-    expect(page).to have_content('Item successfully created!')
-    expect(page.body).to include new_item[:title]
-  end
+    it "allows suppliers to view their page" do
+      visit supplier_items_path(slug: supplier.slug)
+      expect(page).to have_content("Red Cross")
+    end
 
-  xscenario "Supplier can delete a category" do
-    new_category = "I created a category"
-    Category.create(title: new_category)
+    xit "allows supplier_admins to create new categories" do
+      visit new_supplier_category_path(slug: supplier.slug)
+      new_category = "I created a category"
+      expect(page.body).not_to include new_category
+      click_link_or_button "New"
+      fill_in "category[title]", with: new_category
+      click_link_or_button "Create Category"
+      expect(page.body).to include new_category
+    end
 
-    visit "/torta-s-supplies/categories"
-    expect(page.body).to include new_category
-    click_link_or_button "Title: #{new_category}"
-    click_link_or_button "Delete"
+    xit "allows supplier_admins to delete a category" do
+      new_category = "I created a category"
+      Category.create(title: new_category)
 
-    expect(page.body).not_to include new_category
-  end
+      visit "/torta-s-supplies/categories"
+      expect(page.body).to include new_category
+      click_link_or_button "Title: #{new_category}"
+      click_link_or_button "Delete"
 
-  xscenario "Supplier can edit a category" do
-    new_category = "I created a category"
-    Category.create(title: new_category)
+      expect(page.body).not_to include new_category
+    end
 
-    visit "/torta-s-supplies/categories"
-    expect(page.body).to include new_category
-    click_link_or_button "Title: #{new_category}"
-    click_link_or_button "Edit"
+    xit "allows supplier_admins to edit a category" do
+      new_category = "I created a category"
+      Category.create(name: new_category)
 
-    fill_in "category[title]", with: "I edited a category"
-    click_link_or_button "Update Category"
-    expect(page.body).to include "I edited a category"
-    expect(page.body).not_to include new_category
+      visit "/torta-s-supplies/categories"
+      expect(page.body).to include new_category
+      click_link_or_button "Title: #{new_category}"
+      click_link_or_button "Edit"
+
+      fill_in "Name", with: "I edited a category"
+      click_link_or_button "Update Category"
+      expect(page.body).to include "I edited a category"
+      expect(page.body).not_to include new_category
+    end
+
+    # xit "allows supplier_admins to create new items" do
+    #   visit new_supplier_items_path(slug: supplier.slug)
+    #   new_item = {title: "SANDwich Bags", description: "Full of sand", price: 10000}
+    #   expect(page.body).not_to include new_item[:title]
+    #   click_link_or_button "New"
+    #   fill_in "Title", with: new_item[:title]
+    #   fill_in "Description", with: new_item[:description]
+    #   fill_in "Price", with: new_item[:price]
+    #   select('Flood Supplies', :from => 'category-select')
+    #   click_link_or_button "Create Item"
+    #   expect(page).to have_content('Item successfully created!')
+    #   expect(page.body).to include new_item[:title]
+    # end
   end
 end
