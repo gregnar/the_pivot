@@ -2,10 +2,10 @@
   <h1>Emergency Supplies</h1>
   <h3>Don't worry about picking up supplies, they will come to you. Impact more lives. Order now.</h3>
   <%= image_tag 'helicopter.gif', class: 'img-rounded img-responsive'%>
-  <h3>Let us deal with the unpleasantries of the outside world for you! Get your legal stimulants delivered to your doorstep. </h3>
+  <h3>Find all of your emergency supplies here, all in one place</h3>
     <% if current_user %>
     <h3>Welcome back <%= link_to current_user.name, current_user, class: "user-name"%>!</h3>
   <% else %>
-    <p><%= link_to 'Sign Up Today', new_user_path, class: 'btn btn-lg btn-success', role: 'button' %></p>
+    <p><%= link_to 'Shop for Supplies', suppliers_path, class: 'btn btn-lg btn-success', role: 'button' %></p>
   <% end %>
 </div>
