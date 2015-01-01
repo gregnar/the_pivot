@@ -7,23 +7,24 @@ class UsersController < ApplicationController
     @users = User.all
   end
 
-  def new_supplier_user
-    @user = User.new
-    flash[:notice] = 'Please start by entering your personal information.'
-  end
-
-  def create_supplier_user
-    @user = User.new(user_params)
-    if @user.save!
-      session[:user_id] = @user.id
-      redirect_to new_supplier_path, notice: 'Logged in! Enter your supplier information.'
-    else
-      flash.now[:notice] = 'User could not be created.'
-      render :new
-    end
-  end
+  # def new_supplier_user
+  #   @user = User.new
+  #   flash[:notice] = 'Please start by entering your personal information.'
+  # end
+  #
+  # def create_supplier_user
+  #   @user = User.new(user_params)
+  #   if @user.save!
+  #     session[:user_id] = @user.id
+  #     redirect_to new_supplier_path, notice: 'Logged in! Enter your supplier information.'
+  #   else
+  #     flash.now[:notice] = 'User could not be created.'
+  #     render :new
+  #   end
+  # end
 
   def new
+    @supplier = true if params[:supplier]
     @user = User.new
   end
 

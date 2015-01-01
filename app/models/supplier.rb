@@ -18,3 +18,4 @@ class Supplier < ActiveRecord::Base
     self.slug = name.parameterize
   end
 end
+ 
