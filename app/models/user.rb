@@ -5,9 +5,15 @@ class User < ActiveRecord::Base
   has_one :supplier, through: :supplier_user
 
 
+
   has_secure_password
 
   before_save { |user| user.email = email.downcase }
+  before_save :determine_supplier_admin
+
+  def determine_supplier_admin
+    self.supplier ? self.supplier_admin = true : self.supplier_admin = false
+  end
 
   validates :name, presence: true
   EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/

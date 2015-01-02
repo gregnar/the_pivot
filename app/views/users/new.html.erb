@@ -1,2 +1,6 @@
-<h1 class='text-center'>Sign Up</h1>
+<h2 class='text-center'>Make an Account</h2>
+<% if session[:supplier] %>
+  <h4 class='text-center'>Start by making a normal user account, or <%= link_to 'login', login_path(supplier: true), id: 'underlined-link' %>.</h4>
+  <h5 class='text-center bold italic'></span>You will be redirected to the form for new suppliers.</h5>
+<% end %>
 <%= render 'form' %>

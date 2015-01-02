@@ -17,10 +17,6 @@ Rails.application.routes.draw do
 
   resources :users
 
-
-  get '/new_supplier_user', to: "users#new_supplier_user"
-  post '/new_supplier_user', to: "users#create_supplier_user"
-
   get    '/login',  to: "sessions#new"
   post   '/login',  to: "sessions#create"
   delete '/logout', to: "sessions#destroy"
