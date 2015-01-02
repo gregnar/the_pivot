@@ -1,3 +1,5 @@
 coverage
 tmp
 log
+.env
+.DS_STORE
