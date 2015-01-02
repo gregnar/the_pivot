@@ -7,10 +7,11 @@ class ApplicationController < ActionController::Base
 
   include SessionsHelper
 
-  helper_method :current_user, 
+  helper_method :current_user,
                 :require_admin,
                 :current_supplier,
-                :current_supplier_admin?
+                :current_supplier_admin?,
+                :reset_session_supplier_key
 
   before_action :load_cart
 
@@ -42,6 +43,12 @@ class ApplicationController < ActionController::Base
 
   def load_cart
     @cart = Cart.new(session[:cart])
+  end
+
+  def reset_session_supplier_key
+    # ensures that login and users#create redirect to suppliers#create only when appropriate
+    session.delete(:supplier)
+    session[:supplier] = true if params[:supplier]
   end
 
   private
