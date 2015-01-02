@@ -17,5 +17,8 @@ class Supplier < ActiveRecord::Base
   def generate_slug
     self.slug = name.parameterize
   end
+
+  def self.with_items
+    all.reject { |supplier| supplier.items.empty? }
+  end
 end
- 
