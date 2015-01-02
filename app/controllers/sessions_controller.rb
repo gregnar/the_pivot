@@ -1,5 +1,6 @@
 class SessionsController < ApplicationController
   def new
+    session[:supplier] = true if params[:supplier]
     @user = User.new
   end
 
@@ -8,7 +9,12 @@ class SessionsController < ApplicationController
 
     if user
       session[:user_id] = user.id
-      redirect_to user_path(user), notice: "Welcome to AIRLIFT, #{user.name}."
+      if session[:supplier]
+        redirect_to new_supplier_path, notice: "Welcome back, #{user.name}. Create your supplier:"
+        session.delete(:supplier)
+      else
+        redirect_to user_path(user), notice: "Welcome to AIRLIFT, #{user.name}."
+      end
     else
       redirect_to login_path, notice: 'We could not log you in. Please try again.'
     end

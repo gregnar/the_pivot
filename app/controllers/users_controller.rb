@@ -17,6 +17,7 @@ class UsersController < ApplicationController
     if @user.save
       session[:user_id]  = @user.id
       session[:supplier] ? redirect_to(new_supplier_path) : redirect_to(root_path, notice: 'User created.')
+      session.delete(:supplier)
     else
       flash.now[:notice] = 'User could not be created.'
       render :new
