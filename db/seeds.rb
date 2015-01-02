@@ -58,7 +58,8 @@ class Seed
         city: Faker::Address.city,
         state: Faker::Address.state_abbr,
         zip_code: Faker::Address.zip,
-        user_id: i + 1
+        user_id: i + 1,
+        supplier_id: i + 1
         )
       puts "Added address for user #{i + 1}"
     end

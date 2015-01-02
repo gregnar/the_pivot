@@ -2,6 +2,7 @@ class AddressesController < ApplicationController
   before_action :set_address, only: [:show, :edit, :update, :destroy]
   before_action :require_admin, only: [:index]
   before_action :current_user, only: [:show, :new, :create, :edit, :update]
+  before_action :require_correct_user
 
   def index
     @addresses = Address.all
@@ -46,6 +47,10 @@ class AddressesController < ApplicationController
   end
 
   private
+
+  def require_correct_user
+    redirect_to user_path(current_user) unless current_user.addresses.include?(set_address)
+  end
 
   def set_address
     @address = Address.find(params[:id])

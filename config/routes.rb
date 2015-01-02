@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   namespace :suppliers, as: :supplier, path: '/:slug' do
     resources :orders
     resources :items, path: "/supplies"
+    resources :categories
   end
 
   resources :orders
@@ -15,7 +16,11 @@ Rails.application.routes.draw do
 
   resources :items, path: "/supplies"
 
+  get 'register', to: 'users#new'
   resources :users
+  get '/account_confirmation', to: 'users#account_confirmation'
+
+  resources :password_resets
 
   get    '/login',  to: "sessions#new"
   post   '/login',  to: "sessions#create"

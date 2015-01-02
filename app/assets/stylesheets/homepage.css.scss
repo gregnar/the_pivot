@@ -1,0 +1,149 @@
+@import url(http://fonts.googleapis.com/css?family=Poller+One|Ubuntu:700,400);
+
+@font-face {
+  font-family: 'Channel';
+  src: font-url('Channel.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'GeoSans';
+  src: font-url('GeosansLight.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Glyphicons Halflings';
+  src: font-url('glyphicons-halflings-regular.ttf');
+}
+
+body {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  font-family: 'GeoSans';
+  background-color: #F4F2EB;
+}
+
+.header,
+.marketing,
+.footer {
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+a {
+  color: #493736;
+  font-size: 18px;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+.header {
+  border-bottom: 1px solid #e5e5e5;
+}
+.header h3 {
+  padding-bottom: 19px;
+  margin-top: 0;
+  margin-bottom: 0;
+  line-height: 40px;
+}
+.footer {
+  padding-top: 19px;
+  color: #777;
+  border-top: 1px solid #e5e5e5;
+}
+
+.container-narrow > hr {
+  margin: 30px 0;
+}
+
+.jumbotron {
+  text-align: center;
+  border-bottom: 1px solid #e5e5e5;
+  font-family: 'GeoSans';
+}
+.jumbotron .btn {
+  padding: 14px 24px;
+  font-size: 21px;
+}
+
+.marketing {
+  margin: 40px 0;
+}
+.marketing p + h4 {
+  margin-top: 28px;
+}
+
+@media screen and (min-width: 768px) {
+  .header,
+  .marketing,
+  .footer {
+    padding-right: 0;
+    padding-left: 0;
+  }
+  .header {
+    margin-bottom: 30px;
+  }
+  .jumbotron {
+    border-bottom: 0;
+  }
+}
+
+#logo {
+  color: #7B3B3B;
+  font-family: 'Ubuntu';
+  font-size: 40px;
+ }
+
+#logo:hover {
+  text-decoration: none;
+}
+
+#suppliers-index {
+  right: 50%;
+  font-size: 25px;
+}
+
+.btn-success:hover {
+  background-color: #B9D7D9;
+  border-color: #A6C1C3;
+}
+
+.btn-success {
+  background-color: #668284;
+  border-color: #5b7576;
+}
+
+.badge {
+  font-family: 'GeoSans',sans-serif;
+}
+
+.glyphicon {
+  top: 3px;
+}
+
+.img-responsive {
+  margin: 0 auto;
+}
+
+#about {
+  background-color: #DCCCBA;
+}
+.user-name {
+  font-size: 24px;
+}
+
+.payment {
+  margin-top: 20px;
+}
+
+.stripe-button {
+  @extend .btn;
+  @extend .btn-success;
+}
+
+h1 {
+  font-family: 'Ubuntu';
+  font-weight: 400;
+  font-size: 45px;
+}

@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 20150102201119) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
+    t.integer  "supplier_id"
   end
 
   create_table "categories", force: true do |t|
@@ -49,6 +50,30 @@ ActiveRecord::Schema.define(version: 20150102201119) do
     t.datetime "updated_at"
   end
 
+  create_table "fillings", force: true do |t|
+    t.string   "title"
+    t.string   "description"
+    t.integer  "price",              default: 0
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "food_group"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+    t.boolean  "retired",            default: false
+  end
+
+  create_table "item_fillings", force: true do |t|
+    t.integer  "item_id"
+    t.integer  "filling_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "item_fillings", ["filling_id"], name: "index_item_fillings_on_filling_id", using: :btree
+  add_index "item_fillings", ["item_id"], name: "index_item_fillings_on_item_id", using: :btree
+
   create_table "items", force: true do |t|
     t.string   "title"
     t.string   "description"
@@ -72,6 +97,21 @@ ActiveRecord::Schema.define(version: 20150102201119) do
   add_index "items_orders", ["item_id", "order_id"], name: "index_items_orders_on_item_id_and_order_id", using: :btree
   add_index "items_orders", ["order_id", "item_id"], name: "index_items_orders_on_order_id_and_item_id", using: :btree
 
+  create_table "line_item_fillings", force: true do |t|
+    t.integer  "line_item_id"
+    t.integer  "filling_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "line_items", force: true do |t|
+    t.integer  "order_id"
+    t.integer  "item_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "quantity"
+  end
+
   create_table "orders", force: true do |t|
     t.boolean  "delivery"
     t.datetime "created_at"
@@ -79,6 +119,12 @@ ActiveRecord::Schema.define(version: 20150102201119) do
     t.integer  "user_id"
     t.boolean  "pending"
     t.integer  "coordinate_id"
+  end
+
+  create_table "roles", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "supplier_users", id: false, force: true do |t|
@@ -98,14 +144,32 @@ ActiveRecord::Schema.define(version: 20150102201119) do
     t.string   "slug"
   end
 
+  create_table "suppliers_users", id: false, force: true do |t|
+    t.integer "user_id",     null: false
+    t.integer "supplier_id", null: false
+  end
+
+  create_table "user_roles", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "role_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "user_roles", ["role_id"], name: "index_user_roles_on_role_id", using: :btree
+  add_index "user_roles", ["user_id"], name: "index_user_roles_on_user_id", using: :btree
+
   create_table "users", force: true do |t|
     t.string   "name"
     t.string   "email"
     t.string   "password_digest"
     t.string   "display_name"
-    t.boolean  "admin",           default: false
+    t.boolean  "admin",                  default: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "email_confirmed"
+    t.string   "password_reset_token"
+    t.datetime "password_reset_sent_at"
   end
 
 end

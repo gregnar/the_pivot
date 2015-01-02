@@ -8,6 +8,16 @@ class UsersController < ApplicationController
     @users = User.all
   end
 
+  def account_confirmation
+    @user = User.find_by(password_reset_token: params[:tkn])
+    if(@user)
+      @user.update(email_confirmed: true, password_reset_token: nil)
+      redirect_to login_path, :notice => "Account confirmed!"
+    else
+      redirect_to login_path, :notice => "Uh oh! There's a problem with confirming your account..."
+    end
+  end
+
   def new
     @user = User.new
   end
@@ -15,6 +25,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
+      @user.send_confirmation
       session[:user_id]  = @user.id
       session[:supplier] ? redirect_to(new_supplier_path) : redirect_to(root_path, notice: 'User created.')
       session.delete(:supplier)
