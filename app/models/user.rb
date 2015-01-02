@@ -7,9 +7,6 @@ class User < ActiveRecord::Base
   has_secure_password
 
   before_save { |user| user.email = email.downcase }
-  # before_update :supplier_admin_true,  :if     => Proc.new {|user| user.has_supplier}
-  # before_update :supplier_admin_false, :unless => Proc.new {|user| user.has_supplier}
-
 
   validates :name, presence: true
   EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/
