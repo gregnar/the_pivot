@@ -48,7 +48,6 @@ describe 'Registering new suppliers and users', type: :feature do
       fill_in 'user_email', with: user_attributes[:email]
       fill_in 'user_password', with: 'password'
       fill_in 'user_password_confirmation', with: 'password'
-      # save_and_open_page
       click_button 'Submit'
       expect(current_path).to eq(new_supplier_path)
     end
