@@ -195,6 +195,22 @@ h1 {
   }
 }
 
+#underlined-link {
+  text-decoration: underline;
+  font-weight: bold
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.italic {
+    font-style: italic;
+}
+
+.red-font{
+  color: rgb(220, 22, 40);
+}
 .supplier-info {
   padding-right: 0;
 }

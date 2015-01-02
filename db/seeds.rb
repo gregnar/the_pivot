@@ -6,10 +6,11 @@ class Seed
     Item.destroy_all
     Order.destroy_all
     Address.destroy_all
+    @big_shots = []
 
+    generate_users #users must come before customers!
     generate_customers
     generate_addresses
-    generate_users
     generate_suppliers
     generate_items
     generate_orders
@@ -21,8 +22,7 @@ class Seed
                 email: 'demo+rachel@jumpstartlab.com',
                 password: 'password',
                 password_confirmation: 'password',
-                display_name: '',
-                supplier_admin: true,
+                display_name: 'Rachel Warbelow',
                 admin: false
                 )
 
@@ -31,7 +31,6 @@ class Seed
                 password: 'password',
                 password_confirmation: 'password',
                 display_name: 'j3',
-                supplier_admin: false,
                 admin: false)
 
     User.create(name: 'Jorge Tellez',
@@ -39,7 +38,6 @@ class Seed
                 password: 'password',
                 password_confirmation: 'password',
                 display_name: 'novohispano',
-                supplier_admin: true,
                 admin: true)
 
     User.create(name: 'Josh Cheek',
@@ -47,8 +45,9 @@ class Seed
                 password: 'password',
                 password_confirmation: 'password',
                 display_name: 'josh',
-                supplier_admin: true,
                 admin: true)
+
+    User.last(4).map { |user| @big_shots << user }
   end
 
   def generate_addresses
@@ -78,18 +77,6 @@ class Seed
         item.categories << Category.find_by(name: items_with_categories(title_alias), supplier_id: supplier.id)
         item.supplier   = supplier
         item.save!
-        # generated_item = Item.create!(
-        #   title: FactoryGirl.titles.pop,
-        #   description: 'A worthless thing that does not even work',
-        #   price: Faker::Commerce.price,
-        #   photo_file_name: nil,
-        #   photo_content_type: 'image/png',
-        #   photo_file_size: Faker::Number.number(3),
-        #   photo_updated_at: Faker::Date.between(1.week.ago, Date.today),
-        #   categories: [Category.all.sample],
-        #   supplier_id: supplier.id,
-        #   active: true
-        #   )
       end
     end
   end
@@ -118,12 +105,12 @@ class Seed
                             slug: Faker::Company.name,
                             address_id: (i + 1)
                           )
-      users = User.all
-      possible_admins = []
-      users.each { |user| possible_admins << user if user.supplier_admin == true }
+      possible_admins = User.all.shuffle
 
-      s.users << possible_admins.sample
-      #give supplier all categories
+      s.users << possible_admins.pop
+      @big_shots.map { |big_shot| s.users << big_shot unless big_shot.supplier_admin? }
+
+
       all_categories.map { |category| s.categories << FactoryGirl.create(category) }
       s.save!
     end
@@ -131,11 +118,12 @@ class Seed
 
   def generate_customers
     100.times do |i|
-      User.create!( name: Faker::Name.name,
+      name = Faker::Name.name
+      User.create!( name: name,
                     email: Faker::Internet.email,
                     password: 'password',
                     password_confirmation: 'password',
-                    display_name: '',
+                    display_name: name,
                     admin: false,
                   )
     end

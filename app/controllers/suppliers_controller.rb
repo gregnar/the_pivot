@@ -1,16 +1,22 @@
 class SuppliersController < ApplicationController
   def index
-    @suppliers = Supplier.all
+    @suppliers = Supplier.with_items
   end
 
   def new
-    @supplier = Supplier.new
+    if !current_user
+      redirect_to new_user_path(supplier: true)
+    elsif current_user.supplier_admin?
+      redirect_to user_path(current_user), notice: "Your account may be associated with only one supplier."
+    else
+      @supplier = Supplier.new
+    end
   end
 
   def create
     @supplier = Supplier.new(supplier_params)
-    if @supplier.save!
-      @supplier.users << current_user
+    @supplier.users << current_user
+    if @supplier.save
       redirect_to root_path
     else
       flash.now[:notice] = "Supplier could not be created."

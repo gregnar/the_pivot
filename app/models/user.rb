@@ -16,6 +16,10 @@ class User < ActiveRecord::Base
   validates :display_name, allow_blank: true, length: { in: 2..32 }
   validates :password, length: { minimum: 6 }, allow_blank: true
 
+  def supplier_admin?
+    self.supplier.present?
+  end
+
   def self.authenticate_user(email, password)
     user = find_by_email(email)
     (user.email_confirmed? ? user : nil) if user && user.authenticate(password)

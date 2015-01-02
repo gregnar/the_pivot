@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   before_action :correct_user, only: [:show, :edit, :update, :destroy]
   before_action :require_admin, only: [:index, :destroy]
   before_action :current_user, only: [:show, :edit, :update]
+  before_action :reset_session_supplier_key, only: [:new]
 
   def index
     @users = User.all
@@ -17,22 +18,6 @@ class UsersController < ApplicationController
     end
   end
 
-  def new_supplier_user
-    @user = User.new
-    flash[:notice] = 'Please start by entering your personal information.'
-  end
-
-  def create_supplier_user
-    @user = User.new(user_params)
-    if @user.save!
-      session[:user_id] = @user.id
-      redirect_to new_supplier_path, notice: 'Logged in! Enter your supplier information.'
-    else
-      flash.now[:notice] = 'User could not be created.'
-      render :new
-    end
-  end
-
   def new
     @user = User.new
   end
@@ -40,9 +25,10 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      @user.send_confirmation
-      session[:user_id] = @user.id
-      redirect_to root_path, notice: "Almost done! Check #{@user.email} to confirm your email!"
+      # @user.send_confirmation
+      session[:user_id]  = @user.id
+      session[:supplier] ? redirect_to(new_supplier_path) : redirect_to(root_path, notice: 'User created.')
+      session.delete(:supplier)
     else
       flash.now[:notice] = 'User could not be created.'
       render :new
