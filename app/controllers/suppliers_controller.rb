@@ -4,7 +4,13 @@ class SuppliersController < ApplicationController
   end
 
   def new
-    @supplier = Supplier.new
+    if !current_user
+      redirect_to new_user_path(supplier: true)
+    elsif current_user.supplier_admin
+      redirect_to user_path(current_user), notice: "Your account may be associated with only one supplier."
+    else
+      @supplier = Supplier.new
+    end
   end
 
   def create

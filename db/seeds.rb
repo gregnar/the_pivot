@@ -8,8 +8,8 @@ class Seed
     Address.destroy_all
 
     generate_customers
-    generate_addresses
     generate_users
+    generate_addresses
     generate_suppliers
     generate_items
     generate_orders
@@ -117,13 +117,12 @@ class Seed
                             slug: Faker::Company.name,
                             address_id: (i + 1)
                           )
-      users = User.all
-      possible_admins = []
-      users.each { |user| possible_admins << user if user.supplier_admin == true }
+      possible_admins = User.all
+      # users.each { |user| possible_admins << user if user.supplier_admin == true }
 
       s.users << possible_admins.sample
       #give supplier all categories
-      all_categories.map { |category| s.categories << FactoryGirl.create(category) }
+      all_categories.map { |category| s.categories << FactoryGirl.create(:category) }
       s.save!
     end
   end

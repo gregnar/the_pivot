@@ -14,11 +14,14 @@ class Supplier < ActiveRecord::Base
   format: { with: EMAIL_REGEX },
   uniqueness: { case_sensitive: false }
 
+  def self.with_items
+    all.reject { |supplier| supplier.items.empty? }
+  end
+
+  private
+
   def generate_slug
     self.slug = name.parameterize
   end
 
-  def self.with_items
-    all.reject { |supplier| supplier.items.empty? }
-  end
 end

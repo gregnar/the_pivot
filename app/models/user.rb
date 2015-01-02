@@ -4,16 +4,12 @@ class User < ActiveRecord::Base
   has_one :supplier_user
   has_one :supplier, through: :supplier_user
 
-
-
   has_secure_password
 
   before_save { |user| user.email = email.downcase }
-  before_save :determine_supplier_admin
+  # before_update :supplier_admin_true,  :if     => Proc.new {|user| user.has_supplier}
+  # before_update :supplier_admin_false, :unless => Proc.new {|user| user.has_supplier}
 
-  def determine_supplier_admin
-    self.supplier ? self.supplier_admin = true : self.supplier_admin = false
-  end
 
   validates :name, presence: true
   EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/
@@ -22,4 +18,9 @@ class User < ActiveRecord::Base
                     uniqueness: { case_sensitive: false }
   validates :display_name, allow_blank: true, length: { in: 2..32 }
   validates :password, length: { minimum: 6 }, allow_blank: true
+
+  def supplier_admin?
+    self.supplier.present?
+  end
+
 end
