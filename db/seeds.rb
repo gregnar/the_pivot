@@ -76,6 +76,7 @@ class Seed
         item            = FactoryGirl.build(title_alias)
         item.categories << Category.find_by(name: items_with_categories(title_alias), supplier_id: supplier.id)
         item.supplier   = supplier
+        add_photo_to_item(item)
         item.save!
       end
     end
@@ -83,7 +84,7 @@ class Seed
 
   def add_photo_to_item(item)
     image_path = Rails.root.join("app", "assets", "images", "items")
-    item.photo = File.open(image_path.join("#{item.name.parameterize}.jpg"))
+    item.photo = File.open(image_path.join("#{item.title.parameterize}.jpg"))
   end
 
   def generate_orders
