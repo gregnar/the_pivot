@@ -7,6 +7,8 @@ class Seed
     Order.destroy_all
     Address.destroy_all
     @big_shots = []
+    @image_path = Rails.root.join("app", "assets", "images", "items")
+
 
     generate_users #users must come before customers!
     generate_customers
@@ -76,15 +78,10 @@ class Seed
         item            = FactoryGirl.build(title_alias)
         item.categories << Category.find_by(name: items_with_categories(title_alias), supplier_id: supplier.id)
         item.supplier   = supplier
-        add_photo_to_item(item)
+        item.photo = File.open(@image_path.join("#{item.title.parameterize}.jpg"))
         item.save!
       end
     end
-  end
-
-  def add_photo_to_item(item)
-    image_path = Rails.root.join("app", "assets", "images", "items")
-    item.photo = File.open(image_path.join("#{item.title.parameterize}.jpg"))
   end
 
   def generate_orders
