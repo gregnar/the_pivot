@@ -81,6 +81,11 @@ class Seed
     end
   end
 
+  def add_photo_to_item(item)
+    image_path = Rails.root.join("app", "assets", "images", "items")
+    item.photo = File.open(image_path.join("#{item.name.parameterize}.jpg"))
+  end
+
   def generate_orders
     10.times do |i|
       order = Order.new(user_id: rand(4))
@@ -224,10 +229,6 @@ class Seed
       HandSanitizer: 'Medical and Hygiene'
     }.fetch(item)
   end
-
-
-
-
 
 
 
