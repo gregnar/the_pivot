@@ -6,7 +6,7 @@ RSpec.describe Item, :type => :model do
   let(:item2) { FactoryGirl.build(:item2) }
 
   before(:each) do
-    category.save!(validation: false)
+    category.save!(validate: false)
     item.categories << category
     item.save!
     item2.categories << category

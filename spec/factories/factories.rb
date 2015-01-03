@@ -1,5 +1,5 @@
 FactoryGirl.define do
-  
+
   factory :order do
     delivery false
   end
@@ -19,7 +19,6 @@ FactoryGirl.define do
     password 'password'
     password_confirmation 'password'
     display_name ''
-    supplier_admin true
     admin false
     association :supplier, factory: :supplier
   end
