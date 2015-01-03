@@ -100,8 +100,9 @@ class Seed
   def generate_suppliers
     possible_admins = User.all.shuffle
     all_suppliers.map do |supplier_name, description|
+      supplier_email = "Airlift@#{supplier_name.gsub(/\W+/, "").downcase}.com"
       s = Supplier.new(     name: supplier_name,
-                            email: "airlift@#{supplier_name.gsub(/\s+/, "")}.com",
+                            email: supplier_email,
                             phone: Faker::PhoneNumber.phone_number,
                             fax: Faker::PhoneNumber.phone_number,
                             description: description,
@@ -189,21 +190,21 @@ class Seed
   def all_suppliers
     {
       'The Emergency Warehouse'        => 'Located in Tampa Bay, FL. Providing relief supplies since 1986.',
-      'Relief Wholesale, L.L.C.'       => 'Always in stock, always high quality.',
+      'Relief Wholesale, LLC'          => 'Always in stock, always high quality.',
       'Johnson Disaster Response'      => 'The most trusted name in disaster suppliers since 1990.',
       'Garrison Bulk Relief'           => 'Sole supplier for Catholic Relief Services since 1978. Find out why today!',
       'Akron Disaster Supply'          => 'The largest relief supply in the Great Lakes region.',
       'Chicago Aid and Relief'         => 'AIRLIFT Vendor Awards Honorable Mention, 2005.',
       'Wal-Mart Disaster Aid Services' => 'Wal-Mart business sense, when you need it most.',
-      'Kennedy and Simpson, Inc.'      => 'Since 1959. Lowest prices, guaranteed.',
-      'DisCo (The Disaster Company)'   => 'Newest AIRLIFT supplier. Bringing AGILE strategies to disaster relief.',
+      'Kennedy and Simpson, Inc'       => 'Since 1959. Lowest prices, guaranteed.',
+      'The Disaster Company'           => 'Newest AIRLIFT supplier. Bringing AGILE strategies to disaster relief.',
       'Whitman Emergency Services'     => 'The largest emergency supplies vendor in the country, period.'
     }
   end
 
   def items_with_categories(item)
     { potable_water: 'Food and Water',
-      WaterStorageTank: 'Food and Water',
+      WaterStorageTank: 'Food and Water',ga
       bulk_rice: 'Food and Water',
       emergency_meals: 'Food and Water',
       sand_bags: 'Flood Relief',
