@@ -1,0 +1,27 @@
+<table class="table table-striped text-center">
+  <thead>
+    <tr>
+      <% if @user.supplier_admin? == true %>
+      <th class="text-center">Supplier Name</th>
+      <th class="text-center">Supplier Email</th>
+        <th class="text-center">Web Address</th>
+        <th class="text-center">Phone</th>
+      <% end %>
+
+    </tr>
+    <tbody>
+      <tr>
+        <% if @user.supplier_admin? == true %>
+        <td><%= @user.supplier.name %></td>
+        <td><%= @user.email %></td>
+          <td><%= @user.supplier.slug %></td>
+          <td><%= @user.supplier.phone %></td>
+        <% end %>
+        <td><%= link_to 'Edit', edit_user_path(@user) %></td>
+      </tr>
+    </tbody>
+    </thead>
+    <% if current_user && current_user.supplier_admin? %>
+    <div class="adminbutton"><%= link_to "Manage your supplier pages", supplier_path %></div>
+    <% end %>
+</table>

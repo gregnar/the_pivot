@@ -5,9 +5,14 @@ Rails.application.routes.draw do
   resources :suppliers
 
   namespace :suppliers, as: :supplier, path: '/:slug' do
-    resources :orders
-    resources :items, path: "/supplies"
-    resources :categories
+    resources :items, path: "/supplies", only: [:index, :show]
+
+    namespace :admin, path: '/admin' do
+      resources :orders, except: [:destroy, :edit]
+      resources :categories
+      resources :items
+      resources :suppliers, except: [:index, :show, :create, :new]
+    end
   end
 
   resources :orders
