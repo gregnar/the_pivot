@@ -3,6 +3,9 @@ class SuppliersController < ApplicationController
     @suppliers = Supplier.with_items
   end
 
+  def show
+  end
+
   def new
     if !current_user
       redirect_to new_user_path(supplier: true)

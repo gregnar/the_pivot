@@ -9,6 +9,18 @@
   </div>
 </div>
 
+<% if current_user && current_user.supplier_admin? %>
+  <div class="col-md-6">
+    <div class="panel panel-default">
+      <div class="panel-heading"><h2>Supplier Info</h2></div>
+      <div class="panel-body">
+        <%= render partial: 'supplier_info' %>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+
 <div class="col-md-6">
   <div class="panel panel-default">
     <div class="panel-heading"><h2>Addresses</h2></div>
@@ -27,7 +39,3 @@
     </div>
   </div>
 </div>
-
-
-
-
