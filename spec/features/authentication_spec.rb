@@ -6,13 +6,13 @@ describe 'Application authentication', type: :feature do
 
   it 'creates a new user' do
     visit root_path
-    click_link 'Sign Up'
-    fill_in 'Name', with: 'Name'
-    fill_in 'Email', with: 'email@email.com'
-    fill_in 'Password', with: 'password'
-    fill_in 'Password confirmation', with: 'password'
+    click_link 'Register Customer'
+    fill_in 'user_name', with: 'Name'
+    fill_in 'user_email', with: 'email@email.com'
+    fill_in 'user_password', with: 'password'
+    fill_in 'user_password_confirmation', with: 'password'
     click_button 'Submit'
-    expect(page).to have_content('confirm')
+    expect(page).to have_content('created')
   end
 
   context 'when logged out' do
@@ -25,7 +25,7 @@ describe 'Application authentication', type: :feature do
     end
 
     it 'has a sign up link' do
-      expect(page).to have_link('Sign Up', href: new_user_path)
+      expect(page).to have_link('Register Customer', href: new_user_path)
     end
 
     it 'does not have a logout link' do
