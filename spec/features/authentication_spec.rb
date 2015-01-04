@@ -12,7 +12,7 @@ describe 'Application authentication', type: :feature do
     fill_in 'user_password', with: 'password'
     fill_in 'user_password_confirmation', with: 'password'
     click_button 'Submit'
-    expect(page).to have_content('created')
+    expect(page).to have_content('User created')
   end
 
   context 'when logged out' do
