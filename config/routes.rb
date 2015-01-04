@@ -10,7 +10,7 @@ Rails.application.routes.draw do
     scope '/admin' do
       resources :orders, except: [:destroy, :edit]
       resources :categories
-      resources :items, except: [:index, :show]
+      resources :items, path: "/supplies", only: [:new, :create, :edit, :update, :destroy]
       resources :suppliers, except: [:index, :show, :create, :new]
       resources :dashboard, only: [:index]
       get '/dashboard', to: "dashboard#index"

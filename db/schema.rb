@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150102201119) do
+ActiveRecord::Schema.define(version: 20150104033924) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,30 +50,6 @@ ActiveRecord::Schema.define(version: 20150102201119) do
     t.datetime "updated_at"
   end
 
-  create_table "fillings", force: true do |t|
-    t.string   "title"
-    t.string   "description"
-    t.integer  "price",              default: 0
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "food_group"
-    t.string   "image_file_name"
-    t.string   "image_content_type"
-    t.integer  "image_file_size"
-    t.datetime "image_updated_at"
-    t.boolean  "retired",            default: false
-  end
-
-  create_table "item_fillings", force: true do |t|
-    t.integer  "item_id"
-    t.integer  "filling_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "item_fillings", ["filling_id"], name: "index_item_fillings_on_filling_id", using: :btree
-  add_index "item_fillings", ["item_id"], name: "index_item_fillings_on_item_id", using: :btree
-
   create_table "items", force: true do |t|
     t.string   "title"
     t.string   "description"
@@ -96,21 +72,6 @@ ActiveRecord::Schema.define(version: 20150102201119) do
 
   add_index "items_orders", ["item_id", "order_id"], name: "index_items_orders_on_item_id_and_order_id", using: :btree
   add_index "items_orders", ["order_id", "item_id"], name: "index_items_orders_on_order_id_and_item_id", using: :btree
-
-  create_table "line_item_fillings", force: true do |t|
-    t.integer  "line_item_id"
-    t.integer  "filling_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "line_items", force: true do |t|
-    t.integer  "order_id"
-    t.integer  "item_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "quantity"
-  end
 
   create_table "orders", force: true do |t|
     t.boolean  "delivery"

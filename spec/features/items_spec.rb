@@ -54,7 +54,7 @@ describe 'Item Manipulation', type: :feature do
       fill_in 'Price', with: 2.99
       select(category.name, :from => 'category-select')
       click_button 'Submit'
-
+      
       expect(page).to have_content('Item successfully created!')
     end
 
