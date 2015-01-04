@@ -12,7 +12,7 @@ describe 'the user view for supplier', type: :feature do
     fill_in 'Email', with: user_supplier.email
     fill_in 'Password', with: user_supplier.password
     click_button 'Login'
-    expect(page).to have_content("Slug")
+    expect(page).to have_content(user_supplier.name)
     expect(page).to have_content("Phone")
   end
 

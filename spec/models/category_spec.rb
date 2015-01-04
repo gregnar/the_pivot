@@ -1,7 +1,14 @@
 require 'rails_helper'
 
 RSpec.describe Category, :type => :model do
-  let(:category) { Category.new(name: 'lunch') }
+  let(:category) { FactoryGirl.build(:category) }
+  let(:item) { FactoryGirl.build(:item) }
+
+  before do
+    item.categories << category
+    item.save!
+    category.save!
+  end
 
   it 'is valid' do
     expect(category).to be_valid
@@ -13,7 +20,6 @@ RSpec.describe Category, :type => :model do
   end
 
   it 'associates with a collection of items' do
-    item1 = Item.create(title: 'a', description: 'aa', price: 1.99, categories: [category])
     expect(category.items.count).to eq(1)
   end
 
