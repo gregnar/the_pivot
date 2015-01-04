@@ -22,6 +22,7 @@ class Suppliers::ItemsController < ApplicationController
 
   def create
     @item = Item.new(item_params)
+    @item.supplier = current_supplier
     if @item.save!
       redirect_to supplier_items_path, notice: 'Item successfully created!'
     else
