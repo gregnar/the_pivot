@@ -204,7 +204,7 @@ class Seed
 
   def items_with_categories(item)
     { potable_water: 'Food and Water',
-      WaterStorageTank: 'Food and Water',ga
+      WaterStorageTank: 'Food and Water',
       bulk_rice: 'Food and Water',
       emergency_meals: 'Food and Water',
       sand_bags: 'Flood Relief',
