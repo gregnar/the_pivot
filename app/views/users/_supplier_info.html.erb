@@ -22,6 +22,6 @@
     </tbody>
     </thead>
     <% if current_user && current_user.supplier_admin? %>
-    <div class="adminbutton"><%= link_to "Manage your supplier pages", supplier_path %></div>
+    <div class="adminbutton"><%= link_to "Manage your supplier pages", supplier_dashboard_path(slug: current_user.supplier.slug) %></div>
     <% end %>
 </table>

@@ -1,0 +1,6 @@
+<h1>Manage your shit</h1>
+<ul>
+  <li><%= link_to "ORDERS", supplier_orders_path(slug: @supplier.slug) %></li>
+  <li><%= link_to "CATEGORIES", supplier_categories_path(slug: @supplier.slug) %></li>
+  <li><%= link_to "ITEMS", supplier_items_path(slug: @supplier.slug) %></li>
+</ul>

@@ -7,11 +7,13 @@ Rails.application.routes.draw do
   namespace :suppliers, as: :supplier, path: '/:slug' do
     resources :items, path: "/supplies", only: [:index, :show]
 
-    namespace :admin, path: '/admin' do
+    scope '/admin' do
       resources :orders, except: [:destroy, :edit]
       resources :categories
-      resources :items
+      resources :items, except: [:index, :show]
       resources :suppliers, except: [:index, :show, :create, :new]
+      resources :dashboard, only: [:index]
+      get '/dashboard', to: "dashboard#index"
     end
   end
 
