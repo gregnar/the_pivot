@@ -11,6 +11,7 @@ class ApplicationController < ActionController::Base
                 :require_admin,
                 :current_supplier,
                 :current_supplier_admin?,
+                :require_supplier_admin,
                 :reset_session_supplier_key
 
   before_action :load_cart
