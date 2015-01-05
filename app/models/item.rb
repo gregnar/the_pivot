@@ -32,11 +32,13 @@ class Item < ActiveRecord::Base
   end
 
   def retire
-    item.active = false
+    self.active = false
+    self.save
   end
 
   def unretire
-    item.active = true
+    self.active = true
+    self.save
   end
 
 end

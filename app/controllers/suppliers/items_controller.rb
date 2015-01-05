@@ -47,11 +47,13 @@ class Suppliers::ItemsController < ApplicationController
   end
 
   def retire
-    @item.
+    @item.retire
+    redirect_to supplier_items_path, notice: 'Item retired.'
   end
 
   def unretire
-
+    @item.unretire
+    redirect_to supplier_items_path, notice: 'Item unretired.'
   end
 
   private
