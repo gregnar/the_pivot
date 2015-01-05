@@ -23,7 +23,7 @@ class Suppliers::ItemsController < ApplicationController
     @item = Item.new(item_params)
     @item.supplier = current_supplier
     if @item.save!
-      redirect_to supplier_items_path, notice: 'Item successfully created!'
+      redirect_to supplier_item_path(@item, slug: @slug), notice: 'Item successfully created!'
     else
       flash.now[:notice] = 'Item could not be created, try again.'
       render :new
