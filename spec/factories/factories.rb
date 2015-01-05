@@ -49,6 +49,7 @@ FactoryGirl.define do
     title 'Sand Bags'
     description 'Sand bags for all your flood needs'
     price 2.99
+    association :supplier, factory: :supplier
   end
 
   factory :item2, class: Item do
