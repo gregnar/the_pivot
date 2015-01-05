@@ -1,4 +1,6 @@
+require "#{Rails.root}/db/item_seeds.rb"
 class Seed
+
   def initialize
     User.destroy_all
     Category.destroy_all
@@ -71,11 +73,11 @@ class Seed
     puts "Generating 20 items per business..."
     suppliers = Supplier.all
     suppliers.each do |supplier|
-      items = all_items.dup.shuffle
+      items = ItemSeeds.all_items
       20.times do |i|
         puts "Generating item #{i} for supplier #{supplier.id}..."
         title_alias     = items.pop
-        item            = FactoryGirl.build(title_alias)
+        item            = ItemSeeds.new_item(title_alias)
         item.categories << Category.find_by(name: items_with_categories(title_alias), supplier_id: supplier.id)
         item.supplier   = supplier
         item.photo = File.open(@image_path.join("#{item.title.parameterize}.jpg"))
@@ -144,47 +146,6 @@ class Seed
      :tools,
      :shelter_bedding
      ]
-  end
-
-  def all_items
-    [ :potable_water,
-      :sand_bags,
-      :emergency_meals,
-      :bulk_rice,
-      :flashlight,
-      :penicillin,
-      :birthing_kit,
-      :bedding_kit,
-      :baby_formula,
-      :UtilityKnife,
-      :Diapers,
-      :FireStarterKit,
-      :WaterFiltration,
-      :WaterStorageTank,
-      :Hatchet,
-      :Batteries,
-      :PowderedMilk,
-      :BulkSalt,
-      :BulkSugar,
-      :BulkFlour,
-      :BulkCannedBeans,
-      :Boots,
-      :Iodine,
-      :DisasterTent,
-      :SleepingBag,
-      :DuctTape,
-      :Gauze,
-      :PortableHeater,
-      :PropaneTank,
-      :Poncho,
-      :WorkGloves,
-      :Generator,
-      :InflatableRaft,
-      :TetanusShots,
-      :FirstAidKit,
-      :SchoolKit,
-      :HandSanitizer
-    ]
   end
 
   def all_suppliers
