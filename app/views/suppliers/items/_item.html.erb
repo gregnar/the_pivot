@@ -2,15 +2,17 @@
   <div class='panel-heading'>
     <h3 class='panel-title'>
       <%= link_to item.title, supplier_item_path(id: item) %>
-      <% if current_user && current_supplier_admin? %>
-        <%= link_to 'Edit', edit_supplier_item_path(id: item, slug: params[:slug]) %>
-      <% end %>
       <span class='item-price'>$<%= "#{sprintf("%0.2f",item.price)}" %></span>
     </h3>
   </div>
   <div class='panel-body'>
-    <%= button_to "Add to Cart", cart_items_path(item_id: item, slug: params[:slug]), class: 'btn btn-default item-price' %>
+    <% if current_supplier_admin? %>
+      <%= link_to 'Destroy',  edit_supplier_item_path(id: item, slug: params[:slug]), method: :delete, class: 'btn btn-default item-price', data: { confirm: 'Are you sure? You can always retire this item.' } %>
+      <%= link_to 'Edit', edit_supplier_item_path(id: item, slug: params[:slug]), class: 'btn btn-success item-price' %>
+    <% else %>
+      <%= button_to "Add to Cart", cart_items_path(item_id: item, slug: params[:slug]), class: 'btn btn-default item-price' %>
+    <% end %>
     <p><%= item.description %></p>
-    <p><%= image_tag item.photo.url(:large), class: "img-responsive" %></p>
+      <p><%= image_tag item.photo.url(:large), class: "img-responsive" %></p>
   </div>
 </div>

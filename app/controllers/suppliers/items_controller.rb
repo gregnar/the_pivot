@@ -1,5 +1,5 @@
 class Suppliers::ItemsController < ApplicationController
-  before_action :set_item, only: [:show, :edit, :update, :destroy]
+  before_action :set_item, only: [:show, :edit, :update, :destroy, :retire, :unretire]
   before_action :require_supplier_admin, only: [:edit, :new, :create, :update, :destroy]
   before_action :set_slug, only: [:edit, :new, :create, :update, :destroy]
 
@@ -44,6 +44,14 @@ class Suppliers::ItemsController < ApplicationController
     else
       redirect_to supplier_item_path(@item, slug: @slug), notice: 'Item could not be destroyed.'
     end
+  end
+
+  def retire
+    @item.
+  end
+
+  def unretire
+
   end
 
   private
