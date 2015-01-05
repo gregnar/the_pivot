@@ -1,6 +1,6 @@
 class Suppliers::ItemsController < ApplicationController
   before_action :set_item, only: [:show, :edit, :update, :destroy]
-  before_action :require_supplier_admin, only: [:edit, :new, :create, :destroy]
+  before_action :require_supplier_admin, only: [:edit, :new, :create, :update, :destroy]
   before_action :set_slug, only: [:edit, :new, :create, :update, :destroy]
 
   def index
@@ -35,6 +35,14 @@ class Suppliers::ItemsController < ApplicationController
       redirect_to supplier_item_path(@item, slug: @slug), notice: 'Item was successfully updated.'
     else
       redirect_to edit_supplier_item_path(@item, slug: @slug), notice: 'Unable to edit item. Try again.'
+    end
+  end
+
+  def destroy
+    if @item.destroy
+      redirect_to supplier_dashboard_path, notice: 'Item successfully destroyed.'
+    else
+      redirect_to supplier_item_path(@item, slug: @slug), notice: 'Item could not be destroyed.'
     end
   end
 
