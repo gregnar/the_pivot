@@ -5,9 +5,21 @@ Rails.application.routes.draw do
   resources :suppliers
 
   namespace :suppliers, as: :supplier, path: '/:slug' do
-    resources :orders
-    resources :items, path: "/supplies"
-    resources :categories
+    resources :items, path: "/supplies", only: [:index, :show]
+
+    scope '/admin' do
+      resources :orders, except: [:destroy, :edit]
+      resources :categories
+      resources :items, path: "/supplies", only: [:new, :create, :edit, :update, :destroy] do
+        member do
+          put 'retire'
+          put 'unretire'
+        end
+      end
+      resources :suppliers, except: [:index, :show, :create, :new]
+      resources :dashboard, only: [:index]
+      get '/dashboard', to: "dashboard#index"
+    end
   end
 
   resources :orders
@@ -16,11 +28,11 @@ Rails.application.routes.draw do
 
   resources :items, path: "/supplies"
 
+  get 'register', to: 'users#new'
   resources :users
+  get '/account_confirmation', to: 'users#account_confirmation'
 
-
-  get '/new_supplier_user', to: "users#new_supplier_user"
-  post '/new_supplier_user', to: "users#create_supplier_user"
+  resources :password_resets
 
   get    '/login',  to: "sessions#new"
   post   '/login',  to: "sessions#create"

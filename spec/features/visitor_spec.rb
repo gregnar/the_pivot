@@ -18,11 +18,12 @@ describe 'Unauthenticated visitor happy path', type: :feature do
   before do
     lechuga.categories << FactoryGirl.build(:category)
     hoop.categories << FactoryGirl.build(:category)
-    lechuga.save!(validation: false)
-    hoop.save!(validation: false)
-    torta_shop.save!(validation: false)
+    lechuga.save!(validate: false)
+    hoop.save!(validate: false)
+
+    torta_shop.save!(validate: false)
     torta_shop.items << lechuga
-    nba_cares.save!(validation: false)
+    nba_cares.save!(validate: false)
     nba_cares.items << hoop
   end
 

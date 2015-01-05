@@ -23,11 +23,11 @@ describe 'the addresses view', type: :feature do
     click_button 'Login'
   end
 
-  it "shows the addresses" do
+  xit "shows the addresses" do
     expect(page).to have_content('Addresses')
   end
 
-  it "adds a new address" do
+  xit "adds a new address" do
     page.click_link("Add Address")
     page.fill_in("Street name", with: "Stupid Street")
     page.fill_in("Street number", with: "1000")

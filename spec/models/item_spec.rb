@@ -6,7 +6,7 @@ RSpec.describe Item, :type => :model do
   let(:item2) { FactoryGirl.build(:item2) }
 
   before(:each) do
-    category.save!(validation: false)
+    category.save!(validate: false)
     item.categories << category
     item.save!
     item2.categories << category
@@ -51,9 +51,10 @@ RSpec.describe Item, :type => :model do
     expect(item).to be_invalid
   end
 
-  it 'must have a unique title' do
+  it 'must have a unique title within supplier shop' do
 
-    item2.title = 'Sand Bags'
+    item2.title = item.title
+    item2.supplier_id = item.supplier_id
     expect(item2).to be_invalid
 
     item2.title = 'straps'

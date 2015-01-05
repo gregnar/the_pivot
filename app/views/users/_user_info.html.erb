@@ -4,21 +4,13 @@
       <th class="text-center">Name</th>
       <th class="text-center">Display Name</th>
       <th class="text-center">Email</th>
-      <% if @user.supplier_admin == true %>
-        <th class="text-center">Slug</th>
-        <th class="text-center">Phone</th>
-      <% end %>
-        
+
     </tr>
     <tbody>
       <tr>
         <td><%= @user.name %></td>
         <td><%= @user.display_name %></td>
         <td><%= @user.email %></td>
-        <% if @user.supplier_admin == true %>
-          <td><%= @user.supplier.slug %></td>
-          <td><%= @user.supplier.phone %></td>
-        <% end %>
         <td><%= link_to 'Edit', edit_user_path(@user) %></td>
       </tr>
     </tbody>

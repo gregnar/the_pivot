@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <<h3 class="text-muted"><%= link_to 'AIRLIFT', root_path, id: 'logo' %></h3>
+</head>
+<body>
+  <div class="container">
+    <h1>Thanks for joining Airlift!</h1>
+    <p>We just need you to confirm your account for us!</p>
+      <h3 class="text-muted">
+        Great! <%= link_to "Let's get you confirmed!", account_confirmation_url(tkn: @user.password_reset_token) %>
+      </h3>
+    </div>
+  </body>
+  </html>

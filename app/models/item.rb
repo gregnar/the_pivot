@@ -1,11 +1,13 @@
 class Item < ActiveRecord::Base
-  has_and_belongs_to_many :categories
+  has_many :categories_items
+  has_many :categories, through: :categories_items
   belongs_to :supplier
 
-  validates :title, presence:   true,
-                    uniqueness: { scope: :supplier_id,
-                                  message: "must be unique for supplier."
-                                  }
+  validates :title, presence: true,
+                   uniqueness: { scope: :supplier_id,
+                                 message: "must be unique for supplier."
+                                }
+
   validates :description, :categories, presence: true
   validates :supplier_id, presence: true
 
@@ -21,11 +23,22 @@ class Item < ActiveRecord::Base
                    'image/png', 'image/gif'] }
 
   scope :active, -> { where(active: true) }
+  scope :inactive, -> { where(active: false) }
 
   rails_admin do
     configure :categories do
       label 'Categories'
     end
+  end
+
+  def retire
+    self.active = false
+    self.save
+  end
+
+  def unretire
+    self.active = true
+    self.save
   end
 
 end

@@ -19,7 +19,6 @@ FactoryGirl.define do
     password 'password'
     password_confirmation 'password'
     display_name ''
-    supplier_admin true
     admin false
     association :supplier, factory: :supplier
   end
@@ -43,6 +42,7 @@ FactoryGirl.define do
 
   factory :category do
     name 'food'
+    association :supplier, factory: :supplier
   end
 
   factory :item do

@@ -2,24 +2,19 @@ class UsersController < ApplicationController
   before_action :correct_user, only: [:show, :edit, :update, :destroy]
   before_action :require_admin, only: [:index, :destroy]
   before_action :current_user, only: [:show, :edit, :update]
+  before_action :reset_session_supplier_key, only: [:new]
 
   def index
     @users = User.all
   end
 
-  def new_supplier_user
-    @user = User.new
-    flash[:notice] = 'Please start by entering your personal information.'
-  end
-
-  def create_supplier_user
-    @user = User.new(user_params)
-    if @user.save!
-      session[:user_id] = @user.id
-      redirect_to new_supplier_path, notice: 'Logged in! Enter your supplier information.'
+  def account_confirmation
+    @user = User.find_by(password_reset_token: params[:tkn])
+    if(@user)
+      @user.update(email_confirmed: true, password_reset_token: nil)
+      redirect_to login_path, :notice => "Account confirmed!"
     else
-      flash.now[:notice] = 'User could not be created.'
-      render :new
+      redirect_to login_path, :notice => "Uh oh! There's a problem with confirming your account..."
     end
   end
 
@@ -30,8 +25,10 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      session[:user_id] = @user.id
-      redirect_to root_path, notice: 'User created.'
+      # @user.send_confirmation
+      session[:user_id]  = @user.id
+      session[:supplier] ? redirect_to(new_supplier_path) : redirect_to(root_path, notice: 'User created.')
+      session.delete(:supplier)
     else
       flash.now[:notice] = 'User could not be created.'
       render :new

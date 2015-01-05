@@ -1,4 +1,6 @@
+require "#{Rails.root}/db/item_seeds.rb"
 class Seed
+
   def initialize
     User.destroy_all
     Category.destroy_all
@@ -6,10 +8,13 @@ class Seed
     Item.destroy_all
     Order.destroy_all
     Address.destroy_all
+    @big_shots = []
+    @image_path = Rails.root.join("app", "assets", "images", "items")
 
+
+    generate_users #users must come before customers!
     generate_customers
     generate_addresses
-    generate_users
     generate_suppliers
     generate_items
     generate_orders
@@ -21,8 +26,7 @@ class Seed
                 email: 'demo+rachel@jumpstartlab.com',
                 password: 'password',
                 password_confirmation: 'password',
-                display_name: '',
-                supplier_admin: true,
+                display_name: 'Rachel Warbelow',
                 admin: false
                 )
 
@@ -31,7 +35,6 @@ class Seed
                 password: 'password',
                 password_confirmation: 'password',
                 display_name: 'j3',
-                supplier_admin: false,
                 admin: false)
 
     User.create(name: 'Jorge Tellez',
@@ -39,7 +42,6 @@ class Seed
                 password: 'password',
                 password_confirmation: 'password',
                 display_name: 'novohispano',
-                supplier_admin: true,
                 admin: true)
 
     User.create(name: 'Josh Cheek',
@@ -47,8 +49,9 @@ class Seed
                 password: 'password',
                 password_confirmation: 'password',
                 display_name: 'josh',
-                supplier_admin: true,
                 admin: true)
+
+    User.last(4).map { |user| @big_shots << user }
   end
 
   def generate_addresses
@@ -70,26 +73,15 @@ class Seed
     puts "Generating 20 items per business..."
     suppliers = Supplier.all
     suppliers.each do |supplier|
-      items = all_items.dup.shuffle
+      items = ItemSeeds.all_items
       20.times do |i|
         puts "Generating item #{i} for supplier #{supplier.id}..."
         title_alias     = items.pop
-        item            = FactoryGirl.build(title_alias)
+        item            = ItemSeeds.new_item(title_alias)
         item.categories << Category.find_by(name: items_with_categories(title_alias), supplier_id: supplier.id)
         item.supplier   = supplier
+        item.photo = File.open(@image_path.join("#{item.title.parameterize}.jpg"))
         item.save!
-        # generated_item = Item.create!(
-        #   title: FactoryGirl.titles.pop,
-        #   description: 'A worthless thing that does not even work',
-        #   price: Faker::Commerce.price,
-        #   photo_file_name: nil,
-        #   photo_content_type: 'image/png',
-        #   photo_file_size: Faker::Number.number(3),
-        #   photo_updated_at: Faker::Date.between(1.week.ago, Date.today),
-        #   categories: [Category.all.sample],
-        #   supplier_id: supplier.id,
-        #   active: true
-        #   )
       end
     end
   end
@@ -108,22 +100,22 @@ class Seed
   end
 
   def generate_suppliers
-    10.times do |i|
-      s = Supplier.create!( name: Faker::Name.name,
-                            email: Faker::Internet.email,
+    possible_admins = User.all.shuffle
+    all_suppliers.map do |supplier_name, description|
+      supplier_email = "Airlift@#{supplier_name.gsub(/\W+/, "").downcase}.com"
+      s = Supplier.new(     name: supplier_name,
+                            email: supplier_email,
                             phone: Faker::PhoneNumber.phone_number,
                             fax: Faker::PhoneNumber.phone_number,
-                            description: "This is the greatest business to ever exist.  We help people!
-                                          We help people!  No more secrets and no more lies!",
+                            description: description,
                             slug: Faker::Company.name,
-                            address_id: (i + 1)
+                            address_id: (Address.all.sample.id)
                           )
-      users = User.all
-      possible_admins = []
-      users.each { |user| possible_admins << user if user.supplier_admin == true }
 
-      s.users << possible_admins.sample
-      #give supplier all categories
+      s.users << possible_admins.pop
+      @big_shots.map { |big_shot| s.users << big_shot unless big_shot.supplier_admin? }
+
+
       all_categories.map { |category| s.categories << FactoryGirl.create(category) }
       s.save!
     end
@@ -131,11 +123,12 @@ class Seed
 
   def generate_customers
     100.times do |i|
-      User.create!( name: Faker::Name.name,
+      name = Faker::Name.name
+      User.create!( name: name,
                     email: Faker::Internet.email,
                     password: 'password',
                     password_confirmation: 'password',
-                    display_name: '',
+                    display_name: name,
                     admin: false,
                   )
     end
@@ -155,45 +148,19 @@ class Seed
      ]
   end
 
-  def all_items
-    [ :potable_water,
-      :sand_bags,
-      :emergency_meals,
-      :bulk_rice,
-      :flashlight,
-      :penicillin,
-      :birthing_kit,
-      :bedding_kit,
-      :baby_formula,
-      :UtilityKnife,
-      :Diapers,
-      :FireStarterKit,
-      :WaterFiltration,
-      :WaterStorageTank,
-      :Hatchet,
-      :Batteries,
-      :PowderedMilk,
-      :BulkSalt,
-      :BulkSugar,
-      :BulkFlour,
-      :BulkCannedBeans,
-      :Boots,
-      :Iodine,
-      :DisasterTent,
-      :SleepingBag,
-      :DuctTape,
-      :Gauze,
-      :PortableHeater,
-      :PropaneTank,
-      :Poncho,
-      :WorkGloves,
-      :Generator,
-      :InflatableRaft,
-      :TetanusShots,
-      :FirstAidKit,
-      :SchoolKit,
-      :HandSanitizer
-    ]
+  def all_suppliers
+    {
+      'The Emergency Warehouse'        => 'Located in Tampa Bay, FL. Providing relief supplies since 1986.',
+      'Relief Wholesale, LLC'          => 'Always in stock, always high quality.',
+      'Johnson Disaster Response'      => 'The most trusted name in disaster suppliers since 1990.',
+      'Garrison Bulk Relief'           => 'Sole supplier for Catholic Relief Services since 1978. Find out why today!',
+      'Akron Disaster Supply'          => 'The largest relief supply in the Great Lakes region.',
+      'Chicago Aid and Relief'         => 'AIRLIFT Vendor Awards Honorable Mention, 2005.',
+      'Wal-Mart Disaster Aid Services' => 'Wal-Mart business sense, when you need it most.',
+      'Kennedy and Simpson, Inc'       => 'Since 1959. Lowest prices, guaranteed.',
+      'The Disaster Company'           => 'Newest AIRLIFT supplier. Bringing AGILE strategies to disaster relief.',
+      'Whitman Emergency Services'     => 'The largest emergency supplies vendor in the country, period.'
+    }
   end
 
   def items_with_categories(item)
@@ -236,13 +203,6 @@ class Seed
       HandSanitizer: 'Medical and Hygiene'
     }.fetch(item)
   end
-
-
-
-
-
-
-
 
 end
 

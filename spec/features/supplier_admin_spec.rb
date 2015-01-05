@@ -11,7 +11,7 @@ describe 'Supplier admin path', type: :feature do
   end
 
   context 'when logged in as supplier_admin' do
-    let(:supplier_admin) { FactoryGirl.build(:supplier_admin) }
+    let(:supplier_admin) { FactoryGirl.build(:user_supplier) }
     let(:supplier) { FactoryGirl.build(:supplier) }
     let(:item)  { FactoryGirl.build(:item) }
     let(:category) { FactoryGirl.build(:category) }
