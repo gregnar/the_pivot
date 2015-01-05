@@ -1,11 +1,12 @@
 class Suppliers::ItemsController < ApplicationController
   before_action :set_item, only: [:show, :edit, :update, :destroy, :retire, :unretire]
   before_action :require_supplier_admin, only: [:edit, :new, :create, :update, :destroy]
-  before_action :set_slug, only: [:edit, :new, :create, :update, :destroy]
+  before_action :set_slug, only: [:index, :edit, :new, :create, :update, :destroy]
 
   def index
     @search = current_supplier.items.search(params[:q])
     @items = @search.result
+    # render 'suppliers/items/index'
   end
 
   def show
