@@ -1,6 +1,7 @@
 class Suppliers::ItemsController < ApplicationController
   before_action :set_item, only: [:show, :edit, :update, :destroy]
   before_action :require_supplier_admin, only: [:edit, :new, :create, :destroy]
+  before_action :set_slug, only: [:edit, :new, :create, :update, :destroy]
 
   def index
     @search = current_supplier.items.search(params[:q])
@@ -11,13 +12,11 @@ class Suppliers::ItemsController < ApplicationController
   end
 
   def edit
-    # @item = Item.find(params[:id])
   end
 
   def new
     @item = Item.new
     @categories = current_supplier.categories
-    @slug = params[:slug]
   end
 
   def create
@@ -32,12 +31,10 @@ class Suppliers::ItemsController < ApplicationController
   end
 
   def update
-    respond_to do |format|
-      if @item.update(item_params)
-        format.html { redirect_to @item, notice: 'Item was updated.' }
-      else
-        format.html { render :edit }
-      end
+    if @item.update(item_params)
+      redirect_to supplier_item_path(@item, slug: @slug), notice: 'Item was successfully updated.'
+    else
+      redirect_to edit_supplier_item_path(@item, slug: @slug), notice: 'Unable to edit item. Try again.'
     end
   end
 
@@ -48,6 +45,10 @@ class Suppliers::ItemsController < ApplicationController
   end
 
   def set_item
-    @item = Item.find(params[:id])
+    @item = current_supplier.items.find(params[:id])
+  end
+
+  def set_slug
+    @slug = current_supplier.slug
   end
 end

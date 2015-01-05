@@ -54,7 +54,7 @@ describe 'Item Manipulation', type: :feature do
       fill_in 'Price', with: 2.99
       select(category.name, :from => 'category-select')
       click_button 'Submit'
-      
+
       expect(page).to have_content('Item successfully created!')
     end
 
@@ -65,6 +65,10 @@ describe 'Item Manipulation', type: :feature do
       visit supplier_items_path(slug: supplier.slug)
       click_link 'Edit'
       expect(current_path).to eq(edit_supplier_item_path(id: item, slug: supplier.slug))
+      fill_in 'Title', with: 'Lemur Juice'
+      click_button 'Submit'
+
+      expect(page).to have_content('Item was successfully updated.')
     end
   end
 end
