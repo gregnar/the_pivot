@@ -23,11 +23,22 @@ class Item < ActiveRecord::Base
                    'image/png', 'image/gif'] }
 
   scope :active, -> { where(active: true) }
+  scope :inactive, -> { where(active: false) }
 
   rails_admin do
     configure :categories do
       label 'Categories'
     end
+  end
+
+  def retire
+    self.active = false
+    self.save
+  end
+
+  def unretire
+    self.active = true
+    self.save
   end
 
 end

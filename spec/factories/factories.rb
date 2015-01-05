@@ -42,6 +42,7 @@ FactoryGirl.define do
 
   factory :category do
     name 'food'
+    association :supplier, factory: :supplier
   end
 
   factory :item do

@@ -1,30 +1,30 @@
 class Suppliers::ItemsController < ApplicationController
-  before_action :set_item, only: [:show, :edit, :update, :destroy]
-  before_action :require_supplier_admin, only: [:edit, :new, :create, :destroy]
+  before_action :set_item, only: [:show, :edit, :update, :destroy, :retire, :unretire]
+  before_action :require_supplier_admin, only: [:edit, :new, :create, :update, :destroy]
+  before_action :set_slug, only: [:index, :edit, :new, :create, :update, :destroy]
 
   def index
     @search = current_supplier.items.search(params[:q])
     @items = @search.result
+    # render 'suppliers/items/index'
   end
 
   def show
   end
 
   def edit
-    # @item = Item.find(params[:id])
   end
 
   def new
     @item = Item.new
     @categories = current_supplier.categories
-    @slug = params[:slug]
   end
 
   def create
     @item = Item.new(item_params)
     @item.supplier = current_supplier
     if @item.save!
-      redirect_to supplier_items_path, notice: 'Item successfully created!'
+      redirect_to supplier_item_path(@item, slug: @slug), notice: 'Item successfully created!'
     else
       flash.now[:notice] = 'Item could not be created, try again.'
       render :new
@@ -32,13 +32,29 @@ class Suppliers::ItemsController < ApplicationController
   end
 
   def update
-    respond_to do |format|
-      if @item.update(item_params)
-        format.html { redirect_to @item, notice: 'Item was updated.' }
-      else
-        format.html { render :edit }
-      end
+    if @item.update(item_params)
+      redirect_to supplier_item_path(@item, slug: @slug), notice: 'Item was successfully updated.'
+    else
+      redirect_to edit_supplier_item_path(@item, slug: @slug), notice: 'Unable to edit item. Try again.'
     end
+  end
+
+  def destroy
+    if @item.destroy
+      redirect_to supplier_dashboard_path, notice: 'Item successfully destroyed.'
+    else
+      redirect_to supplier_item_path(@item, slug: @slug), notice: 'Item could not be destroyed.'
+    end
+  end
+
+  def retire
+    @item.retire
+    redirect_to supplier_items_path, notice: 'Item retired.'
+  end
+
+  def unretire
+    @item.unretire
+    redirect_to supplier_items_path, notice: 'Item unretired.'
   end
 
   private
@@ -48,6 +64,10 @@ class Suppliers::ItemsController < ApplicationController
   end
 
   def set_item
-    @item = Item.find(params[:id])
+    @item = current_supplier.items.find(params[:id])
+  end
+
+  def set_slug
+    @slug = current_supplier.slug
   end
 end
