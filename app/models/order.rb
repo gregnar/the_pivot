@@ -28,8 +28,10 @@ class Order < ActiveRecord::Base
   def cancel_supplier_items(supplier)
     self.items.to_a.map do |item|
       if item.supplier == supplier
-        self.items.delete(Item.find(item.id))
-        self.item_orders.where(item_id: item.id).destroy_all
+        transaction do
+          self.items.delete(Item.find(item.id))
+          self.item_orders.where(item_id: item.id).destroy_all
+        end
       end
     end
   end
