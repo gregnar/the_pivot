@@ -11,7 +11,7 @@ class Order < ActiveRecord::Base
 
   validates_inclusion_of :pending, in: [true, false]
 
-  validates_presence_of :coordinate, if: :delivery?
+  validates_presence_of :coordinate
 
 
 
