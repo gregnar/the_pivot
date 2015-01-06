@@ -110,6 +110,7 @@ class Seed
       supplier_email = "Airlift@#{supplier_name.gsub(/\W+/, "").downcase}.com"
       s = Supplier.new(     name: supplier_name,
                             email: supplier_email,
+                            website: Faker::Internet.domain_name,
                             phone: Faker::PhoneNumber.phone_number,
                             fax: Faker::PhoneNumber.phone_number,
                             description: description,
