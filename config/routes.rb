@@ -12,7 +12,7 @@ Rails.application.routes.draw do
         put 'pay', on: :member
         put 'cancel', on: :member
       end
-      resources :categories
+      resources :categories, except: [:show]
       resources :items, path: "/supplies", only: [:new, :create, :edit, :update, :destroy] do
         member do
           put 'retire'

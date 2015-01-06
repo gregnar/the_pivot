@@ -1,5 +1,3 @@
-
-
 $(window).load(function() {
   initialize();
 });
@@ -28,6 +26,5 @@ function initialize() {
   $("#submit_button_reverse").click(function(){
     codeLatLng(geocoding);
   });
-
 
 }
