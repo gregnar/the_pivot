@@ -27,10 +27,6 @@ class Order < ActiveRecord::Base
     items.uniq
   end
 
-  def shipping_address
-    delivery ? address.street_name : 'Pick-Up'
-  end
-
   def line_total(item)
     item.price * quantity(item.id)
   end

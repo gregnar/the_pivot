@@ -6,7 +6,7 @@
     </h3>
   </div>
   <div class='panel-body'>
-    <% if item.supplier == current_user.supplier %>
+    <% if current_user && item.supplier == current_user.supplier %>
       <%= link_to 'Destroy',  edit_supplier_item_path(id: item, slug: params[:slug]), method: :delete, class: 'btn btn-danger item-price', data: { confirm: 'Are you sure? You can always retire this item.' } %>
       <% if item.active %>
         <%= link_to 'Retire', retire_supplier_item_path(item, slug: params[:slug]), method: :put, class: 'btn btn-warning item-price', data: { confirm: 'Retire this item?' } %>

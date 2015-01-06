@@ -1,4 +1,5 @@
 require "#{Rails.root}/db/item_seeds.rb"
+require "#{Rails.root}/db/category_seeds.rb"
 class Seed
 
   def initialize
@@ -116,8 +117,11 @@ class Seed
       s.users << possible_admins.pop
       @big_shots.map { |big_shot| s.users << big_shot unless big_shot.supplier_admin? }
 
+      CategorySeeds.all_categories.map do |category|
+        CategorySeeds.create_category(category)
+        s.categories << Category.last
+      end
 
-      all_categories.map { |category| s.categories << FactoryGirl.create(category) }
       s.save!
     end
   end
