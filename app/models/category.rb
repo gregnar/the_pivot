@@ -1,4 +1,5 @@
 class Category < ActiveRecord::Base
+
   has_many :categories_items
   has_many :items, through: :categories_items
   validates :name, presence: true
@@ -8,10 +9,14 @@ class Category < ActiveRecord::Base
     name.parameterize
   end
 
-  def total_items
+  def self.find_by_slug(requested_slug)
+    self.all.select { |cat| cat.slug == requested_slug }.first
+  end
+
+  def all_items
     Item.all.select do |item|
       item.categories.any? { |cat| cat.name == self.name }
-    end.count
+    end
   end
 
 end

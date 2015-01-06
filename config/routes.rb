@@ -25,7 +25,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :categories, only: [:index, :show], param: 'category-slug'
+  resources :categories, only: [:index, :show], param: :catslug
 
   resources :orders
 

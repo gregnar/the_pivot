@@ -4,8 +4,9 @@ class CategoriesController < ApplicationController
     @categories = Category.select(:name).distinct.to_a
   end
 
-  def category
-    @category = Category.find(params[:id])
+  def show
+    @category = Category.find_by_slug(params[:catslug])
+    @items = @category.all_items
   end
 
 end
