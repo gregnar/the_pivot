@@ -65,7 +65,7 @@ describe 'Application authorization', type: :feature do
   context 'when logged in as an admin' do
     it 'can access the users index page' do
       user = FactoryGirl.create(:admin)
-      visit login_pat.
+      visit login_path
       fill_in 'Email', with: user.email
       fill_in 'Password', with: user.password
       click_button 'Login'
