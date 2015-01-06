@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150104033924) do
+ActiveRecord::Schema.define(version: 20150106002901) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,6 +50,15 @@ ActiveRecord::Schema.define(version: 20150104033924) do
     t.datetime "updated_at"
   end
 
+  create_table "item_orders", id: false, force: true do |t|
+    t.integer "order_id", null: false
+    t.integer "item_id",  null: false
+    t.integer "quantity"
+  end
+
+  add_index "item_orders", ["item_id", "order_id"], name: "index_item_orders_on_item_id_and_order_id", using: :btree
+  add_index "item_orders", ["order_id", "item_id"], name: "index_item_orders_on_order_id_and_item_id", using: :btree
+
   create_table "items", force: true do |t|
     t.string   "title"
     t.string   "description"
@@ -64,22 +73,13 @@ ActiveRecord::Schema.define(version: 20150104033924) do
     t.integer  "supplier_id"
   end
 
-  create_table "items_orders", id: false, force: true do |t|
-    t.integer "order_id", null: false
-    t.integer "item_id",  null: false
-    t.integer "quantity"
-  end
-
-  add_index "items_orders", ["item_id", "order_id"], name: "index_items_orders_on_item_id_and_order_id", using: :btree
-  add_index "items_orders", ["order_id", "item_id"], name: "index_items_orders_on_order_id_and_item_id", using: :btree
-
   create_table "orders", force: true do |t|
-    t.boolean  "delivery"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
     t.boolean  "pending"
     t.integer  "coordinate_id"
+    t.integer  "supplier_id"
   end
 
   create_table "roles", force: true do |t|
@@ -103,11 +103,6 @@ ActiveRecord::Schema.define(version: 20150104033924) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "slug"
-  end
-
-  create_table "suppliers_users", id: false, force: true do |t|
-    t.integer "user_id",     null: false
-    t.integer "supplier_id", null: false
   end
 
   create_table "user_roles", force: true do |t|

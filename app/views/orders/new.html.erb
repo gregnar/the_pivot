@@ -26,10 +26,6 @@
 </table>
 
 <%= form_for @order do |f| %>
-  <div class='form-group'>
-    <%= f.check_box :delivery, id: "delivery" %>
-    <%= f.label :delivery, 'This order will be airlifted.' %>
-  </div>
 
   <div class='form-group'>
     <%= f.fields_for :coordinate do |coordinate| %>

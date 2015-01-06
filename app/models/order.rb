@@ -9,7 +9,6 @@ class Order < ActiveRecord::Base
                                 reject_if: proc { |attributes| attributes.any?(&:blank?) },
                                 allow_destroy: true
 
-  validates_inclusion_of :delivery, in: [true, false]
   validates_inclusion_of :pending, in: [true, false]
 
   validates_presence_of :coordinate, if: :delivery?
@@ -26,10 +25,6 @@ class Order < ActiveRecord::Base
 
   def unique_items
     items.uniq
-  end
-
-  def shipping_address
-    delivery ? address.street_name : 'Pick-Up'
   end
 
   def line_total(item)
