@@ -3,7 +3,7 @@ class Order < ActiveRecord::Base
   belongs_to :coordinate
 
   has_many :item_orders
-  has_many :items, through: :item_orders
+  has_many :items, through: :item_orders, dependent: :nullify
   has_many :suppliers, through: :items
 
 
@@ -19,6 +19,16 @@ class Order < ActiveRecord::Base
 
   def status
     pending ? 'Pending' : 'Paid'
+  end
+
+  def pay
+    self.pending = false
+  end
+
+  def cancel_supplier_items(supplier)
+    self.items.to_a.map do |item|
+      self.items.delete(Item.find(item.id)) if item.supplier == supplier
+    end
   end
 
   def quantity(item)

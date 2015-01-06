@@ -9,7 +9,7 @@
   </div>
 </div>
 
-<% if current_user && current_user.supplier_admin? %>
+<% if current_user?(@user) && current_user.supplier_admin? %>
   <div class="col-md-6">
     <div class="panel panel-default">
       <div class="panel-heading"><h2>Supplier Info</h2></div>
@@ -20,22 +20,24 @@
   </div>
 <% end %>
 
-
-<div class="col-md-6">
-  <div class="panel panel-default">
-    <div class="panel-heading"><h2>Addresses</h2></div>
-    <div class="panel-body">
-      <%= render partial: 'addresses/multiple', locals: {addresses: @user.addresses} %>
-      <%= link_to 'Add Address', new_address_path %>
+<% if current_user?(@user) %>
+  <div class="col-md-6">
+    <div class="panel panel-default">
+      <div class="panel-heading"><h2>Addresses</h2></div>
+      <div class="panel-body">
+        <%= render partial: 'addresses/multiple', locals: {addresses: @user.addresses} %>
+        <%= link_to 'Add Address', new_address_path %>
+      </div>
     </div>
   </div>
-</div>
 
-<div class="col-md-6">
-  <div class="panel panel-default">
-    <div class="panel-heading"><h2>Orders</h2></div>
-    <div class="panel-body">
-      <%= render partial: @user.orders %>
+  <div class="col-md-6">
+    <div class="panel panel-default">
+      <div class="panel-heading"><h2>Orders</h2></div>
+      <div class="panel-body">
+        <%= render partial: @user.orders %>
+      </div>
     </div>
   </div>
-</div>
+
+<% end %>

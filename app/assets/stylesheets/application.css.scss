@@ -195,7 +195,11 @@ h1 {
   }
 }
 
-#underlined-link {
+#underlined {
+  text-decoration: underline;
+}
+
+#underlined-bold {
   text-decoration: underline;
   font-weight: bold
 }
