@@ -30,7 +30,6 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'capybara'
   gem 'factory_girl_rails'
-  gem 'rails_12factor'
   gem 'selenium-webdriver', '~> 2.44.0'
   gem 'launchy'
   gem 'pry'
