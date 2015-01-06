@@ -83,7 +83,7 @@ class Seed
         item            = ItemSeeds.new_item(title_alias)
         item.categories << Category.find_by(name: items_with_categories(title_alias), supplier_id: supplier.id)
         item.supplier   = supplier
-        # item.photo = File.open(@image_path.join("#{item.title.parameterize}.jpg"))
+        item.photo = File.open(@image_path.join("#{item.title.parameterize}.jpg"))
         item.save!
       end
     end
@@ -97,7 +97,6 @@ class Seed
         order.items << Item.where(supplier_id: supplier.id).sample(3)
         order.pending = [true, false].sample
         order.user_id = User.all.map(&:id).sample
-        order.supplier_id = supplier.id
         order.coordinate_id = Coordinate.all.sample.id
         order.save!
         puts "Added #{order.id} for #{order.user.name}"
