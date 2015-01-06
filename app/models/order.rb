@@ -2,8 +2,8 @@ class Order < ActiveRecord::Base
   belongs_to :user
   belongs_to :coordinate
 
-
-  has_and_belongs_to_many :items
+  has_many :item_orders
+  has_many :items, through: :item_orders
 
   accepts_nested_attributes_for :coordinate,
                                 reject_if: proc { |attributes| attributes.any?(&:blank?) },
@@ -11,7 +11,7 @@ class Order < ActiveRecord::Base
 
   validates_inclusion_of :pending, in: [true, false]
 
-  validates_presence_of :coordinate, if: :delivery?
+  validates_presence_of :coordinate
 
 
 

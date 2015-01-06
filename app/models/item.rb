@@ -2,6 +2,8 @@ class Item < ActiveRecord::Base
   has_many :categories_items
   has_many :categories, through: :categories_items
   belongs_to :supplier
+  has_many :item_orders
+  has_many :orders, through: :item_orders
 
   validates :title, presence: true,
                    uniqueness: { scope: :supplier_id,
