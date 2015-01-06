@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     resources :items, path: "/supplies", only: [:index, :show]
 
     scope '/admin' do
-      resources :orders, except: [:destroy, :edit]
+      resources :orders, only: [:show, :index]
       resources :categories
       resources :items, path: "/supplies", only: [:new, :create, :edit, :update, :destroy] do
         member do

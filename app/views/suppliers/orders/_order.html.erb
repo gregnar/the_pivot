@@ -1,0 +1,30 @@
+<div class="order">
+  <a href=<%= order_path(order) %> ><h2 class="text-center">Order #<%= order.id %></h2></a>
+  <p>Date: <%= order.created_at.strftime('%d/%m/%Y') %></p>
+  <p>Status: <%= order.status %></p>
+  <p>Lat: <%= order.coordinate.latitude %>, Long: <%= order.coordinate.longitude %> </p>
+  <table class="table">
+    <thead>
+      <td>Item</td>
+      <td>Quantity</td>
+      <td>Price</td>
+      <td>Total</td>
+    </thead>
+    <tbody>
+      <% order.unique_supplier_items(current_supplier).each do |item| %>
+        <tr>
+          <td><%= link_to item.title, item_path(item) %></td>
+          <td><%= order.quantity(item.id) %></td>
+          <td><%= order.display(item.price) %></td>
+          <td><%= order.display(order.line_total(item)) %></td>
+        </tr>
+      <% end %>
+      <tr>
+        <td></td>
+        <td></td>
+        <td>Total:</td>
+        <td><%= order.display(order.total) %></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
