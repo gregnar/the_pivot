@@ -14,6 +14,7 @@ module ItemSeeds
         title: 'Potable water',
         unit_weight: 100,
         unit_size:  50,
+        quantity_available:  150,
         description: '20 gallon weather-proof container.',
         price: 12.50
       },
@@ -22,6 +23,7 @@ module ItemSeeds
         title: 'Sand Bags',
         unit_weight: 100,
         unit_size:  50,
+        quantity_available:  150,
         description: '40lbs each. Build barriers during natural disasters.',
         price: 15.99
       },
@@ -30,6 +32,7 @@ module ItemSeeds
         title: 'R&H Brand Emergecy Meal Kit',
         unit_weight: 100,
         unit_size:  50,
+        quantity_available:  150,
         description: "32 servings per kit, one meal per serving. Includes Salisbury Steak, Lasagna, Shephard's Pie, and Pork Chop dinners.",
         price: 95.99
       },
@@ -38,6 +41,7 @@ module ItemSeeds
         title: 'Bulk Rice',
         unit_weight: 100,
         unit_size:  50,
+        quantity_available:  150,
         description: '20 lbs each. Jasmine rice. Non-perishable.',
         price: 10.95
       },
@@ -46,6 +50,7 @@ module ItemSeeds
         title: 'Killarney Brand Flashlight',
         unit_weight: 100,
         unit_size:  50,
+        quantity_available:  150,
         description: 'Extra long battery life. Waterproof.',
         price: 25.99
       },
@@ -54,6 +59,7 @@ module ItemSeeds
         title: 'Penicillin',
         unit_weight: 100,
         unit_size:  50,
+        quantity_available:  150,
         description: 'Emergency Penicillin supply from Bayer. 50 capsules per bottle.',
         price: 75.59
       },
@@ -62,6 +68,7 @@ module ItemSeeds
         title: 'Birthing Kit',
         unit_weight: 100,
         unit_size:  50,
+        quantity_available:  150,
         description: 'Emergency Birthing Kit. Includes baby formula.',
         price: 50.02
       },
@@ -70,6 +77,7 @@ module ItemSeeds
         title: 'Bedding Kit',
         unit_weight: 100,
         unit_size:  50,
+        quantity_available:  150,
         description: 'Emergency Bedding Kit. Includes cot, sleeping pad, blanket and pillow',
         price: 68.04
       },
@@ -78,6 +86,7 @@ module ItemSeeds
         title: 'Baby Formula',
         unit_weight: 100,
         unit_size:  50,
+        quantity_available:  150,
         description: 'Powdered formula. 5 lbs.',
         price: 42.38
       },
@@ -86,6 +95,7 @@ module ItemSeeds
         title: "Utility Knife",
         unit_weight: 100,
         unit_size:  50,
+        quantity_available:  150,
         description: 'This knife is excellent for cutting utilities.',
         price: 18.99
       },
@@ -94,6 +104,7 @@ module ItemSeeds
         title: "Diapers",
         unit_weight: 100,
         unit_size:  50,
+        quantity_available:  150,
         description: 'Diapers for diapering infants.  25 count.',
         price: 59.99
       },
@@ -102,6 +113,7 @@ module ItemSeeds
         title: "Fire Starter Kit",
         unit_weight: 100,
         unit_size:  50,
+        quantity_available:  150,
         description: "With no electricity, you will need to start fires.  You're welcome.",
         price: 229.99
       },
@@ -110,6 +122,7 @@ module ItemSeeds
         title: "Water Filtration",
         unit_weight: 100,
         unit_size:  50,
+        quantity_available:  150,
         description: 'Make your water clean.',
         price: 74.99
       },
@@ -118,6 +131,7 @@ module ItemSeeds
         title: "Water Storage Tank",
         unit_weight: 100,
         unit_size:  50,
+        quantity_available:  150,
         description: 'Store your water.',
         price: 199.99
       },
@@ -126,6 +140,7 @@ module ItemSeeds
         title: "Hatchet",
         unit_weight: 100,
         unit_size:  50,
+        quantity_available:  150,
         description: 'Defend yourself from bandits.',
         price: 39.99
       },
@@ -134,6 +149,7 @@ module ItemSeeds
         title: "Batteries",
         unit_weight: 100,
         unit_size:  50,
+        quantity_available:  150,
         description: 'Batteries to power your appliances.  8 count.',
         price: 299.99
       },
@@ -142,6 +158,7 @@ module ItemSeeds
         title: "Powdered Milk",
         unit_weight: 100,
         unit_size:  50,
+        quantity_available:  150,
         description: 'Delicious quality milk in powder form, just add water.',
         price: 19.99
       },
@@ -150,6 +167,7 @@ module ItemSeeds
         title: "Bulk Salt",
         unit_weight: 100,
         unit_size:  50,
+        quantity_available:  150,
         description: 'Large amounts of salt to preserve you food.',
         price: 19.99
       },
@@ -158,6 +176,7 @@ module ItemSeeds
         title: "Bulk Sugar",
         unit_weight: 100,
         unit_size:  50,
+        quantity_available:  150,
         description: 'Your going to want to put some sugar on the foul stuff you will be eating.',
         price: 29.99
       },
@@ -166,6 +185,7 @@ module ItemSeeds
         title: "Bulk Flour",
         unit_weight: 100,
         unit_size:  50,
+        quantity_available:  150,
         description: 'In case you want to bake tens of thousands of loaves of bread.',
         price: 29.99
       },
@@ -174,6 +194,7 @@ module ItemSeeds
         title: "Bulk Canned Beans",
         unit_weight: 100,
         unit_size:  50,
+        quantity_available:  150,
         description: "Beans:  It's whats for dinner.",
         price: 14.99
       },
@@ -182,6 +203,7 @@ module ItemSeeds
         title: "Boots",
         unit_weight: 100,
         unit_size:  50,
+        quantity_available:  150,
         description: 'Great for trudging through a wasteland of destruction.',
         price: 79.99
       },
@@ -190,6 +212,7 @@ module ItemSeeds
         title: "Iodine",
         unit_weight: 100,
         unit_size:  50,
+        quantity_available:  150,
         description: 'Use it to clean water and wounds.',
         price: 19.99
       },
@@ -198,6 +221,7 @@ module ItemSeeds
         title: "Disaster Tent",
         unit_weight: 100,
         unit_size:  50,
+        quantity_available:  150,
         description: 'You want to sleep in the rain?  No?  Then you MUST buy this tent.',
         price: 159.99
       },
@@ -206,6 +230,7 @@ module ItemSeeds
         title: "Needles",
         unit_weight: 100,
         unit_size:  50,
+        quantity_available:  150,
         description: 'You want to sleep on the dirt?  No?  Then you MUST buy this sleeping bag.',
         price: 59.99
       },
@@ -214,6 +239,7 @@ module ItemSeeds
         title: "Duct Tape",
         unit_weight: 100,
         unit_size:  50,
+        quantity_available:  150,
         description: 'Great for taping things together.',
         price: 8.99
       },
@@ -222,6 +248,7 @@ module ItemSeeds
         title: "Gauze",
         unit_weight: 100,
         unit_size:  50,
+        quantity_available:  150,
         description: 'Bandage wounds.',
         price: 9.99
       },
@@ -230,6 +257,7 @@ module ItemSeeds
         title: "Portable Heater",
         unit_weight: 100,
         unit_size:  50,
+        quantity_available:  150,
         description: 'Heat your disaster tent.',
         price: 149.99
       },
@@ -238,6 +266,7 @@ module ItemSeeds
         title: "Propane Tank",
         unit_weight: 100,
         unit_size:  50,
+        quantity_available:  150,
         description: 'This tank will let you cook stuff.',
         price: 99.99
       },
@@ -246,6 +275,7 @@ module ItemSeeds
         title: "Poncho",
         unit_weight: 100,
         unit_size:  50,
+        quantity_available:  150,
         description: 'This poncho will keep you dry in the rain.',
         price: 69.99
       },
@@ -254,6 +284,7 @@ module ItemSeeds
         title: "Work Gloves",
         unit_weight: 100,
         unit_size:  50,
+        quantity_available:  150,
         description: 'These gloves will keep your hands from getting cut to shreds.',
         price: 17.99
       },
@@ -262,6 +293,7 @@ module ItemSeeds
         title: "Generator",
         unit_weight: 100,
         unit_size:  50,
+        quantity_available:  150,
         description: 'Use this so you will have electricity.',
         price: 349.99
       },
@@ -270,6 +302,7 @@ module ItemSeeds
         title: "Inflatable Raft",
         unit_weight: 100,
         unit_size:  50,
+        quantity_available:  150,
         description: 'Unless you want to swim around to rescue people, you need this raft.',
         price: 179.99
       },
@@ -278,6 +311,7 @@ module ItemSeeds
         title: "Tetanus Shots",
         unit_weight: 100,
         unit_size:  50,
+        quantity_available:  150,
         description: 'Guaranteed to keep you tetanus free.  3 count.',
         price: 749.99
       },
@@ -286,6 +320,7 @@ module ItemSeeds
         title: "First Aid Kit",
         unit_weight: 100,
         unit_size:  50,
+        quantity_available:  150,
         description: 'Great for treating wounds and minor ailments.',
         price: 89.99
       },
@@ -294,6 +329,7 @@ module ItemSeeds
         title: "School Kit",
         unit_weight: 100,
         unit_size:  50,
+        quantity_available:  150,
         description: 'Teach school to children who have recently had their homes destroyed.',
         price: 129.99
       },
@@ -302,6 +338,7 @@ module ItemSeeds
         title: "Hand Sanitizer",
         unit_weight: 100,
         unit_size:  50,
+        quantity_available:  150,
         description: 'Keep your hands clean.',
         price: 24.99
       }
