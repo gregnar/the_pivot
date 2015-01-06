@@ -9,9 +9,8 @@
     </thead>
     <tbody>
       <% @cart_items.each do |item| %>
-        <tr>
           <td><%= link_to item.title, item %></td>
-          <td class="text-center"><%= link_to "-", "#", :onclick => "removeItem(#{item.id})" %> <%= @cart.count_of(item) %> <%= link_to "+", "#", :onclick => "addItem(#{item.id})" %></td>
+          <td class="text-center"><%= link_to "-", "#", class: "remove-item", "data-item_id" => item.id %> <span class="item-count"><%= @cart.count_of(item) %></span> <%= link_to "+", "#", class: "add-item", "data-item_id" => item.id %></td>
           <td class="text-right"><%= "$#{sprintf("%0.2f",item.price)}" %></td>
         </tr>
       <% end %>
