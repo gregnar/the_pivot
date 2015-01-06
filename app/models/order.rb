@@ -2,7 +2,7 @@ class Order < ActiveRecord::Base
   belongs_to :user
   belongs_to :coordinate
 
-  has_many :item_orders
+  has_many :item_orders, dependent: :destroy
   has_many :items, through: :item_orders, dependent: :nullify
   has_many :suppliers, through: :items
 
@@ -27,7 +27,10 @@ class Order < ActiveRecord::Base
 
   def cancel_supplier_items(supplier)
     self.items.to_a.map do |item|
-      self.items.delete(Item.find(item.id)) if item.supplier == supplier
+      if item.supplier == supplier
+        self.items.delete(Item.find(item.id))
+        self.item_orders.where(item_id: item.id).destroy_all
+      end
     end
   end
 
