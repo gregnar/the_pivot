@@ -80,22 +80,23 @@ class Seed
         item            = ItemSeeds.new_item(title_alias)
         item.categories << Category.find_by(name: items_with_categories(title_alias), supplier_id: supplier.id)
         item.supplier   = supplier
-        item.photo = File.open(@image_path.join("#{item.title.parameterize}.jpg"))
+        # item.photo = File.open(@image_path.join("#{item.title.parameterize}.jpg"))
         item.save!
       end
     end
   end
 
   def generate_orders
-    10.times do |i|
-      order = Order.new(user_id: rand(4))
-      order.id = i
-      order.delivery = false
-      order.items = Item.all.sample(rand(10))
-      order.pending = [true, false].sample
-      order.user_id = User.all.map(&:id).sample
-      order.save!
-      puts "Added #{order.id} for #{order.user.name}"
+    all_suppliers = Supplier.all
+    all_suppliers.each do |supplier|
+      5.times do 
+        order = Order.new
+        order.items << Item.where(supplier_id: supplier.id).sample(3)
+        order.pending = [true, false].sample
+        order.user_id = User.all.map(&:id).sample
+        order.save!
+        puts "Added #{order.id} for #{order.user.name}"
+      end
     end
   end
 
