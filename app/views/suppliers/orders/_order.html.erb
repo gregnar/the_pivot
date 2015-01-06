@@ -1,7 +1,14 @@
 <div class="order">
-  <a href=<%= order_path(order) %> ><h2 class="text-center">Order #<%= order.id %></h2></a>
+  <a href=<%= supplier_order_path(id: order) %> ><h2 class="text-center">Order #<%= order.id %></h2></a>
+  <% if order.status == 'Pending' %>
+    <%= link_to 'Cancel Order', cancel_supplier_order_path(id: order), method: :put, class: 'btn btn-danger item-price', data: { confirm: 'Cancel this order? Action cannot be undone.' } %>
+    <%= link_to 'Mark Paid', pay_supplier_order_path(id: order, slug: current_supplier.slug), method: :put, class: 'btn btn-info item-price', data: { confirm: 'Mark as paid?' } %>
+  <% end %>
+  <%= link_to 'Customer Info', user_path(order.user), class: 'btn btn-warning item-price' %>
   <p>Date: <%= order.created_at.strftime('%d/%m/%Y') %></p>
-  <p>Status: <%= order.status %></p>
+  <p>
+    Status: <%= order.status %>
+  </p>
   <p>Lat: <%= order.coordinate.latitude %>, Long: <%= order.coordinate.longitude %> </p>
   <table class="table">
     <thead>

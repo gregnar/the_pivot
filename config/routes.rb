@@ -8,7 +8,10 @@ Rails.application.routes.draw do
     resources :items, path: "/supplies", only: [:index, :show]
 
     scope '/admin' do
-      resources :orders, only: [:show, :index]
+      resources :orders, only: [:show, :index] do
+        put 'pay', on: :member
+        put 'cancel', on: :member
+      end
       resources :categories, except: [:show]
       resources :items, path: "/supplies", only: [:new, :create, :edit, :update, :destroy] do
         member do

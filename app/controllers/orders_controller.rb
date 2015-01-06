@@ -3,8 +3,6 @@ class OrdersController < ApplicationController
   before_action :require_admin, only: [:index, :destroy]
   before_action :current_user, only: [:show, :edit, :update]
 
-
-
   def index
     @orders = Order.all
   end
