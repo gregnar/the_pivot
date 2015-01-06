@@ -1,4 +1,5 @@
 class Suppliers::CategoriesController < ApplicationController
+  before_action :set_slug, only: [:edit, :update, :destroy, :new]
 
   def index
     @categories = Category.all
@@ -22,8 +23,11 @@ class Suppliers::CategoriesController < ApplicationController
 
   def update
     @category = Category.find(params[:id])
-    @category.update_attributes(category_params)
-    redirect_to supplier_category_path(@category)
+    if @category.update_attributes(category_params)
+      redirect_to supplier_categories_path(@category, slug: @slug), notice: 'Category was successfully updated.'
+    else
+      redirect_to edit_supplier_category_path(@category, slug: @slug), notice: 'Unable to edit category. Please try again.'
+    end
   end
 
   def destroy
@@ -32,7 +36,19 @@ class Suppliers::CategoriesController < ApplicationController
     redirect_to categories_path
   end
 
+  # def destroy
+  #   if @category.destroy
+  #     redirect_to supplier_categories_path(@category, slug: @slug), notice: 'Category was successfully deleted.'
+  #   else
+  #     redirect_to supplier_categories_path(@category, slug: @slug)
+  #   end
+  # end
+
   private
+
+  def set_slug
+    @slug = params[:slug]
+  end
 
   def category_params
     params.require(:category).permit(:name)
