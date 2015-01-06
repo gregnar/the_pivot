@@ -60,17 +60,12 @@ describe 'Application authorization', type: :feature do
       expect(page).to_not have_content('Addresses')
     end
 
-    it 'cannot go to the orders index page' do
-      visit orders_path
-      expect(page).to_not have_content('Orders')
-    end
-
   end
 
   context 'when logged in as an admin' do
     it 'can access the users index page' do
       user = FactoryGirl.create(:admin)
-      visit login_path
+      visit login_pat.
       fill_in 'Email', with: user.email
       fill_in 'Password', with: user.password
       click_button 'Login'
