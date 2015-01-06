@@ -95,6 +95,7 @@ class Seed
         order.items << Item.where(supplier_id: supplier.id).sample(3)
         order.pending = [true, false].sample
         order.user_id = User.all.map(&:id).sample
+        order.supplier_id = supplier.id
         order.save!
         puts "Added #{order.id} for #{order.user.name}"
       end
