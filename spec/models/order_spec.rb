@@ -1,14 +1,15 @@
 require 'rails_helper'
 
 RSpec.describe Order, :type => :model do
-  let(:address) do
-    Address.new(street_name: "Death Street", street_number: "8000",
-                city: "Beverly Hills", state: "CA", zip_code: "90210")
-  end
 
   let(:order) do
-    Order.new(delivery: true, pending: false, address: address)
+    Order.new(pending: false)
   end
+
+  let(:supplier) { FactoryGirl.create(:supplier) }
+  let(:supplier2) { FactoryGirl.create(:supplier2) }
+  let(:item) { FactoryGirl.build(:item) }
+  let(:item2) { FactoryGirl.build(:item2) }
 
   xit 'is valid' do
     expect(order).to be_valid
@@ -33,6 +34,24 @@ RSpec.describe Order, :type => :model do
     order.address = nil
     order.delivery = false
     expect(order).to be_valid
+  end
+
+  context "cancelling for only a supplier" do
+    before do
+      item.save!(validate: false)
+      item2.save!(validate: false)
+      supplier.items << item
+      supplier2.items << item2
+      order.items << item
+      order.items << item2
+      order.save!(validate: false)
+    end
+
+    it 'only removes items for one supplier' do
+      expect(order.items.count).to eq(2)
+      order.cancel_supplier_items(supplier)
+      expect(order.items.count).to eq(1)
+    end
   end
 
 end

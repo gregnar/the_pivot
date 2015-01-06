@@ -23,6 +23,17 @@ FactoryGirl.define do
     association :supplier, factory: :supplier
   end
 
+  factory :user_supplier2, class: User do
+    name 'Good User'
+    email { Faker::Internet.email }
+    password 'password'
+    password_confirmation 'password'
+    display_name ''
+    admin false
+    association :supplier, factory: :supplier
+  end
+
+
   factory :admin, class: User do
     name 'Admin User'
     email { Faker::Internet.email }
@@ -56,7 +67,7 @@ FactoryGirl.define do
     title "Needles"
     description 'Shot shots shot shots shots'
     price 3.10
-    association :supplier, factory: :supplier
+    association :supplier, factory: :supplier2
   end
 
   factory :supplier do
@@ -64,6 +75,13 @@ FactoryGirl.define do
     description 'Providing relief to people since 1934.'
     email { Faker::Internet.email }
     phone '1234567890'
+  end
+
+  factory :supplier2, class: Supplier do
+    name 'Red Circle'
+    description 'Providing no relief to people since 1934.'
+    email { Faker::Internet.email }
+    phone '1234567896'
   end
 
   factory :torta_shop, class: Supplier do
