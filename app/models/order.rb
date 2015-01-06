@@ -4,6 +4,7 @@ class Order < ActiveRecord::Base
 
   has_many :item_orders
   has_many :items, through: :item_orders
+  has_many :suppliers, through: :items
 
 
   accepts_nested_attributes_for :coordinate,
@@ -44,7 +45,5 @@ class Order < ActiveRecord::Base
     "$#{sprintf("%0.2f", price)}"
   end
 
-  def suppliers
-    self.items.map(&:supplier)
-  end
+
 end
