@@ -13,8 +13,12 @@
  *= require_tree .
  *= require_self
  */
+//external css
+@import "burger_menu.css.scss";
 
+//fonts
 @import url(https://fonts.googleapis.com/css?family=Poller+One|Ubuntu:700,400);
+
 
 @font-face {
   font-family: 'Channel';
@@ -36,13 +40,27 @@ body {
   padding-bottom: 20px;
   font-family: 'GeoSans';
   background-color: #F4F2EB;
+  margin: 0;
+}
+
+body, p, h2, h3 {
+  color: gray;
 }
 
 .header, .marketing, .footer {
   padding-right: 15px;
   padding-left: 15px;
+  padding-bottom: 35px;
+  margin-top: -2%;
+  background-color: whitesmoke;
 }
 
+.head-center {
+  display: block;
+  text-align: center;
+  margin-top: 2%;
+  margin-bottom: -3%;
+}
 a {
   color: #493736;
   font-size: 18px;
@@ -57,7 +75,6 @@ a:hover {
 }
 
 .header h3 {
-  padding-bottom: 19px;
   margin-top: 0;
   margin-bottom: 0;
   line-height: 40px;
@@ -195,7 +212,11 @@ h1 {
   }
 }
 
-#underlined-link {
+#underlined {
+  text-decoration: underline;
+}
+
+#underlined-bold {
   text-decoration: underline;
   font-weight: bold
 }
@@ -230,4 +251,13 @@ h1 {
 #map-canvas {
   height: 384px;
   width: 100%;
+}
+
+// admin category page
+#category-list {
+  list-style: none;
+}
+
+#category {
+  float: right;
 }
