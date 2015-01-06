@@ -3,7 +3,7 @@ class Suppliers::OrdersController < ApplicationController
   before_action :current_user, only: [:show, :edit, :update]
 
   def index
-    @orders = current_supplier.orders
+    @orders = current_supplier.unique_orders
   end
 
   def show
