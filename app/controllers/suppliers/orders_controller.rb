@@ -33,7 +33,7 @@ class Suppliers::OrdersController < ApplicationController
   private
 
   def delete_if_without_items
-    Order.delete(@order) if order.items.count == 0
+    Order.delete(@order) if @order.items.count == 0
   end
 
   def set_order
