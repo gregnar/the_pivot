@@ -4,6 +4,7 @@ class Supplier < ActiveRecord::Base
   has_many :supplier_users
   has_many :users, through: :supplier_users
   has_many :categories
+  has_many :orders, through: :items
 
 
   before_save :generate_slug
