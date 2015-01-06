@@ -30,6 +30,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'capybara'
   gem 'factory_girl_rails'
+  gem 'rails_12factor'
   gem 'selenium-webdriver', '~> 2.44.0'
   gem 'launchy'
   gem 'pry'
@@ -42,6 +43,6 @@ group :development do
   gem "binding_of_caller"
 end
 
-group :production do
+group :production, :staging do
   gem 'rails_12factor'
 end
