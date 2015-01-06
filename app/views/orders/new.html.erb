@@ -8,6 +8,7 @@
     <td>Total</td>
   </thead>
   <tbody>
+
     <% @cart_items.each do |item| %>
       <tr>
         <td><%= link_to item.title, item %></td>
@@ -16,6 +17,7 @@
         <td><%= @order.display(@cart.line_total(item)) %></td>
       </tr>
     <% end %>
+
       <tr>
         <td></td>
         <td></td>

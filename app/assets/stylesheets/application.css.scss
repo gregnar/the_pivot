@@ -281,7 +281,16 @@ h1 {
   width: 100%;
 }
 
+div.order * {
+  font-weight: bold
+}
+
+.table * {
+  font-weight: bold;
+  font-size: 15pt
+}
 // admin category page
+
 #category-list {
   list-style: none;
 }

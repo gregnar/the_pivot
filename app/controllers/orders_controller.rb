@@ -1,14 +1,13 @@
 class OrdersController < ApplicationController
   before_action :correct_user, only: [:show, :edit, :update, :destroy]
-  before_action :require_admin, only: [:index, :destroy]
-  before_action :current_user, only: [:show, :edit, :update]
+  before_action :current_user, only: [:show, :edit, :update, :index]
+  before_action :set_order, only: [:show, :edit, :update, :destroy]
 
   def index
-    @orders = Order.all
+    @orders = current_user.orders
   end
 
   def show
-    @order = current_user.orders.find(params[:id])
   end
 
   def new
@@ -32,7 +31,14 @@ class OrdersController < ApplicationController
     attempt_create_order
   end
 
+  def update
+  end
+
   private
+
+  def set_order
+    @order = current_user.orders.find(params[:id])
+  end
 
   def correct_user
     order = Order.find(params[:id])

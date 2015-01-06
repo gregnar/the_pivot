@@ -1,0 +1,13 @@
+<div class='panel panel-default table'>
+  <div class='panel-heading'>
+    <h3 class='panel-title'>
+      <%= link_to item.title, supplier_item_path(id: item, slug: item.supplier.slug) %>
+      <span class='item-price'>$<%= "#{sprintf("%0.2f",item.price)}" %></span>
+    </h3>
+  </div>
+  <div class='panel-body'>
+    <p>Supplier: <%= link_to item.supplier.name, supplier_path(item.supplier), class: 'underlined red-font' %></p>
+    <p><%= item.description %></p>
+      <p><%= image_tag item.photo.url(:large), class: "img-responsive" %></p>
+  </div>
+</div>

@@ -60,11 +60,6 @@ describe 'Application authorization', type: :feature do
       expect(page).to_not have_content('Addresses')
     end
 
-    it 'cannot go to the orders index page' do
-      visit orders_path
-      expect(page).to_not have_content('Orders')
-    end
-
   end
 
   context 'when logged in as an admin' do
