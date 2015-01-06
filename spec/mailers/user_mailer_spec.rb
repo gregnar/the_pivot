@@ -17,30 +17,29 @@ RSpec.describe UserMailer, :type => :feature do
   context ".confirmation_email" do
     let(:user) { FactoryGirl.create(:user) }
     let(:delivered_emails) { ActionMailer::Base.deliveries }
+    let(:confirmation_email) { UserMailer.confirmation_email(user) }
 
     before(:each) do
-      visit root_path
-      click_link 'Sign Up'
-      fill_in 'Name', with: 'Name'
-      fill_in 'Email', with: 'email@email.com'
-      fill_in 'Password', with: 'password'
-      fill_in 'Password confirmation', with: 'password'
-      click_link_or_button 'Submit'
+      confirmation_email.deliver
     end
 
-    xit "sends the email" do
+    after(:each) do
+      delivered_emails.clear
+    end
+
+    it "sends the email" do
       expect(delivered_emails.count).to eq(1)
     end
 
-    xit 'renders the receiver email' do
-      delivered_emails.first.to.should eq("email@email.com")
+    it 'renders the receiver email' do
+      delivered_emails.first.to.should eq([user.email])
     end
 
-    xit 'should set the subject to the correct subject' do
+    it 'should set the subject to the correct subject' do
       delivered_emails.first.subject.should include("Verify")
     end
 
-    xit 'renders the sender email' do
+    it 'renders the sender email' do
       delivered_emails.first.from.should eq(['reliefbot@airlift.com'])
     end
   end
