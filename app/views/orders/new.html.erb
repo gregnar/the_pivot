@@ -31,6 +31,7 @@
     <%= f.label :delivery, 'This order will be airlifted.' %>
   </div>
 
+
   <div class='form-group'>
     <%= f.fields_for :coordinate do |coordinate| %>
       <%= render 'coordinate_fields', :f => coordinate %>
@@ -38,14 +39,16 @@
     <%= link_to_add_association 'Know your coordinates? Click to enter coordinates (delivery only)', f, :coordinate, class: "enter-coordinates" %>
   </div>
 
-  <div id="pickup-map">
-    <iframe
-    width="600"
-    height="450"
-    frameborder="0" style="border:0"
-    src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBWGBGD2HlumkWOABltLeRlwYMux95pbPk&q=Turing+School,Denver+CO+USA">
-  </iframe>
+  <h1>Confirm or change your location</h1>
+  <div id="map-container">
+    <div id="map-canvas">
+      <iframe id="map-canvas"
+      src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBWGBGD2HlumkWOABltLeRlwYMux95pbPk&q=Turing+School,Denver+CO+USA">
+      </iframe>
   </div>
+
+  <!-- <div id="pickup-map">
+  </div> -->
 
   <div class="button">
     <%= f.submit "Submit Order", class: "form-control btn btn-success" %>
