@@ -5,6 +5,7 @@ gem 'rails', '4.1.7'
 gem 'dotenv-rails', groups: [:development, :test]
 gem 'pg'
 gem 'sass-rails', '~> 4.0.3'
+gem 'compass-rails'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'paperclip', '~> 4.2'
@@ -41,6 +42,6 @@ group :development do
   gem "binding_of_caller"
 end
 
-group :production do
+group :production, :staging do
   gem 'rails_12factor'
 end

@@ -13,8 +13,12 @@
  *= require_tree .
  *= require_self
  */
+//external css
+@import "burger_menu.css.scss";
 
+//fonts
 @import url(https://fonts.googleapis.com/css?family=Poller+One|Ubuntu:700,400);
+
 
 @font-face {
   font-family: 'Channel';
@@ -36,16 +40,56 @@ body {
   padding-bottom: 20px;
   font-family: 'GeoSans';
   background-color: #F4F2EB;
+  margin: 0;
+}
+
+h1 {
+  color:black;
+}
+
+body, p, h2, h3, td, th, input {
+  color: gray;
+}
+
+.no-bottom {
+  margin-bottom: 0;
 }
 
 .header, .marketing, .footer {
   padding-right: 15px;
   padding-left: 15px;
+  padding-bottom: 35px;
+  margin-top: -2%;
+  background-color: whitesmoke;
 }
 
+.head-center {
+  display: block;
+  text-align: center;
+  margin-top: 2%;
+  margin-bottom: -3%;
+}
+.verticalLine {
+  border-left: thick solid #ff0000;
+}
 a {
   color: #493736;
   font-size: 18px;
+}
+
+#banner {
+  background-color: #666666;
+  background-image: url("../images/banner.jpeg");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  color: #d8d8d8;
+  width: 100%;
+  height: 30%;
+  padding: 14em 0;
+  text-align: center;
+  position: relative;
+  margin-top: -2.88%;
 }
 
 a:hover {
@@ -53,11 +97,10 @@ a:hover {
 }
 
 .header {
-  border-bottom: 1px solid #e5e5e5;
+  border-bottom: 3px solid #e5e5e5;
 }
 
 .header h3 {
-  padding-bottom: 19px;
   margin-top: 0;
   margin-bottom: 0;
   line-height: 40px;
@@ -243,4 +286,13 @@ div.order * {
 .table * {
   font-weight: bold;
   font-size: 15pt
+}
+// admin category page
+
+#category-list {
+  list-style: none;
+}
+
+#category {
+  float: right;
 }
