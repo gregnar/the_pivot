@@ -44,6 +44,7 @@ class OrdersController < ApplicationController
 
   def order_params
     params.require(:order).permit(:coordinate_id, coordinate_attributes: [:id, :latitude, :longitude, :_destroy])
+    params.require(:order).permit(:delivery, :coordinate_id, coordinate_attributes: [:id, :latitude, :longitude, :_destroy])
   end
 
   def attempt_create_order
