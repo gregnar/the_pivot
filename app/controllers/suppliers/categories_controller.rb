@@ -17,15 +17,13 @@ class Suppliers::CategoriesController < ApplicationController
   end
 
   def edit
-  end
-
-  def show
+    @category = Category.find(params[:id])
   end
 
   def update
     @category = Category.find(params[:id])
-    @category.update(correct_params)
-    redirect_to category_path(@category)
+    @category.update_attributes(category_params)
+    redirect_to supplier_category_path(@category)
   end
 
   def destroy

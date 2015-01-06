@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
     scope '/admin' do
       resources :orders, except: [:destroy, :edit]
-      resources :categories
+      resources :categories, except: [:show]
       resources :items, path: "/supplies", only: [:new, :create, :edit, :update, :destroy] do
         member do
           put 'retire'
