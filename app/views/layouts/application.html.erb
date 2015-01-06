@@ -4,7 +4,7 @@
   <title>AIRLIFT</title>
   <%= favicon_link_tag 'favicon.ico' %>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'burger_menu' %>
+  <%= javascript_include_tag 'burger_menu', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
   <script type="text/javascript"
   src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA8psUqhexFnIdseHcXP6zhgp9H9uXgFo8">
@@ -37,7 +37,9 @@
   </nav>
   <div id="content" class="container">
     <div class="header row">
-    <div class="col-xs-3 menu-trigger"></div>
+    <div class="col-xs-3 menu-trigger">
+      <span class="glyphicon glyphicon-list burger-icon" aria-hidden="true"></span>
+    </div>
       <div class="col-xs-3-offset-3 head-center">
         <div class ="logo">
           <h3><%= link_to 'AIRLIFT', root_path, id: 'logo-title' %></h3>

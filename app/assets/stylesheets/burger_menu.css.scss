@@ -1,17 +1,14 @@
 @import "compass";
 
-
 /*
 Globals
 */
-
 body {
   margin: 0;
   background: #556270;
   color: #353d46;
 }
 
-h1, h2, h3 { color: #FF6B6B; margin: 0 0 27px; }
 
 a {
   color: #FF6b6b;
@@ -41,8 +38,9 @@ nav#slide-menu {
     height: 100%;
     overflow-y: scroll;
     width: 100%;
-    background-color: rgba(151, 178, 188, 0.05);
+    background-color: #556270;
     float: left;
+    max-width: 92%;
   }
   ul {
     display: block;
@@ -115,8 +113,8 @@ div#content {
 
   div.menu-trigger {
     position: absolute;
-    top: 20px;
-    left: 10px;
+    top: 30px;
+    left: 20px;
     width: 36px;
     height: 36px;
     background: #dfe5eb;
@@ -135,9 +133,22 @@ div#content {
       line-height: 36px;
     }
 
-    &:hover { background: #556270; &:before { color: #fcfeff; } }
+    &:hover {
+      background: #556270;
+      &:before {
+        color: #fcfeff;
+      }
+    }
   }
 }
 
 body.menu-active div#content { left: 20%; border-radius: 6px 0 0 6px; }
 body.menu-active div#content .menu-trigger { left: 3%; }
+
+div.menu-trigger:hover .burger-icon { color: white }
+.burger-icon {
+  position: absolute;
+  left: 11px;
+  margin-top: 7px;
+  color: #556270;
+}
