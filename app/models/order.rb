@@ -45,5 +45,7 @@ class Order < ActiveRecord::Base
     "$#{sprintf("%0.2f", price)}"
   end
 
-
+  def unique_supplier_items(supplier)
+    items.uniq.select { |item| item.supplier == supplier }
+  end
 end

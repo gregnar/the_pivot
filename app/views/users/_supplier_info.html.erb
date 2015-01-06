@@ -17,11 +17,12 @@
           <td><%= @user.supplier.slug %></td>
           <td><%= @user.supplier.phone %></td>
         <% end %>
-        <td><%= link_to 'Edit', edit_user_path(@user) %></td>
       </tr>
     </tbody>
     </thead>
-    <% if current_user && current_user.supplier_admin? %>
-    <div class="adminbutton"><%= link_to "Manage your supplier pages", supplier_dashboard_path(slug: current_user.supplier.slug) %></div>
-    <% end %>
 </table>
+<div class="footer-links">
+  <% if current_user && current_user.supplier_admin? %>
+    <div class="adminbutton"><%= link_to "Manage this supplier", supplier_dashboard_path(slug: current_user.supplier.slug) %></div>
+  <% end %>
+</div>
