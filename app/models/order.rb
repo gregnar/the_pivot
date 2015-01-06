@@ -5,6 +5,7 @@ class Order < ActiveRecord::Base
   has_many :item_orders
   has_many :items, through: :item_orders
 
+
   accepts_nested_attributes_for :coordinate,
                                 reject_if: proc { |attributes| attributes.any?(&:blank?) },
                                 allow_destroy: true
@@ -41,5 +42,9 @@ class Order < ActiveRecord::Base
 
   def display(price)
     "$#{sprintf("%0.2f", price)}"
+  end
+
+  def suppliers
+    self.items.map(&:supplier)
   end
 end

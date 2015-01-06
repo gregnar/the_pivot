@@ -9,6 +9,7 @@ class Seed
     Item.destroy_all
     Order.destroy_all
     Address.destroy_all
+
     @big_shots = []
     @image_path = Rails.root.join("app", "assets", "images", "items")
 
@@ -18,6 +19,7 @@ class Seed
     generate_addresses
     generate_suppliers
     generate_items
+    generate_coordinates
     generate_orders
   end
 
@@ -96,6 +98,7 @@ class Seed
         order.pending = [true, false].sample
         order.user_id = User.all.map(&:id).sample
         order.supplier_id = supplier.id
+        order.coordinate_id = Coordinate.all.sample.id
         order.save!
         puts "Added #{order.id} for #{order.user.name}"
       end
@@ -208,6 +211,13 @@ class Seed
       SchoolKit: 'Childcare',
       HandSanitizer: 'Medical and Hygiene'
     }.fetch(item)
+  end
+
+  def generate_coordinates
+    bad_variable = (10_000_000..99_999_999).to_a.sample/1000000.0
+    10.times do 
+      Coordinate.create!(latitude: bad_variable, longitude: bad_variable)
+    end
   end
 
 end
