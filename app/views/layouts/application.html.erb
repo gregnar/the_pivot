@@ -37,7 +37,6 @@
     </div>
   </nav>
   <div id="content" class="container">
-    <%= render 'layouts/notices' %>
     <div class="header row">
     <div class="col-xs-3 menu-trigger"></div>
       <div class="col-xs-3-offset-3 head-center">
@@ -46,9 +45,8 @@
         </div>
       </div>
     </div>
-    <div class="row">
-      <%= yield %>
-    </div>
+    <%= render 'layouts/notices' %>
+    <%= yield %>
   </div>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 </body>
