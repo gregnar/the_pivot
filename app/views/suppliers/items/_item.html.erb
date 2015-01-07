@@ -15,7 +15,7 @@
       <% end %>
       <%= link_to 'Edit', edit_supplier_item_path(id: item, slug: params[:slug]), class: 'btn btn-primary item-price' %>
     <% else %>
-      <%= button_to "Add to Cart", cart_items_path(item_id: item, slug: params[:slug]), class: 'btn btn-default item-price' %>
+      <%= button_to "Add to Cart", cart_items_path(item_id: item, slug: item.supplier.slug), class: 'btn btn-default item-price' %>
     <% end %>
     <p><%= item.description %></p>
     <p>Unit Weight:  <%= item.unit_weight %></p>

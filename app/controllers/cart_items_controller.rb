@@ -4,7 +4,7 @@ class CartItemsController < ApplicationController
     @cart.add_item(item)
     session[:cart] = @cart.data
     flash[:notice] = "You now have #{pluralize(@cart.count_of(item), item.title)} in your cart."
-    redirect_to supplier_items_path(slug: params[:slug])
+    redirect_to :back
   end
 
   def index
