@@ -1,25 +1,5 @@
-<div class='col-md-10 col-md-offset-1'>
-  <table class="table table-striped text-center">
-    <thead>
-      <tr>
-        <th class="text-center">Supplier Name</th>
-        <th class="text-center">Supplier Email</th>
-        <th class="text-center">Web Address</th>
-        <th class="text-center">Phone</th>
-      </tr>
-      <tbody>
-        <tr>
-          <td><%= supplier.name %></td>
-          <td><%= supplier.email %></td>
-          <td><%= supplier.website %></td>
-          <td><%= supplier.phone %></td>
-        </tr>
-      </tbody>
-      </thead>
-  </table>
-  <div class="footer-links">
-    <% if current_user && current_user.supplier_admin? %>
-      <div class="adminbutton"><%= link_to "Manage this supplier", supplier_dashboard_path(slug: current_user.supplier.slug) %></div>
-    <% end %>
-  </div>
+<div class="supplier-item col-xs-12">
+  <h2><%= supplier.name %> <span><%= link_to 'Visit Supplier', supplier_items_path(slug: supplier.slug), class: 'btn btn-warning' %></span></h2>
+  <h3 class='bold'><%= supplier.description %></h3>
+
 </div>
