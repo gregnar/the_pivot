@@ -25,6 +25,7 @@
   src: font-url('Channel.ttf') format('truetype');
 }
 
+
 @font-face {
   font-family: 'GeoSans';
   src: font-url('GeosansLight.ttf') format('truetype');
@@ -44,11 +45,11 @@ body {
 }
 
 h1 {
-  color:black;
+  color: black;
 }
 
 body, p, h2, h3, td, th, input {
-  color: gray;
+  color: black;
 }
 
 .no-bottom {
@@ -227,16 +228,10 @@ h1 {
   font-size: 45px;
 }
 
-.supplier-item h2 {
-  font-size: 18px;
-  line-height: 26px;
-}
-
 @media only screen and (min-width: 900px) {
   .supplier-item {
-    width: 46%;
     float: left;
-    margin: 2%;
+    padding: 2%;
   }
 }
 
@@ -301,4 +296,18 @@ div.order * {
 
 #category {
   float: right;
+}
+
+.search-bar {
+  margin-bottom: 1%
+}
+
+#search-submit {
+  margin-left: 1%;
+  display: inline
+}
+
+.bigger-button-text * {
+  font-size: 20px;
+  font-weight: bold;
 }

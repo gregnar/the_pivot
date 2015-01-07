@@ -7,4 +7,6 @@ class ItemOrder < ActiveRecord::Base
     destroy if item_id.nil? || !item.present?
   end
 
+
+
 end
