@@ -22,7 +22,6 @@ describe 'Registering new suppliers and users', type: :feature do
     { name: "Brad's supplies",
       email: "bradstuff@brad.net",
       phone: "2037109694",
-      fax: "3033033303",
       description: "I'm Brad and I help people.",
       address_id: 1
     }

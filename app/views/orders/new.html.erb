@@ -1,22 +1,22 @@
 <div class="col-md-8 col-md-offset-2">
   <h3>Review Order</h3>
-<table class="table">
-  <thead>
-    <td>Item</td>
-    <td>Quantity</td>
-    <td>Price</td>
-    <td>Total</td>
-  </thead>
-  <tbody>
+  <table class="table">
+    <thead>
+      <td>Item</td>
+      <td>Quantity</td>
+      <td>Price</td>
+      <td>Total</td>
+    </thead>
+    <tbody>
 
-    <% @cart_items.each do |item| %>
+      <% @cart_items.each do |item| %>
       <tr>
         <td><%= link_to item.title, item %></td>
         <td><%= @cart.count_of(item) %></td>
         <td><%= @order.display(item.price) %></td>
         <td><%= @order.display(@cart.line_total(item)) %></td>
       </tr>
-    <% end %>
+      <% end %>
 
       <tr>
         <td></td>
@@ -24,28 +24,26 @@
         <td>Total:</td>
         <td><%= @order.display(@cart.cost_total) %></td>
       </tr>
-  </tbody>
-</table>
+    </tbody>
+  </table>
 
-<%= form_for @order do |f| %>
+  <%= form_for @order do |f| %>
 
-
-  <div class='form-group'>
-    <%= f.fields_for :coordinate do |coordinate| %>
-      <%= render 'coordinate_fields', :f => coordinate %>
-    <% end %>
-    <%= link_to_add_association 'Know your coordinates? Click to enter coordinates (delivery only)', f, :coordinate, class: "enter-coordinates" %>
-  </div>
-
-  <h1>Confirm or change your location</h1>
+  <h3>Confirm location or place pin for delivery</h3>
   <h5 id="map-coordinates"></h5>
   <div id="map-container">
     <div id="map-canvas"></div>
   </div>
 
+  <div class='form-group'>
+    <%= f.fields_for :coordinate do |coordinate| %>
+    <%= render 'coordinate_fields', :f => coordinate %>
+    <% end %>
+    <%= link_to_add_association 'Know your coordinates? Click to enter manually.', f, :coordinate, class: "enter-coordinates" %>
+  </div>
 
   <div class="button">
     <%= f.submit "Submit Order", class: "form-control btn btn-success" %>
   </div>
-<% end %>
+  <% end %>
 </div>

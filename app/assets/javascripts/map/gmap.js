@@ -6,7 +6,7 @@ $(window).load(function() {
 
 function mapCurrentLocation() {
 
-  var output = document.getElementById("map-canvas");
+  var output = document.getElementById("map-coordinates");
   output.innerHTML = "<h5>Locating . . .</h5>";
 
   navigator.geolocation.getCurrentPosition(function(position) {
@@ -42,7 +42,7 @@ function mapCurrentLocation() {
       infoWindow.open(map,marker);
     });
 
-    output.innerHTML = '<h5>Latitude: ' + initial_latitude + '° <br>Longitude: ' + initial_longitude + '°</h5>';
+    output.innerHTML = '<h5>Latitude: ' + initial_latitude + '° |  Longitude: ' + initial_longitude + '°</h5>';
 
     // eventually you need this function to send ajax request on button click w/o needing marker to move first
     $('#confirm-delivery').click( function() {
@@ -57,7 +57,7 @@ function mapCurrentLocation() {
       map.panTo(marker.getPosition());
 
       document.getElementById('map-coordinates').innerHTML = '<h5>Latitude: ' +
-      e.latLng.lat().toFixed(6) + '°<br>Longitude: ' + e.latLng.lng().toFixed(6) + '°</h5>';
+      e.latLng.lat().toFixed(6) + '° |  Longitude: ' + e.latLng.lng().toFixed(6) + '°</h5>';
       var marker_lat = e.latLng.lat();
       var marker_lng = e.latLng.lng();
       $('#order_latitude').attr('value', marker_lat);
