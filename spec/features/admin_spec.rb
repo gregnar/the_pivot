@@ -19,18 +19,18 @@ describe 'the ADMIN page', type: :feature do
 
     describe 'ADMIN link' do
       it 'should be visible' do
-        expect(page).to have_link('ADMIN')
+        expect(page).to have_link('Admin')
       end
 
       it 'takes me to the ADMIN page' do
-        click_link 'ADMIN'
+        click_link 'Admin'
         expect(page).to have_text('Admin Dashboard')
       end
     end
 
     describe 'ADMIN page' do
       before do
-        click_link 'ADMIN'
+        click_link 'Admin'
       end
 
       it 'displays a dashboard' do
