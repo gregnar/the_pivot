@@ -27,7 +27,7 @@ class OrdersController < ApplicationController
     @order = Order.new(order_params)
     @order.user_id = current_user.id
     @order.pending = true
-    @order.items = @cart.order_items
+    @order.item_orders = @cart.data.map { |item_id, quantity| ItemOrder.new(order: @order, item_id: item_id, quantity: quantity) }
     attempt_create_order
   end
 
@@ -60,4 +60,5 @@ class OrdersController < ApplicationController
       redirect_to cart_items_path
     end
   end
+
 end

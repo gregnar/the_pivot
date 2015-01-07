@@ -6,14 +6,11 @@ class Order < ActiveRecord::Base
   has_many :items, through: :item_orders, dependent: :nullify
   has_many :suppliers, through: :items
 
-
   accepts_nested_attributes_for :coordinate,
-                                reject_if: proc { |attributes| attributes.any?(&:blank?) },
-                                allow_destroy: true
-
-  validates_inclusion_of :pending, in: [true, false]
-
-  validates_presence_of :coordinate
+                                 reject_if: proc { |attributes| attributes.any?(&:blank?) },
+                                 allow_destroy: true
+  validates_inclusion_of        :pending, in: [true, false]
+  validates_presence_of         :coordinate
 
 
 
@@ -63,4 +60,5 @@ class Order < ActiveRecord::Base
   def unique_supplier_items(supplier)
     items.uniq.select { |item| item.supplier == supplier }
   end
+
 end

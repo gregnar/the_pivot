@@ -3,7 +3,7 @@ class ItemsController < ApplicationController
 
   def index
     @search = Item.search(params[:q])
-    @items = @search.result
+    @items = @search.result.shuffle
   end
 
   def show
@@ -18,4 +18,5 @@ class ItemsController < ApplicationController
   def set_item
     @item = Item.find(params[:id])
   end
+
 end
