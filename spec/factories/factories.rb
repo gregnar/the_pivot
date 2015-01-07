@@ -88,7 +88,6 @@ FactoryGirl.define do
     name "Torta's Supplies"
     email { Faker::Internet.email }
     phone "1-(720)-303-6098"
-    fax "1-(720)-946-7839"
     description  "We are a super-special service for airdropped mexican sandwiches.
     They raise morale and promote Jorge's happiness!"
   end
@@ -97,7 +96,6 @@ FactoryGirl.define do
     name "NBA Cares"
     email { Faker::Internet.email }
     phone "1-(303)-693-9048"
-    fax "1-(720)-590-3204"
     description "We joined Airlyft because we believe in basketball's healing quality
     Do you want to enrich children all over? Use NBA supplies to build high-quality courts wholewide!"
   end

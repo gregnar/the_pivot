@@ -4,7 +4,6 @@ class CreateSuppliers < ActiveRecord::Migration
       t.string :name
       t.string :email
       t.string :phone
-      t.string :fax
       t.string :description
       t.integer :address_id
 
