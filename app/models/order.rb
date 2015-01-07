@@ -40,6 +40,10 @@ class Order < ActiveRecord::Base
     items.map(&:id).count(item)
   end
 
+  def set_quantity(item, new_quantity)
+    item_orders.find_by(item_id: item.id).quantity = new_quantity
+  end
+
   def unique_items
     items.uniq
   end
