@@ -3,8 +3,7 @@
 <head>
   <title>AIRLIFT</title>
   <%= favicon_link_tag 'favicon.ico' %>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'burger_menu', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
   <script type="text/javascript"
   src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA8psUqhexFnIdseHcXP6zhgp9H9uXgFo8">
@@ -22,7 +21,7 @@
           <li role="presentation"><%= link_to 'ADMIN', rails_admin_path, id: 'admin' %></li>
         <% end %>
         <li role="presentation"><%= link_to 'My Account', user_path(current_user) %></li>
-        <li role="presentation"><%= link_to 'My Orders', orders_path %></li>      
+        <li role="presentation"><%= link_to 'My Orders', orders_path %></li>
         <li role="presentation"><%= link_to 'Logout', logout_path, id: 'logout', method: 'delete' %></li>
         <% else %>
         <li role="presentation"><%= link_to 'Register Customer', new_user_path %></li>

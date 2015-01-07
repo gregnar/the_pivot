@@ -92,7 +92,7 @@ class Seed
   def generate_orders
     all_suppliers = Supplier.all
     all_suppliers.each do |supplier|
-      5.times do 
+      5.times do
         order = Order.new
         order.items << Item.where(supplier_id: supplier.id).sample(3)
         order.pending = [true, false].sample
@@ -112,7 +112,6 @@ class Seed
                             email: supplier_email,
                             website: Faker::Internet.domain_name,
                             phone: Faker::PhoneNumber.phone_number,
-                            fax: Faker::PhoneNumber.phone_number,
                             description: description,
                             slug: Faker::Company.name,
                             address_id: (Address.all.sample.id)
@@ -215,7 +214,7 @@ class Seed
 
   def generate_coordinates
     bad_variable = (10_000_000..99_999_999).to_a.sample/1000000.0
-    10.times do 
+    10.times do
       Coordinate.create!(latitude: bad_variable, longitude: bad_variable)
     end
   end

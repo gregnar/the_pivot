@@ -11,8 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150107000710) do
-
+ActiveRecord::Schema.define(version: 20150107182641) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,6 +27,14 @@ ActiveRecord::Schema.define(version: 20150107000710) do
     t.integer  "user_id"
     t.integer  "supplier_id"
   end
+
+  create_table "addresses_users", id: false, force: true do |t|
+    t.integer "address_id", null: false
+    t.integer "user_id",    null: false
+  end
+
+  add_index "addresses_users", ["address_id", "user_id"], name: "index_addresses_users_on_address_id_and_user_id", using: :btree
+  add_index "addresses_users", ["user_id", "address_id"], name: "index_addresses_users_on_user_id_and_address_id", using: :btree
 
   create_table "categories", force: true do |t|
     t.string   "name"
@@ -148,7 +155,6 @@ ActiveRecord::Schema.define(version: 20150107000710) do
     t.string   "name"
     t.string   "email"
     t.string   "phone"
-    t.string   "fax"
     t.string   "description"
     t.integer  "address_id"
     t.datetime "created_at"
