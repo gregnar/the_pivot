@@ -60,7 +60,7 @@ class Suppliers::ItemsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(:title, :description, :price, :photo, category_ids: [])
+    params.require(:item).permit(:title, :description, :price, :photo, :unit_weight, :unit_size, :quantity_available, category_ids: [])
   end
 
   def set_item
