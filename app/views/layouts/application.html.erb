@@ -4,7 +4,6 @@
   <title>AIRLIFT</title>
   <%= favicon_link_tag 'favicon.ico' %>
   <%= stylesheet_link_tag    'application', media: 'all' %>
-  <%= javascript_include_tag 'burger_menu' %>
   <%= csrf_meta_tags %>
   <script type="text/javascript"
   src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA8psUqhexFnIdseHcXP6zhgp9H9uXgFo8">
@@ -12,24 +11,37 @@
 </head>
 <body>
   <nav id="slide-menu">
-    <div class="wrap col-xs-12">
+    <div class="wrap col-lg-12">
       <ul>
-        <li id="suppliers-index" role="presentation"><%=link_to 'All Suppliers', suppliers_path, id: 'suppliers-index' %></li>
+        <li>
+          <span class="glyphicon glyphicon-tags"></span>
+          <%=link_to 'Browse Suppliers', suppliers_path %>
+        </li>
         <% if current_user %>
-        <li role="presentation"><%= link_to 'All Items', items_path %></li>
-        <li role="presentation"><%= link_to 'Items By Category', categories_path %></li>
-        <% if current_user.admin? %>
-          <li role="presentation"><%= link_to 'ADMIN', rails_admin_path, id: 'admin' %></li>
-        <% end %>
-        <li role="presentation"><%= link_to 'My Account', user_path(current_user) %></li>
-        <li role="presentation"><%= link_to 'My Orders', orders_path %></li>
-        <li role="presentation"><%= link_to 'Logout', logout_path, id: 'logout', method: 'delete' %></li>
+          <% if current_user.admin? %>
+            <li><%= link_to 'Admin', rails_admin_path, id: 'admin' %></li>
+          <% end %>
+          <li>
+            <span class="glyphicon glyphicon-cog"></span>
+            <%= link_to 'User', user_path(current_user) %>
+          </li>
+          <li>
+            <%= link_to 'Logout', logout_path, id: 'logout', method: 'delete' %></li>
         <% else %>
-        <li role="presentation"><%= link_to 'Register Customer', new_user_path %></li>
-        <li role="presentation"><%= link_to 'Register Supplier', new_supplier_path %></li>
-        <li role="presentation"><%= link_to 'Login', login_path, id: 'login' %></li>
+          <li>
+            <span class="glyphicon glyphicon-user"></span>
+            <%= link_to 'Register Customer', new_user_path %>
+          </li>
+          <li>
+            <span class="glyphicon glyphicon-globe"></span>
+            <%= link_to 'Register Supplier', new_supplier_path %>
+          </li>
+          <li>
+            <span class="glyphicon glyphicon-log-in"></span>
+            <%= link_to 'Login', login_path, id: 'login' %>
+          </li>
         <% end %>
-        <li role="presentation">
+        <li>
           <a href='<%= cart_items_path %>'>
             <span class='glyphicon glyphicon-shopping-cart'></span>
             <span class="badge"><%= @cart.count_total %></span>
@@ -41,7 +53,7 @@
   <div id="content" class="container">
     <div class="header row">
     <div class="col-xs-3 menu-trigger">
-      <span class="glyphicon glyphicon-list burger-icon" aria-hidden="true"></span>
+      <span class="glyphicon glyphicon-align-justify" aria-hidden="true"></span>
     </div>
       <div class="col-xs-3-offset-3 head-center">
         <div class ="logo">
