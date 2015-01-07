@@ -24,12 +24,10 @@ class OrdersController < ApplicationController
   end
 
   def create
-    binding.pry
     @order = Order.new(order_params)
     @order.user_id = current_user.id
     @order.pending = true
-    @order.items = @cart.order_items
-    @order.set_quantities
+    @order.item_orders = @cart.data.map { |item_id, quantity| ItemOrder.new(order: @order, item_id: item_id, quantity: quantity) }
     attempt_create_order
   end
 

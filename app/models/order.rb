@@ -6,14 +6,11 @@ class Order < ActiveRecord::Base
   has_many :items, through: :item_orders, dependent: :nullify
   has_many :suppliers, through: :items
 
-
   accepts_nested_attributes_for :coordinate,
-                                reject_if: proc { |attributes| attributes.any?(&:blank?) },
-                                allow_destroy: true
-
-  validates_inclusion_of :pending, in: [true, false]
-
-  validates_presence_of :coordinate
+                                 reject_if: proc { |attributes| attributes.any?(&:blank?) },
+                                 allow_destroy: true
+  validates_inclusion_of        :pending, in: [true, false]
+  validates_presence_of         :coordinate
 
 
 
@@ -40,10 +37,6 @@ class Order < ActiveRecord::Base
     items.map(&:id).count(item)
   end
 
-  def set_quantity(item, new_quantity)
-    item_orders.find_by(item_id: item.id).quantity = new_quantity
-  end
-
   def unique_items
     items.uniq
   end
@@ -66,5 +59,9 @@ class Order < ActiveRecord::Base
 
   def unique_supplier_items(supplier)
     items.uniq.select { |item| item.supplier == supplier }
+  end
+
+  def total_quantity
+    item_orders.pluck(:quantity).reduce(0, :+)
   end
 end
