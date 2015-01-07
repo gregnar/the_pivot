@@ -25,7 +25,6 @@ class OrdersController < ApplicationController
 
   def create
     @order = Order.new(order_params)
-    @order.pending = true
     @order.user_id = current_user.id
     @order.item_orders = @cart.data.map { |item_id, quantity| ItemOrder.new(order: @order, item_id: item_id, quantity: quantity) }
     attempt_create_order

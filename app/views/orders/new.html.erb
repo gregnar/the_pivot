@@ -29,8 +29,8 @@
 
 <%= form_for @order do |f| %>
 
-  <input id="coordinate_latitude" name="order[coordinate][latitude]" type="hidden" />
-  <input id="coordinate_longitude" name="order[coordinate][longitude]" type="hidden" />
+  <input id="coordinate_latitude" name="order[coordinate_attributes][latitude]" type="hidden" />
+  <input id="coordinate_longitude" name="order[coordinate_attributes][longitude]" type="hidden" />
 
   <h3 class="text-center">Confirm or change your location</h3>
   <h5 id="map-coordinates"></h5>

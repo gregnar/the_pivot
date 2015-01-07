@@ -46,8 +46,8 @@ function mapCurrentLocation() {
 
     // eventually you need this function to send ajax request on button click w/o needing marker to move first
     $('#submit-order').click( function() {
-      $('#coordinate_latitude').attr('value', initial_latitude);
-      $('#coordinate_longitude').attr('value', initial_longitude);
+      $('#coordinate_latitude').attr('value', parseFloat(initial_latitude));
+      $('#coordinate_longitude').attr('value', parseFloat(initial_longitude));
       $("#delivery").hide("slow");
       $("#confirm").show("slow");
       $('#order-form').show(1200);
