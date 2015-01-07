@@ -25,6 +25,7 @@
   src: font-url('Channel.ttf') format('truetype');
 }
 
+
 @font-face {
   font-family: 'GeoSans';
   src: font-url('GeosansLight.ttf') format('truetype');
@@ -301,4 +302,18 @@ div.order * {
 
 #category {
   float: right;
+}
+
+.search-bar {
+  margin-bottom: 1%
+}
+
+#search-submit {
+  margin-left: 1%;
+  display: inline
+}
+
+.bigger-button-text * {
+  font-size: 20px;
+  font-weight: bold;
 }

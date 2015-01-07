@@ -6,7 +6,6 @@ class CategoriesController < ApplicationController
 
   def show
     @category = Category.find_by_slug(params[:catslug])
-    @items = @category.all_items
   end
 
 end

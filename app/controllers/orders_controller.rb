@@ -28,6 +28,7 @@ class OrdersController < ApplicationController
     @order.user_id = current_user.id
     @order.pending = true
     @order.items = @cart.order_items
+    @order.set_quantities
     attempt_create_order
   end
 

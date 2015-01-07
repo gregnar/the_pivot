@@ -7,12 +7,6 @@
     <h2>Address: <%= current_supplier.description%></h2>
   </div>
   <a href="#" onclick="$('#hiddenText').show(); return false;">Show more information for <%= current_supplier.name %></a>
-
-  <%= search_form_for @search, url: "/#{@slug}/supplies" do |f| %>
-    <%= hidden_field_tag :title_cont, "Title contains" %>
-    <%= f.text_field :title_cont, class: "input-sm search-field" %>
-    <%= f.submit "search", name: nil, class: "btn btn-success"  %>
-  <% end %>
 </div>
 
 <% if current_supplier_admin? %>
