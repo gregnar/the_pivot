@@ -16,8 +16,7 @@ describe 'Application authorization', type: :feature do
 
     it 'cannot checkout a cart to an order' do
       visit cart_items_path
-      click_link 'Checkout'
-      expect(page).to have_content('You need to be logged in')
+      expect(page).to have_content('cart is empty')
     end
   end
 
