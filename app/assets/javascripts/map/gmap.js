@@ -45,9 +45,9 @@ function mapCurrentLocation() {
     output.innerHTML = '<h5>Latitude: ' + initial_latitude + '° <br>Longitude: ' + initial_longitude + '°</h5>';
 
     // eventually you need this function to send ajax request on button click w/o needing marker to move first
-    $('#confirm-delivery').click( function() {
-      $('#order_latitude').attr('value', initial_latitude);
-      $('#order_longitude').attr('value', initial_longitude);
+    $('#submit-order').click( function() {
+      $('#coordinate_latitude').attr('value', initial_latitude);
+      $('#coordinate_longitude').attr('value', initial_longitude);
       $("#delivery").hide("slow");
       $("#confirm").show("slow");
       $('#order-form').show(1200);
@@ -60,7 +60,7 @@ function mapCurrentLocation() {
       e.latLng.lat().toFixed(6) + '°<br>Longitude: ' + e.latLng.lng().toFixed(6) + '°</h5>';
       var marker_lat = e.latLng.lat();
       var marker_lng = e.latLng.lng();
-      $('#order_latitude').attr('value', marker_lat);
+      $('#order_latitude') .attr('value', marker_lat);
       $('#order_longitude').attr('value', marker_lng);
 
       $('#confirm-delivery').click( function() {
