@@ -61,7 +61,4 @@ class Order < ActiveRecord::Base
     items.uniq.select { |item| item.supplier == supplier }
   end
 
-  def total_quantity
-    item_orders.pluck(:quantity).reduce(0, :+)
-  end
 end
