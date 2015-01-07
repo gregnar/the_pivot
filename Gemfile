@@ -11,8 +11,6 @@ gem 'coffee-rails', '~> 4.0.0'
 gem 'paperclip', '~> 4.2'
 gem 'aws-sdk'
 gem 'jquery-rails'
-gem 'jquery-turbolinks'
-gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'spring',        group: :development
