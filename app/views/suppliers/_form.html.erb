@@ -1,43 +1,40 @@
 <%= form_for(@supplier) do |f| %>
-  <% if @supplier.errors.any? %>
-    <div id="error_explanation" class="col-sm-4 col-sm-offset-4 red-font">
-      <h4><%= pluralize(@supplier.errors.count, "error") %> prohibited this supplier from being saved:</h4>
+<% if @supplier.errors.any? %>
+<div id="error_explanation" class="col-sm-4 col-sm-offset-4 red-font">
+  <h4><%= pluralize(@supplier.errors.count, "error") %> prohibited this supplier from being saved:</h4>
 
-      <ul>
-      <% @supplier.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
+  <ul>
+    <% @supplier.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
     <% end %>
-  <% end %>
+  </ul>
+</div>
+<% end %>
+<% end %>
 
 <div class="container">
   <div class="col-sm-4 col-sm-offset-4">
     <%= form_for(@supplier) do |f| %>
-      <div class="form-group">
-        <%= f.label 'Supplier Name' %>
-        <%= f.text_field :name, class: "form-control" %>
-      </div>
-      <div class="form-group">
-        <%= f.label 'Supplier Email' %>
-        <%= f.text_field :email, class: "form-control" %>
-      </div>
-      <div class="form-group">
-        <%= f.label 'Supplier Phone Number' %>
-        <%= f.text_field :phone, class: "form-control" %>
-      </div>
-      <div class="form-group">
-        <%= f.label 'Supplier Fax' %>
-        <%= f.text_field :fax, class: "form-control" %>
-      </div>
-      <div class="form-group">
-        <%= f.label 'Supplier Description' %>
-        <%= f.text_area :description, class: "form-control" %>
-      </div>
-      <div class="form-group">
-        <%= f.submit "Create Supplier!", class: "form-control btn btn-success" %>
-      </div>
+    <div class="form-group">
+      <%= f.label 'Name of Supplier' %>
+      <%= f.text_field :name, class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= f.label 'Supplier Email' %>
+      <%= f.text_field :email, class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= f.label 'Supplier Phone Number' %>
+      <%= f.text_field :phone, class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= f.label 'Description' %>
+      <%= f.text_area :description, class: "form-control" %>
+    </div>
+    <h5 class='text-center'>All fields required.</h5>
+    <div class="form-group">
+      <%= f.submit "Create Supplier!", class: "form-control btn btn-success" %>
+    </div>
     <% end %>
   </div>
 </div>

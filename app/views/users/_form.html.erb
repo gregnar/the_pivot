@@ -1,45 +1,46 @@
 <%= form_for(@user) do |f| %>
 
-  <% if @user.errors.any? %>
-    <div id="error_explanation" class="col-sm-4 col-sm-offset-4 red-font">
-      <h4><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h4>
+<% if @user.errors.any? %>
+<div id="error_explanation" class="col-sm-4 col-sm-offset-4 red-font">
+  <h4><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h4>
 
-      <ul>
-      <% @user.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+  <ul>
+    <% @user.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
+
+<div class="container">
+  <div class="col-sm-4 col-sm-offset-4">
+    <%= form_for(@user) do |f| %>
+    <div class="form-group">
+      <%= f.label 'User Name' %>
+      <%= f.text_field :name, class: "form-control" %>
     </div>
-  <% end %>
-
-  <div class="container">
-    <div class="col-sm-4 col-sm-offset-4">
-      <%= form_for(@user) do |f| %>
-        <div class="form-group">
-          <%= f.label 'User Name' %>
-          <%= f.text_field :name, class: "form-control" %>
-        </div>
-        <div class="form-group">
-          <%= f.label :display_name %>
-          <%= f.text_field :display_name, class: "form-control" %>
-        </div>
-        <div class="form-group">
-          <%= f.label 'User Email' %>
-          <%= f.text_field :email, class: "form-control" %>
-        </div>
-        <div class="form-group">
-          <%= label_tag :password, "Password".html_safe %>
-          <%= f.password_field :password %>
-        </div>
-        <div class="form-group">
-          <%= label_tag :password_confirmation, "Confirm Password".html_safe %>
-          <%= f.password_field :password_confirmation %>
-        </div>
-        <div class="form-group">
-          <%= f.submit "Submit", class: "form-control btn btn-success" %>
-        </div>
-      <% end %>
-
+    <div class="form-group">
+      <%= f.label 'display_name' %>
+      <%= f.text_field :display_name, class: "form-control" %>
     </div>
+    <div class="form-group">
+      <%= f.label 'User Email' %>
+      <%= f.text_field :email, class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= label_tag :password, "Password".html_safe %>
+      <%= f.password_field :password %>
+    </div>
+    <div class="form-group">
+      <%= label_tag :password_confirmation, "Confirm Password".html_safe %>
+      <%= f.password_field :password_confirmation %>
+    </div>
+    <h5 class='text-center'>All fields required.</h5>
+    <div class="form-group">
+      <%= f.submit "Submit", class: "form-control btn btn-success" %>
+    </div>
+    <% end %>
+
   </div>
+</div>
 <% end %>

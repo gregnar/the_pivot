@@ -80,9 +80,9 @@ a {
 
 #banner {
   background-color: #666666;
-  background-image: url("../images/banner.jpeg");
+  background-image: url("../images/banner.gif");
   background-size: cover;
-  background-position: center center;
+  background-position: left center;
   background-repeat: no-repeat;
   border-bottom: 3px solid #E5E62A;
   border-top: 3px solid #E5E62A;
@@ -106,7 +106,7 @@ a:hover {
 .header h3 {
   margin-top: 0;
   margin-bottom: 0;
-  line-height: 40px;
+  line-height: 70px;
 }
 
 .footer {
@@ -180,7 +180,7 @@ a:hover {
 }
 
 #logo-title:hover {
- text-decoration: none;
+  text-decoration: underline;
 }
 
 
@@ -200,6 +200,28 @@ a:hover {
 
 .glyphicon {
  top: 3px;
+ margin-right: 4%;
+ margin-left: 4%;
+ font-size: 25px;
+ float: left;
+}
+
+.glyphicon-shopping-cart {
+  margin-right: 5%;
+  left: 0.5%;
+}
+
+.badge {
+  padding-top: 0.5%;
+  padding-bottom: 0.4%;
+}
+
+.glyphicon-align-justify {
+  font-size: 25px;
+  color: #3D4455;
+  position: absolute;
+  top: 6px;
+  left: 4px;
 }
 
 .img-responsive {
@@ -276,7 +298,7 @@ h1 {
   border-width: 7px;
 }
 #map-canvas {
-  height: 384px;
+  height: 100%;
   width: 100%;
 }
 
