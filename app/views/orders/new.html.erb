@@ -28,22 +28,18 @@
   </table>
 
   <%= form_for @order do |f| %>
+    <input id="coordinate_latitude" name="order[coordinate_attributes][latitude]" type="hidden" />
+    <input id="coordinate_longitude" name="order[coordinate_attributes][longitude]" type="hidden" />
 
-  <h3>Confirm location or place pin for delivery</h3>
-  <h5 id="map-coordinates"></h5>
-  <div id="map-container">
-    <div id="map-canvas"></div>
-  </div>
+    <h3 class="text-center">Confirm or change your location</h3>
 
-  <div class='form-group'>
-    <%= f.fields_for :coordinate do |coordinate| %>
-    <%= render 'coordinate_fields', :f => coordinate %>
-    <% end %>
-    <%= link_to_add_association 'Know your coordinates? Click to enter manually.', f, :coordinate, class: "enter-coordinates" %>
-  </div>
+    <h5 id="map-coordinates"></h5>
+    <div id="map-container">
+      <div id="map-canvas"></div>
+    </div>
 
-  <div class="button">
-    <%= f.submit "Submit Order", class: "form-control btn btn-success" %>
-  </div>
+    <div class="button">
+      <%= f.submit "Submit Order", id: 'submit-order', class: "form-control btn btn-success" %>
+    </div>
   <% end %>
 </div>

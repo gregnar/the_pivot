@@ -68,7 +68,6 @@ GEM
       activesupport (>= 3.0)
     cocaine (0.5.5)
       climate_control (>= 0.0.3, < 1.0)
-    cocoon (1.2.6)
     coderay (1.1.0)
     coffee-rails (4.0.1)
       coffee-script (>= 2.2.0)
@@ -291,7 +290,6 @@ DEPENDENCIES
   bootstrap-sass
   brakeman
   capybara
-  cocoon
   coffee-rails (~> 4.0.0)
   compass-rails
   database_cleaner

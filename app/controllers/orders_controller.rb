@@ -26,7 +26,6 @@ class OrdersController < ApplicationController
   def create
     @order = Order.new(order_params)
     @order.user_id = current_user.id
-    @order.pending = true
     @order.item_orders = @cart.data.map { |item_id, quantity| ItemOrder.new(order: @order, item_id: item_id, quantity: quantity) }
     attempt_create_order
   end
@@ -46,13 +45,12 @@ class OrdersController < ApplicationController
   end
 
   def order_params
-    params.require(:order).permit(:coordinate_id, coordinate_attributes: [:id, :latitude, :longitude, :_destroy])
-    params.require(:order).permit(:delivery, :coordinate_id, coordinate_attributes: [:id, :latitude, :longitude, :_destroy])
+    params.require(:order).permit(coordinate_attributes: [:latitude, :longitude])
   end
 
   def attempt_create_order
     if @order.save!
-      session[:cart] = nil
+      session[:cart]  = nil
       session[:order] = @order.id
       redirect_to new_charge_path
     else
