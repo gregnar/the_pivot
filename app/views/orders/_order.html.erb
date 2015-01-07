@@ -1,25 +1,32 @@
-<div class="order">
-  <a href=<%= order_path(order) %> ><h2 class="text-center">Order #<%= order.id %></h2></a>
-  <h4>Date: <%= order.created_at.strftime('%d/%m/%Y') %></h4>
-  <h4>Status: <%= order.status %></h4>
-  <h4>Address: <%= order.coordinate %></h4>
+<div class="ordercol-md-10 col-md-offset-1">
+  <a href=<%= order_path(id: order) %> ><h2 class="text-center">Order #<%= order.id %></h2></a>
+  <div class="bold red-font">
+    <p>Date: <%= order.created_at.strftime('%d/%m/%Y') %></p>
+    <p>
+      Status: <%= order.status %>
+    </p>
+    <p>Lat: <%= order.coordinate.latitude %>, Long: <%= order.coordinate.longitude %></p>
+  </div>
   <table class="table">
     <thead>
       <td>Item</td>
+      <td>Supplier</td>
       <td>Quantity</td>
       <td>Price</td>
       <td>Total</td>
     </thead>
     <tbody>
-      <% order.unique_items.each do |item| %>
+      <% order.items.each do |item| %>
         <tr>
           <td><%= link_to item.title, item_path(item) %></td>
+          <td class='red-font underlined'><%= link_to item.supplier.name, item.supplier %> </td>
           <td><%= order.quantity(item.id) %></td>
           <td><%= order.display(item.price) %></td>
           <td><%= order.display(order.line_total(item)) %></td>
         </tr>
       <% end %>
       <tr>
+        <td></td>
         <td></td>
         <td></td>
         <td>Total:</td>
