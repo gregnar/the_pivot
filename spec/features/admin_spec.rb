@@ -2,7 +2,7 @@ require 'rails_helper'
 require 'capybara/rails'
 require 'capybara/rspec'
 
-describe 'the admin page', type: :feature do
+describe 'the ADMIN page', type: :feature do
   let(:admin) { FactoryGirl.create(:admin) }
 
   before do
@@ -17,20 +17,20 @@ describe 'the admin page', type: :feature do
       click_button 'Login'
     end
 
-    describe 'admin link' do
+    describe 'ADMIN link' do
       it 'should be visible' do
-        expect(page).to have_link('Admin')
+        expect(page).to have_link('ADMIN')
       end
 
-      it 'takes me to the admin page' do
-        click_link 'Admin'
+      it 'takes me to the ADMIN page' do
+        click_link 'ADMIN'
         expect(page).to have_text('Admin Dashboard')
       end
     end
 
-    describe 'admin page' do
+    describe 'ADMIN page' do
       before do
-        click_link 'Admin'
+        click_link 'ADMIN'
       end
 
       it 'displays a dashboard' do

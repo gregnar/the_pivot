@@ -16,10 +16,13 @@
       <ul>
         <li id="suppliers-index" role="presentation"><%=link_to 'All Suppliers', suppliers_path, id: 'suppliers-index' %></li>
         <% if current_user %>
+        <li role="presentation"><%= link_to 'All Items', items_path %></li>
+        <li role="presentation"><%= link_to 'Items By Category', categories_path %></li>
         <% if current_user.admin? %>
-        <li role="presentation"><%= link_to 'Admin', rails_admin_path, id: 'admin' %></li>
+          <li role="presentation"><%= link_to 'ADMIN', rails_admin_path, id: 'admin' %></li>
         <% end %>
-        <li role="presentation"><%= link_to 'User', user_path(current_user) %></li>
+        <li role="presentation"><%= link_to 'My Account', user_path(current_user) %></li>
+        <li role="presentation"><%= link_to 'My Orders', orders_path %></li>      
         <li role="presentation"><%= link_to 'Logout', logout_path, id: 'logout', method: 'delete' %></li>
         <% else %>
         <li role="presentation"><%= link_to 'Register Customer', new_user_path %></li>
