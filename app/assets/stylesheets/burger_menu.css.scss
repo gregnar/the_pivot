@@ -54,15 +54,16 @@ nav#slide-menu {
 
     li {
       color: #dfe5eb;
-      padding: 3.5% 0;
       cursor: pointer;
       font-family: "Arimo";
       border-top: 2px solid #3D4455;
       border-bottom: 2px solid #21283A;
       border-width: 100%;
       z-index: 600;
-
+      padding: 3.5% 0;
       a {
+        padding: 3.7% 21.5% 3.8% 5%;
+        z-index:700;
         margin: 0 auto;
         color: #C4CBDA;
       }
@@ -71,6 +72,9 @@ nav#slide-menu {
         background-color: #28303C;
         color: #59e9df;
         a {
+          color:#59e9df;
+        }
+        .badge {
           color:#59e9df;
         }
       }
@@ -89,10 +93,7 @@ nav#slide-menu {
       line-height: 1em;
 
       li:last-child {
-        position: absolute; display: block; content: '';
-        border-bottom: 1px solid #3D4455;
-        height: 100%; width: 100%;
-        box-sizing: border-box; -moz-box-sizing: border-box; -webkit-box-sizing: border-box;
+        text-align: center;
       }
     }
 
