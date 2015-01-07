@@ -3,7 +3,8 @@
 <head>
   <title>AIRLIFT</title>
   <%= favicon_link_tag 'favicon.ico' %>
-  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag    'application', media: 'all' %>
+  <%= javascript_include_tag 'burger_menu' %>
   <%= csrf_meta_tags %>
   <script type="text/javascript"
   src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA8psUqhexFnIdseHcXP6zhgp9H9uXgFo8">
@@ -51,6 +52,6 @@
     <%= render 'layouts/notices' %>
     <%= yield %>
   </div>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application' %>
 </body>
 </html>

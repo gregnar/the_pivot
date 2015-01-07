@@ -1,7 +1,7 @@
 class OrdersController < ApplicationController
   before_action :correct_user, only: [:show, :edit, :update, :destroy]
   before_action :current_user, only: [:show, :edit, :update, :index]
-  before_action :set_order, only: [:show, :edit, :update, :destroy]
+  before_action :set_order,    only: [:show, :edit, :update, :destroy]
 
   def index
     @orders = current_user.orders
