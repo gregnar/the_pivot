@@ -28,7 +28,7 @@ class Order < ActiveRecord::Base
   end
 
   def cancel_supplier_items(supplier)
-    self.items.to_a.map do |item|
+    items.to_a.map do |item|
       if item.supplier == supplier
         transaction do
           self.items.delete(Item.find(item.id))
