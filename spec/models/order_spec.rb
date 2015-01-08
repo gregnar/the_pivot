@@ -11,31 +11,6 @@ RSpec.describe Order, :type => :model do
   let(:item) { FactoryGirl.build(:item) }
   let(:item2) { FactoryGirl.build(:item2) }
 
-  xit 'is valid' do
-    expect(order).to be_valid
-  end
-
-  xit 'is invalid without a delivery status' do
-    order.delivery = nil
-    expect(order).to_not be_valid
-  end
-
-  xit 'is invalid without pending status' do
-    order.pending = nil
-    expect(order).to_not be_valid
-  end
-
-  xit 'is invalid if delivery is true but no address selected' do
-    order.address = nil
-    expect(order).to_not be_valid
-  end
-
-  xit 'is valid if delivery is false and no address entered' do
-    order.address = nil
-    order.delivery = false
-    expect(order).to be_valid
-  end
-
   context "cancelling for only a supplier" do
     before do
       item.save!(validate: false)

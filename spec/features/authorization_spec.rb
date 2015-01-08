@@ -22,7 +22,9 @@ describe 'Application authorization', type: :feature do
 
   context 'when logged in as a user' do
     let(:user) { FactoryGirl.create(:user) }
+    let(:item) { FactoryGirl.build(:item) }
     before(:each) do
+      item.save!(validate: false)
       visit login_path
       fill_in 'Email', with: user.email
       fill_in 'Password', with: user.password
@@ -34,12 +36,13 @@ describe 'Application authorization', type: :feature do
       expect(page).to have_content(user.name)
     end
 
-    xit 'can checkout a cart to an order' do
+    it 'can checkout a cart to an order' do
+      visit supplier_item_path(item, slug: item.supplier.slug)
+      click_button 'Add to Cart'
       visit cart_items_path
       click_link 'Checkout'
-      click_link "Know your coordinates? Click to enter coordinates (delivery only)"
-      fill_in 'order_coordinate_attributes_latitude', with: '123'
-      fill_in 'order_coordinate_attributes_longitude', with: '445'
+      find(:xpath, "//input[@id='coordinate_latitude']").set '19.222222'
+      find(:xpath, "//input[@id='coordinate_longitude']").set '22.222222'
       click_button 'Submit Order'
       expect(page).to have_content('Select Payment Method')
     end

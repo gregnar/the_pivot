@@ -21,14 +21,6 @@ describe 'Item Manipulation', type: :feature do
       item.categories << category
       item.save!
     end
-
-    xit 'can view a single item' do
-      visit supplier_item_path(id: item.id, slug: supplier.slug)
-      save_and_open_page
-      expect(page).to have_content 'Sand Bags'
-      expect(page).to have_content '2.99'
-    end
-
   end
 
   context 'when logged in as an admin' do
