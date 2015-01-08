@@ -33,13 +33,13 @@
 
     <h3 class="text-center">Confirm or change your location</h3>
 
-    <h5 id="map-coordinates"></h5>
+    <h5 class='red-font bold' id="map-coordinates"></h5>
     <div id="map-container">
       <div id="map-canvas"></div>
     </div>
 
-    <div class="button">
-      <%= f.submit "Submit Order", id: 'submit-order', class: "form-control btn btn-success" %>
+    <div class="button" id= "submit-order">
+      <%= f.submit "Submit Order", class: "form-control btn btn-success" %>
     </div>
   <% end %>
 </div>
