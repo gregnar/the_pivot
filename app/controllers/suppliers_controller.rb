@@ -24,7 +24,7 @@ class SuppliersController < ApplicationController
     @supplier = Supplier.new(supplier_params)
     @supplier.users << current_user
     if @supplier.save
-      redirect_to root_path
+      redirect_to supplier_dashboard_path(slug: @supplier.slug)
     else
       flash.now[:notice] = "Supplier could not be created."
       render :new
