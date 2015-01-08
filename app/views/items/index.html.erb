@@ -3,8 +3,12 @@
   <div class="col-md-6 col-md-offset-3 col-xs-12 text-center">
     <%= search_form_for @search do |f| %>
       <%= hidden_field_tag :title_cont, "Title contains" %>
-      <%= f.text_field :title_cont, size: 50, class: "input-sm search-field" %>
-      <%= f.submit "Search Items", name: nil, class: "btn btn-info bigger-button-text", id: "search-submit"  %>
+      <span>
+        <%= f.text_field :title_cont, size: 50, class: "input-sm search-field" %>
+      <span>
+        <%= f.submit "Search Items", name: nil, class: "btn btn-info bigger-button-text", id: "search-submit"  %>
+      </span>
+      </span>
     <% end %>
   </div>
 </div>
