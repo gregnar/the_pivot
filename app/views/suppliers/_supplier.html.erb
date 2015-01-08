@@ -1,4 +1,7 @@
-<div class="supplier-item col-xs-12">
-  <h2><%= supplier.name %> <span><%= link_to 'Visit Supplier', supplier_items_path(slug: supplier.slug), class: 'btn btn-warning' %></span></h2>
+<section class="supplier-item col-xs-12">
+  <h2><%= supplier.name %></h2>
   <h3 class='bold'><%= supplier.description %></h3>
-</div>
+    <span class="text-center">
+      <%= link_to 'Visit Supplier', supplier_items_path(slug: supplier.slug), class: 'btn btn-large btn-warning center' %>
+    </span>
+</section>
