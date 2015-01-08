@@ -4,6 +4,7 @@ class Item < ActiveRecord::Base
   belongs_to :supplier
   has_many :item_orders
   has_many :orders, through: :item_orders
+  before_destroy :ensure_not_part_of_pending_order
 
   validates :title, presence: true,
                    uniqueness: { scope: :supplier_id,
@@ -34,13 +35,20 @@ class Item < ActiveRecord::Base
   end
 
   def retire
+    return false unless ensure_not_part_of_pending_order
     self.active = false
-    self.save
+    self.save!
   end
 
   def unretire
     self.active = true
     self.save
+  end
+
+  private
+
+  def ensure_not_part_of_pending_order
+    orders.none?(&:pending?)
   end
 
 end

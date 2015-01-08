@@ -48,8 +48,11 @@ class Suppliers::ItemsController < ApplicationController
   end
 
   def retire
-    @item.retire
-    redirect_to supplier_items_path, notice: 'Item retired.'
+    if @item.retire
+      redirect_to supplier_items_path, notice: 'Item retired.'
+    else
+      redirect_to supplier_items_path, notice: 'Could not retire. Item may be associated with pending orders.'
+    end
   end
 
   def unretire
