@@ -32,11 +32,11 @@ RSpec.describe UserMailer, :type => :feature do
     end
 
     it 'renders the receiver email' do
-      delivered_emails.first.to.should eq([user.email])
+      expect(delivered_emails.first.to).to eq([user.email])
     end
 
     it 'should set the subject to the correct subject' do
-      delivered_emails.first.subject.should include("Verify")
+      expect(delivered_emails.first.subject).to include("Verify")
     end
 
     it 'renders the sender email' do

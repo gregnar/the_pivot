@@ -86,9 +86,4 @@ RSpec.describe User, type: :model do
     expect(user).to respond_to(:supplier_admin?)
   end
 
-  xit 'can make a user a supplier_admin' do
-    user.supplier = Supplier.all.sample
-    expect(user.supplier_admin?).to be true
-  end
-
 end
