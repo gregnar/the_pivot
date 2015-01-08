@@ -3,7 +3,7 @@ class UserMailer < ActionMailer::Base
 
   def confirmation_email(user)
     @user = user
-    mail(to: user.email, subject: 'Verify your Airlift account', content_type: "text/html")
+    mail(to: user.email, subject: 'Verify Your Airlift Account', content_type: "text/html")
   end
 
   def welcome_email(user)
