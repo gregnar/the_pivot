@@ -3,5 +3,31 @@
     <div id="tint-me">
       <%= image_tag "banner.gif", class: "img-responsive" %>
     </div>
+    <div class="col-xs-12 text-center">
+      <div class="col-xs-12 col-md-8 col-md-offset-2">
+        <h1 class="text-center" id="splash-description">EMERGENCY SUPPLIES</h1>
+        <h3 id="splash-subtitle">When, and where, you need them most.</h3>
+      </div>
+    </div>
+    <div id="splash-login" class="col-xs-10 col-xs-offset-1 col-md-4 col-md-offset-4">
+      <%= link_to "Shop Now", items_path, class: 'btn btn-success btn-large form-control' %>
+    </div>
+    <div id="splash-login" class="col-xs-10 col-xs-offset-1 col-md-2 col-md-offset-5">
+      <% unless current_user %>
+        <%= form_for(@user, url: login_path, method: :post) do |f| %>
+          <div class="table form-group">
+            <%= f.label :email %>
+            <%= f.text_field :email, class: "form-control" %>
+          </div>
+          <div class="form-group table">
+            <%= f.label :password %>
+            <%= f.password_field :password, class: "form-control" %>
+          </div>
+          <div class="form-group">
+            <%= f.submit "Login", class: "form-control btn btn-danger btn-large table" %>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
   </div>
 </div>

@@ -394,10 +394,39 @@ h1 {
   font-size: 45px;
 }
 
-@media only screen and (min-width: 900px) {
+.center {
+  margin: 0 auto;
+  float: none !important;
+  display: inline-block;
+  margin-top: 3%;
+  margin-left: 0%;
+}
+
+@media only screen and (max-device-width: 768px) {
   .supplier-item {
-    float: left;
-    padding: 2%;
+    padding: 11%;
+    h1 {
+      text-align: left;
+      font-size: 32px;
+    }
+  }
+  .center {
+    margin-left: 33%;
+  }
+}
+
+
+.supplier-item {
+  border-bottom: 3px solid #EEE;
+  border-top: 3px solid #EEE;
+  margin: 0 auto;
+  padding: 6%;
+  background-color: #97B2BC;
+  &:hover {
+    background-color: #416E7F;
+  }
+  &:first-of-type {
+    margin-top: -2.4%;
   }
 }
 
@@ -496,4 +525,37 @@ div.order * {
 
 .clear {
   clear: both;
+}
+
+.btn-large {
+  font-size: 18px;
+  line-height: 18px
+}
+
+
+#splash-description {
+  color: white;
+  font-weight: bold;
+  font-size: 56px
+}
+
+.shadow {text-shadow:
+                    -1px -1px 0px #000,
+                    0px -1px 0px #000,
+                    1px -1px 0px #000,
+                    -1px  0px 0px #000,
+                    1px  0px 0px #000,
+                    -1px  1px 0px #000,
+                    0px  1px 0px #000,
+                    1px  1px 0px #000;
+        }
+
+#splash-subtitle {
+  color: white;
+  font-weight: bold
+}
+
+#splash-login {margin-top: 20px}
+@media only screen and (max-width: 800px){
+	#splash-login {margin-top: 50px;}
 }

@@ -12,7 +12,7 @@ Rails.application.routes.draw do
         put 'pay', on: :member
         put 'cancel', on: :member
       end
-      resources :categories, except: [:show]
+      resources :categories, except: [:show, :destroy]
       resources :items, path: "/supplies", only: [:new, :create, :edit, :update, :destroy] do
         member do
           put 'retire'
@@ -31,13 +31,11 @@ Rails.application.routes.draw do
 
   resources :addresses
 
-  resources :items, path: "/supplies"
+  resources :items, path: "/supplies", only: [:index, :show]
 
   get 'register', to: 'users#new'
   resources :users
   get '/account_confirmation', to: 'users#account_confirmation'
-
-  resources :password_resets
 
   get    '/login',  to: "sessions#new"
   post   '/login',  to: "sessions#create"
