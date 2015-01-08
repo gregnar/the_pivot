@@ -1,5 +1,5 @@
 class UserMailer < ActionMailer::Base
-  default from: "reliefbot@airlift.com"
+  default from: "reliefbot@airlyft.io"
 
   def confirmation_email(user)
     @user = user
