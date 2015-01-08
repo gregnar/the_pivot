@@ -25,10 +25,7 @@
           <td><%= order.display(order.line_total(item)) %></td>
         </tr>
       <% end %>
-      <tr>
-        <td></td>
-        <td></td>
-        <td></td>
+      <tr class="orders-info-total">
         <td>Total:</td>
         <td><%= order.display(order.total) %></td>
       </tr>

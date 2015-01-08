@@ -3,7 +3,7 @@
 <div class="col-md-6">
   <div class="panel panel-default">
     <div class="panel-heading"><h2>User Info</h2></div>
-      <div class="panel-body">
+      <div class="panel-body user-info-body">
         <%= render partial: 'user_info' %>
       </div>
   </div>
@@ -13,7 +13,7 @@
   <div class="col-md-6">
     <div class="panel panel-default">
       <div class="panel-heading"><h2>Supplier Info</h2></div>
-      <div class="panel-body">
+      <div class="panel-body supplier-info-body">
         <%= render partial: 'supplier_info' %>
       </div>
     </div>
@@ -24,19 +24,16 @@
   <div class="col-md-6">
     <div class="panel panel-default">
       <div class="panel-heading"><h2>Addresses</h2></div>
-      <div class="panel-body">
+      <div class="panel-body address-info-body">
         <%= render partial: 'addresses/multiple', locals: {addresses: @user.addresses} %>
         <div class="footer-links"><%= link_to 'Add Address', new_address_path %></div>
     </div>
   </div>
 
-    <div class="col-md-6">
-      <div class="panel panel-default">
-        <div class="panel-heading"><h2>Orders</h2></div>
-        <div class="panel-body">
-          <%= render partial: @user.orders %>
-        </div>
-      </div>
+  <div class="panel panel-default">
+    <div class="panel-heading"><h2>Orders</h2></div>
+    <div class="panel-body orders-info-body">
+      <%= render partial: @user.orders %>
     </div>
-
+  </div>
 <% end %>
