@@ -190,12 +190,12 @@ module ItemSeeds
         price: 29.99
       },
 
-       :BulkCannedBeans => {
-        title: "Bulk Canned Beans",
+       :bulk_beans => {
+        title: "Bulk Beans",
         unit_weight: 100,
         unit_size:  50,
         quantity_available:  150,
-        description: "Beans:  It's whats for dinner.",
+        description: "Non-perishable beans, several varieties.",
         price: 14.99
       },
 
