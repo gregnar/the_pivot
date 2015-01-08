@@ -99,7 +99,6 @@ ActiveRecord::Schema.define(version: 20150107224803) do
     t.string   "name"
     t.string   "email"
     t.string   "phone"
-    t.string   "fax"
     t.string   "description"
     t.integer  "address_id"
     t.datetime "created_at"
