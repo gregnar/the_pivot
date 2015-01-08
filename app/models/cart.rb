@@ -5,6 +5,12 @@ class Cart
     @data = data || {}
   end
 
+  def order_items(order)
+    data.map do |item_id, quantity|
+      ItemOrder.new(order: order, item_id: item_id, quantity: quantity)
+    end
+  end
+
   def add_item(item)
     data[item.id.to_s] ||= 0
     data[item.id.to_s] += 1
