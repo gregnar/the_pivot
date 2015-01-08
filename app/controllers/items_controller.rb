@@ -2,7 +2,7 @@ class ItemsController < ApplicationController
 
   def index
     @search = Item.search(params[:q])
-    @items = @search.result.shuffle
+    @items = @search.result
   end
 
   def show

@@ -1,5 +1,9 @@
-<h1 class="text-center"></h1>
+<h1 class="text-center">Review and Pay</h1>
+
 <div class="col-sm-12 payment">
+    <div class="col-xs-10 col-xs-offset-1">
+      <%= render partial: @order %>
+    </div><br>
     <div class="col-sm-12 text-center">
   <%= form_tag({controller: "charges", action: "create"}, method: "post") do %>
       <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
