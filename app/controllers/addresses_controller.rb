@@ -2,7 +2,7 @@ class AddressesController < ApplicationController
   before_action :set_address, only: [:show, :edit, :update, :destroy]
   before_action :require_admin, only: [:index]
   before_action :current_user, only: [:show, :new, :create, :edit, :update]
-  before_action :require_correct_user
+  before_action :require_correct_user, only: [:edit, :update, :destroy]
 
   def index
     @addresses = Address.all
@@ -32,7 +32,7 @@ class AddressesController < ApplicationController
   def update
     respond_to do |format|
       if @address.update(address_params)
-        format.html { redirect_to @address, notice: 'Address was successfuly updated.' }
+        format.html { redirect_to user_path(current_user), notice: 'Address was successfuly updated.' }
       else
         format.html { render :edit }
       end

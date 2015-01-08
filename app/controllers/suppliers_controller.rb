@@ -1,4 +1,6 @@
 class SuppliersController < ApplicationController
+  before_action :set_slug, only: [:edit, :update]
+
   def index
     @suppliers = Supplier.with_items
   end
@@ -28,7 +30,24 @@ class SuppliersController < ApplicationController
     end
   end
 
+  def edit
+  end
+
+  def update
+    respond_to do |format|
+      if @supplier.update_attributes(supplier_params)
+        format.html { redirect_to @supplier, notice: 'Supplier was updated.' }
+      else
+        format.html { render :edit }
+      end
+    end
+  end
+
   private
+
+  def set_slug
+    @slug = params[:slug]
+  end
 
   def supplier_params
     params.require(:supplier).permit(:name, :email, :phone, :description)
