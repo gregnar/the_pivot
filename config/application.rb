@@ -17,11 +17,11 @@ module AirLift
   class Application < Rails::Application
     config.action_mailer.delivery_method = :smtp
     config.action_mailer.smtp_settings = {
-      :address              => "smtp.gmail.com",
+      :address              => "smtp.mandrillapp.com",
       :port                 => 587,
-      :domain               => 'gmail.com',
-      :user_name            => 'airlyft',
-      :password             => 'gregnarsucks',
+      :domain               => 'airlyft.herokuapp.com',
+      :user_name            => 'techniquea2z@gmail.com',
+      :password             => 'CeGCAyWCZI1rjoM7CSCXHQ',
       :authentication       => 'plain',
       :enable_starttls_auto => true
     }

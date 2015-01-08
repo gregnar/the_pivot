@@ -12,6 +12,7 @@ class UsersController < ApplicationController
     @user = User.find_by(password_reset_token: params[:tkn])
     if(@user)
       @user.update(email_confirmed: true, password_reset_token: nil)
+      UserMailer.welcome_email(@user).deliver
       redirect_to login_path, :notice => "Account confirmed!"
     else
       redirect_to login_path, :notice => "Uh oh! There's a problem with confirming your account..."
@@ -25,10 +26,10 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      @user.send_confirmation
       session[:user_id]  = @user.id
-      session[:supplier] ? redirect_to(new_supplier_path) : redirect_to(root_path, notice: 'User created.')
+      session[:supplier] ? redirect_to(new_supplier_path) : redirect_to(root_path, notice: "Almost done! Please check #{@user.email} to confirm your account!")
       session.delete(:supplier)
+      @user.send_confirmation
     else
       flash.now[:notice] = 'User could not be created.'
       render :new

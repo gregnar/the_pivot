@@ -17,6 +17,10 @@ class Supplier < ActiveRecord::Base
     all.reject { |supplier| supplier.items.empty? }
   end
 
+  def view_name
+    name.split.map(&:capitalize).join(" ")
+  end
+
   def unique_orders
     self.orders.uniq
   end
