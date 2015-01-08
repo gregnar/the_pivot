@@ -26,8 +26,8 @@ class OrdersController < ApplicationController
   def create
     @order = Order.new(order_params)
     @order.user_id = current_user.id
-    @order.item_orders = @cart.order_items(@order)
-    if attempt_create_order ? OrderMailer.order_confirmation(@order).deliver : flash[:error] = 'Error placing order...'
+    @order.item_orders = @cart.bought_items(@order)
+    attempt_create_order ? OrderMailer.order_confirmation(@order).deliver : flash[:error] = 'Error placing order...'
   end
 
   def update

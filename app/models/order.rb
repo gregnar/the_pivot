@@ -21,6 +21,7 @@ class Order < ActiveRecord::Base
 
   def supplier_names
     suppliers.map(&:view_name).join(", ")
+  end
 
   def pay
     self.pending = false

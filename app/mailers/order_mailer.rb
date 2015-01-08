@@ -3,6 +3,7 @@ class OrderMailer < ActionMailer::Base
 
   def order_confirmation(order)
     @order = order
-    mail(to: user.email, subject: 'Verify Your Airlift Account', content_type: "text/html")
+    emails = order.suppliers.map(&:email) << order.user.email
+    mail(to: emails, subject: "Order ##{order.id} Confirmation", content_type: "text/html")
   end
 end

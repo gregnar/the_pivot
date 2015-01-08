@@ -1,9 +1,10 @@
 
-<h1 class="text-muted"><%= link_to 'AIRLIFT', root_path, id: 'logo' %></h1>
+<h1 class="text-muted"><%= link_to 'AIRLIFT', root_url, id: 'logo' %></h1>
 
-<h3>Hey, <%= @order.user.display_name || @order.user.name %>
+<h3>Hey, <%= @order.user.display_name || @order.user.name %></h3>
+<br>
 <% if @order.suppliers.count == 1 %>
-  <p>Thank you for placing your order with <%= @order.suppliers.first.name %>!</p>
+  <p>Thank you for placing your order with <%= @order.suppliers.first.name %>!</p><br>
 <% else %>
   <p>Thanks for using Airlyft! You ordered from <= @order.supplier_names %>!</p>
 <% end %>

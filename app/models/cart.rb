@@ -5,7 +5,7 @@ class Cart
     @data = data || {}
   end
 
-  def order_items(order)
+  def bought_items(order)
     data.map do |item_id, quantity|
       ItemOrder.new(order: order, item_id: item_id, quantity: quantity)
     end
