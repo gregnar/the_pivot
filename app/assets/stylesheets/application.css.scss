@@ -39,7 +39,7 @@
 
 body {
   padding-top: 20px;
-  padding-bottom: 20px;
+  tom: 20px;
   font-family: 'GeoSans';
   font-size: 1.6em;
   background-color: #F4F2EB;
@@ -291,12 +291,10 @@ a:hover {
  .jumbotron {
    border-bottom: 0;
  }
-
-
 }
 
 .logo .glyphicon.glyphicon-plus {
-  font-size: 30px;
+  font-size: 45px;
   top: 0;
 }
 
@@ -317,7 +315,7 @@ a:hover {
  font-style: normal;
  font-weight: 400;
  line-height: 1;
- font-size: 32px;
+ font-size: 37px;
  -webkit-font-smoothing: antialiased;
  -moz-osx-font-smoothing: grayscale;
 }
@@ -356,7 +354,7 @@ a:hover {
 
 .badge {
   padding-top: 0.5%;
-  padding-bottom: 0.4%;
+  tom: 0.4%;
 }
 
 .glyphicon-align-justify {

@@ -17,7 +17,7 @@ class SessionsController < ApplicationController
         redirect_to new_order_path
         session.delete(:checkout)
       else
-        redirect_to user_path(user), notice: "Welcome back, #{user.name}."
+        redirect_to new_order_path(user), notice: "Welcome back, #{user.name}."
       end
     else
       redirect_to login_path, notice: 'We could not log you in. Please try again.'
