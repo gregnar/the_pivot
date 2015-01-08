@@ -1,15 +1,10 @@
-<div class="col-md-12" id="banner">
-  <div class="overlay"></div>
-</div>
+<div class="row">
+  <div class="col-lg-12" id="banner">
+    <div id="tint-me">
+      <%= image_tag "banner.gif", class: "img-responsive" %>
+      <h1 id="fade-me" class="hidden">Welcome to Airlift</h1>
+    </div>
+  </div>
 
-<div class='col-md-8 col-md-offset-2 jumbotron' id='about'>
-  <h1>Emergency Supplies</h1>
-  <h3>Don't worry about picking up supplies, they will come to you. Impact more lives. Order now.</h3>
-  <%= image_tag 'helicopter.gif', class: 'img-rounded img-responsive'%>
-  <h3>Find all of your emergency supplies here, all in one place</h3>
-    <% if current_user %>
-    <h3>Welcome back <%= link_to current_user.name, current_user, class: "user-name"%>!</h3>
-  <% else %>
-    <p><%= link_to 'Shop for Supplies', suppliers_path, class: 'btn btn-lg btn-success', role: 'button' %></p>
-  <% end %>
+
 </div>

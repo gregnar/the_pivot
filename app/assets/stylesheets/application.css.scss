@@ -15,6 +15,7 @@
  */
 //external css
 @import "burger_menu.css.scss";
+@import "banner-text.css.scss";
 
 //fonts
 @import url(https://fonts.googleapis.com/css?family=Poller+One|Ubuntu:700,400);
@@ -78,21 +79,63 @@ a {
   font-size: 18px;
 }
 
+.hidden {
+  display: none;
+}
+
+.tint {
+  position: relative;
+  float: left;
+  cursor: pointer;
+  width:100%;
+  h1 {
+    position: absolute;
+    left: 37%;
+    margin-top: 8%;
+  }
+  img {
+    position: absolute;
+  }
+}
+
+.tint:before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0,0,0, 0.7);
+  -moz-transition: background .15s ease-in;
+  -webkit-transition: background .15s ease-in;
+  -o-transition: background .15s ease-in;
+  transition: background .15s ease-in;
+}
+
+.tint:hover:before {
+}
+
 #banner {
-  background-color: #666666;
-  background-image: url("../images/banner.gif");
-  background-size: cover;
-  background-position: left center;
-  background-repeat: no-repeat;
-  border-bottom: 3px solid #E5E62A;
   border-top: 3px solid #E5E62A;
-  color: #d8d8d8;
-  width: 100%;
+  border-bottom: 3px solid #E5E62A;
+  width: 101.2%;
   height: 30%;
-  padding: 14em 0;
+  padding: 0;
   text-align: center;
   position: relative;
-  margin-top: -2.6%;
+  margin-top: -2.7%;
+  img {
+    z-index: -5;
+    width: 100%;
+    background-color: black;
+    opacity:0.7;
+    vertical-align: top;
+    height: auto;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
 
 a:hover {
@@ -101,12 +144,17 @@ a:hover {
 
 .header {
   border-bottom: 3px solid #e5e5e5;
+  padding-top: 1%;
 }
 
 .header h3 {
   margin-top: 0;
   margin-bottom: 0;
-  line-height: 70px;
+  line-height: inherit;
+}
+
+.black-box {
+  background: rgba(255,255,255,0.5);
 }
 
 .footer {
