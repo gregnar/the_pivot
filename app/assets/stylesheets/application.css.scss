@@ -498,3 +498,36 @@ div.order * {
 .clear {
   clear: both;
 }
+
+.btn-large {
+  font-size: 18px;
+  line-height: 18px
+}
+
+
+#splash-description {
+  color: white;
+  font-weight: bold;
+  font-size: 56px
+}
+
+.shadow {text-shadow:
+                    -1px -1px 0px #000,
+                    0px -1px 0px #000,
+                    1px -1px 0px #000,
+                    -1px  0px 0px #000,
+                    1px  0px 0px #000,
+                    -1px  1px 0px #000,
+                    0px  1px 0px #000,
+                    1px  1px 0px #000;
+        }
+
+#splash-subtitle {
+  color: white;
+  font-weight: bold
+}
+
+#splash-login {margin-top: 20px}
+@media only screen and (max-width: 800px){
+	#splash-login {margin-top: 50px;}
+}
