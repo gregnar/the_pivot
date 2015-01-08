@@ -32,6 +32,7 @@ group :development, :test do
   gem 'pry'
   gem 'database_cleaner'
   gem 'brakeman'
+  gem 'traceroute'
 end
 
 group :development do

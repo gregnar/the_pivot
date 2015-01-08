@@ -33,20 +33,6 @@ class Suppliers::CategoriesController < ApplicationController
     end
   end
 
-  def destroy
-    category = Category.find(params[:id])
-    category.delete if category
-    redirect_to categories_path
-  end
-
-  # def destroy
-  #   if @category.destroy
-  #     redirect_to supplier_categories_path(@category, slug: @slug), notice: 'Category was successfully deleted.'
-  #   else
-  #     redirect_to supplier_categories_path(@category, slug: @slug)
-  #   end
-  # end
-
   private
 
   def set_slug
