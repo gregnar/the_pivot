@@ -55,7 +55,6 @@ nav#slide-menu {
     li {
       color: #dfe5eb;
       cursor: pointer;
-      font-family: "Arimo";
       border-top: 2px solid #3D4455;
       border-bottom: 2px solid #21283A;
       border-width: 100%;
@@ -63,6 +62,7 @@ nav#slide-menu {
       padding: 3.5% 0;
       a {
         padding: 3.7% 21.5% 3.8% 5%;
+        font-family: "Arimo";
         z-index:700;
         margin: 0 auto;
         color: #C4CBDA;
