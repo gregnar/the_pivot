@@ -32,8 +32,13 @@
       <%= f.text_area :description, class: "form-control" %>
     </div>
     <h5 class='text-center'>All fields required.</h5>
-    <div class="form-group">
-      <%= f.submit "Create Supplier!", class: "form-control btn btn-success" %>
+    <% if current_user.supplier %>
+      <div class="form-group">
+        <%= f.submit "Update Supplier", class: "form-control btn btn-success" %>
+      <% else %>
+        <div class="form-group">
+          <%= f.submit "Create Supplier!", class: "form-control btn btn-success" %>
+      <% end %>
     </div>
     <% end %>
   </div>

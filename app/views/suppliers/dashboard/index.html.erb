@@ -1,6 +1,20 @@
-<h1>Manage your shit</h1>
-<ul>
-  <li><%= link_to "ORDERS", supplier_orders_path(slug: @supplier.slug) %></li>
-  <li><%= link_to "CATEGORIES", supplier_categories_path(slug: @supplier.slug) %></li>
-  <li><%= link_to "ITEMS", supplier_items_path(slug: @supplier.slug) %></li>
-</ul>
+<div class="text-center">
+  <h1>Manage <%= current_supplier.name %></h1>
+  <div class="col-md-12">
+    <div class="panel panel-default col-md-6 col-md-offset-3">
+
+
+      <ul class="unstyled-list text-center">
+        <li><%= link_to "Manage Items", supplier_items_path(slug: @supplier.slug) %></li>
+        <li><%= link_to "Manage Categories", supplier_categories_path(slug: @supplier.slug) %></li>
+        <li><%= link_to "Manage Administrators", supplier_items_path(slug: @supplier.slug) %></li>
+        <li><%= link_to "Manage Orders", supplier_orders_path(slug: @supplier.slug) %></li>
+        <li><%= link_to "Manage Store Information", edit_supplier_path(@supplier) %></li>
+      </ul>
+
+      <div class="footer-links">
+        <h3><%= link_to "Back to User Information", user_path(current_user.id) %></h3>
+      </div>
+    </div>
+  </div>
+</div>

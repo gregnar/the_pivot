@@ -1,5 +1,5 @@
 class Suppliers::CategoriesController < ApplicationController
-  before_action :set_slug, only: [:edit, :update, :destroy, :new]
+  before_action :set_slug, only: [:edit, :update, :destroy, :new, :create]
 
   def index
     @categories = Category.all
@@ -7,9 +7,12 @@ class Suppliers::CategoriesController < ApplicationController
 
   def create
     @category = Category.new(category_params)
-    if @category.save
-      redirect_to categories_path
-    else render :new
+    @category.supplier = current_supplier
+    if @category.save!
+      redirect_to supplier_categories_path(slug: @slug), notice: 'Category was successfully created.'
+    else
+      flash.now[:notice] = 'Category could not be created, try again.'
+      render :new
     end
   end
 

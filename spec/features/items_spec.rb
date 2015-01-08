@@ -49,7 +49,7 @@ describe 'Item Manipulation', type: :feature do
       select(category.name, :from => 'category-select')
       click_button 'Submit'
 
-      expect(page).to have_content('Item successfully created!')
+      expect(page).to have_content('Item successfully created')
     end
 
     it 'can edit an existing item' do

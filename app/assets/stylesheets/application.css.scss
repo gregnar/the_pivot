@@ -41,6 +41,7 @@ body {
   padding-top: 20px;
   padding-bottom: 20px;
   font-family: 'GeoSans';
+  font-size: 1.6em;
   background-color: #F4F2EB;
   margin: 0;
 }
@@ -49,7 +50,7 @@ h1 {
   color: black;
 }
 
-body, p, h2, h3, td, th, input {
+body, p, h2, h3, td, th, input, li, ul {
   color: black;
 }
 
@@ -71,9 +72,11 @@ body, p, h2, h3, td, th, input {
   margin-top: 2%;
   margin-bottom: -3%;
 }
+
 .verticalLine {
   border-left: thick solid #ff0000;
 }
+
 a {
   color: #493736;
   font-size: 18px;
@@ -117,8 +120,7 @@ a {
 }
 
 #banner {
-  border-top: 3px solid #E5E62A;
-  border-bottom: 3px solid #E5E62A;
+  border-top: 6px solid #dc1628;
   width: 101.2%;
   height: 30%;
   padding: 0;
@@ -135,6 +137,7 @@ a {
     display: block;
     margin-left: auto;
     margin-right: auto;
+    border-bottom: 20px #fff solid;
   }
 }
 
@@ -185,6 +188,98 @@ a:hover {
   margin-top: 28px;
 }
 
+@media screen and (max-width: 768px) {
+
+  .table > tbody > tr > td {
+    display: block;
+    text-align: right;
+    position: relative;
+  }
+
+  .table > tbody > tr > td:before {
+    content: 'Hello';
+    position: absolute;
+    left: 10px;
+  }
+
+  .user-info-body > .table > tbody > tr > td:nth-of-type(1):before {
+    content: "Name";
+  }
+
+  .user-info-body > .table > tbody > tr > td:nth-of-type(2):before {
+    content: "Display Name";
+  }
+
+  .user-info-body > .table > tbody > tr > td:nth-of-type(3):before {
+    content: "Email";
+  }
+
+  .supplier-info-body > .table > tbody > tr > td:nth-of-type(1):before {
+    content: "Name";
+  }
+
+  .supplier-info-body > .table > tbody > tr > td:nth-of-type(2):before {
+    content: "Email";
+  }
+
+  .supplier-info-body > .table > tbody > tr > td:nth-of-type(3):before {
+    content: "URL";
+  }
+
+  .supplier-info-body > .table > tbody > tr > td:nth-of-type(4):before {
+    content: "Phone";
+  }
+
+  .address-info-body > .table > tbody > tr > td:nth-of-type(1):before {
+    content: "Address";
+  }
+
+  .address-info-body > .table > tbody > tr > td:nth-of-type(2):before {
+    content: "Address #2";
+  }
+
+  .address-info-body > .table > tbody > tr > td:nth-of-type(3):before {
+    content: "City";
+  }
+
+  .address-info-body > .table > tbody > tr > td:nth-of-type(4):before {
+    content: "State";
+  }
+
+  .address-info-body > .table > tbody > tr > td:nth-of-type(5):before {
+    content: "Zip Code";
+  }
+
+  .orders-info-body > div > .table > tbody > tr > td:nth-of-type(1):before {
+    content: "Item";
+  }
+
+  .orders-info-body > div > .table > tbody > tr > td:nth-of-type(2):before {
+    content: "Supplier";
+  }
+
+  .orders-info-body > div > .table > tbody > tr > td:nth-of-type(3):before {
+    content: "Quantity";
+  }
+
+  .orders-info-body > div > .table > tbody > tr > td:nth-of-type(4):before {
+    content: "Price";
+  }
+
+  .orders-info-body > div > .table > tbody > tr > td:nth-of-type(5):before {
+    content: "Total";
+  }
+
+  .orders-info-body > div > .table > tbody > .orders-info-total > td:nth-of-type(1):before,
+  .orders-info-body > div > .table > tbody > .orders-info-total > td:nth-of-type(2):before {
+    content: '';
+  }
+
+  .table > thead {
+    display: none;
+  }
+}
+
 @media screen and (min-width: 768px) {
  .header,
  .marketing,
@@ -198,6 +293,8 @@ a:hover {
  .jumbotron {
    border-bottom: 0;
  }
+
+
 }
 
 .logo .glyphicon.glyphicon-plus {
@@ -330,7 +427,7 @@ h1 {
     font-style: italic;
 }
 
-.red-font * {
+#red-font * {
   color: rgb(220, 22, 40);
 }
 
@@ -360,12 +457,16 @@ div.order * {
 
 .table * {
   font-weight: bold;
-  font-size: 15pt
+  font-size: 15pt;
 }
 // admin category page
 
-#category-list {
+.unstyled-list {
   list-style: none;
+}
+
+.unstyled-list a {
+  font-size: 22px;
 }
 
 #category {
@@ -388,4 +489,12 @@ div.order * {
 
 #submit-order {
   margin-top: 2%
+}
+
+.hiddenText {
+  padding-left: 20px;
+}
+
+.clear {
+  clear: both;
 }

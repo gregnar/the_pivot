@@ -18,5 +18,4 @@ class Category < ActiveRecord::Base
       item.categories.any? { |cat| cat.name == self.name }
     end
   end
-
 end

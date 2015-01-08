@@ -6,7 +6,6 @@ class SessionsController < ApplicationController
   end
 
   def create
-    # user = User.authenticate_user(params[:email], params[:password])
     user = User.find_by(email: user_params[:email]).try(:authenticate, user_params[:password])
 
     if user
@@ -14,6 +13,9 @@ class SessionsController < ApplicationController
       if session[:supplier]
         redirect_to new_supplier_path, notice: "Welcome back, #{user.name}. Become a supplier:"
         session.delete(:supplier)
+      elsif session[:checkout]
+        redirect_to new_order_path
+        session.delete(:checkout)
       else
         redirect_to user_path(user), notice: "Welcome back, #{user.name}."
       end

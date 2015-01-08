@@ -1,19 +1,19 @@
-<h1 class= "text-center">Supplies by <%= current_supplier.name %></h1>
-<div class='text-center'>
+<h1 class= "text-center"><%= current_supplier.name %></h1>
+<div class="col-md-3 col-md-offset-3">
   <div style="display: none;" id="hiddenText">
-    <h2>Phone: <%= current_supplier.phone %> </h2>
-    <h2>Website: <a href="https://www.turing.io"><%= current_supplier.website %> </h2>
-    <h2>Email: <%= current_supplier.email %> </h2>
-    <h2>Address: <%= current_supplier.description%></h2>
+    <h3>Phone: <%= current_supplier.phone %></h3>
+    <h3>Website: <a href="http://www.turing.io"><%= current_supplier.website %></h3>
+    <h3>Email: <%= current_supplier.email %> </h3>
+    <h3>Address: <%= current_supplier.description%></h3>
   </div>
-  <a href="#" onclick="$('#hiddenText').show(); return false;">Show more information for <%= current_supplier.name %></a>
-</div>
+  <a href="#" onclick="$('#hiddenText').show(); return false;">Show more information</a>
+</div><br>
 
 <% if current_supplier_admin? %>
 <%= link_to 'Add Item', new_supplier_item_path(slug: @slug), class: 'btn btn-info' %>
 <% end %>
 
-<div class='col-md-6'>
+<div class='col-md-6 col-md-offset-3 clear'>
   <% current_supplier.categories.each do |category| %>
     <h3 class='text-center'><%= category.name %></h3>
     <% if current_supplier_admin? %>

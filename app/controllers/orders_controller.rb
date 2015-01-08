@@ -16,7 +16,7 @@ class OrdersController < ApplicationController
       @cart_items = @cart.items
     else
       flash[:notice] = 'You need to be logged in to checkout.'
-      redirect_to login_path
+      redirect_to login_path(checkout: true)
     end
   end
 

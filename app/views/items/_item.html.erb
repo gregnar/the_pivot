@@ -1,4 +1,4 @@
-<div class='panel panel-default table'>
+<div class='panel panel-default table '>
   <div class='panel-heading'>
     <h3 class='panel-title'>
       <%= link_to item.title, supplier_item_path(id: item, slug: item.supplier.slug) %>
@@ -6,7 +6,7 @@
     </h3>
   </div>
   <div class='panel-body'>
-    <p>Supplier: <%= link_to item.supplier.name, supplier_path(item.supplier), class: 'underlined red-font' %></p>
+    <p>Supplier: <%= link_to item.supplier.name, supplier_items_path(slug: item.supplier.slug), class: 'underlined red-font' %></p>
     <p><%= item.description %></p>
     <p><%= image_tag item.photo.url(:large), class: "img-responsive" %></p>
     <%= button_to "Add to Cart", cart_items_path(item_id: item), class: 'btn btn-default item-price' %>

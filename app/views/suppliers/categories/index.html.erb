@@ -1,23 +1,27 @@
-<h1>Manage Categories</h1>
-<h4>*Editing a category name will change it for all existing items.</h4>
-<div class="col-md-6">
-  <ul id="category-list">
-    <div class="panel panel-default">
-    <div class="panel-heading"><h2>Category Name</h2></div>
-      <% if current_user && @categories.first.supplier == current_supplier %>
-        <% current_supplier.categories.each do |category| %>
-        <li>
-          <div class="panel-body">
-            <%= category.name %>
-            <%= link_to 'Edit', edit_supplier_category_path(id: category, slug: params[:slug]), id: "category" %>
-          <% end %>
-        <% end %>
-        </div>
+<div class="text-center">
+  <h1>Manage Categories</h1>
+  <h4>*Editing a category name will change it for all existing items.</h4>
+</div>
+  <div class="col-md-6 col-md-offset-3">
+    <ul class="unstyled-list">
+      <div class="panel panel-default">
+        <div class="panel-heading text-center"><h2>Category Name</h2></div>
         <% if current_supplier_admin? %>
-        <div class="footer-links"><%= link_to 'Add Category', new_supplier_category_path(slug: params[:slug]) %></div>
+          <% current_supplier.categories.each do |category| %>
+            <div class="panel-body">
+              <li>
+              <%= category.name %>
+              <%= link_to 'Edit', edit_supplier_category_path(id: category, slug: params[:slug]), id: "category" %>
+              <% end %>
+            <% end %>
+          </div>
+          <% if current_supplier_admin? %>
+          <div class="adminbutton text-center"><%= link_to 'Add Category', new_supplier_category_path(slug: params[:slug]) %></div>
+        <% end %>
+        <div class="footer-links">
+          <%= link_to "Back to Dashboard", supplier_dashboard_path(slug: current_user.supplier.slug) %></div>
+        </div>
       </li>
     </ul>
-    </div>
   </div>
 </div>
-<% end %>

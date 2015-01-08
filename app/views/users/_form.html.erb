@@ -29,11 +29,11 @@
     </div>
     <div class="form-group">
       <%= label_tag :password, "Password".html_safe %>
-      <%= f.password_field :password %>
+      <%= f.password_field :password, class: "form-control" %>
     </div>
     <div class="form-group">
       <%= label_tag :password_confirmation, "Confirm Password".html_safe %>
-      <%= f.password_field :password_confirmation %>
+      <%= f.password_field :password_confirmation, class: "form-control" %>
     </div>
     <h5 class='text-center'>All fields required.</h5>
     <div class="form-group">

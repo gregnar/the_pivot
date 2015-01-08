@@ -1,0 +1,6 @@
+<h2 class="text-center">Editing Supplier Information</h2>
+
+<%= render 'form' %>
+
+<%= link_to 'Show', @supplier %> |
+<%= link_to 'Back', supplier_dashboard_path(slug: current_user.supplier.slug) %>
