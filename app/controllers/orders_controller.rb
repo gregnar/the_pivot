@@ -26,8 +26,8 @@ class OrdersController < ApplicationController
   def create
     @order = Order.new(order_params)
     @order.user_id = current_user.id
-    @order.item_orders = @cart.data.map { |item_id, quantity| ItemOrder.new(order: @order, item_id: item_id, quantity: quantity) }
-    attempt_create_order
+    @order.item_orders = @cart.bought_items(@order)
+    attempt_create_order ? OrderMailer.order_confirmation(@order).deliver : flash[:error] = 'Error placing order...'
   end
 
   def update
@@ -53,9 +53,11 @@ class OrdersController < ApplicationController
       session[:cart]  = nil
       session[:order] = @order.id
       redirect_to new_charge_path
+      return true
     else
       flash[:notice] = 'Order could not be completed. Try checking out again.'
       redirect_to cart_items_path
+      return false
     end
   end
 

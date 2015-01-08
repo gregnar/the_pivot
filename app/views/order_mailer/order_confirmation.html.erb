@@ -1,0 +1,18 @@
+
+<h1 class="text-muted"><%= link_to 'AIRLIFT', root_url, id: 'logo' %></h1>
+
+<h3>Hey, <%= @order.user.display_name || @order.user.name %></h3>
+<br>
+<% if @order.suppliers.count == 1 %>
+  <p>Thank you for placing your order with <%= @order.suppliers.first.name %>!</p><br>
+<% else %>
+  <p>Thanks for using Airlyft! You ordered from <= @order.supplier_names %>!</p>
+<% end %>
+<p>This email is to confirm your recent order.</p>
+<p>Date: <%= @order.created_at.to_time.strftime('%a %b %d %H:%M:%S %Z %Y') %></p>
+<p>Status: <%= @order.status %></p>
+<p><b>Drop Zone</b><br />
+  Latitude:  <%= @order.coordinate.latitude %><br />
+  Longitude: <%= @order.coordinate.longitude %><br />
+
+<p>Total: <%= number_to_currency(@order.total, :unit => "€") %> </p>

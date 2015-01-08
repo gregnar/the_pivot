@@ -9,7 +9,7 @@ class Order < ActiveRecord::Base
   accepts_nested_attributes_for :coordinate,
                                  reject_if: proc { |attributes| attributes.any?(&:blank?) },
                                  allow_destroy: true
-                                 
+
   validates_inclusion_of        :pending, in: [true, false]
   validates_presence_of         :coordinate
 
@@ -17,6 +17,10 @@ class Order < ActiveRecord::Base
 
   def status
     pending ? 'Pending' : 'Paid'
+  end
+
+  def supplier_names
+    suppliers.map(&:view_name).join(", ")
   end
 
   def pay
