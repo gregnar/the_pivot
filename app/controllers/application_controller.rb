@@ -27,7 +27,7 @@ class ApplicationController < ActionController::Base
   end
 
   def current_supplier_admin?
-    current_user.supplier == current_supplier
+    current_user && current_user.supplier == current_supplier
   end
 
   def require_admin

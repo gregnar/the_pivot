@@ -1,4 +1,4 @@
-<div class="order">
+<div class="order col-md-10 col-md-offset-1">
   <a href=<%= supplier_order_path(id: order) %> ><h2 class="text-center">Order #<%= order.id %></h2></a>
   <% if order.status == 'Pending' %>
     <%= link_to 'Cancel Order', cancel_supplier_order_path(id: order), method: :put, class: 'btn btn-danger item-price', data: { confirm: 'Cancel this order? Action cannot be undone.' } %>
@@ -9,7 +9,7 @@
   <p>
     Status: <%= order.status %>
   </p>
-  <p>Lat: <%= order.coordinate.latitude %>, Long: <%= order.coordinate.longitude, class: "bold" %></p>
+  <p class="red-font">Lat: <%= order.coordinate.latitude %>, Long: <%= order.coordinate.longitude %></p>
   <table class="table">
     <thead>
       <td>Item</td>
