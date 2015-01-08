@@ -14,6 +14,24 @@
     <div class="wrap col-lg-12">
       <ul>
         <li>
+          <a href='<%= cart_items_path %>'>
+            <span class='glyphicon glyphicon-shopping-cart'></span>
+            <span class="badge"><%= @cart.count_total %></span>
+          </a>
+        </li>
+        <li>
+          <%= link_to items_path do %>
+            Browse All Items
+            <span class="glyphicon glyphicon-tags"></span>
+          <% end %>
+        </li>
+        <li>
+          <%= link_to categories_path do %>
+            Browse By Category
+            <span class="glyphicon glyphicon-tags"></span>
+          <% end %>
+        </li>
+        <li>
           <%=link_to suppliers_path do %>
             Browse Suppliers
             <span class="glyphicon glyphicon-tags"></span>
@@ -29,8 +47,16 @@
             </li>
           <% end %>
           <li>
+            <% if current_user.supplier_admin? %>
+              <%= link_to supplier_dashboard_path(slug: current_user.supplier.slug) do %>
+                Supplier Dashboard
+                <span class="glyphicon glyphicon-dashboard"></span>
+              <% end %>
+            <% end %>
+          </li>
+          <li>
             <%= link_to user_path(current_user) do %>
-              User
+              My Account
               <span class="glyphicon glyphicon-cog"></span>
             <% end %>
           </li>
@@ -60,12 +86,6 @@
             <% end %>
           </li>
         <% end %>
-        <li>
-          <a href='<%= cart_items_path %>'>
-            <span class='glyphicon glyphicon-shopping-cart'></span>
-            <span class="badge"><%= @cart.count_total %></span>
-          </a>
-        </li>
       </ul>
     </div>
   </nav>
