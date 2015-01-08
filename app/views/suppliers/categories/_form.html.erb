@@ -1,7 +1,7 @@
 <div class="col-md-6 col-md-offset-3">
   <%= form_for @category, url: "/#{@slug}/admin/categories/#{@category.id}" do |f| %>
     <div class="form-group">
-      <h3><%= f.label "Category Name" %></h3>
+      <h3><%= f.label :name %></h3>
       <%= f.text_field :name, class: "form-control" %>
     </div>
 

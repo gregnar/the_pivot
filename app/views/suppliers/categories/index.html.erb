@@ -10,18 +10,18 @@
           <% current_supplier.categories.each do |category| %>
             <div class="panel-body">
               <li>
-                <%= category.name %>
-                <%= link_to 'Edit', edit_supplier_category_path(id: category, slug: params[:slug]), id: "category" %>
-                <% end %>
+              <%= category.name %>
+              <%= link_to 'Edit', edit_supplier_category_path(id: category, slug: params[:slug]), id: "category" %>
               <% end %>
-            </div>
-            <% if current_supplier_admin? %>
-            <div class="adminbutton text-center"><%= link_to 'Add Category', new_supplier_category_path(slug: params[:slug]) %></div>
-          <% end %>
-          <div class="footer-links">
-            <%= link_to "Back to Dashboard", supplier_dashboard_path(slug: current_user.supplier.slug) %></div>
+            <% end %>
           </div>
-        </li>
-      </ul>
-    </div>
+          <% if current_supplier_admin? %>
+          <div class="adminbutton text-center"><%= link_to 'Add Category', new_supplier_category_path(slug: params[:slug]) %></div>
+        <% end %>
+        <div class="footer-links">
+          <%= link_to "Back to Dashboard", supplier_dashboard_path(slug: current_user.supplier.slug) %></div>
+        </div>
+      </li>
+    </ul>
+  </div>
 </div>
