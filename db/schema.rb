@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150107182641) do
+ActiveRecord::Schema.define(version: 20150107224803) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,14 +27,6 @@ ActiveRecord::Schema.define(version: 20150107182641) do
     t.integer  "user_id"
     t.integer  "supplier_id"
   end
-
-  create_table "addresses_users", id: false, force: true do |t|
-    t.integer "address_id", null: false
-    t.integer "user_id",    null: false
-  end
-
-  add_index "addresses_users", ["address_id", "user_id"], name: "index_addresses_users_on_address_id_and_user_id", using: :btree
-  add_index "addresses_users", ["user_id", "address_id"], name: "index_addresses_users_on_user_id_and_address_id", using: :btree
 
   create_table "categories", force: true do |t|
     t.string   "name"
@@ -57,30 +49,6 @@ ActiveRecord::Schema.define(version: 20150107182641) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  create_table "fillings", force: true do |t|
-    t.string   "title"
-    t.string   "description"
-    t.integer  "price",              default: 0
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "food_group"
-    t.string   "image_file_name"
-    t.string   "image_content_type"
-    t.integer  "image_file_size"
-    t.datetime "image_updated_at"
-    t.boolean  "retired",            default: false
-  end
-
-  create_table "item_fillings", force: true do |t|
-    t.integer  "item_id"
-    t.integer  "filling_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "item_fillings", ["filling_id"], name: "index_item_fillings_on_filling_id", using: :btree
-  add_index "item_fillings", ["item_id"], name: "index_item_fillings_on_item_id", using: :btree
 
   create_table "item_orders", id: false, force: true do |t|
     t.integer "order_id"
@@ -108,35 +76,11 @@ ActiveRecord::Schema.define(version: 20150107182641) do
     t.integer  "quantity_available"
   end
 
-  create_table "items_orders", id: false, force: true do |t|
-    t.integer "order_id", null: false
-    t.integer "item_id",  null: false
-    t.integer "quantity"
-  end
-
-  add_index "items_orders", ["item_id", "order_id"], name: "index_items_orders_on_item_id_and_order_id", using: :btree
-  add_index "items_orders", ["order_id", "item_id"], name: "index_items_orders_on_order_id_and_item_id", using: :btree
-
-  create_table "line_item_fillings", force: true do |t|
-    t.integer  "line_item_id"
-    t.integer  "filling_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "line_items", force: true do |t|
-    t.integer  "order_id"
-    t.integer  "item_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "quantity"
-  end
-
   create_table "orders", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
-    t.boolean  "pending"
+    t.boolean  "pending",       default: true
     t.integer  "coordinate_id"
   end
 
@@ -155,17 +99,13 @@ ActiveRecord::Schema.define(version: 20150107182641) do
     t.string   "name"
     t.string   "email"
     t.string   "phone"
+    t.string   "fax"
     t.string   "description"
     t.integer  "address_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "slug"
     t.text     "website"
-  end
-
-  create_table "suppliers_users", id: false, force: true do |t|
-    t.integer "user_id",     null: false
-    t.integer "supplier_id", null: false
   end
 
   create_table "user_roles", force: true do |t|
