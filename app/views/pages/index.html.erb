@@ -5,13 +5,3 @@
     </div>
   </div>
 </div>
-<div class='col-md-8 col-md-offset-2 text-center'>
-  <h1>Emergency Supplies</h1>
-  <h3>Impact more lives. Order now.</h3>
-  <p><%= link_to 'Shop for Supplies', suppliers_path, class: 'btn btn-lg btn-success', role: 'button' %></p><br>
-
-  <h3>Let us deliver to your drop zone</h3>
-  <% if current_user %>
-  <h3>Welcome back <%= link_to current_user.name, current_user, class: "user-name"%>!</h3>
-  <% end %>
-</div>
