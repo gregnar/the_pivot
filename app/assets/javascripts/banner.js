@@ -1,8 +1,10 @@
 $( document ).ready(function() {
-  setTimeout(function(){
-    console.log("Darken the pic");
-    $("#tint-me").addClass("tint");
-  }, 1000);
+  if ($("#splash-login").css("margin-top") == "20px" ){
+    setTimeout(function(){
+        console.log("Darken the pic");
+        $("#tint-me").addClass("tint");
+      }, 1000);
+	}
   setTimeout(function(){
     console.log("Hello, text.");
     $("#fade-me").removeClass("hidden")
