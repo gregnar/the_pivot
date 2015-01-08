@@ -1,0 +1,79 @@
+<nav id="slide-menu">
+  <div class="wrap col-lg-12">
+    <ul>
+      <li>
+        <a href='<%= cart_items_path %>'>
+          <span class='glyphicon glyphicon-shopping-cart'></span>
+          <span class="badge"><%= @cart.count_total %></span>
+        </a>
+      </li>
+      <li>
+        <%= link_to items_path do %>
+        Browse All Items
+        <span class="glyphicon glyphicon-tags"></span>
+        <% end %>
+      </li>
+      <li>
+        <%= link_to categories_path do %>
+        Browse By Category
+        <span class="glyphicon glyphicon-tags"></span>
+        <% end %>
+      </li>
+      <li>
+        <%=link_to suppliers_path do %>
+        Browse Suppliers
+        <span class="glyphicon glyphicon-tags"></span>
+        <% end %>
+      </li>
+      <% if current_user %>
+      <% if current_user.admin? %>
+      <li>
+        <%= link_to rails_admin_path, id: 'admin' do %>
+        Admin
+        <span class="glyphicon glyphicon-dashboard"></span>
+        <% end %>
+      </li>
+      <% end %>
+      <li>
+        <% if current_user.supplier_admin? %>
+        <%= link_to supplier_dashboard_path(slug: current_user.supplier.slug) do %>
+        Supplier Dashboard
+        <span class="glyphicon glyphicon-dashboard"></span>
+        <% end %>
+        <% end %>
+      </li>
+      <li>
+        <%= link_to user_path(current_user) do %>
+        My Account
+        <span class="glyphicon glyphicon-cog"></span>
+        <% end %>
+      </li>
+      <li>
+        <%= link_to logout_path, id: 'logout', method: 'delete' do %>
+        Logout
+        <span class="glyphicon glyphicon-log-out"></span>
+        <% end %>
+      </li>
+      <% else %>
+      <li>
+        <%= link_to new_user_path do %>
+        Register Customer
+        <span class="glyphicon glyphicon-user"></span>
+        <% end %>
+      </li>
+      <li>
+        <%= link_to new_supplier_path do %>
+        Register Supplier
+        <span class="glyphicon glyphicon-globe"></span>
+        <% end %>
+      </li>
+      <li>
+        <%= link_to login_path, id: 'login'  do %>
+        Login
+        <span class="glyphicon glyphicon-log-in"></span>
+        <% end %>
+      </li>
+      <% end %>
+    </ul>
+  </div>
+</nav>
