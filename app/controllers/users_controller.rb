@@ -25,7 +25,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      # @user.send_confirmation
+      @user.send_confirmation
       session[:user_id]  = @user.id
       session[:supplier] ? redirect_to(new_supplier_path) : redirect_to(root_path, notice: 'User created.')
       session.delete(:supplier)
