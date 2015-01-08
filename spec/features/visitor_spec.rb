@@ -34,36 +34,5 @@ describe 'Unauthenticated visitor happy path', type: :feature do
       expect(page).to have_content("Torta's Supplies")
     end
 
-    xit "goes to the correct page" do
-      visit suppliers_path
-      click_link_or_button "Torta's Supplies"
-      expect(current_path).to eq(supplier_path(slug: torta_shop.slug))
-      expect(page).to have_content("Torta's Supplies")
-    end
-  end
-
-  context "when visitor shops" do
-
-    xit "adds supplies from various suppliers into shared cart" do
-      visit supplier_item_path(hoop)
-      click_link_or_button "Add To Cart"
-      visit supplier_item_path(lechuga)
-      click_link_or_button "Add To Cart"
-
-      visit cart_items_path
-      expect(page).to have_content(lechuga.title)
-      expect(page).to have_content(hoop.title)
-      expect(page).to have_content(torta_shop.name)
-      expect(page).to have_content(nba_cares.name)
-    end
-
-    xit "can browse all supplies from all suppliers" do
-      visit root_path
-      click_link_or_button "Browse Supplies"
-
-      expect(current_path).to   eq(items_path)
-      expect(page).to           have_content(lechuga.title)
-      expect(current_path).to   have_content(hoop.title)
-    end
   end
 end

@@ -192,7 +192,7 @@ class Seed
       BulkSalt: 'Food and Water',
       BulkSugar: 'Food and Water',
       BulkFlour: 'Food and Water',
-      BulkCannedBeans: 'Food and Water',
+      bulk_beans: 'Food and Water',
       Boots: 'Clothing',
       Iodine: 'Medical and Hygiene',
       DisasterTent: 'Shelter and Bedding',
