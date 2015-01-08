@@ -40,7 +40,7 @@ RSpec.describe UserMailer, :type => :feature do
     end
 
     it 'renders the sender email' do
-      delivered_emails.first.from.should eq(['reliefbot@airlift.com'])
+      delivered_emails.first.from.should eq(['reliefbot@airlift.io'])
     end
   end
 
