@@ -1,7 +1,7 @@
 class OrdersController < ApplicationController
-  before_action :correct_user, only: [:show, :edit, :update, :destroy]
-  before_action :current_user, only: [:show, :edit, :update, :index]
-  before_action :set_order,    only: [:show, :edit, :update, :destroy]
+  before_action :redirect_unless_user_owns_order, except: [:index, :new, :create]
+  before_action :current_user, except: [:new, :create]
+  before_action :set_order, only: [:show, :edit, :update]
 
   def index
     @orders = current_user.orders
@@ -39,7 +39,7 @@ class OrdersController < ApplicationController
     @order = current_user.orders.find(params[:id])
   end
 
-  def correct_user
+  def redirect_unless_user_owns_order
     order = Order.find(params[:id])
     redirect_to(root_url) unless current_user.orders.include?(order)
   end
