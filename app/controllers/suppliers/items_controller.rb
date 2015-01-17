@@ -1,7 +1,7 @@
 class Suppliers::ItemsController < ApplicationController
-  before_action :set_item, only: [:show, :edit, :update, :destroy, :retire, :unretire]
-  before_action :require_user_to_be_supplier_admin, only: [:edit, :new, :create, :update, :destroy]
-  before_action :set_slug, only: [:index, :edit, :new, :create, :update, :destroy]
+  before_action :set_item, except: [:index, :new, :create]
+  before_action :require_user_to_be_supplier_admin, except: [:index, :show, :retire, :unretire]
+  before_action :set_slug, except: [:show, :retire, :unretire]
 
   def index
     @search = current_supplier.items.search(params[:q])
