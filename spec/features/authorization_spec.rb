@@ -38,6 +38,7 @@ describe 'Application authorization', type: :feature do
 
     it 'can checkout a cart to an order' do
       visit supplier_item_path(item, slug: item.supplier.slug)
+      save_and_open_page
       click_button 'Add to Cart'
       visit cart_items_path
       click_link 'Checkout'

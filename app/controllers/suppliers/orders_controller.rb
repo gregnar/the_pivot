@@ -1,5 +1,5 @@
 class Suppliers::OrdersController < ApplicationController
-  before_action :require_supplier_admin, only: [:show, :edit, :update, :destroy, :pay, :cancel]
+  before_action :require_user_to_be_supplier_admin, only: [:show, :edit, :update, :destroy, :pay, :cancel]
   before_action :current_user, only: [:show, :edit, :update]
   before_action :set_order, only: [:pay, :cancel, :show]
   before_action :set_slug, only: [:pay, :cancel]

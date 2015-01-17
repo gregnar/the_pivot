@@ -1,6 +1,6 @@
 class SuppliersController < ApplicationController
   before_action :set_slug, only: [:edit, :update]
-  before_action :require_supplier_admin, only: [:edit, :update]
+  before_action :require_user_to_be_supplier_admin, only: [:edit, :update]
 
   def index
     @suppliers = Supplier.with_items

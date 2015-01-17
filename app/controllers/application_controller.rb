@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
                 :require_admin,
                 :current_supplier,
                 :current_supplier_admin?,
-                :require_supplier_admin,
+                :require_user_to_be_supplier_admin,
                 :reset_session_supplier_key
 
   before_action :load_cart
@@ -36,7 +36,7 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def require_supplier_admin
+  def require_user_to_be_supplier_admin
     unless current_supplier_admin?
       redirect_to root_path, notice: 'Not authorized.'
     end
