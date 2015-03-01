@@ -21,7 +21,7 @@ appropriate.
 
 ##Viewing the site locally
 
-**Warning:** The following will only work if you're willing to create a `.env` file containing your own information for Amazon Web Services' S3 storage service. If not, please visit our live site (the address for which is found at the beginning of this README). If so, clone this repo and create a file called `.env` at the top level of the project directory. The contents of this file should be in the following format:
+**Warning:** The following will only work if you're willing to create a `.env` file containing your own information for Amazon Web Services' S3 storage service. If not, please visit our live site (the address for which is found at the beginning of this README). If so, clone this repository and create a file called `.env` at the top level of the project directory. The contents of this file should be in the following format:
 
 `S3_BUCKET_NAME=your-bucket-name` <br />
 `AWS_ACCESS_KEY_ID=your-access-key` <br />
