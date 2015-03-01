@@ -26,11 +26,12 @@ There is currently a PostgreSQL encoding error raised when seeding the database 
 - Clone this repository.
 - Once in the project directory, run the following commands in the command line:
 
- `bundle install`
+ `bundle install` <br />
  `rake db:setup`
  
 <br />This will take a moment; be patient! Rails is seeding the database. Once the database has been seeded, run:
 <br />
+
  `rails server`
 
 Airlift should now be viewable. In your browser, visit `http://localhost:3000` . This is the default port. If you don't see the Airlift app, please check your command line. A couple of lines after you typed <code>rails server</code>, a line like this should have appeared:
