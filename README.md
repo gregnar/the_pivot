@@ -19,6 +19,7 @@ appropriate.
 
 ####Important note
 
-There is currently a PostgreSQL encoding error raised when seeding the database using Ruby 2.2.0. To rectify this, switch to Ruby 2.1. 
+There is currently a PostgreSQL encoding error raised when seeding the database using Ruby 2.2.0. To rectify this, switch to Ruby 2.1.*.
 
 ##Getting Started
+
