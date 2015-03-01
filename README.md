@@ -32,8 +32,11 @@ There is currently a PostgreSQL encoding error raised when seeding the database 
 `AWS_ACCESS_KEY_ID=your-access-key`
 `AWS_SECRET_ACCESS_KEY=your-secret-access-key`
 
-- Clone this repository.
-- Once in the project directory, run the following commands in the command line:
+*Side note: never push this file to GitHub!*
+
+Now, assuming that this information is correct, you can follow these steps to get the app running locally: 
+
+- When in the project directory, run the following commands in the command line:
 
  `bundle install` <br />
  `rake db:setup`
@@ -65,4 +68,8 @@ Once you're logged in, try shopping and checking out. During checkout, you can u
 
 In order to run the test suite, 
 
-- run <code>rspec</code> in the command line.
+- clone this repository
+- run the following commands in the command line:
+ - `bundle install` 
+ - `rake db:create`
+ - `rake spec`
