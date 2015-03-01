@@ -1,3 +1,5 @@
+[![Code Climate](https://codeclimate.com/github/Copywright/the_pivot/badges/gpa.svg)](https://codeclimate.com/github/Copywright/the_pivot)
+
 AIRLIFT
 =========
 
