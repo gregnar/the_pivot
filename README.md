@@ -30,7 +30,7 @@ There is currently a PostgreSQL encoding error raised when seeding the database 
 This will take a moment; be patient! Rails is seeding the database. Once the database has been seeded, run:
    rails server
 
-Airlift should now be viewable. In your browser, visit http://localhost:3000 . This is the default port. If you don't see the Airlift app, please check your command line. A couple of lines after you typed <code>rails server</code>, a line like this should have appeared:
+Airlift should now be viewable. In your browser, visit `http://localhost:3000` . This is the default port. If you don't see the Airlift app, please check your command line. A couple of lines after you typed <code>rails server</code>, a line like this should have appeared:
 
    => Rails 4.1.7 application starting in development on http://0.0.0.0:3000
 
