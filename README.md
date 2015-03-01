@@ -24,7 +24,13 @@ appropriate.
 There is currently a PostgreSQL encoding error raised when seeding the database using Ruby 2.2.0. To rectify this, switch to Ruby 2.1.*. If you are using RVM, this can be acheived by typing <code>rvm use</code>, followed by your preferred pre-2.2.0 version of Ruby, in the command line. For example: <code>rvm use 2.1.5</code>.
 
 
-##Getting Started
+##Viewing the site locally
+
+**Warning:** The following will only work if you're willing to create a `.env` file containing your own information for Amazon Web Services' S3 storage service. If not, please visit our live site (the addres for which is found at the beginning of this README). If so, clone this repo and create a file called `.env` at the top level of the project directory. The contents of this file should be in the following format:
+
+`S3_BUCKET_NAME=your-bucket-name`
+`AWS_ACCESS_KEY_ID=your-access-key`
+`AWS_SECRET_ACCESS_KEY=your-secret-access-key`
 
 - Clone this repository.
 - Once in the project directory, run the following commands in the command line:
@@ -53,7 +59,10 @@ Try logging in as some sample users:
 - Username: `demo+josh@jumpstartlab.com`
 - Password: `password`
 
-Once you're logged in, try shopping and checking out. During checkout, you can play with 
+Once you're logged in, try shopping and checking out. During checkout, you can use our Google Maps interface to pinpoint an air drop location. 
+
 ###Running Tests
 
-In order to run the test suite, run <code>rspec</code> in the command line.
+In order to run the test suite, 
+
+- run <code>rspec</code> in the command line.
