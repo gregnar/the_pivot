@@ -19,11 +19,6 @@ Disaster areas probably don't have desktops, electricity, and internet
 access. This project was built targeting *mobile web* where
 appropriate.
 
-####Important note
-
-There is currently a PostgreSQL encoding error raised when seeding the database using Ruby 2.2.0. To rectify this, switch to Ruby 2.1.*. If you are using RVM, this can be acheived by typing <code>rvm use</code>, followed by your preferred pre-2.2.0 version of Ruby, in the command line. For example: <code>rvm use 2.1.5</code>.
-
-
 ##Viewing the site locally
 
 **Warning:** The following will only work if you're willing to create a `.env` file containing your own information for Amazon Web Services' S3 storage service. If not, please visit our live site (the address for which is found at the beginning of this README). If so, clone this repo and create a file called `.env` at the top level of the project directory. The contents of this file should be in the following format:
@@ -34,7 +29,9 @@ There is currently a PostgreSQL encoding error raised when seeding the database 
 
 *Side note: never push this file to GitHub!*
 
-Now, assuming that this information is correct, you can follow these steps to get the app running locally: 
+Now, assuming that this information is correct, you can follow the steps below to get the app running locally.
+
+**Warning #2:** There is currently a PostgreSQL encoding error raised when seeding the database using Ruby 2.2.0. To rectify this, switch to Ruby 2.1.*. If you are using RVM, this can be acheived by typing <code>rvm use</code>, followed by your preferred pre-2.2.0 version of Ruby, in the command line. For example: <code>rvm use 2.1.5</code>.
 
 - When in the project directory, run the following commands in the command line:
 
