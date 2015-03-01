@@ -49,7 +49,7 @@ Airlift should now be viewable. In your browser, visit `http://localhost:3000` .
 
    => Rails 4.1.7 application starting in development on `http://0.0.0.0:3000`
 
-If the last number (the port number) is not 3000, you can still view the Airlift app by visiting http://localhost:[your port number]. 
+If the last number (the port number) is not 3000, you can still view the Airlift app by visiting `http://localhost:[your port number]`. 
 
 ##Using the App
 
