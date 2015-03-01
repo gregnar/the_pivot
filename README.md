@@ -2,6 +2,8 @@
 
 ##Airlift
 
+####Live site: http://airlyft.herokuapp.com
+
 Technology has a huge role to play in disaster relief and recovery. With Airlift, relief organizations can order disaster supplies from multiple vendors simultaneously, and then use Google Maps to pinpoint where the supplies will be air dropped.
 
 * Users register on the site as either suppliers (*the business*) or service
@@ -20,6 +22,7 @@ appropriate.
 ####Important note
 
 There is currently a PostgreSQL encoding error raised when seeding the database using Ruby 2.2.0. To rectify this, switch to Ruby 2.1.*. If you are using RVM, this can be acheived by typing <code>rvm use</code>, followed by your preferred pre-2.2.0 version of Ruby, in the command line. For example: <code>rvm use 2.1.5</code>.
+
 
 ##Getting Started
 
@@ -40,7 +43,9 @@ Airlift should now be viewable. In your browser, visit `http://localhost:3000` .
 
 If the last number (the port number) is not 3000, you can still view the Airlift app by visiting http://localhost:[your port number]. 
 
-If you can see the app now, feel free to poke around. Try logging in as some sample users:
+##Using the App
+
+Try logging in as some sample users:
 
 - Username: `demo+rachel@jumpstartlab.com`
 - Password: `password`
@@ -48,6 +53,7 @@ If you can see the app now, feel free to poke around. Try logging in as some sam
 - Username: `demo+josh@jumpstartlab.com`
 - Password: `password`
 
+Once you're logged in, try shopping and checking out. During checkout, you can play with 
 ###Running Tests
 
 In order to run the test suite, run <code>rspec</code> in the command line.
