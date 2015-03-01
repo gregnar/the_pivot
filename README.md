@@ -47,7 +47,7 @@ When in the project directory, run the following commands in the command line:
 
 Airlift should now be viewable. In your browser, visit `http://localhost:3000` . This is the default port. If you don't see the Airlift app, please check your command line. A couple of lines after you typed <code>rails server</code>, a line like this should have appeared:
 
-   => Rails 4.1.7 application starting in development on `http://0.0.0.0:3000`
+   `=> Rails 4.1.7 application starting in development on http://0.0.0.0:3000`
 
 If the last number (the port number) is not 3000, you can still view the Airlift app by visiting `http://localhost:[your port number]`. 
 
