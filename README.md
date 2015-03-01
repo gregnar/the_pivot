@@ -16,7 +16,7 @@ providers (*the customer*)
 * The suppliers are notifed that a new request has come in
 
 Disaster areas probably don't have desktops, electricity, and internet
-access. This project was built targeting *mobile web* where
+access. This project was built targeting mobile web where
 appropriate.
 
 ##Viewing the site locally
