@@ -23,3 +23,5 @@ There is currently a PostgreSQL encoding error raised when seeding the database 
 
 ##Getting Started
 
+- Clone this repository.
+- Once in the project directory, run <code> bundle install </code>
