@@ -39,3 +39,11 @@ If the last number (the port number) is not 3000, you can still view the Airlift
 If you can see the app now, feel free to poke around. Try logging in as some sample users:
 
 Username: demo+rachel@jumpstartlab.com
+Password: password
+
+Username: demo+josh@jumpstartlab.com
+Password: password
+
+###Running Tests
+
+In order to run the test suite, run <code>rspec</code> in the command line.
