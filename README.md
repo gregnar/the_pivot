@@ -33,7 +33,9 @@ Now, assuming that this information is correct, you can follow the steps below t
 
 **Warning #2:** There is currently a PostgreSQL encoding error raised when seeding the database using Ruby 2.2.0. To rectify this, switch to Ruby 2.1.*. If you are using RVM, this can be acheived by typing <code>rvm use</code>, followed by your preferred pre-2.2.0 version of Ruby, in the command line. For example: <code>rvm use 2.1.5</code>.
 
-- When in the project directory, run the following commands in the command line:
+###The Steps
+
+When in the project directory, run the following commands in the command line:
 
  `bundle install` <br />
  `rake db:setup`
